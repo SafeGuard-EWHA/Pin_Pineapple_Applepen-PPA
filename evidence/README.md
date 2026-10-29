@@ -11,3 +11,8 @@
 
 STA·전력 원본 리포트는 orfs/reports_final/ 에 있다 (*_sta.rpt: 임계 경로, power_*.rpt: report_power).
 VCD 런 구성: A·B Easy = 이미지 1~4, Hard = 5~8 (5 Hard + 6~8 Easy), B Medium = 15~18 (15·18 Medium), Reference = 1~4, 5~8, 15~18 의 12장.
+
+## 415 ns 구간 확인 (그림 8 근거)
+주최 측 TB의 시간 단위는 1 ps, 클럭 주기 10 ps(always #5)이므로 415 ns = 41,500 cycle이다(논리 시뮬레이션 시간축).
+이 구간에서 완료된 이미지: Reference 30장(정답 30), AdaPath_A 47장(정답 46, 9번째 이미지 오답).
+세 로그 모두 decision이 X로 출력된 이미지는 없다($urandom_range(0,1000) 상한에 따른 범위 밖 주소의 영향 없음).
