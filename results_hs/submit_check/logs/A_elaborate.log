@@ -1,0 +1,94 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_1000_behav xil_defaultlib.top_tb_1000 xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" Line 16. Module adapath_top(C2=3,C2_MED=1,SH_CONV1=7,SH_FCE=7,SH_FCL=7,SH_FCF=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" Line 8. Module conv1_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" Line 12. Module early_classifier(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" Line 9. Module conv2_engine(C2=3) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(C_USE=1,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=16,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" Line 16. Module adapath_top(C2=3,C2_MED=1,SH_CONV1=7,SH_FCE=7,SH_FCL=7,SH_FCF=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" Line 8. Module conv1_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" Line 12. Module early_classifier(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" Line 9. Module conv2_engine(C2=3) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(C_USE=1,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=16,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.conv1_buf
+Compiling module xil_defaultlib.mac_tree(DATA_W=9,SHIFT=7)
+Compiling module xil_defaultlib.conv1_engine(SHIFT=7)
+Compiling module xil_defaultlib.maxpool_relu_n_default
+Compiling module xil_defaultlib.fmap_buffer_default
+Compiling module xil_defaultlib.mac_tree(N=48,SHIFT=7)
+Compiling module xil_defaultlib.fc_engine(SHIFT=7)
+Compiling module xil_defaultlib.early_classifier(SHIFT=7)
+Compiling module xil_defaultlib.top2_finder_default
+Compiling module xil_defaultlib.score_margin_calc
+Compiling module xil_defaultlib.difficulty_decoder
+Compiling module xil_defaultlib.mode_control_fsm
+Compiling module xil_defaultlib.conv2_buf
+Compiling module xil_defaultlib.mac_tree(N=75)
+Compiling module xil_defaultlib.conv2_engine(C2=3)
+Compiling module xil_defaultlib.maxpool_relu_n(HALF_WIDTH=4)
+Compiling module xil_defaultlib.mac_tree(N=48)
+Compiling module xil_defaultlib.fc_engine(SHIFT=8)
+Compiling module xil_defaultlib.mac_tree(N=16,SHIFT=7)
+Compiling module xil_defaultlib.fc_engine(C_USE=1,SHIFT=7)
+Compiling module xil_defaultlib.adapath_top(C2=3,C2_MED=1,SH_CON...
+Compiling module xil_defaultlib.chip
+Compiling module xil_defaultlib.top_tb_1000
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot top_tb_1000_behav

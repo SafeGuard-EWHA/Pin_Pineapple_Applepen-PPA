@@ -1,0 +1,35 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adapath_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module chip
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module difficulty_decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module early_classifier
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fc_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fmap_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_tree
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_relu_n
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mode_control_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module score_margin_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top2_finder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/sim/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-311] analyzing module top_tb_1000
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_final_verify_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
