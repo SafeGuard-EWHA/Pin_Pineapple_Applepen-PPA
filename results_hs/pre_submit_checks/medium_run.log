@@ -1,0 +1,14 @@
+VARIANT=2, 9 images, T_LOW/T_HIGH from thresholds.vh
+VCD info: dumpfile tb_adapath.vcd opened for output.
+[0] img_easy_0.txt   PASS  margin=497 mode=0 decision=7 (label 7)  cycles=845
+[1] img_easy_1.txt   PASS  margin=270 mode=0 decision=2 (label 2)  cycles=845
+[2] img_easy_2.txt   PASS  margin=253 mode=0 decision=1 (label 1)  cycles=845
+[3] img_hard_18.txt  PASS  margin=50 mode=2 decision=3 (label 3)  cycles=1016
+[4] img_hard_33.txt  PASS  margin=25 mode=2 decision=4 (label 4)  cycles=1016
+[5] img_hard_62.txt  PASS  margin=51 mode=2 decision=9 (label 9)  cycles=1016
+[6] img_med_22.txt   PASS  margin=82 mode=1 decision=6 (label 6)  cycles=1016
+[7] img_med_61.txt   PASS  margin=89 mode=1 decision=8 (label 8)  cycles=1016
+[8] img_med_78.txt   PASS  margin=82 mode=1 decision=8 (label 9)  cycles=1016
+==== 9 PASS / 0 FAIL ====
+..\..\report_edit\rtl\tb_adapath.v:202: $finish called at 86756000 (1ps)
+MEDIUM_OBSERVER outputs=3 back_cycles=513 violations=0
