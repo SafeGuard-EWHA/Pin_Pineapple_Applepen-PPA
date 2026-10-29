@@ -1,0 +1,20 @@
+{
+  "A": {
+    "archived_files": 48,
+    "changed_files": [
+      "PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.xpr"
+    ]
+  },
+  "B": {
+    "archived_files": 48,
+    "changed_files": [
+      "PPA_AdaPath_NPU_B/PPA_AdaPath_NPU_B.xpr"
+    ]
+  },
+  "WM": {
+    "archived_files": 23,
+    "changed_files": [
+      "PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.xpr"
+    ]
+  }
+}
