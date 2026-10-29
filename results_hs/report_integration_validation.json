@@ -1,7 +1,7 @@
 {
-  "pages": 32,
+  "pages": 33,
   "figures": 23,
-  "tables": 29,
+  "tables": 30,
   "previous_28_page_images_preserved": 22,
   "previous_tables_unchanged": 24,
   "previous_table_header_only_changed": [
@@ -25,12 +25,12 @@
     "violations": 0
   },
   "sha256": {
-    "report/결과보고서_PPA.pdf": "07cd5c946c59bb9e75e3797414b11f3de99ca629643e6630b626f1174f7ebda6",
-    "report/결과보고서_PPA.docx": "4b0371462cb4c08d0d7047152832ff08e179a827062ee586082b2274bc7b99d1"
+    "report/결과보고서_PPA.pdf": "c826ac272f5dd27e5fa97a9e0480239cd0831bb8efd3d71bd1c11c33d728a6ac",
+    "report/결과보고서_PPA.docx": "0c796466d3d7d5230caaae63fcd905148fb1cb98a7c25209edc15edc14c81529"
   },
   "medium_vcd_sha256": "fdba8db630a6a4029e6cf677d3cf2cf9b6ab2ddd727e820b2e09650c522a6d00",
-  "latest_base_commit": "99f7f72ea6ccc9dddc3a3b8124c4509ba08b7746",
-  "latest_previous_tables_preserved": 28,
+  "latest_base_commit": "ede9cf9cf2865afd2ad440bdc50f56d1b784c692",
+  "latest_previous_tables_preserved": 29,
   "latest_previous_images_preserved": 23,
   "corrected_tb": [
     {
@@ -92,5 +92,26 @@
   ],
   "protected_files_unchanged": true,
   "random_vs_sequential_same_index_matches": 1000,
-  "latest_visual_review": "all 32 rendered PDF pages inspected"
+  "latest_visual_review": "all 33 rendered PDF pages inspected; revised pages 13-15 inspected individually",
+  "latest_headings_preserved": 23,
+  "vivado_reference_audit": {
+    "vivado": "2024.1 SW Build 5076996",
+    "reference_project_saved_version": "2023.2",
+    "team_previous_version": "2023.1",
+    "original_sources_and_data_unchanged": true,
+    "checks": {
+      "outputs": 1001,
+      "unscored_outputs": 1,
+      "unknown_decisions": 0,
+      "rand1000": 3,
+      "invalid_reads": 2355,
+      "unknown_reads": 2355,
+      "accuracy": 967,
+      "cnt": 1000
+    },
+    "printed_scored_results": 1000,
+    "mode": "behavioral simulation; Verilog original sources, SystemVerilog observer; default timescale 1ns/1ps for modules without explicit timescale; original TB 1ps/1ps remains unchanged",
+    "source_archive_sha256": "ffecd9057fff9968e412399b29c7a54022ac581ac87160f27cd001024c16f9ff"
+  },
+  "vivado_table_verified_against_raw_log": true
 }

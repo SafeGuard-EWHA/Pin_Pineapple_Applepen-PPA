@@ -25,6 +25,11 @@ for _run in TB_RUNS.values():
     assert _run['observer'] == {'outputs':1000,'x_outputs':0,'invalid_reads':0,'unknown_reads':0,'reads':784000}
 
 
+VIVADO_AUDIT_DIR = os.path.join(HERE, '..', 'results_hs', 'vivado_reference_audit')
+VIVADO_AUDIT = json.load(open(os.path.join(VIVADO_AUDIT_DIR, 'vivado_reference', 'validation.json'), encoding='utf-8'))
+VIVADO_COUNTS = VIVADO_AUDIT['checks']
+assert VIVADO_AUDIT['original_sources_and_data_unchanged']
+assert VIVADO_COUNTS['outputs'] - VIVADO_COUNTS['unscored_outputs'] == VIVADO_AUDIT['printed_scored_results'] == 1000
 FONT = "맑은 고딕"
 fig_no = [0]
 tab_no = [0]
@@ -563,13 +568,42 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
 para(doc, "주최 TB의 경계 검사를 위해 제출 ZIP의 설계와 TB를 수정하지 않고 별도 관찰 모듈을 연결하여 "
      "Icarus Verilog 12.0에서 재실행하였다. $urandom_range(0,1000)의 상한을 포함하는 추출로 이미지 인덱스 "
      "1000이 2회 선택되었으며, cnt<1000의 읽기 구간에서 배열 범위를 벗어난 읽기와 X 데이터 읽기가 각각 "
-     "1,570회 관측되었다. 전체 종료 전 valid_out 관측은 1,001회, X를 포함한 decision은 1회였다. 따라서 "
-     "원본 TB의 종료·계수 조건과 입력 범위를 정상적인 독립 1,000회 검증으로 간주하지 않는다.", indent=True)
+     "1,570회 관측되었다. 전체 종료 전 valid_out 관측은 1,001회, X를 포함한 decision은 1회였다. "
+     "이는 AdaPath와 Icarus 조합의 관측 결과이다. 전체 출력 수와 실제 채점 수를 구분해야 하며, "
+     "1,001회라는 사실만으로 종료·집계 오류를 단정하지 않는다. 입력 범위 밖 읽기의 영향은 별도로 검토한다.", indent=True)
 para(doc, "이 실행의 accuracy 카운터는 960이었다. 이는 Icarus 기본 난수열의 새 진단 실행이며, 기존 "
      "Vivado 로그의 966을 재현하거나 대체한 값이 아니다. 원본 TB 로직은 보존하였고, Vivado의 과거 실행에서 "
      "같은 문제가 발생했는지는 당시 인덱스 추적 로그가 없어 확정할 수 없다. 정확도·cycle 비교의 주 근거는 "
      "입력 범위와 출력 수를 확인한 별도 순차 실행(970/1,000)으로 한정한다. 관찰 모듈과 원본 로그는 "
      "results_hs/pre_submit_checks/에 보존하였다.", indent=True)
+para(doc, "**원본 대조 및 Vivado 레퍼런스 재현.** 보관된 공식 배포 ZIP의 top_tb.v와 제출 ZIP의 TB를 대조하였다. "
+     "400줄 중 변경된 34줄은 데이터 경로의 C:/cnn_verilog/data/ 접두사를 제거한 부분이며, 줄바꿈과 경로를 "
+     "제외하면 코드 전체가 동일하였다. 난수·읽기·초기화·집계 로직은 제출본에서 새로 변경된 것이 아니다. "
+     "주최 측 서버의 최신 배포본이나 정오표를 확인한 것은 아니다.", indent=True)
+para(doc, "배포본 레퍼런스 RTL과 원본 TB를 Vivado 2024.1(SW Build 5076996)에서 behavioral simulation으로 "
+     "실행하였다. 원본 TB·RTL·입력·가중치 34개 파일의 해시 일치를 확인하고 별도 관찰 모듈만 추가하였다. "
+     "원본 .v는 Verilog로, 관찰 모듈만 SystemVerilog로 컴파일하였다. timescale 미선언 모듈에는 xelab의 "
+     "기본값 1ns/1ps를 명시하였으며, 원본 TB의 1ps/1ps 및 #5 클럭은 유지하였다.", indent=True)
+table(doc, "원본 레퍼런스와 TB의 Vivado 2024.1 재현 결과",
+      ['관측 항목','결과'], [
+          ['이미지 인덱스 1000 선택',f"{VIVADO_COUNTS['rand1000']:,}회"],
+          ['범위 밖 픽셀 읽기 / X 픽셀 읽기',f"{VIVADO_COUNTS['invalid_reads']:,} / {VIVADO_COUNTS['unknown_reads']:,}회"],
+          ['valid_out에서 X decision',f"{VIVADO_COUNTS['unknown_decisions']:,}회"],
+          ['전체 valid_out 관측',f"{VIVADO_COUNTS['outputs']:,}회"],
+          ['초기 채점 제외 출력 (state=X)',f"{VIVADO_COUNTS['unscored_outputs']:,}회"],
+          ['실제 채점·표시된 결과',f"{VIVADO_AUDIT['printed_scored_results']:,}회"],
+          ['accuracy 카운터 / 콘솔 정수 표시',f"{VIVADO_COUNTS['accuracy']} / 96%"],
+      ], [10.5,6.0], size=9)
+para(doc, "전체 출력 1,001회는 초기 채점 제외 출력 1회와 실제 채점 출력 1,000회로 구분되었다. "
+     "따라서 총 출력 수만을 근거로 채점 개수 오류라고 해석하지 않는다. 반면 인덱스 1000 선택과 "
+     "범위 밖 읽기는 주최 측 레퍼런스와 Vivado에서도 발생하였다. 읽기 카운터는 rst_n=1, state=0, "
+     "cnt<1000 구간에 한정하였다. X 픽셀 읽기는 최종 decision의 X로 전파되지 않았으며, "
+     "잘못된 입력이 정확도 카운터에 미친 크기·방향은 인덱스별 판정 추적 없이 단정하지 않는다. "
+     "accuracy=967을 정상 범위 입력만으로 얻은 정확도 검증값으로 재해석하지 않는다.", indent=True)
+para(doc, "배포 프로젝트 저장 버전은 2023.2, 팀의 과거 실행은 2023.1, 이번 재현은 2024.1이다. "
+     "대회 필수 버전은 확인하지 않았으며 버전 간 난수열·발생 횟수가 같다고 가정하지 않는다. "
+     "이 결과는 AdaPath의 기존 Icarus 진단이나 순차 입력 결과를 대체하지 않는다. 원시 로그·관찰 모듈·"
+     "차분·해시는 results_hs/vivado_reference_audit/에 보존하였다.", indent=True)
 para(doc, "**별도 수정 TB 재검증.** 원본 제출 TB와 RTL은 보존하고 top_tb_1000_corrected.v를 새로 작성하였다. "
      "상태·입력을 명시적으로 초기화하고, 난수 인덱스를 0~999로 제한하였으며, 이미지마다 정확히 784개 픽셀만 "
      "읽고 실제 valid_out 1,000개를 집계한 뒤 종료하도록 하였다. 제출 ZIP의 동일한 chip 래퍼·가중치를 사용하여 "
