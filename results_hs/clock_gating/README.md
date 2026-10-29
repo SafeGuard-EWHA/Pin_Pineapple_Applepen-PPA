@@ -1,6 +1,16 @@
 # 실제 클럭 게이팅 구현 및 전력 재측정 — 진행 중
 
-**현재 단계: 별도 RTL 구현·기능 대조 완료 / 합성 및 VCD 전력 재측정 미실행.** 이 폴더는 최종 전력 결과가 아닌 재부팅 전 작업 체크포인트이다. 보고서의 28.7% 상한 추정을 실측 감소율로 대체할 근거는 아직 없다.
+**현재 단계: Ubuntu·합성 도구 설치 완료 / 전용 ICG를 적용한 A 전체 순차 1,000회 기능 대조 완료 / 합성 진행 중.** 최종 VCD 전력 결과는 아직 없다. 보고서의 28.7% 상한 추정을 측정된 감소율로 대체할 근거는 아직 확보하지 못하였다.
+
+## 재부팅 후 추가 확인 결과
+
+- ASIC 실험용 `icg_asap7.v`에서 ASAP7의 `ICGx1_ASAP7_75t_R`를 명시적으로 사용하였다. 원본 RTL 및 아래의 기술 독립적 모델은 보존하였다. 합성 넷리스트에서 실제 셀 매핑을 확인하는 단계는 진행 중이다.
+- Icarus 12.0에서 기준/ICG 설계 모두 **970/1,000, 평균 851.84 cycle, Easy/Medium/Hard=960/0/40**을 유지하였다. 각 입력의 decision·mode·margin·cycle 불일치는 **0건**이었다. [집계](icg_rtl_full_validation.json), [기준 로그](logs/icg_baseline_full.log), [ICG 로그](logs/icg_gated_full.log).
+- 이번 실행의 `input_1000.txt`를 픽셀 배열별로 대조하였더니 **100개 고유 이미지가 각각 10회 반복**된 구성이었다. 1,000회 실행 결과를 독립적인 이미지 1,000개의 일반화 검증으로 표현하지 않는다. 이 감사는 해당 입력 파일에 한정된다. [감사 JSON](input_audit.json).
+- 작은 ICG+FF 회로에서 VCD 적용 누락이 0개이며 clock gating에 따라 전력 엔진 계산이 변함을 확인하였다. 이 값은 NPU 절감률이 아니다. [도구 검증](power_engine_probe/).
+- 첫 합성은 공통 매핑 파일 누락을 보완하였다. 다음 실행에서는 ABC의 메모리 부족 종료가 확인되어 WSL RAM 10GB·swap 8GB로 확장하고 재실행하였다. [설치·복구 기록](TOOL_SETUP.md).
+
+측정 조건과 한계: [POWER_PROTOCOL.md](POWER_PROTOCOL.md). 도구·입력·라이브러리 해시: [environment.json](environment.json). 합성 소스 해시: [power_source_manifest.json](power_source_manifest.json).
 
 ## 구현
 
@@ -33,15 +43,15 @@ Vivado 2024.1에서 원본 제출 TB와 원본 DUT를 그대로 두고, 동일 �
 
 `python results_hs/clock_gating/prepare_rtl_check.py --workdir C:/Temp/ppa_clockgate_repeat`로 존재하지 않는 ASCII 작업 경로를 준비한다. 생성된 `run_A.tcl`, `run_WM.tcl`을 Vivado 2024.1 batch 모드에서 실행한다. 기존 저장소 RTL 및 제출 ZIP은 읽기만 하고 실험용 새 모듈과 별도 압축 해제본을 사용한다. 현재 Tcl에는 이 PC의 Vivado 설치 경로가 명시되어 있다.
 
-## 설치 상태와 재부팅 후 재개
+## 설치 상태
 
 - 사용자 승인으로 Microsoft WSL 2.7.14.0 설치 완료(winget `Microsoft.WSL`).
 - Windows VirtualMachinePlatform 활성화 완료. DISM 로그에 `Reboot required=yes`, `Restart suppressed by /NoRestart` 확인(2026-10-30 04:52 KST).
-- **Windows 재부팅 필요.** 자동 재부팅은 실행하지 않았다.
-- Ubuntu 24.04 배포판 설치 및 OpenROAD/Yosys/ORFS 설치는 재부팅 후 이어서 확인·진행한다.
+- 사용자가 Windows 재부팅을 완료한 뒤 Ubuntu 24.04.5, Yosys 0.58, OpenROAD 및 ORFS/ASAP7 설치를 완료하였다.
+- 이후 메모리 부족 복구를 위해 작업용 WSL만 재시작하였다. 추가 Windows 재부팅은 실행하지 않았다.
 - 원본 보고서는 서현 단독 편집 원칙에 따라 그대로 두었다. 결과는 `exp-hyunseo-final`로 전달한다.
 
-재개 순서: (1) `wsl --status`, `wsl -l -v` 확인 → (2) Ubuntu 24.04 설치/초기화 → (3) ORFS 및 ASAP7 라이브러리·Yosys·OpenROAD 준비 → (4) 기준/게이팅 설계 동일 조건 합성 → (5) gate-level 기능·클럭 파형 확인 및 VCD 생성 → (6) 전력·에너지·면적·타이밍 대조 → (7) 결과·근거·한계와 서현 전달 문단 작성.
+남은 순서: 기준/게이팅 설계 동일 조건 합성 → gate-level 기능·클럭 파형 확인 및 VCD 생성 → 전력·에너지·면적·타이밍 대조 → 결과·근거·한계와 서현 전달 문단 작성.
 
 공식 설치 기준: [Microsoft WSL 설치](https://learn.microsoft.com/en-us/windows/wsl/install), [ORFS 사전 빌드 도구](https://openroad-flow-scripts.readthedocs.io/en/latest/user/BuildWithPrebuilt.html).
 

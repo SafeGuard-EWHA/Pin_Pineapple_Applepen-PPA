@@ -1,0 +1,23 @@
+{
+  "ungated": {
+    "count": 1000,
+    "correct": 970,
+    "modes": {
+      "0": 960,
+      "1": 0,
+      "2": 40
+    },
+    "average_cycles": 851.84
+  },
+  "gated": {
+    "count": 1000,
+    "correct": 970,
+    "modes": {
+      "0": 960,
+      "1": 0,
+      "2": 40
+    },
+    "average_cycles": 851.84
+  },
+  "transaction_mismatches": 0
+}

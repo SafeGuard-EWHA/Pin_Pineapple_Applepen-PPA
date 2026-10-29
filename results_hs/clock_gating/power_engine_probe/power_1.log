@@ -1,0 +1,30 @@
+OpenROAD 26Q2-1164-g08f67ee5ec 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7_tech_1x_201209.lef, created 30 layers, 9 vias
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_R_1x_220121a.lef, created 212 library cells
+No paths found.
+Clock                   Period          Waveform
+----------------------------------------------------
+clk                   10000.00        0.00   5000.00
+gc                    10000.00        0.00   5000.00 (generated)
+[WARNING STA-1452] clock gc vcd period 500000.000 differs from SDC clock period 10000.000
+Annotated 11 pin activities.
+vcd            11
+unannotated     0
+Group                       Internal       Switching         Leakage           Total
+                               Power           Power           Power           Power (Watts)
+------------------------------------------------------------------------------------
+Sequential           4.219386440e-08 0.000000000e+00 2.450465386e-10 4.243890928e-08  50.4%
+Combinational        0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00   0.0%
+Clock                4.093252670e-08 4.652412899e-10 3.082902822e-10 4.170605905e-08  49.6%
+Macro                0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00   0.0%
+Pad                  0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00   0.0%
+------------------------------------------------------------------------------------
+Total                8.312639466e-08 4.652412899e-10 5.533368208e-10 8.414497188e-08 100.0%
+                               98.8%            0.6%            0.7%
+        Internal       Switching         Leakage           Total
+           Power           Power           Power           Power (Watts)
+----------------------------------------------------------------
+ 4.219386440e-08 0.000000000e+00 2.450465386e-10 4.243890928e-08 ff

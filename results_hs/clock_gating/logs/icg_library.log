@@ -1,0 +1,80 @@
+OpenROAD 26Q2-1164-g08f67ee5ec 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+ time 1ps
+ capacitance 1fF
+ resistance 1kohm
+ voltage 1v
+ current 1mA
+ power 1pW
+ distance 1um
+Cell ICGx1_ASAP7_75t_R
+Library asap7sc7p5t_SEQ_RVT_TT_nldm_220123
+File /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.lib
+ VDD power
+ VSS ground
+ IQ internal
+ GCLK output
+ CLK input 1.45-2.19
+ ENA input 0.29-0.43
+ SE input 0.35-0.43
+
+Timing arcs
+ CLK -> GCLK
+  combinational
+  when ENA+(!ENA*SE)
+  v -> v
+ CLK -> GCLK
+  combinational
+  when !ENA*!SE
+  v -> v
+ CLK -> GCLK
+  combinational
+  ^ -> ^
+  v -> v
+ CLK -> CLK
+  width
+  when ENA+(!ENA*SE)
+  ^ -> v
+  v -> ^
+ CLK -> CLK
+  width
+  when !ENA*!SE
+  v -> ^
+ CLK -> ENA
+  hold
+  when !SE
+  ^ -> ^
+  ^ -> v
+ CLK -> ENA
+  hold
+  ^ -> ^
+  ^ -> v
+ CLK -> ENA
+  setup
+  when !SE
+  ^ -> ^
+  ^ -> v
+ CLK -> ENA
+  setup
+  ^ -> ^
+  ^ -> v
+ CLK -> SE
+  hold
+  when !ENA
+  ^ -> ^
+  ^ -> v
+ CLK -> SE
+  hold
+  ^ -> ^
+  ^ -> v
+ CLK -> SE
+  setup
+  when !ENA
+  ^ -> ^
+  ^ -> v
+ CLK -> SE
+  setup
+  ^ -> ^
+  ^ -> v

@@ -1,0 +1,42 @@
+{
+  "cg_a_ungated": {
+    "adapath_A_npu.v": "c4c7ba442743438533f7daafcf7500590da17b0ebc4f629ff0f59d68c2fb7ecd",
+    "adapath_top.v": "13cc9f90a0b3891e18dd37659d3dd0ff2787588e57d7af940d4646c8a306ca11",
+    "conv1_engine.v": "f0cd5e21f79469cefdf1e2f6ebb2e22e22ec30190ad010a29cc2c284f0755f0c",
+    "conv2_engine.v": "2b23649b4e7493b0a0ae6e81a26c915730a35724b3a25ddc2342e320cec66a20",
+    "difficulty_decoder.v": "1be7d2db26fb84a9a37212447403e556d52631c326bc577eec585284187f0eec",
+    "early_classifier.v": "5cbafd668a04a0f4222759b003af1bd91b5e47962b851d7f33eff259a215a1a6",
+    "fc_engine.v": "9ee13d9b872d3dcf42d96cfd683b137ab4e7fbbb8b1b1b03a90e621ec2c6b1f7",
+    "fmap_buffer.v": "c000c224c22756c2710bbe815b83ba3ce46512d117261c82625290a5bd6ea7fd",
+    "mac_tree.v": "c7d64a1ccc0ae058bf32ae4a897f0a7b914073137132a18adbea4f3188a00381",
+    "maxpool_relu_n.v": "6303e8f999eb6454304f3d2049af87d1b06e261b259cba6eff7ee3ebbad22ac8",
+    "mode_control_fsm.v": "b0f8dd8f46f04413cf5a63b2dbb1fe5435a5b839cfaac6cc728f8bc77b269ffc",
+    "ref/conv1_buf.v": "39b8868a36189b9529c5a4d9d1db8ad47893e876d8a5edc6f32ae32f171b6116",
+    "ref/conv2_buf.v": "47e003a73cfdb605c649af6ac49bb16aeab14238614da94d7f055df4c374389c",
+    "score_margin_calc.v": "be9a5c2e39149c755b8cc2c0b7718fcf4f1a5c9c80108d8419fd62955a926fca",
+    "shifts.vh": "0701cf88ff513e41ce7ce2a45bfbfe2b6c82c0c0e06d2ecf49f0178ed4259897",
+    "thresholds.vh": "8af4fb5b4662ce316597394a41e484845aaf0207ca71dcd9c68dd2ef91096f07",
+    "top2_finder.v": "e516b91fc38c753bf687af812aadad5b1b2e68ce1936759a191e997b1f7da524"
+  },
+  "cg_a_gated": {
+    "adapath_A_npu.v": "f233d64f5e6a50078f7ffe8dbb6bddbd0a770f6c6f9a2c99aec455f46c9c5a1f",
+    "adapath_top.v": "13cc9f90a0b3891e18dd37659d3dd0ff2787588e57d7af940d4646c8a306ca11",
+    "adapath_top_cg.v": "a9fc35a51c10c9c9153eb39246c65cccd0fefaeab0f7ae57349aef498f559930",
+    "conv1_engine.v": "f0cd5e21f79469cefdf1e2f6ebb2e22e22ec30190ad010a29cc2c284f0755f0c",
+    "conv2_engine.v": "2b23649b4e7493b0a0ae6e81a26c915730a35724b3a25ddc2342e320cec66a20",
+    "difficulty_decoder.v": "1be7d2db26fb84a9a37212447403e556d52631c326bc577eec585284187f0eec",
+    "early_classifier.v": "5cbafd668a04a0f4222759b003af1bd91b5e47962b851d7f33eff259a215a1a6",
+    "fc_engine.v": "9ee13d9b872d3dcf42d96cfd683b137ab4e7fbbb8b1b1b03a90e621ec2c6b1f7",
+    "fmap_buffer.v": "c000c224c22756c2710bbe815b83ba3ce46512d117261c82625290a5bd6ea7fd",
+    "icg_latch.v": "2c6f245a4a5e01face7ba88358105651208ff934182f8261c046c496c67d1d69",
+    "mac_tree.v": "c7d64a1ccc0ae058bf32ae4a897f0a7b914073137132a18adbea4f3188a00381",
+    "maxpool_relu_n.v": "6303e8f999eb6454304f3d2049af87d1b06e261b259cba6eff7ee3ebbad22ac8",
+    "mode_control_fsm.v": "b0f8dd8f46f04413cf5a63b2dbb1fe5435a5b839cfaac6cc728f8bc77b269ffc",
+    "ref/conv1_buf.v": "39b8868a36189b9529c5a4d9d1db8ad47893e876d8a5edc6f32ae32f171b6116",
+    "ref/conv2_buf.v": "47e003a73cfdb605c649af6ac49bb16aeab14238614da94d7f055df4c374389c",
+    "score_margin_calc.v": "be9a5c2e39149c755b8cc2c0b7718fcf4f1a5c9c80108d8419fd62955a926fca",
+    "shifts.vh": "0701cf88ff513e41ce7ce2a45bfbfe2b6c82c0c0e06d2ecf49f0178ed4259897",
+    "thresholds.vh": "8af4fb5b4662ce316597394a41e484845aaf0207ca71dcd9c68dd2ef91096f07",
+    "top2_finder.v": "e516b91fc38c753bf687af812aadad5b1b2e68ce1936759a191e997b1f7da524"
+  }
+}
