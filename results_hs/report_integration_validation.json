@@ -1,7 +1,7 @@
 {
   "pages": 32,
   "figures": 23,
-  "tables": 28,
+  "tables": 29,
   "previous_28_page_images_preserved": 22,
   "previous_tables_unchanged": 24,
   "previous_table_header_only_changed": [
@@ -25,8 +25,72 @@
     "violations": 0
   },
   "sha256": {
-    "report/결과보고서_PPA.pdf": "f1d4f07f24d8de48ee9e523785f897ac9bf6ee542090e9fcd769c50edc73e43b",
-    "report/결과보고서_PPA.docx": "79437cf91d1bfb8982620f7a1fa32b6a6add409b03933d5ddda96b9407e86206"
+    "report/결과보고서_PPA.pdf": "07cd5c946c59bb9e75e3797414b11f3de99ca629643e6630b626f1174f7ebda6",
+    "report/결과보고서_PPA.docx": "4b0371462cb4c08d0d7047152832ff08e179a827062ee586082b2274bc7b99d1"
   },
-  "medium_vcd_sha256": "fdba8db630a6a4029e6cf677d3cf2cf9b6ab2ddd727e820b2e09650c522a6d00"
+  "medium_vcd_sha256": "fdba8db630a6a4029e6cf677d3cf2cf9b6ab2ddd727e820b2e09650c522a6d00",
+  "latest_base_commit": "99f7f72ea6ccc9dddc3a3b8124c4509ba08b7746",
+  "latest_previous_tables_preserved": 28,
+  "latest_previous_images_preserved": 23,
+  "corrected_tb": [
+    {
+      "case": "sequential",
+      "summary": {
+        "outputs": 1000,
+        "correct": 970,
+        "easy": 960,
+        "medium": 0,
+        "hard": 40,
+        "reads": 784000,
+        "x_outputs": 0,
+        "timeouts": 0,
+        "total_cycles": 853840,
+        "unique_indices": 1000
+      },
+      "observer": {
+        "outputs": 1000,
+        "x_outputs": 0,
+        "invalid_reads": 0,
+        "unknown_reads": 0,
+        "reads": 784000
+      },
+      "command": [
+        "C:\\Users\\채희경\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "C:\\Users\\채희경\\Documents\\Codex\\2026-10-29\\new-chat\\work\\corrected_tb_run\\corrected.vvp",
+        "+SEQUENTIAL=1",
+        "+SEED=2026"
+      ]
+    },
+    {
+      "case": "random_seed2026",
+      "summary": {
+        "outputs": 1000,
+        "correct": 971,
+        "easy": 956,
+        "medium": 0,
+        "hard": 44,
+        "reads": 784000,
+        "x_outputs": 0,
+        "timeouts": 0,
+        "total_cycles": 854524,
+        "unique_indices": 639
+      },
+      "observer": {
+        "outputs": 1000,
+        "x_outputs": 0,
+        "invalid_reads": 0,
+        "unknown_reads": 0,
+        "reads": 784000
+      },
+      "command": [
+        "C:\\Users\\채희경\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "C:\\Users\\채희경\\Documents\\Codex\\2026-10-29\\new-chat\\work\\corrected_tb_run\\corrected.vvp",
+        "+SEQUENTIAL=0",
+        "+SEED=2026"
+      ]
+    }
+  ],
+  "protected_files_unchanged": true,
+  "random_vs_sequential_same_index_matches": 1000,
+  "latest_visual_review": "all 32 rendered PDF pages inspected"
 }

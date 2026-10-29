@@ -18,6 +18,12 @@ OUT = os.path.join(HERE, "..", "out")
 R = json.load(open(os.path.join(HERE, "results.json"), encoding="utf-8"))
 
 SWEEP, ROBUST, LEVELS = load_results(os.path.dirname(HERE))
+TB_CHECK = json.load(open(os.path.join(HERE, '..', 'results_hs', 'corrected_tb', 'validation.json'), encoding='utf-8'))
+TB_RUNS = {r['case']: r for r in TB_CHECK['runs']}
+assert TB_CHECK['protected_hashes_unchanged'] and TB_CHECK['random_vs_sequential_same_index_matches'] == 1000
+for _run in TB_RUNS.values():
+    assert _run['observer'] == {'outputs':1000,'x_outputs':0,'invalid_reads':0,'unknown_reads':0,'reads':784000}
+
 
 FONT = "맑은 고딕"
 fig_no = [0]
@@ -564,9 +570,27 @@ para(doc, "이 실행의 accuracy 카운터는 960이었다. 이는 Icarus 기�
      "같은 문제가 발생했는지는 당시 인덱스 추적 로그가 없어 확정할 수 없다. 정확도·cycle 비교의 주 근거는 "
      "입력 범위와 출력 수를 확인한 별도 순차 실행(970/1,000)으로 한정한다. 관찰 모듈과 원본 로그는 "
      "results_hs/pre_submit_checks/에 보존하였다.", indent=True)
+para(doc, "**별도 수정 TB 재검증.** 원본 제출 TB와 RTL은 보존하고 top_tb_1000_corrected.v를 새로 작성하였다. "
+     "상태·입력을 명시적으로 초기화하고, 난수 인덱스를 0~999로 제한하였으며, 이미지마다 정확히 784개 픽셀만 "
+     "읽고 실제 valid_out 1,000개를 집계한 뒤 종료하도록 하였다. 제출 ZIP의 동일한 chip 래퍼·가중치를 사용하여 "
+     "0~999 순차 입력과 seed=2026의 복원 무작위 입력을 각각 1,000회 실행하였다.", indent=True)
+_tb_seq=TB_RUNS['sequential'];_tb_rnd=TB_RUNS['random_seed2026']
+_tb_rows=[]
+for title,key in [('유효 출력 수','outputs'),('정답 수','correct')]:
+    _tb_rows.append([title,str(_tb_seq['summary'][key]),str(_tb_rnd['summary'][key])])
+_tb_rows.append(['Easy / Medium / Hard']+[' / '.join(str(x['summary'][k]) for k in ['easy','medium','hard']) for x in [_tb_seq,_tb_rnd]])
+for title,key in [('범위 밖 읽기','invalid_reads'),('X 데이터 읽기','unknown_reads'),('X 출력','x_outputs'),('픽셀 읽기 수','reads')]:
+    _tb_rows.append([title,str(_tb_seq['observer'][key]),str(_tb_rnd['observer'][key])])
+table(doc, "별도 수정 TB의 입력·출력 무결성 재검증 (모델 A)",
+      ['검사 항목','순차 1,000회','무작위 1,000회'], _tb_rows, [6.5,5.0,5.0], size=9)
+para(doc, "두 실행 모두 4,000 cycle 제한 내 출력되었다. 무작위 실행의 모든 판정·모드는 같은 이미지 인덱스의 순차 실행 결과와 1,000/1,000 일치하였다. "
+     "이는 수정한 검증 환경에서 입력 범위·출력 수·판정 재현성을 확인한 결과이며, 원본 주최 TB의 결함을 "
+     "수정했거나 기존 Vivado 로그를 재현했다는 뜻은 아니다. 두 입력 순서의 정확도 차이는 표본 구성 차이를 "
+     "포함하므로 성능 개선으로 해석하지 않는다. 입력에는 고유 100장의 반복이 포함되어 독립 1,000장 평가도 아니다. "
+     "원본 파일 해시, 수정 TB, 인덱스별 CSV와 실행 로그는 results_hs/corrected_tb/에 보존하였다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_console.png"),
        "Vivado 2023.1 실행 화면 — 주최 측 top_tb_1000 실행 결과 (AdaPath_A)", 16.0)
-para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 주최 측 테스트벤치가 1,000회 처리 후 $stop(391행)에서 "
+para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 원본 테스트벤치의 cnt가 1,000에 도달한 뒤 $stop(391행)에서 "
      "정지하였고, Tcl 콘솔에 'Accuracy : 96%'가 출력되었다. Objects 창의 accuracy = 0x3C6(966), cnt = 0x3E8(1,000)이다.",
      indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_ref_vs_ada.png"),
