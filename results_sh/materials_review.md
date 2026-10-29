@@ -6,7 +6,7 @@
 |---|---|---|
 | GitHub README | 최초 확인 완료 | 모델 A/B, 모드별 기준점, 고유 100장 반복 입력 및 강건성 한계 확인 |
 | GitHub 최종 PDF | 작업 중 main 5b9d9d2에 추가, 12쪽 전체 텍스트 및 렌더 확인 | gap_analysis와 proofread에 반영 |
-| GitHub DOCX | 파일 존재 확인, 3,433,286 byte | 연결 도구의 큰 바이너리 읽기 제한으로 직접 OOXML 검사는 못함. 원본 수정 없음 |
+| GitHub DOCX | 브라우저 다운로드 및 OOXML 검사 완료, 3,433,286 byte | 본문·표·스타일·캡션·메모·추적 변경·이미지 설정 확인. Git blob SHA가 원본과 일치. 원본 수정 없음 |
 | report/results.json 및 생성 코드 | 최종 커밋 기준 읽기 완료 | 평균 에너지·MAC·cycle·효율과 PDF 수치 대조 |
 | 관련 RTL | adapath_top, chip_adapath, top2_finder, difficulty_decoder 확인 | 버퍼 12-bit, 스트리밍 분기, 래퍼 포트, 동점 규칙 확인 |
 | 수상작 PDF 3개 | TernaryX 15쪽, 드가자 18쪽, 부산의 인재 21쪽 | 텍스트와 전체 페이지 이미지 검토. 로컬 work/ref_winners만 보관, 커밋 제외 |

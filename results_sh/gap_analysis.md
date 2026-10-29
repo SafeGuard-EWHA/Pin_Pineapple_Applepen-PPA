@@ -1,6 +1,6 @@
 # AdaPath-NPU 보고서 보완 분석
 
-검토 기준: 2026-10-29, 작업 중 업로드된 GitHub main `5b9d9d2ce36e86ef7d3a3dfd46eac903435a209f`의 최종 PDF 12쪽, `results.json`, 생성 코드 및 RTL. PDF 전 페이지 렌더링과 본문·표 수치 대조를 완료했다. DOCX 바이너리는 다운로드 제한으로 직접 OOXML 검사하지 않았으며 원본을 수정하지 않았다. Drive 중간보고서는 과거 자료로 별도 확인하였다.
+검토 기준: 2026-10-29, 작업 중 업로드된 GitHub main `5b9d9d2ce36e86ef7d3a3dfd46eac903435a209f`의 최종 PDF 12쪽, `results.json`, 생성 코드 및 RTL. PDF 전 페이지 렌더링과 본문·표 수치 대조를 완료했다. 추가로 브라우저에서 DOCX를 확보하여 OOXML 내부 검사와 원본 해시 대조를 완료했다. 원본은 수정하지 않았다. Drive 중간보고서는 과거 자료로 별도 확인하였다.
 
 검토 자료: [TernaryX 15쪽](https://drive.google.com/file/d/1-_gkEiEWhHBTW-cWmcZRopqWt9aLHlbr/view), [드가자 18쪽](https://drive.google.com/file/d/18ultEXa1FI5ruGO3amvUVfRpqN7gn7w3/view), [부산의 인재 21쪽](https://drive.google.com/file/d/1COH6pIPF2jHu3Xr9uu3ElWPTGIxWdzw_/view). 쪽수는 표지를 포함한 PDF 페이지다. 세 PDF는 로컬 `work/ref_winners/`에만 보관하고 커밋 대상에서 제외한다. 본 분석은 내부 검토 자료이며 제출 보고서에 수상작 참고 표현을 넣지 않는다.
 
