@@ -1,0 +1,7 @@
+=== baseline_npu ===
+--- report_checks (setup, worst) ---
+
+--- WNS / TNS ---
+wns -1043.866997015842   tns -131393.83322802116
+--- report_power ---
+

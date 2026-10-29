@@ -1,0 +1,7 @@
+=== earlyexit_npu ===
+--- report_checks (setup, worst) ---
+
+--- WNS / TNS ---
+wns -1564.301583412227   tns -17805.863521497344
+--- report_power ---
+

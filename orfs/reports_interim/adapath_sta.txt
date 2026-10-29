@@ -1,0 +1,7 @@
+=== adapath_npu ===
+--- report_checks (setup, worst) ---
+
+--- WNS / TNS ---
+wns -3204.310607443785   tns -241616.96029434787
+--- report_power ---
+

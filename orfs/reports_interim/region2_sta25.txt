@@ -1,0 +1,7 @@
+=== region2_npu ===
+--- report_checks (setup, worst) ---
+
+--- WNS / TNS ---
+wns -2114.473715686627   tns -24874.026493564394
+--- report_power ---
+

@@ -1,0 +1,70 @@
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+
+17. Printing statistics.
+
+=== adapath_npu ===
+
+        +----------------------------Count including submodules.
+        |        +-------------------Area including submodules.
+        |        |        +----------Local count, excluding submodules.
+        |        |        |        +-Local area, excluding submodules.
+        |        |        |        | 
+   640063        -   640063        - wires
+   665331        -   665331        - wire bits
+       18        -       18        - public wires
+    25286        -    25286        - public wire bits
+       18        -       18        - ports
+    25286        -    25286        - port bits
+        -        -        -        - memories
+        -        -        -        - memory bits
+        -        -        -        - processes
+   640064  7.7E+04   640064  7.7E+04 cells
+    83621 7.32E+03    83621 7.32E+03   AND2x2_ASAP7_75t_R
+    24143  2112.03    24143  2112.03   AND3x1_ASAP7_75t_R
+      107    10.92      107    10.92   AND4x1_ASAP7_75t_R
+      112   13.064      112   13.064   AND5x1_ASAP7_75t_R
+    43870 3.84E+03    43870 3.84E+03   AO21x1_ASAP7_75t_R
+     8668 1.26E+03     8668 1.26E+03   AO221x1_ASAP7_75t_R
+     3123    409.8     3123    409.8   AO22x1_ASAP7_75t_R
+    13440 1.57E+03    13440 1.57E+03   AO32x1_ASAP7_75t_R
+      254    44.44      254    44.44   AOI211x1_ASAP7_75t_R
+     6473  755.011     6473  755.011   AOI21x1_ASAP7_75t_R
+      989  201.875      989  201.875   AOI221x1_ASAP7_75t_R
+      993  144.779      993  144.779   AOI22x1_ASAP7_75t_R
+    31190 2.27E+03    31190 2.27E+03   BUFx2_ASAP7_75t_R
+       46    4.024       46    4.024   BUFx3_ASAP7_75t_R
+        4    0.408        4    0.408   BUFx4_ASAP7_75t_R
+        6      0.7        6      0.7   BUFx4f_ASAP7_75t_R
+        4    0.467        4    0.467   BUFx5_ASAP7_75t_R
+       12     1.75       12     1.75   BUFx6f_ASAP7_75t_R
+    15051 4.39E+03    15051 4.39E+03   DFFHQNx1_ASAP7_75t_R
+    36303 1.59E+03    36303 1.59E+03   INVx1_ASAP7_75t_R
+        2    0.117        2    0.117   INVx2_ASAP7_75t_R
+    66798 8.77E+03    66798 8.77E+03   MAJx2_ASAP7_75t_R
+    26141 2.29E+03    26141 2.29E+03   NAND2x1_ASAP7_75t_R
+        6    0.875        6    0.875   NAND2x2_ASAP7_75t_R
+      300   48.114      300   48.114   NAND3x1_ASAP7_75t_R
+    41236 3.61E+03    41236 3.61E+03   NOR2x1_ASAP7_75t_R
+        6    0.875        6    0.875   NOR2x2_ASAP7_75t_R
+       90   14.434       90   14.434   NOR3x1_ASAP7_75t_R
+     2044  238.412     2044  238.412   OA211x2_ASAP7_75t_R
+    19254 1.97E+03    19254 1.97E+03   OA21x2_ASAP7_75t_R
+      148   34.525      148   34.525   OA221x2_ASAP7_75t_R
+      761  110.954      761  110.954   OA22x2_ASAP7_75t_R
+       17    3.718       17    3.718   OA31x2_ASAP7_75t_R
+     2718  317.028     2718  317.028   OAI21x1_ASAP7_75t_R
+      993  144.779      993  144.779   OAI22x1_ASAP7_75t_R
+     4535  396.722     4535  396.722   OR2x2_ASAP7_75t_R
+      151   13.209      151   13.209   OR3x1_ASAP7_75t_R
+      432    44.09      432    44.09   OR4x1_ASAP7_75t_R
+      122    14.23      122    14.23   OR5x1_ASAP7_75t_R
+     9229 1.48E+03     9229 1.48E+03   XNOR2x2_ASAP7_75t_R
+        2     0.35        2     0.35   XOR2x1_ASAP7_75t_R
+   196670 3.15E+04   196670 3.15E+04   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '\adapath_npu': 76963.081500
+     of which used for sequential elements: 4388.871600 (5.70%)
+

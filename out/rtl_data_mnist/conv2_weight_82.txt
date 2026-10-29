@@ -1,0 +1,5 @@
+3a 0d 2b fc 0a
+17 f5 f6 01 fc
+30 af e6 e1 f6
+27 f2 db f2 03
+00 10 fa 03 ec

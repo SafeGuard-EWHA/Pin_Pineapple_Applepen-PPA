@@ -1,0 +1,10 @@
+*.vcd
+*.vvp
+*.npz
+*.pkl
+__pycache__/
+data/
+verilog_ref/
+*.log
+*.jou
+.Xil/

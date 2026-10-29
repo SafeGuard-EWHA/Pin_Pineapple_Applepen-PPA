@@ -1,0 +1,15 @@
+export PLATFORM               = asap7
+export DESIGN_NAME            = baseline_A_npu
+export DESIGN_NICKNAME        = baseline_A
+export VERILOG_FILES = $(sort $(wildcard $(DESIGN_HOME)/src/adapath_A/*.v)) $(sort $(wildcard $(DESIGN_HOME)/src/adapath_A/ref/*.v))
+export VERILOG_INCLUDE_DIRS = $(DESIGN_HOME)/src/adapath_A
+export SDC_FILE      = $(DESIGN_HOME)/$(PLATFORM)/baseline_A/constraint.sdc
+export ABC_AREA               = 1
+export SYNTH_HIERARCHICAL     = 0
+export SYNTH_MEMORY_MAX_BITS  = 65536
+export ADDER_MAP_FILE         =
+export CORE_UTILIZATION       = 40
+export CORE_ASPECT_RATIO      = 1
+export CORE_MARGIN            = 2
+export PLACE_DENSITY          = 0.65
+export TNS_END_PERCENT        = 100

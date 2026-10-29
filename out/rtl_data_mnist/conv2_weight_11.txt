@@ -1,0 +1,5 @@
+ef 13 ec f7 20
+ed 06 25 52 42
+d2 c7 c3 18 57
+cb f8 11 ef d1
+2c 1d 2d 2c 0b

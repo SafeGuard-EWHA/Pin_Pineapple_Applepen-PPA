@@ -1,0 +1,38 @@
+[*] GTKWave save file — AdaPath-NPU 파형 (tb_adapath.vcd 용)
+[*] 열기: gtkwave tb_adapath.vcd adapath_waves.gtkw
+[dumpfile] "tb_adapath.vcd"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-20.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_adapath.
+[treeopen] tb_adapath.dut.
+[sst_width] 260
+[signals_width] 240
+[sst_expanded] 1
+[sst_vpaned_height] 300
+@28
+tb_adapath.start
+tb_adapath.dut.front_done
+tb_adapath.dut.mode_v
+@22
+#{mode[1:0]} tb_adapath.dut.mode[1:0]
+tb_adapath.dut.u_fsm.state[2:0]
+@28
+tb_adapath.dut.u_fsm.conv2_en
+@22
+tb_adapath.dut.u_fsm.ch_en[7:0]
+@28
+tb_adapath.dut.fm_ov
+tb_adapath.dut.u_fsm.fc_light_en
+tb_adapath.dut.u_fsm.fc_full_en
+@22
+tb_adapath.dut.result_sel[1:0]
+#{margin[11:0]} tb_adapath.dut.margin[11:0]
+@28
+tb_adapath.dut.u_fsm.done
+tb_adapath.valid_out
+@22
+tb_adapath.dut.decision[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

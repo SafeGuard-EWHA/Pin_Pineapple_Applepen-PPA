@@ -1,0 +1,5 @@
+17 0c 00 fc 1e
+f7 f4 07 1a 3e
+f1 16 3e 37 34
+df f7 08 0e 0b
+f3 e6 eb f5 cc
