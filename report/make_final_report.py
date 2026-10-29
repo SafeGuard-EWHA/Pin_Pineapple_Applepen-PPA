@@ -42,7 +42,7 @@ LBL = {
     "f_racc": FIGN["hs_fig_robustness_acc.png"],
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정·평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
-    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"),
+    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_verify": _tn("기능 검증 결과"),
 }
 
 
@@ -448,7 +448,7 @@ table(doc, "모델별 정확도와 선정 동작점 (MNIST 테스트셋 10,000�
     ["선정 동작점 모드 비율 (Easy / Medium / Hard)", sw["A_modes"], sw["B_modes"]],
     ["AdaPath 정확도 / 평균 MAC 절감", "%s %% / %s %%" % (sw["A_acc"], sw["A_macsave"]),
      "%s %% / %s %%" % (sw["B_acc"], sw["B_macsave"])],
-    ["정수 Hard 경로 정확도 (1,000장, 같은 표본의 float 대비)", sw["A_int8"], "97.80 % (float 97.95 %)"],
+    ["정수 Hard 경로 정확도 (같은 표본의 float 대비)", sw["A_int8"], "97.80 % (float 97.95 %, n=2,000)"],
 ], [6.6, 5.2, 5.2])
 para(doc, "모델 A는 Conv2가 3채널뿐이어서 1채널 Light 경로의 정확도(%s %%)가 낮다. 임계값 탐색은 Medium 구간을 두지 않는 "
      "동작점(T_low = T_high)을 평가한 후보 중에서 선택하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. 반면 후단부가 큰 모델 B와 "
@@ -528,32 +528,37 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
          "$urandom_range로 복원 무작위 추출하므로 설계마다 추출된 표본 구성이 달라질 수 있다. cycle은 연속한 "
          "valid_out 사이 간격(리셋 포함)의 평균이다.")
 para(doc, "주최 TB 원본의 $urandom_range(0,1000)은 상한을 포함하므로, 인덱스 1000이 선택되면 "
-     "pixel[0:783999]의 이미지 범위를 벗어날 수 있다. 기존 실행에서 해당 인덱스가 발생했는지는 보존된 집계만으로 "
-     "확인하지 못하였다. 따라서 순차 입력과 주최 TB의 정답률 차이를 표본 구성 차이만으로 단정하지 않으며, "
-     "원본 로직을 보존한 실행 결과와 순차 입력 검증을 구분하였다.", indent=True)
+     "pixel[0:783999]의 이미지 범위를 벗어날 수 있다. 세 설계(Reference, AdaPath_A, AdaPath_B)의 Vivado 실행 로그 1,000줄을 "
+     "전수 확인한 결과 판정(decision)이 X로 출력된 이미지는 없었다(evidence/vivado_logs). 다만 해당 인덱스의 발생 횟수 자체는 "
+     "로그에 기록되지 않으므로, 순차 입력 검증과 주최 TB 실행 결과를 구분하여 제시하였다. 주최 측 TB 로직은 수정하지 않았다.",
+     indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_console.png"),
        "Vivado 2023.1 실행 화면 — 주최 측 top_tb_1000 실행 결과 (AdaPath_A)", 16.0)
 para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 주최 측 테스트벤치가 1,000회 처리 후 $stop(391행)에서 "
      "정지하였고, Tcl 콘솔에 'Accuracy : 96%'가 출력되었다. Objects 창의 accuracy = 0x3C6(966), cnt = 0x3E8(1,000)이다.",
      indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_ref_vs_ada.png"),
-       "같은 0~415 ns 동안의 처리량 (Vivado, 주최 측 TB): Reference 30장 vs AdaPath_A 46장", 17.0)
-para(doc, "같은 테스트벤치·같은 클럭에서 415 ns 동안 Reference는 30장, AdaPath_A는 46장을 분류하였다(두 설계 모두 해당 "
-     "구간 전부 정답). 이미지당 평균 처리 cycle이 1,336에서 855로 줄어든 효과가 파형에 그대로 나타난다.", indent=True)
-para(doc, "위 시간축은 timescale 1ps/1ps 및 always #5 클럭에 따른 10 ps 주기의 기능 시뮬레이션 "
+       "같은 41,500 cycle(0~415 ns, 논리 시뮬레이션) 동안 완료한 이미지 수: Reference 30장 vs AdaPath_A 47장", 17.0)
+para(doc, "같은 테스트벤치에서 같은 41,500 cycle 동안 Reference는 30장(정답 30), AdaPath_A는 47장(정답 46, 9번째 이미지 "
+     "오답)을 완료하였다(실행 로그로 확인, 파형의 accuracy는 정답 누계). 완료 장수 기준 57 %% 많으며, 이미지당 평균 처리 "
+     "cycle이 1,336에서 855로 줄어든 효과가 파형에 나타난다. 구간 길이와 추출된 입력 구성이 달라 이 비율이 전체 평균 "
+     "cycle 비와 정확히 일치하지는 않는다." % LBL, indent=True)
+para(doc, "위 시간축은 timescale 1ps/1ps 및 always #5 클럭에 따른 10 ps 주기의 기능 시뮬레이션(415 ns = 41,500 cycle) "
      "표시이다. 물리적 동작 주파수나 실제 추론 지연으로 해석하지 않으며, STA의 Fmax 및 100 MHz 전력 평가 조건과 "
      "구분한다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_detail_easy_hard.png"),
-       "Vivado 파형 (376~415 ns): Easy 이미지 42~45와 Hard 이미지 46의 내부 동작 비교", 17.0)
-para(doc, "Easy 이미지(42~45)는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
-     "재생·Conv2 채널 enable·Full FC가 활성화되지 않는다. 이미지 46만 Score Margin이 57로 임계값 63보다 작아 Hard로 "
+       "Vivado 파형 (376~415 ns, 논리 시뮬레이션): 실행 순번 42~45번째(Easy)와 46번째(Hard) 이미지의 내부 동작 비교", 17.0)
+para(doc, "실행 순번 42~45번째 Easy 이미지는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
+     "재생·Conv2 채널 enable·Full FC가 활성화되지 않는다. 46번째 이미지만 Score Margin이 57로 임계값 63보다 작아 Hard로 "
      "판정되며 후단부가 동작한다. mode·margin 레지스터는 이미지마다 리셋되고 Easy 판정은 출력 직전 수 cycle 동안만 "
      "유지되므로, 이 배율에서는 리셋값(Hard=2)이 주로 보인다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_detail_hard.png"),
-       "Vivado 파형 확대 (399~408 ns): Hard 판정 이미지 46의 내부 처리 순서", 17.0)
+       "Vivado 파형 확대 (399~408 ns, 논리 시뮬레이션): 46번째(Hard 판정) 이미지의 내부 처리 순서", 17.0)
 para(doc, "Hard 판정 시 내부 동작은 ① Early Classifier 완료 → ② Score Margin 57 산출 및 판정 유효 → ③ FSM BACK(3) 전환 → "
      "④ Feature Map Buffer 재생 시작 및 재생 데이터 유효 구간 → ⑤ Conv2 전 채널 enable(111)과 Full FC 동작 → ⑥ valid_out_6 "
-     "출력과 누적 정답 수 증가(44 → 45) 순서로 진행된다. Hard 이미지 1장의 추가 처리 시간은 Easy 대비 171 cycle이다.",
+     "출력과 누적 정답 수 증가(44 → 45) 순서로 진행된다. Hard 이미지 1장의 추가 처리 시간은 Easy 대비 171 cycle이다. "
+     "DECIDE·DONE처럼 1~2 cycle만 유지되는 짧은 상태는 이 배율에서 구분되지 않으므로, 상태 전이 전체의 검증은 RTL 회귀 "
+     "검증(표 @t_verify@)에 근거한다.",
      indent=True)
 para(doc, "**런타임 임계값 스윕 (RTL 실측).** difficulty_decoder의 레지스터 임계값 모드(USE_REG_TH)를 최상위 포트로 연결하고, "
      "주최 측 입력 1,000회에 대해 TL = TH를 0~400으로 바꿔 가며 16개 동작점을 RTL로 측정하였다(그림 %(f_sweep)s). TH = 63에서 "
