@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "final_netlist",
+    "path": "/root/ppa-clockgate/buffered/ungated.v",
+    "bytes": 34947728,
+    "sha256": "95b3bed5556c5c90a7b546573368d544c88d4fee988a746e5616cd0b156e8e57"
+  },
+  {
+    "kind": "final_odb",
+    "path": "/root/ppa-clockgate/buffered/ungated.odb",
+    "bytes": 154296244,
+    "sha256": "54f77525deee9709a836ca8434eb97818d48f75ec029899e55b97d85d4a7e1ed"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/ungated_easy.vcd",
+    "bytes": 969068898,
+    "sha256": "4b495b4bd3e66c956c15c9413528e72d9768f90cde2ba6122b959dc90dc0f379"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/ungated_mixed.vcd",
+    "bytes": 1091340237,
+    "sha256": "e212b8317ef4647bc37fbc22af00722c81e1c03df259d21c89a9d0ee9425f451"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/ungated_hard.vcd",
+    "bytes": 1400051689,
+    "sha256": "e2f6b3100effb6f9044e29a471a09281e165d39606d21ee3c2ca63779186a1bf"
+  },
+  {
+    "kind": "final_netlist",
+    "path": "/root/ppa-clockgate/buffered_v2/gated.v",
+    "bytes": 34820716,
+    "sha256": "f70dd9a961a2938723e4f871dfb72c6210e5f6799cd39109621f62c7a3f9b9fa"
+  },
+  {
+    "kind": "final_odb",
+    "path": "/root/ppa-clockgate/buffered_v2/gated.odb",
+    "bytes": 153698101,
+    "sha256": "2cae46c6cc90ba4db46b3c9505899e8d3ecdec3018b3452974cdd1104779aa8d"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/gated_easy.vcd",
+    "bytes": 768989664,
+    "sha256": "f932b0af6b0385874adf12e360c146e50348b35e9fbf307ddce0a464eba18920"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/gated_mixed.vcd",
+    "bytes": 891257670,
+    "sha256": "186502730e46c4f0f7246440b0bf1f5e6bf6cbab45cea3b80d4ea41dba6e703f"
+  },
+  {
+    "kind": "vcd",
+    "path": "/root/ppa-clockgate-buffered/gated_hard.vcd",
+    "bytes": 1162021705,
+    "sha256": "2d3ae177123fc124bf7a04f564e574c842209d4d8705d6a98ac92037be822eb1"
+  }
+]

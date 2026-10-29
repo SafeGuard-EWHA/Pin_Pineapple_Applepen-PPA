@@ -42,28 +42,33 @@
       "-h"
     ],
     "returncode": 0,
-    "output": "               total        used        free      shared  buff/cache   available\nMem:           9.7Gi       3.6Gi       4.8Gi       3.5Mi       1.5Gi       6.1Gi\nSwap:          8.0Gi          0B       8.0Gi\n"
+    "output": "               total        used        free      shared  buff/cache   available\nMem:           9.7Gi       714Mi       8.4Gi       3.5Mi       806Mi       9.0Gi\nSwap:          8.0Gi          0B       8.0Gi\n"
   },
   "experiment_sources": {
+    "analyze_power.py": "e698b64aea9088c67b37557abd2952e6cab02fd5291c35cb0fbc3a3026f405ad",
     "audit_input.py": "0d8f33f35817462e80bae654f49dc9b319ea80037c588497ab3d1b580c1f71cd",
-    "capture_environment.py": "13391ff381aa142748605e54d77b8ac04ef67cce90229319f93b508d723c3a9f",
+    "buffer_clocks.tcl": "46e0ff254737c85e61132a9b3bfbe1cbbc48e031524ce255a0a460e3fa978284",
+    "capture_environment.py": "d9c8fe88c891a69df439189a3bc75e91b3c1178e938757bd93fc754c9ce0e1ef",
     "icg_asap7.v": "2c6f245a4a5e01face7ba88358105651208ff934182f8261c046c496c67d1d69",
     "lockstep_A.v": "79710f2c9b8049d768f4d168843f939c53979014671be634b17b5ff596b8fb7c",
     "lockstep_WM.v": "e9ba047dc7f83bb3e28fad483d66c5b80788d8345fc84a945df314c103a775c7",
-    "power_audit.tcl": "dd4b34709c701f8e2a330fbe5af149aa151784144d10248038c5bfd0b34e39b3",
+    "package_power.py": "8e5b575bfec62d38975b5cefd29d5744f0001c128afa97ebb77110c754cd5ef4",
+    "power_audit.tcl": "6baf9befe306d4a25985f95b60fde5587d5c986aea6bab98e80329463239bbe2",
     "power_engine_probe.py": "05750b72a18d798eacdc080ad9eb6e85cb291db8e0d6bbde365bcf9ce20a1bfd",
     "prepare_cell_models.py": "bb254e16e8afdd127f060cd70562e5af1346b0a6ab14ed5bc6b4669f05574298",
     "prepare_power.py": "57860f95fc6426a64f5494d9dad1fc18cbe4bd778549d91ce33b7c468b0638de",
     "prepare_rtl_check.py": "a724c1b46d09fd582488726b327557e71a3fa6aaa55765f5851aa37f2030f559",
     "prepare_selected_tb.py": "044c9739dc2d1766bec85e51f4634866e30ec57df7f49dbf57ea6dddc3b714b1",
-    "run_gatelevel.py": "d0b282b315cb189a9839e18350484f12f078c1a7614110e595f3e2340ae40073",
+    "run_gatelevel.py": "3d402ef05f06d1339bf03cc628d743b1070c5e31b32de394d686c5b266de9738",
     "run_lockstep_A.tcl": "33f2d90dcb33203c3551474692286910eb702070704917695f6af2084d23ecd3",
     "run_lockstep_WM.tcl": "50656f44996febb05c44597c2b7cc52729f34e0eb4720d0a9099b378bd99fc2d",
+    "run_power.py": "ed5aea121ab8291e988cb3024304c7b4f9b251ac494e7611cc11a94221798789",
     "run_rtl_full.py": "f3f93cd65dab3899e39e3288cc53b41c4003f3b7be40a4ed728bb49d9b1a8df2",
     "run_synthesis.py": "0cd90653003ba0aa5b6d013695728bcadc5d42cda01c8699ad56a329cf9c445d",
     "summarize_vcd.py": "8a2e0b210719b3102798377e3302988e7ba126ca687648345913f5e01ba865f3",
     "tb_cell_gate.v": "1eab782ea5074b741fa3f52091dc3bf215561a51006cabc37005155f1f28f978",
-    "tb_icg.v": "11e36059d42ed01e3cba7a44f75dccd3c862030e59a2d5b3b5e2813fed78a672"
+    "tb_icg.v": "11e36059d42ed01e3cba7a44f75dccd3c862030e59a2d5b3b5e2813fed78a672",
+    "write_power_report.py": "bae5ad7abcae55b77f32471e27377fb2e7eabbbb9ab41cf41921eeb443d6ed6d"
   },
   "sha256": {
     "/root/ppa-clockgate/dataA/conv1_bias.txt": "1ce6090bfc95d917077fa367d7287bd9a1561adafda65b7524dc8f6861f487fe",
@@ -104,9 +109,6 @@
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7_tech_1x_201209.lef": "7694bf4f8ef2f9745e4579f454788a0cf048e8605320f32d1d83ec540ed4ca41",
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_R_1x_220121a.lef": "4eb73f825720d95eba4da455c7b2e7a28e444e88e9d8595d13492cf5eecfc0d1",
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_TT_nldm_211120.lib.gz": "fe9f1c18e88ab129d63ad82adc256f3a85c7e38e47dabbe0a96749b41087dea1",
-    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_DFFHQNH2V2X_RVT_TT_nldm_FAKE.lib": "69f120a3a6a717717ffa24e17ca2045a8b8cbf60fe67ddcaba27534262e1cfe7",
-    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_DFFHQNV2X_RVT_TT_nldm_FAKE.lib": "3e5f960c641007e2cef7a9918380d3b045bdc120f0429753a76cea55e7a6ad08",
-    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_DFFHQNV4X_RVT_TT_nldm_FAKE.lib": "49af1e15ef89df27505b522cc0c75801373aad8106a3cacb9017f9995ba0dc9d",
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122.lib.gz": "8d6db2c2f83c3c162be54a5e102b2d379fcaaaef2db5f0b1d4152c395d01fea1",
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_TT_nldm_211120.lib.gz": "bbe6d904d58c7367de1ed7639e4eae386c65fa0a5af26ae62dc5e4e2ec52b08b",
     "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.lib": "57a0b403485b99ebd676942af4673ac086b86c7c75fbdc3e5c0038501dd22ba3",

@@ -1,0 +1,32 @@
+[
+  {
+    "variant": "ungated",
+    "command": [
+      "make",
+      "DESIGN_CONFIG=designs/asap7/cg_a_ungated/config.mk",
+      "OPENROAD_EXE=/usr/bin/openroad",
+      "YOSYS_EXE=/usr/local/bin/yosys",
+      "synth"
+    ],
+    "cwd": "/root/ppa-tools/ORFS/flow",
+    "started_utc": "2026-10-29T20:59:02.867726+00:00",
+    "returncode": 0,
+    "elapsed_seconds": 838.880052095,
+    "ended_utc": "2026-10-29T21:13:01.749913+00:00"
+  },
+  {
+    "variant": "gated",
+    "command": [
+      "make",
+      "DESIGN_CONFIG=designs/asap7/cg_a_gated/config.mk",
+      "OPENROAD_EXE=/usr/bin/openroad",
+      "YOSYS_EXE=/usr/local/bin/yosys",
+      "synth"
+    ],
+    "cwd": "/root/ppa-tools/ORFS/flow",
+    "started_utc": "2026-10-29T21:13:01.795666+00:00",
+    "returncode": 0,
+    "elapsed_seconds": 771.981466731,
+    "ended_utc": "2026-10-29T21:25:53.779480+00:00"
+  }
+]

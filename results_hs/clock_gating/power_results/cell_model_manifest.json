@@ -1,0 +1,27 @@
+{
+  "asap7sc7p5t_AO_RVT_TT_201020.v": {
+    "source_sha256": "7d60ca80e150189367085daffcca59e2eb768ac4739c50ad04c318d8a3bb9d48",
+    "model_sha256": "4310e426fb85bbf90af867aa984087f8cf426af168dac58a94507ee983f727ba",
+    "bypassed_pin_instances": 0
+  },
+  "asap7sc7p5t_INVBUF_RVT_TT_201020.v": {
+    "source_sha256": "8804a647af1e2161c13fffcaef9ec50786494534872ec50adaae593967a3b459",
+    "model_sha256": "8ccc0018d44b828a7994cf95a4d445f27b54a1524dddf38f444d4dac70b7c8da",
+    "bypassed_pin_instances": 0
+  },
+  "asap7sc7p5t_OA_RVT_TT_201020.v": {
+    "source_sha256": "d98d028cdc47061912c4dffe12af420b65d3ce3f89f728c5a03d9819967b77b4",
+    "model_sha256": "d5201a78596ae49b31d29da315d313330585621402dcbf1a6129c1638f72d9eb",
+    "bypassed_pin_instances": 0
+  },
+  "asap7sc7p5t_SEQ_RVT_TT_220101.v": {
+    "source_sha256": "6e63ff4b5587097a76bf395c6f2383035368d5c8d95dbf551ba324d3a9537fde",
+    "model_sha256": "886937e9f86dd722f95f25fba44cfdab9bea2d0efc6143360913ca279e9c7368",
+    "bypassed_pin_instances": 118
+  },
+  "asap7sc7p5t_SIMPLE_RVT_TT_201020.v": {
+    "source_sha256": "849946d9b648ef58f39a97027de5e7f24051f6ef4fded598dec861e3257ea4b6",
+    "model_sha256": "9f96256fcc9ac64cb24d5d4dc090e10060fd5992c1b8187568564c77b8d9d6ac",
+    "bypassed_pin_instances": 0
+  }
+}

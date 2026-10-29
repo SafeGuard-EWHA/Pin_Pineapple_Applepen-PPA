@@ -17,7 +17,8 @@ def run(*cmd):
 def digest(f):
     with f.open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
-files = list((a.orfs / 'flow/platforms/asap7/lib/NLDM').glob('*RVT_TT*.lib*'))
+files = [f for f in (a.orfs / 'flow/platforms/asap7/lib/NLDM').glob('*RVT_TT*.lib*')
+         if '_FAKE.' not in f.name]
 files += list((a.stage / 'dataA').glob('*.txt'))
 files += [a.stage / 'ref_data/input_1000.txt', a.stage / 'tb_gl_A.v', a.stage / 'power_10ns.sdc']
 if (a.stage / 'tb_gl_selected.v').exists():

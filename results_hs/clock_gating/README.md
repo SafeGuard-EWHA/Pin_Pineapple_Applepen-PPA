@@ -1,68 +1,47 @@
-# 실제 클럭 게이팅 구현 및 전력 재측정 — 진행 중
+# 클럭 게이팅 전후 배치 전 전력 재평가
 
-**현재 단계: Ubuntu·합성 도구 설치 완료 / 전용 ICG를 적용한 A 전체 순차 1,000회 기능 대조 완료 / 합성 진행 중.** 최종 VCD 전력 결과는 아직 없다. 보고서의 28.7% 상한 추정을 측정된 감소율로 대체할 근거는 아직 확보하지 못하였다.
+**완료: 모델 A, 전용 ASAP7 ICG 및 클럭 버퍼를 포함한 동일 조건 비교.** 선정한 세 구간에서 전력·에너지 추정값이 20.743~25.926% 감소하였다. 실리콘 실측 및 전체 데이터셋 평균을 의미하지 않는다. 원본 RTL·제출 ZIP·보고서는 수정하지 않았다.
 
-## 재부팅 후 추가 확인 결과
+## 결과
 
-- ASIC 실험용 `icg_asap7.v`에서 ASAP7의 `ICGx1_ASAP7_75t_R`를 명시적으로 사용하였다. 원본 RTL 및 아래의 기술 독립적 모델은 보존하였다. 합성 넷리스트에서 실제 셀 매핑을 확인하는 단계는 진행 중이다.
-- Icarus 12.0에서 기준/ICG 설계 모두 **970/1,000, 평균 851.84 cycle, Easy/Medium/Hard=960/0/40**을 유지하였다. 각 입력의 decision·mode·margin·cycle 불일치는 **0건**이었다. [집계](icg_rtl_full_validation.json), [기준 로그](logs/icg_baseline_full.log), [ICG 로그](logs/icg_gated_full.log).
-- 이번 실행의 `input_1000.txt`를 픽셀 배열별로 대조하였더니 **100개 고유 이미지가 각각 10회 반복**된 구성이었다. 1,000회 실행 결과를 독립적인 이미지 1,000개의 일반화 검증으로 표현하지 않는다. 이 감사는 해당 입력 파일에 한정된다. [감사 JSON](input_audit.json).
-- 작은 ICG+FF 회로에서 VCD 적용 누락이 0개이며 clock gating에 따라 전력 엔진 계산이 변함을 확인하였다. 이 값은 NPU 절감률이 아니다. [도구 검증](power_engine_probe/).
-- 첫 합성은 공통 매핑 파일 누락을 보완하였다. 다음 실행에서는 ABC의 메모리 부족 종료가 확인되어 WSL RAM 10GB·swap 8GB로 확장하고 재실행하였다. [설치·복구 기록](TOOL_SETUP.md).
+| 구간 | 기준 전력 (mW) | ICG 전력 (mW) | 기준 에너지 (nJ/장) | ICG 에너지 (nJ/장) | 감소율 (%) |
+|---|---:|---:|---:|---:|---:|
+| Easy 4장 | 2.616231 | 1.937954 | 22.444645 | 16.625705 | 25.926 |
+| Easy 3장 + Hard 1장 | 2.758922 | 2.064295 | 24.848229 | 18.592076 | 25.177 |
+| Hard 4장 | 2.916748 | 2.311740 | 30.010420 | 23.785489 | 20.743 |
 
-측정 조건과 한계: [POWER_PROTOCOL.md](POWER_PROTOCOL.md). 도구·입력·라이브러리 해시: [environment.json](environment.json). 합성 소스 해시: [power_source_manifest.json](power_source_manifest.json).
+각 구간의 VCD 관측 시간은 Easy 34.316 µs, 혼합 36.026 µs, Hard 41.156 µs이다. 각 4회 추론의 reset·start 시간을 포함한다. 에너지=평균 전력×관측 시간÷4이며, 두 설계의 관측 시간이 같아 전력·에너지 감소율이 동일하다. 세 구간은 12회 실행·11개 고유 입력이다.
 
-## 구현
+![전력 및 에너지 비교](power_results/energy_comparison.png)
 
-기존 `rtl/adapath_top.v`에서 별도 모듈 `rtl/adapath_top_cg.v`를 생성하였다. Conv2, 후단 Pooling, Full FC, Light FC 네 인스턴스의 클럭에 하나의 후단 게이트를 적용하였다. 전단부, 경로 판단 FSM, 특징 버퍼 및 최종 argmax는 원래 클럭을 사용한다. 게이트 enable은 `!rst_n | start | conv2_en | fsm_done`으로 구성하여 리셋·시작·후단 완료 처리를 보존하였다.
+## 검증 근거
 
-`icg_latch.v`는 low 구간에서 enable을 저장하는 latch와 AND 기반의 **기술 독립적 클럭 게이팅 모델**이다. 아직 ASAP7의 특성화된 ICG 셀에 매핑되었다고 주장하지 않는다. 합성 후 실제 latch/gating 셀 구조와 생성 클럭, clock-gating timing check 및 게이트 수준 기능 검증을 확인해야 한다. FPGA 제출 프로젝트의 클럭 구조로 교체하는 작업이 아니며 원본 RTL·제출 ZIP·보고서를 수정하지 않았다.
+- 실제 ICG 셀은 `ICGx1_ASAP7_75t_R`이다. 기능 RTL 1,000회 대조는 두 설계 모두 970/1,000, 평균 851.84 cycle, E/M/H=960/0/40, 출력·cycle 불일치 0건이었다. [집계](icg_rtl_full_validation.json).
+- 최종 버퍼 넷리스트 6개 구간(각 4회, 총 24회)의 decision·mode·margin·cycle이 모두 기준 RTL과 일치하였다. Hard 구간의 2개 오분류도 동일하다. [게이트 수준 대조](power_results/gatelevel_validation.json).
+- 모든 전력 런의 VCD 활동도 미적용 핀 수는 0이다. 기준/게이팅 설계의 주석 핀은 각각 1,103,316/1,098,421개이다. 전체 핀 수의 차이는 별도 합성 결과의 차이이며 주석 누락이 아니다.
+- 10 ns에서 최소 setup slack: 기준 +6.233199 ns, 게이팅 +6.224182 ns. 최소 hold slack: +37.778517 ps/+35.425427 ps. 해당 모델에서 보고된 전기적 제약 위반은 없었다. 물리적 CTS·배선 이후 signoff는 수행하지 않았다.
+- 초기 단일 ICG의 부하·slew 위반과 중간 직렬 클럭 트리의 hold 위반을 숨기지 않고 [제외한 진단 로그](power_results/diagnostics/)에 보관하였다. 최종 구조는 ICG 뒤 후단 트리와 전단 트리를 분리하였다. 전력 계산 첫 시도의 선택적 인스턴스 순위 출력 명령은 도구 미지원으로 실패하여 제거한 뒤 전체 6개 런을 다시 실행하였다.
 
-## RTL 기능 검증
+## 비교 조건과 해석 한계
 
-Vivado 2024.1에서 원본 제출 TB와 원본 DUT를 그대로 두고, 동일 입력을 받는 별도 `chip_cg` DUT를 추가하였다. 원본 TB의 계층 이름을 유지하였다. 매 상승 에지 후 1 ps에 valid_out 타이밍을 비교하고, 원본 출력 유효 시 decision·mode·margin을 비교하였다. Case inequality로 X 불일치도 검출하였다.
+Yosys 0.58, OpenROAD 26Q2-1164-g08f67ee5ec, Icarus 12.0, ORFS 7bf5a814e47c54ec6c64692b464d398184d99891. ASAP7 RVT TT, 0.7 V/25°C 라이브러리, 평가 클럭 100 MHz. 합성 목표 주기 1 ns와 평가 주기 10 ns를 구분한다. 가중치는 합성 top의 입력 포트이며 TB에서 구동한다.
 
-| 항목 | A | WM |
-|---|---:|---:|
-| 유효 출력 대조 횟수 | 1,001* | 954 |
-| valid_out 타이밍 불일치 | 0 | 0 |
-| decision·mode·margin 불일치 | 0 | 0 |
-| Easy / Medium / Hard 커버리지 | 960 / 0 / 41* | 404 / 167 / 383 |
-| 전체 관측 root clock 상승 횟수 | 856,644 | 895,926 |
-| 후단 gated clock 상승 횟수 | 10,016 | 96,474 |
+기준/게이팅 설계에 BUFx2 및 최대 분기 수 4의 결정론적 클럭 버퍼 트리를 적용하였다. 추가 버퍼 수는 4,273/4,279개이며, ICG는 게이팅 설계에 1개이다. 합성 면적은 38,393.557740/38,297.417220 µm²이고 버퍼 1개의 라이브러리 면적은 0.0729 µm²이다. 버퍼 포함 면적은 38,705.059440/38,609.356320 µm²이다. 작은 면적 감소는 별도 합성·매핑 차이를 포함하므로 ICG 자체의 면적 절감으로 해석하지 않는다.
 
-\* A에는 원본 TB가 채점에서 제외하는 초기 출력 1회가 포함된다. 채점 대상 1,000회의 로그는 이전 ZIP 실행과 완전히 같으며 966/1,000을 유지하였다. 초기의 미정 출력이 양쪽에서 같다는 것은 유효한 정답 판정을 뜻하지 않는다. WM은 원본 정확도 774/954, Golden 954/954를 유지하였다.
+이 비교는 클럭 버퍼의 셀 부하·지연·전력은 포함하지만 배치 좌표, 배선 RC, 실제 CTS 최적화, 다중 PVT 및 지연 기반 글리치 전력을 제외한 배치 전 모델이다. 무지연 VCD와 라이브러리 기반 STA는 SDF 시뮬레이션이 아니다. Hard에서도 비활성 시점이 존재하지만 별도 합성 매핑 차이까지 포함된 설계 쌍의 비교이므로 감소분 전체를 게이트 하나의 순수 인과 효과로 분리하지 않는다.
 
-클럭 상승 횟수는 전체 시뮬레이션 관측 구간(reset·시작·경계 포함)의 신호 활동도이다. 이 비율을 전력/에너지 절감률로 해석해서는 안 된다. 추가된 게이트의 전력, 셀 면적, 클럭 부하 및 지연은 합성·전력 단계에서 별도로 평가해야 한다.
+이번 input_1000.txt는 100개 고유 픽셀 배열의 10회 반복이다. 1,000회 기능 실행과 독립 이미지 1,000개 검증을 혼동하지 않는다. 기존 Reference를 같은 환경에서 재실행하지 않았으므로 Reference 대비 새 개선율이나 기존 28.7% 추정의 검증률을 제시하지 않는다. 관련 한계는 [프로토콜](POWER_PROTOCOL.md)에 상세히 기록하였다.
 
-원문: [A 로그](logs/rtl_lockstep_A.log), [WM 로그](logs/rtl_lockstep_WM.log), [집계 JSON](rtl_validation.json). JSON의 `glitches`는 gated 상승이 root clock=1이 아닌 시점에 발생하는지만 검사한 보조 카운터이다. 전체 타이밍 안전성의 증명이 아니다.
+## 수치 검산
 
-별도 Icarus Verilog 12.0(devel) 시험 `tb_icg.v`에서는 enable/test_enable을 클럭 high 중에도 바꾸어 상승·하강이 root edge에 맞는지 검사하였다. 5개 펄스에서 위반 0건을 확인하였다([로그](logs/icg_test.log)). 셀 지연이 포함된 검증은 아직 수행하지 않았다.
+JSON의 Total과 텍스트 Total이 완전히 일치하는지 확인하고, 내부·스위칭·누설 전력 합과 에너지 산식을 검사하였다. OpenSTA는 전체와 셀 그룹을 각각 누적하므로 그룹 합과 전체 Total 사이에 작은 차이가 관찰되었다. 이 차이를 요약 JSON의 `category_sum_residual_percent`로 보존하며 0.01% 미만을 확인하였다. 비교 계산은 일관되게 도구의 Total을 사용하였다. 이 잔차를 측정 불확실성이나 통계적 신뢰구간으로 해석하지 않는다.
 
-## 재현
+## 전달 및 재현 자료
 
-`python results_hs/clock_gating/prepare_rtl_check.py --workdir C:/Temp/ppa_clockgate_repeat`로 존재하지 않는 ASCII 작업 경로를 준비한다. 생성된 `run_A.tcl`, `run_WM.tcl`을 Vivado 2024.1 batch 모드에서 실행한다. 기존 저장소 RTL 및 제출 ZIP은 읽기만 하고 실험용 새 모듈과 별도 압축 해제본을 사용한다. 현재 Tcl에는 이 PC의 Vivado 설치 경로가 명시되어 있다.
+- [서현 전달 문단·권장 위치·캡션](HANDOFF.md)
+- [검산된 요약 JSON](power_results/summary.json), [원시 전력·시뮬레이션 로그](power_results/logs/), [합성 로그](power_results/synthesis/)
+- [도구·입력·라이브러리 해시](environment.json), [합성 소스 해시](power_source_manifest.json), [표준셀 기능 모델 변환 해시](power_results/cell_model_manifest.json)
+- [최종 기준 넷리스트](power_results/ungated.v.gz), [최종 ICG 넷리스트](power_results/gated.v.gz), [대용량 원본 해시·보관 경로](power_results/raw_artifact_manifest.json)
+- [실행 재현 안내](REPRODUCE_POWER.md), [이전 RTL 검증 기록](RTL_HISTORY.md)
 
-## 설치 상태
-
-- 사용자 승인으로 Microsoft WSL 2.7.14.0 설치 완료(winget `Microsoft.WSL`).
-- Windows VirtualMachinePlatform 활성화 완료. DISM 로그에 `Reboot required=yes`, `Restart suppressed by /NoRestart` 확인(2026-10-30 04:52 KST).
-- 사용자가 Windows 재부팅을 완료한 뒤 Ubuntu 24.04.5, Yosys 0.58, OpenROAD 및 ORFS/ASAP7 설치를 완료하였다.
-- 이후 메모리 부족 복구를 위해 작업용 WSL만 재시작하였다. 추가 Windows 재부팅은 실행하지 않았다.
-- 원본 보고서는 서현 단독 편집 원칙에 따라 그대로 두었다. 결과는 `exp-hyunseo-final`로 전달한다.
-
-남은 순서: 기준/게이팅 설계 동일 조건 합성 → gate-level 기능·클럭 파형 확인 및 VCD 생성 → 전력·에너지·면적·타이밍 대조 → 결과·근거·한계와 서현 전달 문단 작성.
-
-공식 설치 기준: [Microsoft WSL 설치](https://learn.microsoft.com/en-us/windows/wsl/install), [ORFS 사전 빌드 도구](https://openroad-flow-scripts.readthedocs.io/en/latest/user/BuildWithPrebuilt.html).
-
-## 전력 실험에서 지킬 비교 조건
-
-1. 우선 지정주제 A의 ungated/gated를 같은 입력·라이브러리 corner·합성 설정·SDC·툴 버전에서 재합성한다. 기존 보고서의 Reference 대비 개선율도 제시하려면 Reference를 같은 흐름으로 재측정하거나 동등성을 별도로 입증한다.
-2. 기존 `glsim/tb_gl_A.v`의 대표 구간 START=1 및 START=5를 재현하되, 후자는 순수 Hard가 아니라 Hard와 Easy가 섞인 구간임을 명시한다. 같은 N과 reset 포함 창을 양쪽에 사용하고, 가능하면 경로별 층화 표본을 확장한다.
-3. 정적 vectorless 추정이나 RTL clock edge 수로 전력 값을 대체하지 않는다. 합성 넷리스트 VCD와 annotation coverage를 보존한다. gated clock이 전력 엔진에서 실제로 읽혔는지 확인한다.
-4. ICG/latch·AND 셀 매핑, 생성 클럭, STA의 unconstrained path 및 gating check를 확인한다. 같은 주파수 조건에서 전력과 에너지를 비교하고 최대 주파수 수치와 혼용하지 않는다.
-5. 결과는 pre-layout gate-level VCD 기반 **추정 전력/에너지**로 표시한다. 실리콘 측정값이나 CTS 이후 실측값으로 표현하지 않는다.
-
-## 서현 전달용 중간 문단
-
-후단 클럭 활동을 줄이기 위해 별도 실험 설계에 latch 기반 클럭 게이팅을 추가하고 원본과 동일 입력에서 기능을 비교하였다. A 및 WM에서 관측된 valid_out 타이밍과 decision·mode·margin의 불일치는 없었다. 다만 이 결과는 RTL 기능 검증 단계에 해당하며, 게이트 삽입 오버헤드를 포함하는 합성 넷리스트 기반 전력·면적·타이밍 결과가 확보되기 전까지 에너지 절감률의 실측 근거로 사용하지 않았다.
+원시 VCD와 ODB는 용량 때문에 Git에 넣지 않았다. 이 PC의 Ubuntu-24.04 `/root/ppa-clockgate-buffered/`(VCD), `/root/ppa-clockgate/buffered_v2/`(최종 ODB)에 보관하며 SHA-256을 공개하였다. 입력 파일은 원래의 배포·공유 경로에서 별도 준비해야 한다. GitHub만으로 원시 VCD를 바로 다운로드할 수 있는 구성은 아니며, 포함된 넷리스트와 명령으로 재생성할 수 있다.

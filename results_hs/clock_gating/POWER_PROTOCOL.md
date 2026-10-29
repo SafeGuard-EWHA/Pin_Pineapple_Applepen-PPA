@@ -30,11 +30,17 @@
 ## 기능·측정 검증
 
 1. 합성 결과에 미매핑 내부 셀이나 라이브러리 정의가 없는 blackbox가 없는지 확인한다. 전용 ICG가 실제 넷리스트에 남아 있는지 확인하고 셀 면적을 보존한다.
-2. 같은 8개 입력을 게이트 수준에서 실행하여 RTL 로그와 decision·mode·margin·cycle을 대조한다. 타임아웃, X 출력, 불일치가 있으면 해당 결과를 유효한 전력 비교로 사용하지 않는다.
+2. 표의 세 구간(각 4회, 합계 12회·11개 고유 입력)을 각각 두 설계의 게이트 수준에서 실행하여 RTL 로그와 decision·mode·margin·cycle을 대조한다. 타임아웃, X 출력, 불일치가 있으면 해당 결과를 유효한 전력 비교로 사용하지 않는다.
 3. Icarus용 표준셀 모델은 원본의 `specify` 구간을 제거하고 `delayed_*` 핀을 해당 입력에 연결한 별도 복사본이다. Icarus의 timing-check 지연 핀 미지원에 대응한 **무지연 기능 시뮬레이션**이며 SDF 타이밍 검증이 아니다. 전력/STA용 Liberty 파일은 수정하지 않는다.
 4. 원시 VCD와 넷리스트·ODB·입력·가중치·라이브러리 해시, 도구 버전 및 명령을 보관한다. GitHub에는 용량을 고려해 로그와 요약·해시·재현 스크립트를 우선 제공하고, 대용량 VCD의 보관 위치를 명시한다.
 5. VCD의 pin activity 적용률과 미주석 신호 영향을 확인한다. gated clock의 실제 활동 감소를 점검하며 RTL edge 수만으로 전력 감소를 계산하지 않는다.
-6. 생성 클럭, unconstrained path, clock-gating setup/hold, max slew/capacitance/fanout 위반을 기록한다. pre-layout·ideal clock 조건에서 확인하지 못한 CTS/배선/PVT 영향은 한계로 명시한다.
+6. 생성 클럭, unconstrained path, clock-gating setup/hold, max slew/capacitance/fanout 위반을 기록한다. 최종 비교에서는 두 설계 모두 propagated clock을 적용한다. 배치·배선·다중 PVT 영향은 한계로 명시한다.
+
+## 클럭 부하와 버퍼 모델
+
+합성 직후 단일 ICG가 후단 FF 4,105개를 직접 구동하는 구조에서 부하·slew 및 setup 위반을 관찰하였다. 이 구조의 전력 값을 최종 결과로 채택하지 않는다. `buffer_clocks.tcl`로 합성 ODB의 복사본에 동일한 BUFx2 셀과 최대 분기 수 4의 결정론적 버퍼 트리를 구성한다. 핀 이름을 정렬하여 4개씩 묶는 과정을 재귀적으로 적용한다. 게이팅 설계의 ICG 입력은 root clock에 연결하고, ICG 출력 뒤의 후단 트리와 전단부 트리를 별도로 구성한다. 전단 트리 뒤에 ICG와 후단 트리를 직렬로 연결했던 중간 진단 구조는 hold 위반 때문에 제외하였다.
+
+이 처리는 셀 입력 부하와 클럭 버퍼의 전력·지연을 포함하는 **배치 전 논리적 부하 모델**이다. 실제 배치 좌표, 배선 RC, 물리적 CTS 및 skew 최적화를 재현하지 않는다. 최종 버퍼 넷리스트로 기능 VCD를 다시 생성하고, 같은 ODB에 라이브러리 기반 propagated-clock STA와 VCD 전력 계산을 적용한다. 무지연 VCD이므로 셀·배선 지연에 의한 글리치 전력은 모델링하지 않는다. 이 조건에서의 STA 통과를 실장 또는 실리콘의 타이밍 보증으로 확대 해석하지 않는다.
 
 ## 해석 범위
 

@@ -10,11 +10,16 @@ import time
 p = argparse.ArgumentParser()
 p.add_argument('--orfs', type=Path, required=True)
 p.add_argument('--stage', type=Path, required=True)
+p.add_argument('--netlist-dir', type=Path)
+p.add_argument('--variants', nargs='+', choices=['ungated', 'gated'], default=['ungated', 'gated'])
 a = p.parse_args()
 stage = a.stage.resolve()
-records = []
-for variant in ('ungated', 'gated'):
+validation_path = stage / 'gatelevel_validation.json'
+records = json.loads(validation_path.read_text()) if validation_path.exists() else []
+for variant in a.variants:
     netlist = a.orfs.resolve() / 'flow/results/asap7' / ('cg_a_' + variant) / 'base/1_2_yosys.v'
+    if a.netlist_dir is not None:
+        netlist = a.netlist_dir.resolve() / (variant + '.v')
     if not netlist.is_file():
         raise SystemExit('Missing synthesis netlist: ' + str(netlist))
     cmd = ['iverilog', '-g2012', '-s', 'tb_gatelevel', '-o', variant + '_gl.vvp', str(netlist)]

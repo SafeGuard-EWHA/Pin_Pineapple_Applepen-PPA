@@ -1,0 +1,140 @@
+[
+  {
+    "variant": "ungated",
+    "window": "easy",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:32:08.522030+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/ungated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/ungated_easy.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/ungated_easy.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": null,
+    "returncode": 0,
+    "elapsed_seconds": 96.750195612
+  },
+  {
+    "variant": "ungated",
+    "window": "mixed",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:33:45.272917+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/ungated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/ungated_mixed.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/ungated_mixed.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": null,
+    "returncode": 0,
+    "elapsed_seconds": 103.76125583499999
+  },
+  {
+    "variant": "ungated",
+    "window": "hard",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:35:29.035085+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/ungated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/ungated_hard.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/ungated_hard.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": null,
+    "returncode": 0,
+    "elapsed_seconds": 122.41512549199999
+  },
+  {
+    "variant": "gated",
+    "window": "easy",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:37:31.450881+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/gated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/gated_easy.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/gated_easy.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": "u.u_backend_icg.u_icg/GCLK",
+    "returncode": 0,
+    "elapsed_seconds": 90.56858525200005
+  },
+  {
+    "variant": "gated",
+    "window": "mixed",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:39:02.020547+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/gated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/gated_mixed.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/gated_mixed.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": "u.u_backend_icg.u_icg/GCLK",
+    "returncode": 0,
+    "elapsed_seconds": 97.02058837199996
+  },
+  {
+    "variant": "gated",
+    "window": "hard",
+    "clock_mode": "propagated",
+    "started_utc": "2026-10-29T22:40:39.042433+00:00",
+    "command": [
+      "openroad",
+      "-exit",
+      "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl"
+    ],
+    "environment": {
+      "PLATFORM_DIR": "/root/ppa-tools/ORFS/flow/platforms/asap7",
+      "ODB": "/root/ppa-clockgate/buffered_v2/gated.odb",
+      "SDC": "/root/ppa-clockgate-buffered/power_10ns.sdc",
+      "VCD": "/root/ppa-clockgate-buffered/gated_hard.vcd",
+      "SCOPE": "tb_gatelevel/dut",
+      "POWER_JSON": "/root/ppa-clockgate-buffered/power_propagated/gated_hard.json",
+      "PROPAGATE_CLOCKS": "1"
+    },
+    "gate_pin": "u.u_backend_icg.u_icg/GCLK",
+    "returncode": 0,
+    "elapsed_seconds": 145.09300389700002
+  }
+]
