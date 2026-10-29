@@ -3,7 +3,7 @@ import zipfile,shutil,json,hashlib,argparse
 p=argparse.ArgumentParser()
 p.add_argument('--workdir',required=True)
 a=p.parse_args()
-repo=Path(__file__).resolve().parents[2];out=repo/'results_hs/clock_gating' 
+repo=Path(__file__).resolve().parents[2];out=repo/'results_hs/clock_gating'
 src=out/'rtl';stage=Path(a.workdir).resolve();stage.mkdir(parents=True,exist_ok=False)
 text=(repo/'rtl/adapath_top.v').read_text(encoding='utf-8')
 text=text.replace('module adapath_top #(', 'module adapath_top_cg #(',1)
