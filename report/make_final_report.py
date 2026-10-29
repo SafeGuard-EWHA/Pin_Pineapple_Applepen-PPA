@@ -369,18 +369,30 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
 ], [3.0, 3.2, 3.8, 3.2, 3.4], hl_rows=(2,),
     note="주최 측 TB는 $urandom_range로 이미지를 무작위 추출하므로 설계마다 추출 순서가 달라 ±0.1~0.3 %p 차이가 "
          "생긴다. 동일 이미지 집합(순차 1,000장)에서 AdaPath_A와 Reference는 정답 수가 970개로 같다.")
-figure(doc, os.path.join(OUT, "fig_vivado_wave_overview.png"),
-       "Vivado 2023.1 시뮬레이션 파형 — 주최 측 top_tb.v, AdaPath_A, 0~415 ns (이미지 1~47)", 17.0)
-para(doc, "후단부 활성 신호(conv2_en, fc_full_en)는 47장 중 단 두 번만 켜진다. 첫 번째는 주최 측 TB가 첫 이미지 전에 "
-     "입력이 미정(X)인 상태로 한 번 동작시키는 구간으로, 판정이 미정일 때 Hard로 진행하도록 설계한 대로 동작한다. 두 번째는 "
-     "이미지 46이다. 나머지 이미지는 모두 Easy로 판정되어 후단부가 한 번도 동작하지 않으며, 누적 정답 수(accuracy)는 "
-     "매 이미지 증가한다.", indent=True)
-figure(doc, os.path.join(OUT, "fig_vivado_wave_zoom.png"),
-       "Vivado 파형 확대 (335~415 ns): Easy 이미지 vs Hard 이미지(46번, Score Margin 57 < 임계값 63)", 17.0)
-para(doc, "확대 구간에서 Easy 이미지는 판단 직후 결과를 출력하고 다음 이미지로 넘어가므로 Conv2·Full FC 활성 신호가 꺼진 채 "
-     "유지된다. 이미지 46은 Score Margin이 57로 임계값 63보다 작아 Hard로 판정되고, Feature Map Buffer를 재생하며 "
-     "Conv2와 Full FC가 동작한 뒤(초록 구간) 정답을 출력한다. mode·margin 레지스터는 이미지마다 리셋되며, Easy 판정은 "
-     "출력 직전 수 cycle 동안만 유지되므로 이 배율에서는 리셋값(Hard=2)이 주로 보인다.", indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_console.png"),
+       "Vivado 2023.1 실행 화면 — 주최 측 top_tb.v(top_tb_1000) 무수정 실행 결과 (AdaPath_A)", 16.0)
+para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 주최 측 테스트벤치가 1,000장 처리 후 $stop(391행)에서 "
+     "정지하였고, Tcl 콘솔에 'Accuracy : 96%'가 출력되었다. Objects 창의 accuracy = 0x3C6(966), cnt = 0x3E8(1,000)으로 "
+     "1,000장 중 966장 정답임을 확인할 수 있다.", indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_ref_vs_ada.png"),
+       "같은 0~415 ns 동안의 처리량 비교 (Vivado, 주최 측 top_tb.v): Reference 30장 vs AdaPath_A 46장", 17.0)
+para(doc, "같은 테스트벤치·같은 클럭으로 415 ns 동안 Reference는 30장, AdaPath_A는 46장을 분류하였다(누적 정답 수 기준, "
+     "두 설계 모두 해당 구간 전부 정답). 이미지당 처리 cycle이 1,336에서 평균 855로 줄어든 효과가 파형에서 그대로 보인다.",
+     indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_detail_easy_hard.png"),
+       "Vivado 파형 (376~415 ns): Easy 이미지 42~45와 Hard 이미지 46의 내부 동작 비교", 17.0)
+para(doc, "Easy 이미지(42~45)는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
+     "재생·Conv2 채널 enable·Full FC가 한 번도 활성화되지 않는다. 이미지 46만 Score Margin이 57로 임계값 63보다 작아 Hard로 "
+     "판정되며 후단부가 동작한다. mode·margin 레지스터는 이미지마다 리셋되며, Easy 판정은 출력 직전 수 cycle 동안만 유지되므로 "
+     "이 배율에서는 리셋값(Hard=2)이 주로 보인다. 또한 주최 측 TB는 첫 이미지 전에 입력이 미정(X)인 상태로 한 번 동작시키는데, "
+     "이때 판정이 미정이면 Hard로 진행하도록 설계하여 정상적으로 다음 이미지로 넘어간다.", indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_detail_hard.png"),
+       "Vivado 파형 확대 (399~408 ns): Hard 판정 이미지 46의 내부 처리 순서", 17.0)
+para(doc, "Hard 판정 시 내부 동작은 다음 순서로 진행된다: ① Early Classifier 완료(early classifier done) → ② Score Margin 57 "
+     "산출 및 판정 유효(decision valid) → ③ FSM이 BACK(3) 상태로 전환 → ④ Feature Map Buffer 재생 시작(fmap replay start) 및 "
+     "재생 데이터 유효 구간 → ⑤ Conv2 전 채널 enable(111)과 Full FC 동작 → ⑥ valid_out_6 출력과 함께 누적 정답 수가 44에서 "
+     "45로 증가. 재생부터 출력까지 약 2 ns(약 170 cycle)로, Hard 이미지 1장의 추가 지연은 Easy 대비 171 cycle이다.",
+     indent=True)
 
 h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
 para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC: 1 GHz 목표, 입출력 지연 20 %)으로 합성하고 "
