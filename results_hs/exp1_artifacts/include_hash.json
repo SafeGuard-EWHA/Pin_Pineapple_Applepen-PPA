@@ -1,0 +1,5 @@
+{
+  "path": "rtl/thresholds.vh",
+  "sha256": "ca78cc487b674cdc2d09bd48ae6a7e28e0832c1c8c736257b1bfe43e95e04317",
+  "note": "Supplemental include-file hash; runtime TL/TH override this static header in USE_REG_TH=1 mode."
+}
