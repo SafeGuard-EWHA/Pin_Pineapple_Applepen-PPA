@@ -1,0 +1,22 @@
+compile 15:36:45
+compiled 15:40:14
+img 1 : decision=1 (label 1) mode=0 margin=216 cycles=845
+img 2 : decision=2 (label 2) mode=0 margin=207 cycles=845
+img 3 : decision=3 (label 3) mode=0 margin=265 cycles=845
+img 4 : decision=4 (label 4) mode=0 margin=240 cycles=845
+==== gate-level: 4 / 4 correct, VCD -> gl_ad_easy.vcd ====
+  done easy 15:45:09
+img 15 : decision=5 (label 5) mode=1 margin=103 cycles=1016
+img 16 : decision=6 (label 6) mode=0 margin=165 cycles=845
+img 17 : decision=7 (label 7) mode=0 margin=195 cycles=845
+img 18 : decision=8 (label 8) mode=1 margin=113 cycles=1016
+==== gate-level: 4 / 4 correct, VCD -> gl_ad_med.vcd ====
+  done med 15:55:27
+img 5 : decision=5 (label 5) mode=2 margin=44 cycles=1016
+img 6 : decision=6 (label 6) mode=0 margin=293 cycles=845
+img 7 : decision=7 (label 7) mode=0 margin=189 cycles=845
+img 8 : decision=8 (label 8) mode=0 margin=177 cycles=845
+==== gate-level: 4 / 4 correct, VCD -> gl_ad_hard.vcd ====
+  done hard 16:05:04
+
+[exited with code 0]

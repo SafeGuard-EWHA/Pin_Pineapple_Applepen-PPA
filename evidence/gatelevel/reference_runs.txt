@@ -1,0 +1,22 @@
+compile 15:54:55
+compiled 15:55:35
+img 1 : decision=1 (label 1) cycles=1334
+img 2 : decision=2 (label 2) cycles=1334
+img 3 : decision=3 (label 3) cycles=1334
+img 4 : decision=4 (label 4) cycles=1334
+==== gate-level ref: 4 / 4 correct, VCD -> gl_ref_a.vcd ====
+  done a 16:06:10
+img 15 : decision=5 (label 5) cycles=1334
+img 16 : decision=6 (label 6) cycles=1334
+img 17 : decision=7 (label 7) cycles=1334
+img 18 : decision=8 (label 8) cycles=1334
+==== gate-level ref: 4 / 4 correct, VCD -> gl_ref_b.vcd ====
+  done b 16:14:52
+img 5 : decision=6 (label 5) cycles=1334
+img 6 : decision=6 (label 6) cycles=1334
+img 7 : decision=7 (label 7) cycles=1334
+img 8 : decision=8 (label 8) cycles=1334
+==== gate-level ref: 3 / 4 correct, VCD -> gl_ref_c.vcd ====
+  done c 16:23:52
+
+[exited with code 0]

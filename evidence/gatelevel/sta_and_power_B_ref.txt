@@ -1,0 +1,65 @@
+wait for synth_v3 16:21:52
+start 18:04:06
+======== synth baseline_A  18:04:07
+   exit 0  18:12:22
+======== synth adapath_A  18:12:23
+   exit 0  18:23:45
+A_NETLISTS_READY 18:23:46
+refchip: wns -604.0256097227782   tns -342638.7436369258
+Startpoint: w_11[117] (input port clocked by clk)
+Endpoint: maxpool_relu_1.buffer1[2][1]$_DFFE_PP_
+       1583.7   data arrival time
+Total                3.094744e-03 2.505794e-04 2.902453e-05 3.374348e-03 100.0%
+   Chip area for module '\chip': 32084.864640
+baseline_A: wns -672.502611843044   tns -51121.72394738063
+Startpoint: w_conv2[159] (input port clocked by clk)
+Endpoint: u.u_conv2.OC[0].u_mac.out[10]$_SDFFE_PN0P_
+       1651.9   data arrival time
+Total                5.459418e-03 2.427174e-05 4.484260e-05 5.528532e-03 100.0%
+   Chip area for module '\baseline_A_npu': 45501.001560
+adapath_A: wns -673.1314421667043   tns -76559.61584201526
+Startpoint: w_conv2[999] (input port clocked by clk)
+Endpoint: u.u_conv2.OC[1].u_mac.out[10]$_SDFFE_PN0P_
+       1652.5   data arrival time
+Total                6.319821e-03 1.392186e-04 4.968186e-05 6.508722e-03 100.0%
+   Chip area for module '\adapath_A_npu': 49857.738840
+baseline: wns -844.8508593169613   tns -111590.19708453698
+Startpoint: w_fcf[1017] (input port clocked by clk)
+Endpoint: u.u_fcf.u_mac.out[1]$_SDFFE_PN0P_
+       1824.2   data arrival time
+Total                6.120594e-03 3.226259e-05 7.791503e-05 6.230771e-03 100.0%
+   Chip area for module '\baseline_npu': 74533.689000
+earlyexit: wns -829.7985665112499   tns -152620.9422723056
+Startpoint: w_conv2[599] (input port clocked by clk)
+Endpoint: u.u_conv2.OC[0].u_mac.out[10]$_SDFFE_PN0P_
+       1809.2   data arrival time
+Total                7.102813e-03 1.705924e-04 8.289133e-05 7.356297e-03 100.0%
+   Chip area for module '\earlyexit_npu': 79469.470980
+adapath: wns -815.0119500763928   tns -162677.39576024908
+Startpoint: w_fcf[6014] (input port clocked by clk)
+Endpoint: u.u_fcf.u_mac.out[10]$_SDFFE_PN0P_
+       1794.2   data arrival time
+Total                7.370292e-03 6.224877e-05 9.887714e-05 7.531418e-03 100.0%
+   Chip area for module '\adapath_npu': 98708.247540
+baseline_wm: wns -851.2655059342721   tns -106262.32025684316
+Startpoint: w_conv2[2399] (input port clocked by clk)
+Endpoint: u.u_conv2.OC[3].u_mac.out[0]$_SDFFE_PN0P_
+       1830.6   data arrival time
+Total                6.068390e-03 2.094680e-05 7.792433e-05 6.167261e-03 100.0%
+   Chip area for module '\baseline_wm_npu': 75765.174120
+adapath_wm: wns -815.182147266748   tns -156958.3935766659
+Startpoint: w_fcf[2024] (input port clocked by clk)
+Endpoint: u.u_fcf.u_mac.out[1]$_SDFFE_PN0P_
+       1794.6   data arrival time
+Total                7.543719e-03 2.176714e-04 9.345820e-05 7.854849e-03 100.0%
+   Chip area for module '\adapath_wm_npu': 92891.877300
+STA_DONE 19:23:59
+power B_easy: Total                1.842083e-03 1.677198e-04 1.013006e-04 2.111103e-03 100.0%  end=#34316000  19:28:19
+power B_med: Total                2.055854e-03 2.927902e-04 1.124479e-04 2.461092e-03 100.0%  end=#37736000  19:32:57
+power B_hard: Total                2.042823e-03 2.815380e-04 1.120736e-04 2.436435e-03 100.0%  end=#36026000  19:37:21
+power ref_a: Total                9.797753e-04 2.948483e-04 3.466771e-05 1.309291e-03 100.0%  end=#53836000  19:40:12
+power ref_b: Total                9.840823e-04 2.977378e-04 3.485873e-05 1.316679e-03 100.0%  end=#53836000  19:43:08
+power ref_c: Total                9.893274e-04 3.044350e-04 3.475417e-05 1.328517e-03 100.0%  end=#53836000  19:46:36
+ALL DONE 19:46:36
+
+[exited with code 0]

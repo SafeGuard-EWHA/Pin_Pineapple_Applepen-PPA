@@ -1,0 +1,20 @@
+netlists ready 18:24:03
+compiled 18:27:11
+img 1 : decision=1 (label 1) mode=0 margin=260 cycles=845
+img 2 : decision=2 (label 2) mode=0 margin=255 cycles=845
+img 3 : decision=3 (label 3) mode=0 margin=291 cycles=845
+img 4 : decision=4 (label 4) mode=0 margin=394 cycles=845
+==== gate-level: 4 / 4 correct, VCD -> gl_adA_easy.vcd ====
+img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016
+img 6 : decision=6 (label 6) mode=0 margin=451 cycles=845
+img 7 : decision=7 (label 7) mode=0 margin=130 cycles=845
+img 8 : decision=8 (label 8) mode=0 margin=271 cycles=845
+==== gate-level: 4 / 4 correct, VCD -> gl_adA_hard.vcd ====
+img 1 : decision=1 (label 1) mode=2 margin=0 cycles=985
+img 2 : decision=2 (label 2) mode=2 margin=0 cycles=985
+img 3 : decision=3 (label 3) mode=2 margin=0 cycles=985
+img 4 : decision=4 (label 4) mode=2 margin=0 cycles=985
+==== gate-level: 4 / 4 correct, VCD -> gl_baA.vcd ====
+A_GL_DONE 19:11:56
+
+[exited with code 0]
