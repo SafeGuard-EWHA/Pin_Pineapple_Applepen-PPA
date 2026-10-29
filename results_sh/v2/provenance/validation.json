@@ -1,0 +1,124 @@
+{
+  "mnist_A": {
+    "counts_match_report": true,
+    "paired_difference_identity": true,
+    "mcnemar_direct_binomial_match": true
+  },
+  "mnist_B": {
+    "counts_match_report": true,
+    "paired_difference_identity": true,
+    "mcnemar_direct_binomial_match": true
+  },
+  "wm811k_B": {
+    "counts_match_report": true,
+    "paired_difference_identity": true,
+    "mcnemar_direct_binomial_match": true
+  },
+  "calibration_budget_all_60": true,
+  "all_split_partitions_verified": true,
+  "png": [
+    {
+      "path": "01_independence/fig_twofold.png",
+      "size": [
+        3268,
+        1338
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "02_metrics/fig_metric_comparison.png",
+      "size": [
+        3416,
+        1382
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "03_statistics/fig_accuracy_ci.png",
+      "size": [
+        2967,
+        1308
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "04_wm_classes/fig_wm_class_modes.png",
+      "size": [
+        3267,
+        1352
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "04_wm_classes/fig_wm_confusion.png",
+      "size": [
+        2817,
+        1321
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "05_error_analysis/fig_error_examples.png",
+      "size": [
+        3753,
+        1887
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "06_reproducibility/fig_reproducibility.png",
+      "size": [
+        3270,
+        1367
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "path": "07_related_work/fig_related_work.png",
+      "size": [
+        3198,
+        1216
+      ],
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  ],
+  "base_commit": "4990d117fcc571183000605a514ad5d9c7d5c98a",
+  "seed": 2026,
+  "split_seeds": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "P1": {
+    "wm_class_confusion_totals_match": true,
+    "wm_mode_totals_match": true,
+    "easy_error_labels_and_recovery_match": true,
+    "easy_error_pair_total_match": true
+  }
+}

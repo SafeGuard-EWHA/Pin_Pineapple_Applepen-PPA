@@ -1,0 +1,5 @@
+metric,operation_count,approximation
+Score Margin,"16-leaf RTL: 15 merge nodes, each 3 comparison expressions (winner + two candidate maxima), mux; 1 subtraction","45 syntactic comparisons before constant folding, not a measured gate count; no exp/log/div"
+Max softmax (direct),10 exp; 9 sum additions; 10 divisions (or 1 reciprocal + 10 multiplications); max via 9 comparisons,Finite-precision exp and reciprocal approximation/LUT or iterative arithmetic
+Entropy (direct),softmax above + 10 log + 10 multiplications + 9 additions + sign reversal,exp/log/reciprocal approximations; optimized identities reduce counts
+Top-1 logit,9 comparisons for max; no margin subtraction,No transcendental approximation
