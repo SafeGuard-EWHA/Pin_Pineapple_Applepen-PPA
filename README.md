@@ -71,19 +71,37 @@ bash run_sweep.sh B      # 모델 B: T_low=71 고정, T_high 스윕 -> sweep_B.c
 
 CSV로 "정확도 vs 평균 cycle" 곡선을 그리면 된다. 임계값 1회 실행에 약 1~2분이 걸린다.
 
-## 추가 실험 2: 입력 난이도에 따른 연산 배분 (노이즈 강건성)
+## 추가 실험 2: 입력 난이도에 따른 연산 배분 (열화 강건성)
 
-입력에 가우시안 노이즈(σ = 0, 10, 20, 30, 40, 60)를 더해 어려운 입력을 만들고, 모델 A의
-AdaPath(임계값 63/63)와 Baseline(항상 Hard)을 비교한다. 노이즈가 커질수록 Hard 비율과
-평균 cycle이 자동으로 늘어나는지(난이도 비례 연산 배분), 정확도가 Baseline과 비슷하게
-유지되는지를 본다.
+입력을 실제 센서 환경처럼 열화시켜 어려운 입력을 만들고, 모델 A의 AdaPath(임계값 63/63)와
+Baseline(항상 Hard)을 비교한다. 입력이 어려워질수록 Hard 비율과 평균 cycle이 자동으로 늘어나는지
+(난이도 비례 연산 배분), 정확도가 Baseline과 같게 유지되는지를 본다.
+
+| 열화 | 의미 | 단계 |
+|---|---|---|
+| contrast | 저조도 / 노출 부족 (픽셀 × c) | 1.0, 0.7, 0.5, 0.4, 0.3, 0.2 |
+| blur | 초점 흐림 (3×3 평균 n회) | 0 ~ 4 |
+| gauss | 센서 잡음 (가우시안 σ) | 0, 20, 40, 60, 80, 100 |
 
 ```bash
 # 주최측 input_1000.txt 를 verilog_ref/data/ 에 둔 뒤
-cd python && python make_noisy_inputs.py        # rtl/noisy/input_1000_s*.txt (seed 고정)
-cd ../rtl && bash run_robustness.sh             # -> rtl/robustness_A.csv (6 레벨 x 2 설계, 약 20~30분)
+cd python && python make_noisy_inputs.py        # rtl/noisy/ 에 17개 파일 (seed 고정)
+cd ../rtl && bash run_robustness.sh 4           # 34회 시뮬레이션, 4개 병렬 -> rtl/robustness_A.csv
 cd ../python && python plot_robustness.py       # -> out/fig_robustness_modes.png, fig_robustness_acc.png
 ```
 
+검증된 기준점 (RTL 실측):
+
+| 입력 | 설계 | 정답 | 평균 cycle | Easy / Med / Hard |
+|---|---|---|---|---|
+| contrast 1.0 (원본) | AdaPath | 970 | 851.84 | 960 / 0 / 40 |
+| contrast 1.0 (원본) | Baseline | 970 | 985.00 | 0 / 0 / 1000 |
+| contrast 0.3 | AdaPath | 930 | 909.98 | 620 / 0 / 380 |
+| contrast 0.3 | Baseline | 930 | 985.00 | 0 / 0 / 1000 |
+
+참고(Python 예측): 저조도·블러에서는 Hard 비율이 크게 늘면서 정확도가 Baseline과 같거나 높다.
+강한 가우시안 잡음(σ ≥ 60)에서는 Early Classifier가 확신을 갖고 틀리는 경우가 생겨 AdaPath 정확도가
+Baseline보다 낮아질 수 있다 — 결과를 그대로 보고하고 한계로 서술할 것.
+
 `tb_threshold_sweep.v` 옵션: `-DMODEL_A`(모델 A), `-DBASELINE`(항상 Hard), `+IMG=<파일>`(입력 교체), `+TL= +TH=`(임계값).
-σ=0 결과는 실험 1의 기준점(A: 970개 정답, 960/0/40)과 같아야 한다.
+주최측 input_1000.txt는 서로 다른 100장이 10번 반복된 구성이라, 결정적 열화(contrast, blur)의 결과는 10장 단위로 움직인다.

@@ -10,3 +10,4 @@ verilog_ref/
 .Xil/
 rtl/noisy/
 rtl/*.csv
+rtl/rob_tmp/
