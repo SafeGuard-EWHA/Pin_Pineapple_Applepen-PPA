@@ -38,14 +38,17 @@ module chip (
     reg rst_n_d;
     always @(posedge clk) rst_n_d <= rst_n;
     wire start = rst_n & ~rst_n_d;
+    wire [$clog2(CHIP_N_CLASS)-1:0] dec_core;
 
-    adapath_top #(.VARIANT(2), .C1(3), .C2(CHIP_C2), .C2_MED(CHIP_C2_MED), .N_CLASS(10),
+    adapath_top #(.VARIANT(2), .C1(3), .C2(CHIP_C2), .C2_MED(CHIP_C2_MED), .N_CLASS(CHIP_N_CLASS),
                   .SH_CONV1(SHIFT_CONV1), .SH_CONV2(SHIFT_CONV2),
                   .SH_FCE(SHIFT_FC_EARLY), .SH_FCL(SHIFT_FC_LIGHT), .SH_FCF(SHIFT_FC_FULL)) u_core (
         .clk(clk), .rst_n(rst_n), .start(start), .pixel_in(data_in),
         .w_conv1(W_CONV1), .b_conv1(B_CONV1), .w_conv2(W_CONV2), .b_conv2(B_CONV2),
         .w_fce(W_FCE), .b_fce(B_FCE), .w_fcl(W_FCL), .b_fcl(B_FCL),
         .w_fcf(W_FCF), .b_fcf(B_FCF),
-        .decision(decision), .valid_out(valid_out_6), .mode_out(), .margin_out());
+        .decision(dec_core), .valid_out(valid_out_6), .mode_out(), .margin_out());
+
+    assign decision = dec_core;           // 클래스 수 < 16 이면 상위 비트 0
 
 endmodule

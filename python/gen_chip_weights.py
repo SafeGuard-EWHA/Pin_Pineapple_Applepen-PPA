@@ -28,7 +28,7 @@ def pack(vals, width):
 
 def main(a):
     d = a.data
-    C1, C2, CM, N = 3, a.c2, a.c2_med, 10
+    C1, C2, CM, N = 3, a.c2, a.c2_med, a.n_class
     conv1 = sum((read_hex(os.path.join(d, "conv1_weight_%d.txt" % (c + 1))) for c in range(C1)), [])
     conv2 = sum((read_hex(os.path.join(d, "conv2_weight_%d%d.txt" % (o + 1, c + 1)))
                  for o in range(C2) for c in range(C1)), [])
@@ -47,7 +47,8 @@ def main(a):
     lines = ["// AdaPath-NPU 학습 가중치 상수 (gen_chip_weights.py 자동 생성, %s)" % a.prefix,
              "// chip 래퍼가 레퍼런스 가중치 포트 대신 사용한다.",
              "localparam CHIP_C2 = %d;" % C2,
-             "localparam CHIP_C2_MED = %d;" % CM]
+             "localparam CHIP_C2_MED = %d;" % CM,
+             "localparam CHIP_N_CLASS = %d;" % N]
     for name, vals, w, n in items:
         assert len(vals) == n, (name, len(vals), n)
         lines.append("localparam [%d:0] %s = %s;" % (n * w - 1, name, pack(vals, w)))
@@ -62,6 +63,7 @@ if __name__ == "__main__":
     p.add_argument("--out", default="../rtl/adapath_weights.vh")
     p.add_argument("--c2", type=int, default=8)
     p.add_argument("--c2_med", type=int, default=4)
+    p.add_argument("--n_class", type=int, default=10)
     a = p.parse_args()
     a.data = a.data or "../out/rtl_data_" + a.prefix
     main(a)

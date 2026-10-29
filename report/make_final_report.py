@@ -42,7 +42,7 @@ LBL = {
     "f_racc": FIGN["hs_fig_robustness_acc.png"],
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정·평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
-    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_verify": _tn("기능 검증 결과"),
+    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_verify": _tn("기능 검증 결과"),
 }
 
 
@@ -514,7 +514,9 @@ table(doc, "기능 검증 결과", ["검증 단계", "방법", "결과"], [
     ["게이트레벨 (A, B, Reference)", "합성 넷리스트 + ASAP7 셀 모델 시뮬레이션", "RTL과 판정·모드·cycle 동일"],
     ["**주최 측 TB (Vivado 2023.1)**", "top_tb_1000, 테스트벤치 로직 무수정",
      "Reference %s / A %s / B %s" % (v["org_ref"], v["org_A"], v["org_B"])],
-], [3.8, 7.0, 6.2], hl_rows=(5,))
+    ["**WM-811K (Vivado 2023.1)**", "chip 래퍼(4개 클래스) + tb_wm, 테스트 954장",
+     "Golden 판정·모드·Margin 954 / 954 일치"],
+], [3.8, 7.0, 6.2], hl_rows=(5, 6))
 table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
       ["설계", "정답 (순차 입력)", "정답률 (주최 TB)", "평균 cycle (주최 TB)", "평균 cycle (순차 입력)", "모드 분포 (순차)"], [
     ["Reference", "970 / 1,000", "%.1f %%" % ACC["ref_org"], f0(CYC["ref_org"]), f0(CYC["ref"]), "-"],
@@ -705,6 +707,21 @@ table(doc, "WM-811K 적용 전·후 비교 (Baseline_WM = 항상 Hard)", ["항�
     note="WM 에너지는 10개 클래스 AdaPath_B의 모드별 VCD 기반 에너지에 WM-811K 모드 비율을 가중한 대리 추정이다. "
          "Baseline_WM 값으로 AdaPath_B Hard 에너지를 사용하였으나 Baseline_WM에는 Early 경로가 없으므로, 4개 클래스 설계의 "
          "직접 전력 측정 결과와 구분한다.")
+para(doc, "**RTL 검증 (Vivado).** 자유주제 설계도 지정주제와 같은 chip 인터페이스 래퍼(클래스 수만 4로 설정)로 Vivado 프로젝트를 "
+     "구성하고, 주최 측 TB와 같은 방식(이미지마다 리셋 후 1 px/cycle 스트리밍)으로 WM-811K 테스트 954장을 처리하였다(표 @t_wmrtl@). "
+     "판정·모드·Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고, 정확도는 774 / 954 = 81.13 %%(정수 Hard 경로 "
+     "단독 81.45 %%)였다. 모드는 Easy 404 / Medium 167 / Hard 383장으로, **3경로가 모두 하드웨어에서 실제로 사용**되었다(MNIST "
+     "모델 A는 2경로). 정수 임계값(13 / 41) 기준이라 float 분석의 모드 비율(401 / 152 / 401)과 약간 다르며, 이 비율을 에너지 "
+     "대리 추정에 적용해도 26.1 nJ로 거의 같다. 제출용 프로젝트(PPA_AdaPath_NPU_WM)는 다른 폴더로 옮겨 실행해도 같은 결과를 "
+     "얻었다." % LBL, indent=True)
+table(doc, "WM-811K RTL 검증 결과 (Vivado 2023.1, 정수 연산, 테스트 954장)", ["클래스", "n", "AdaPath RTL recall", "정수 Hard 경로 recall"], [
+    ["none (정상)", "245", "179 (73.1 %)", "182 (74.3 %)"],
+    ["Center", "251", "238 (94.8 %)", "235 (93.6 %)"],
+    ["Edge-Ring", "230", "216 (93.9 %)", "215 (93.5 %)"],
+    ["Scratch", "228", "141 (61.8 %)", "145 (63.6 %)"],
+    ["**전체**", "954", "**774 (81.13 %)**", "777 (81.45 %)"],
+], [3.4, 1.6, 4.4, 4.4], hl_rows=(4,),
+    note="AdaPath RTL은 Golden 판정과 954 / 954 일치. 모드 Easy / Medium / Hard = 404 / 167 / 383 (정수 임계값 13 / 41).")
 para(doc, "**클래스별 분석.** 전체 평균만으로는 결함 종류별 영향을 알 수 없으므로 클래스별 경로 배분과 정확도를 분석하였다(표 "
      "%(t_wmclass)s, 그림 %(f_wmclass)s). Edge-Ring(84.3 %%)과 Center(77.7 %%)는 대부분 Easy로 조기 종료되며 AdaPath 정확도가 Full보다 "
      "오히려 약간 높았다. 반면 정상(none)은 83.3 %%가 Hard로 갔고, Scratch는 Easy가 4.4 %%에 그치며 recall이 Full 63.6 %%에서 "

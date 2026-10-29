@@ -1,0 +1,212 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Fri Oct 30 03:35:28 2026
+# Process ID: 13380
+# Current directory: C:/Users/yhe44/idec_vivado
+# Command line: vivado.exe -mode batch -nojournal -log wm_sim.log -source run_submit_sim.tcl -tclargs C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.xpr
+# Log file: C:/Users/yhe44/idec_vivado/wm_sim.log
+# Journal file: 
+# Running On: hong, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 16671 MB
+#-----------------------------------------------------------
+source run_submit_sim.tcl
+# open_project [lindex $argv 0]
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+open_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 469.348 ; gain = 186.801
+# launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'tb_wm'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2023.1/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_wm' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_expect.txt'
+INFO: [SIM-utils-43] Exported 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_input_954.txt'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_wm_vlog.prj"
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/adapath_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adapath_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/chip_adapath.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module chip
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/difficulty_decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module difficulty_decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/early_classifier.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module early_classifier
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fc_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fmap_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fmap_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_tree
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/maxpool_relu_n.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_relu_n
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mode_control_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mode_control_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/score_margin_calc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module score_margin_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/top2_finder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top2_finder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/sim/tb_wm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_wm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '3' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_wm_behav xil_defaultlib.tb_wm xil_defaultlib.glbl -log elaborate.log"
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+Vivado Simulator v2023.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_wm_behav xil_defaultlib.tb_wm xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'th_low_i' is not connected on this instance [C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/chip_adapath.v:43]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/adapath_top.v" Line 16. Module adapath_top(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_engine.v" Line 8. Module conv1_engine_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/early_classifier.v" Line 12. Module early_classifier(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/top2_finder.v" Line 16. Module top2_finder(N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_engine.v" Line 9. Module conv2_engine_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(C=8,HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(C_IN=8,C_USE=8,OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=128,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(C_IN=8,C_USE=4,OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=64,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/top2_finder.v" Line 16. Module top2_finder(N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/adapath_top.v" Line 16. Module adapath_top(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_engine.v" Line 8. Module conv1_engine_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/early_classifier.v" Line 12. Module early_classifier(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/top2_finder.v" Line 16. Module top2_finder(N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_engine.v" Line 9. Module conv2_engine_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(C=8,HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(C_IN=8,C_USE=8,OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=128,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/fc_engine.v" Line 11. Module fc_engine(C_IN=8,C_USE=4,OUT_N=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/mac_tree.v" Line 12. Module mac_tree(N=64,SHIFT=9) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/src/top2_finder.v" Line 16. Module top2_finder(N=4) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.conv1_buf
+Compiling module xil_defaultlib.mac_tree(DATA_W=9)
+Compiling module xil_defaultlib.conv1_engine_default
+Compiling module xil_defaultlib.maxpool_relu_n_default
+Compiling module xil_defaultlib.fmap_buffer_default
+Compiling module xil_defaultlib.mac_tree(N=48,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(OUT_N=4)
+Compiling module xil_defaultlib.early_classifier(N_CLASS=4)
+Compiling module xil_defaultlib.top2_finder(N=4)
+Compiling module xil_defaultlib.score_margin_calc
+Compiling module xil_defaultlib.difficulty_decoder
+Compiling module xil_defaultlib.mode_control_fsm
+Compiling module xil_defaultlib.conv2_buf
+Compiling module xil_defaultlib.mac_tree(N=75)
+Compiling module xil_defaultlib.conv2_engine_default
+Compiling module xil_defaultlib.maxpool_relu_n(C=8,HALF_WIDTH=4)
+Compiling module xil_defaultlib.mac_tree(N=128,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(C_IN=8,C_USE=8,OUT_N=4...
+Compiling module xil_defaultlib.mac_tree(N=64,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(C_IN=8,C_USE=4,OUT_N=4...
+Compiling module xil_defaultlib.adapath_top(N_CLASS=4)
+Compiling module xil_defaultlib.chip
+Compiling module xil_defaultlib.tb_wm
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_wm_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:14 . Memory (MB): peak = 473.340 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '14' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_wm_behav -key {Behavioral:sim_1:Functional:tb_wm} -tclbatch {tb_wm.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_wm.tcl
+## current_wave_config
+WARNING: [Wavedata 42-489] Can't add object "/tb_wm/pixels" to the wave window because it has 5983488 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+------ Final Accuracy for 954 WM-811K Test Images ------
+Accuracy : 774 / 954 = 81.13 %
+Golden match (decision)              : 954 / 954
+Golden match (decision, mode, margin): 954 / 954
+Mode Easy / Medium / Hard            : 404 / 167 / 383
+Class 0 recall : 179 / 245
+Class 1 recall : 238 / 251
+Class 2 recall : 216 / 230
+Class 3 recall : 141 / 228
+$finish called at time : 8959256 ns : File "C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_WM/sim/tb_wm.v" Line 74
+run: Time (s): cpu = 00:00:03 ; elapsed = 00:00:37 . Memory (MB): peak = 490.102 ; gain = 0.000
+xsim: Time (s): cpu = 00:00:03 ; elapsed = 00:00:38 . Memory (MB): peak = 490.102 ; gain = 16.762
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_wm_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for all
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:01:01 . Memory (MB): peak = 490.102 ; gain = 20.754
+# close_sim
+INFO: xsimkernel Simulation Memory Usage: 25000 KB (Peak: 25000 KB), Simulation CPU Usage: 35515 ms
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 30 03:36:44 2026...
