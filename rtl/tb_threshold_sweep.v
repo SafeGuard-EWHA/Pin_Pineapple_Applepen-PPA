@@ -3,6 +3,8 @@
 //    +TL=<T_low> +TH=<T_high> 로 임계값을 주고 주최측 input_1000.txt 를 실행,
 //    CSV 한 줄 "SWEEP,TL,TH,acc,avg_cycles,easy,med,hard" 를 출력한다.
 //    -DMODEL_A : 모델 A(conv2 3ch, Medium 1ch) / 미지정 : 모델 B(8ch, 4ch)
+//    -DBASELINE : VARIANT=0 (항상 Hard) / 미지정 : VARIANT=2 (AdaPath)
+//    +IMG=<file> : 입력 이미지 파일 (기본 ../verilog_ref/data/input_1000.txt, 같은 형식)
 //
 //  (원본 설명: tb_official1000.v  -  AdaPath-NPU 1,000장 회귀 시뮬레이션
 //
@@ -27,6 +29,12 @@ module tb_threshold_sweep;
 `endif
     reg [11:0] th_low, th_high;
     integer tl_arg, th_arg, cyc_sum;
+    reg [8*256-1:0] imgfile;
+`ifdef BASELINE
+    localparam TB_VARIANT = 0;
+`else
+    localparam TB_VARIANT = 2;
+`endif
 
     reg clk = 0, rst_n = 0, start = 0;
     always #5 clk = ~clk;
@@ -54,7 +62,7 @@ module tb_threshold_sweep;
     wire [$clog2(N)-1:0] decision;
     wire valid_out;  wire [1:0] mode_out;  wire [11:0] margin_out;
 
-    adapath_top #(.VARIANT(2), .C1(C1), .C2(C2), .C2_MED(C2_MED), .N_CLASS(N),
+    adapath_top #(.VARIANT(TB_VARIANT), .C1(C1), .C2(C2), .C2_MED(C2_MED), .N_CLASS(N),
                   .SH_CONV1(SHIFT_CONV1), .SH_CONV2(SHIFT_CONV2),
                   .SH_FCE(SHIFT_FC_EARLY), .SH_FCL(SHIFT_FC_LIGHT), .SH_FCF(SHIFT_FC_FULL), .USE_REG_TH(1)) dut (
         .clk(clk), .rst_n(rst_n), .start(start), .pixel_in(pixel_in),
@@ -111,7 +119,8 @@ module tb_threshold_sweep;
         for (k = 0; k < N; k = k + 1) b_fcf[k*16 +: 16] = m_bf[k];
 
         // 주최측 제공 이미지 (라벨 = index % 10)
-        $readmemh("../verilog_ref/data/input_1000.txt", pixels);
+        if (!$value$plusargs("IMG=%s", imgfile)) imgfile = "../verilog_ref/data/input_1000.txt";
+        $readmemh(imgfile, pixels);
         n_img = 1000;
         $display("official input_1000.txt : %0d images (label = index %% 10)", n_img);
         $display("  sanity: pixels[0]=%0h pixels[400]=%0h", pixels[0], pixels[400]);

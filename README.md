@@ -70,3 +70,20 @@ bash run_sweep.sh B      # 모델 B: T_low=71 고정, T_high 스윕 -> sweep_B.c
 | B | 71, 119 | 1000 | 867.23 | 870 / 60 / 70 |
 
 CSV로 "정확도 vs 평균 cycle" 곡선을 그리면 된다. 임계값 1회 실행에 약 1~2분이 걸린다.
+
+## 추가 실험 2: 입력 난이도에 따른 연산 배분 (노이즈 강건성)
+
+입력에 가우시안 노이즈(σ = 0, 10, 20, 30, 40, 60)를 더해 어려운 입력을 만들고, 모델 A의
+AdaPath(임계값 63/63)와 Baseline(항상 Hard)을 비교한다. 노이즈가 커질수록 Hard 비율과
+평균 cycle이 자동으로 늘어나는지(난이도 비례 연산 배분), 정확도가 Baseline과 비슷하게
+유지되는지를 본다.
+
+```bash
+# 주최측 input_1000.txt 를 verilog_ref/data/ 에 둔 뒤
+cd python && python make_noisy_inputs.py        # rtl/noisy/input_1000_s*.txt (seed 고정)
+cd ../rtl && bash run_robustness.sh             # -> rtl/robustness_A.csv (6 레벨 x 2 설계, 약 20~30분)
+cd ../python && python plot_robustness.py       # -> out/fig_robustness_modes.png, fig_robustness_acc.png
+```
+
+`tb_threshold_sweep.v` 옵션: `-DMODEL_A`(모델 A), `-DBASELINE`(항상 Hard), `+IMG=<파일>`(입력 교체), `+TL= +TH=`(임계값).
+σ=0 결과는 실험 1의 기준점(A: 970개 정답, 960/0/40)과 같아야 한다.

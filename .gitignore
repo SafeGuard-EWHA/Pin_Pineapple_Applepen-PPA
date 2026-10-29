@@ -8,3 +8,5 @@ verilog_ref/
 *.log
 *.jou
 .Xil/
+rtl/noisy/
+rtl/*.csv
