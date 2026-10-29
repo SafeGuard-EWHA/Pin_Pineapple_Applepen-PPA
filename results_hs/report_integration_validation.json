@@ -1,0 +1,47 @@
+{
+  "team_commit": "c3cbfacfef43c58113993181b7611332ae8eb254",
+  "pages": 28,
+  "figures": 22,
+  "tables": 25,
+  "team_figures_identical": 22,
+  "team_tables_identical": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20,
+    21,
+    22,
+    23
+  ],
+  "team_headings_preserved": 21,
+  "sweep_rows_verified": 16,
+  "robustness_paired_rows_verified": 17,
+  "training_cell_change": [
+    [
+      3,
+      3,
+      "고정하지 않음 (재학습 시 ±0.1 %p 수준 변동 가능)",
+      "seed 미고정; 반복 재학습 변동성 미평가"
+    ]
+  ],
+  "sha256": {
+    "report\\결과보고서_PPA.docx": "843a0b82f2131b1881a15eda3717372e03a0626a3453075f37bec55980e11d17",
+    "report\\결과보고서_PPA.pdf": "e292d2288550de6eed1129aff1b78da45c28b76b9e44b683e14db38b6d67e713",
+    "rtl\\sweep_A.csv": "bfdc57f836b84a552b494c622ea5914b5e0b7d215cf32da7b14058a7de43cdd3",
+    "rtl\\robustness_A.csv": "233019813b8074134e2fa8ff21b8a711d2a8880dc7ebb4eebea4b1975b0af173"
+  }
+}

@@ -4,6 +4,7 @@
 """
 import json
 import os
+from experiment_sections import load_results
 
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -15,6 +16,8 @@ from docx.shared import Cm, Pt, RGBColor
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "out")
 R = json.load(open(os.path.join(HERE, "results.json"), encoding="utf-8"))
+
+SWEEP, ROBUST, LEVELS = load_results(os.path.dirname(HERE))
 
 FONT = "맑은 고딕"
 fig_no = [0]
@@ -162,6 +165,11 @@ def table(doc, title, headers, rows, widths=None, hl_rows=(), size=9, note=None)
         for row in t.rows:
             for j, w in enumerate(widths):
                 row.cells[j].width = Cm(w)
+    if title.startswith(('모델 A 임계값 스윕 전체', '모드별 추론당 에너지')):
+        for row in t.rows[:-1]:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    paragraph.paragraph_format.keep_with_next = True
     if note:
         q = para(doc, note, 8.5, space_after=6)
         q.alignment = WD_ALIGN_PARAGRAPH.LEFT
@@ -171,6 +179,19 @@ def table(doc, title, headers, rows, widths=None, hl_rows=(), size=9, note=None)
 
 
 def figure(doc, path, text, width=15.0):
+    # Use committed source figures instead of untracked copied aliases.
+    sources = {
+        'sh2_fig_metric_comparison.png': 'results_sh/v2/02_metrics/fig_metric_comparison.png',
+        'sh2_fig_twofold.png': 'results_sh/v2/01_independence/fig_twofold.png',
+        'sh2_fig_wm_class_modes.png': 'results_sh/v2/04_wm_classes/fig_wm_class_modes.png',
+        'sh2_fig_wm_confusion.png': 'results_sh/v2/04_wm_classes/fig_wm_confusion.png',
+        'sh2_fig_error_examples.png': 'results_sh/v2/05_error_analysis/fig_error_examples.png',
+        'hs_fig_sweep_A.png': 'out/fig_sweep_A.png',
+        'hs_fig_robustness_modes.png': 'out/fig_robustness_modes.png',
+        'hs_fig_robustness_acc.png': 'out/fig_robustness_acc.png',
+    }
+    if os.path.basename(path) in sources:
+        path = os.path.join(HERE, '..', sources[os.path.basename(path)])
     fig_no[0] += 1
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -281,7 +302,7 @@ para(doc, "고정 경로 CNN 가속기는 입력 난이도와 관계없이 모�
      "상당수는 얕은 특징만으로도 분류가 가능하며, 이들에게 전체 경로를 적용하는 것은 연산·시간·에너지의 낭비이다. 본 과제는 "
      "전단부(Conv1) 직후 **Early Classifier 점수의 Top-1과 Top-2 차이(Score Margin)**를 난이도 지표로 사용하여, 입력마다 "
      "Easy / Medium / Hard 경로 중 하나를 선택하는 **난이도 적응형 NPU Datapath(AdaPath-NPU)**를 설계하였다.", indent=True)
-para(doc, "Early-Exit 계열 기법(BranchyNet 등)은 분기 판단에 확률 분포의 엔트로피를 사용하므로 확률·로그 계산 또는 그 근사 "
+para(doc, "엔트로피 기반 Early-Exit 기법(BranchyNet 등)은 분기 판단에 확률 분포의 엔트로피를 사용하므로 확률·로그 계산 또는 그 근사 "
      "회로가 필요하다. 본 설계는 비교기와 감산기만으로 계산되는 Score Margin을 사용하며, 같은 판단 결과로 후단 연산을 "
      "생략(Easy)하거나 일부 채널만 활성화(Medium)한다.", indent=True)
 para(doc, "관련 연구로, BranchyNet[1]은 엔트로피 기반 조기 종료와 여러 출구의 공동 학습을 제시하였고, Shallow-Deep "
@@ -418,7 +439,7 @@ para(doc, "세 출력(Early / Light / Full)을 가진 3-head 모델을 MNIST 학
 table(doc, "학습 설정 (모델 A·B, MNIST / WM-811K 공통)", ["항목", "설정", "항목", "설정"], [
     ["Optimizer", "Adam, lr 2×10⁻³", "Scheduler", "Cosine annealing"],
     ["Epoch / Batch", "30 / 128", "손실", "CE(Full) + 0.5·CE(Early) + 0.5·CE(Light)"],
-    ["입력", "28×28, [0,1] 정규화", "Random seed", "고정하지 않음 (재학습 시 ±0.1 %p 수준 변동 가능)"],
+    ["입력", "28×28, [0,1] 정규화", "Random seed", "seed 미고정; 반복 재학습 변동성 미평가"],
 ], [3.0, 4.6, 2.6, 6.8])
 sw = R["sw"]
 table(doc, "모델별 정확도와 선정 동작점 (MNIST 테스트셋 10,000장)", ["항목", "모델 A (지정주제)", "모델 B (확장)"], [
@@ -430,7 +451,7 @@ table(doc, "모델별 정확도와 선정 동작점 (MNIST 테스트셋 10,000�
     ["정수 Hard 경로 정확도 (1,000장, 같은 표본의 float 대비)", sw["A_int8"], "97.80 % (float 97.95 %)"],
 ], [6.6, 5.2, 5.2])
 para(doc, "모델 A는 Conv2가 3채널뿐이어서 1채널 Light 경로의 정확도(%s %%)가 낮다. 임계값 탐색은 Medium 구간을 두지 않는 "
-     "것(T_low = T_high)이 최적이라고 판단하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. 반면 후단부가 큰 모델 B와 "
+     "동작점(T_low = T_high)을 평가한 후보 중에서 선택하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. 반면 후단부가 큰 모델 B와 "
      "WM-811K에서는 Medium이 선택된다(3.8절)." % sw["A_light"], indent=True)
 figure(doc, os.path.join(OUT, "archA", "fig_margin_hist_mnist.png"), "모델 A의 Score Margin 분포와 선정 임계값", 12.0)
 para(doc, "**임계값 선정과 평가의 분리 (2-fold 교차 평가).** 임계값 선정과 평가에 같은 데이터를 쓰는 문제를 줄이기 위해, 고정 "
@@ -504,8 +525,12 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
 ], [2.6, 2.6, 2.4, 2.8, 3.0, 3.0], hl_rows=(2,),
     note="input_1000.txt는 서로 다른 100장이 10번 반복된 1,000회 입력이므로 1,000개의 독립 표본이 아니다. '순차 입력'은 "
          "1,000회를 순서대로 1회씩 처리한 결과이고, cycle은 start(rst_n 해제)부터 valid_out까지이다. '주최 TB'는 "
-         "$urandom_range로 복원 무작위 추출하므로 설계마다 추출된 표본 구성이 달라 정답률이 소폭 다르며, cycle은 연속한 "
+         "$urandom_range로 복원 무작위 추출하므로 설계마다 추출된 표본 구성이 달라질 수 있다. cycle은 연속한 "
          "valid_out 사이 간격(리셋 포함)의 평균이다.")
+para(doc, "주최 TB 원본의 $urandom_range(0,1000)은 상한을 포함하므로, 인덱스 1000이 선택되면 "
+     "pixel[0:783999]의 이미지 범위를 벗어날 수 있다. 기존 실행에서 해당 인덱스가 발생했는지는 보존된 집계만으로 "
+     "확인하지 못하였다. 따라서 순차 입력과 주최 TB의 정답률 차이를 표본 구성 차이만으로 단정하지 않으며, "
+     "원본 로직을 보존한 실행 결과와 순차 입력 검증을 구분하였다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_console.png"),
        "Vivado 2023.1 실행 화면 — 주최 측 top_tb_1000 실행 결과 (AdaPath_A)", 16.0)
 para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 주최 측 테스트벤치가 1,000회 처리 후 $stop(391행)에서 "
@@ -515,6 +540,9 @@ figure(doc, os.path.join(OUT, "fig_vivado_ref_vs_ada.png"),
        "같은 0~415 ns 동안의 처리량 (Vivado, 주최 측 TB): Reference 30장 vs AdaPath_A 46장", 17.0)
 para(doc, "같은 테스트벤치·같은 클럭에서 415 ns 동안 Reference는 30장, AdaPath_A는 46장을 분류하였다(두 설계 모두 해당 "
      "구간 전부 정답). 이미지당 평균 처리 cycle이 1,336에서 855로 줄어든 효과가 파형에 그대로 나타난다.", indent=True)
+para(doc, "위 시간축은 timescale 1ps/1ps 및 always #5 클럭에 따른 10 ps 주기의 기능 시뮬레이션 "
+     "표시이다. 물리적 동작 주파수나 실제 추론 지연으로 해석하지 않으며, STA의 Fmax 및 100 MHz 전력 평가 조건과 "
+     "구분한다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_detail_easy_hard.png"),
        "Vivado 파형 (376~415 ns): Easy 이미지 42~45와 Hard 이미지 46의 내부 동작 비교", 17.0)
 para(doc, "Easy 이미지(42~45)는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
@@ -531,10 +559,19 @@ para(doc, "**런타임 임계값 스윕 (RTL 실측).** difficulty_decoder의 �
      "주최 측 입력 1,000회에 대해 TL = TH를 0~400으로 바꿔 가며 16개 동작점을 RTL로 측정하였다(그림 %(f_sweep)s). TH = 63에서 "
      "기존 결과(정답 970, 평균 851.84 cycle, Easy/Hard 960/40)가 재현되었다. TH를 높이면 Hard 수가 0(TH = 0)에서 730"
      "(TH = 400)까지 늘고 평균 cycle은 845.0에서 969.8로 증가하여, 칩을 다시 합성하지 않고 런타임에 정확도–연산 시간 동작점을 "
-     "바꿀 수 있음을 확인하였다. 한편 이 입력 집합에서는 TH = 0~30(전부 Easy)이 정답 980개로 오히려 높아 TH = 63을 지배하였다. "
+     "바꿀 수 있음을 확인하였다. 한편 이 입력 집합에서는 평가한 TH = 0, 10, 20, 30(전부 Easy)이 정답 980개로 오히려 높아 TH = 63을 지배하였다. "
      "이는 고유 100장으로 구성된 입력의 특성으로, MNIST 테스트셋 10,000장에서는 Early 경로 단독 정확도(96.21 %%)가 Full 경로"
      "(97.53 %%)보다 낮다. 따라서 이 스윕은 런타임 조정 기능의 검증이며, 이 입력에서의 최적 임계값을 일반화하지 않는다." % LBL,
      indent=True)
+table(doc, "모델 A 임계값 스윕 전체 결과 (RTL, TL=TH)",
+      ["TL=TH", "정답 / 1,000", "정확도 (%)", "평균 cycle", "Easy", "Hard"],
+      [[r['TH'], r['correct'], f"{r['correct']/10:.1f}", f"{r['avg_cycles']:.2f}", r['easy'], r['hard']] for r in SWEEP],
+      [1.8, 2.8, 2.7, 3.1, 2.5, 2.5], hl_rows=(6,), size=9,
+      note="모든 조건에서 정상 출력 1,000개, Medium=0이다. 표는 rtl/sweep_A.csv에서 직접 생성하였다.")
+para(doc, "Hard 비율을 p_H라 하면 평균 cycle은 C = 845(1−p_H) + 1016p_H = 845 + 171p_H이다. "
+     "16개 조건은 CSV 표시 정밀도 범위에서 이 관계와 일치하였다. TH=63보다 낮은 네 조건은 이 입력에서 "
+     "정확도가 1.0 %p 높고 평균 cycle이 6.84 작았다. 그러나 이 결과만으로 기존 동작점을 변경하거나 다른 입력에서도 "
+     "우세하다고 결론짓지 않았다. TL=TH이므로 Medium 경로의 기여도 검증하지 않는다.", indent=True)
 figure(doc, os.path.join(OUT, "hs_fig_sweep_A.png"),
        "모델 A 런타임 임계값 스윕 (RTL 실측, 주최 측 입력 1,000회): 정확도–평균 처리 cycle", 14.0)
 
@@ -553,8 +590,8 @@ table(doc, "합성 결과 (pre-layout, 클럭 주기 스윕)",
       rows, [2.8, 2.8, 2.6, 2.6, 3.1, 3.1], hl_rows=(2,),
       note="통과 주기·Fmax(SDC 규칙)는 입출력 지연 20 % 조건에서 최악 slack = 0인 주기이다. 이 조건의 임계 경로는 세 설계 "
            "모두 가중치 입력 포트에서 시작한다. '가중치 정적'은 가중치 포트를 false path로 둔 결과이다.")
-para(doc, "Top-2 Finder 개선 후 AdaPath_A의 Fmax는 판단 회로가 없는 Baseline_A와 두 조건 모두에서 같다(SDC 규칙 %s vs %s MHz, "
-     "가중치 정적 %s vs %s MHz). 즉 판단 회로가 동작 주파수를 낮추지 않는다. Reference 대비 SDC 규칙 기준 %.1f %%, 가중치 "
+para(doc, "Top-2 Finder 개선 후 AdaPath_A의 Fmax는 판단 회로가 없는 Baseline_A와 두 조건 모두에서 거의 같다(SDC 규칙 %s vs %s MHz, "
+     "가중치 정적 %s vs %s MHz). 따라서 측정한 조건에서는 판단 회로에 의한 뚜렷한 주파수 저하가 관측되지 않았다. Reference 대비 SDC 규칙 기준 %.1f %%, 가중치 "
      "정적 기준 %.1f %% 낮은데, 이는 판단 회로가 아니라 본 팀 데이터패스(Conv2 가중치 입력 경로, FC·FSM 제어 경로)에서 "
      "결정된다. 면적 증가는 Feature Map Buffer(5,184 bit), Early Classifier FC, 제어 회로에서 발생한다. 판단·제어 회로(Top-2, "
      "Margin, Decoder, FSM) 단독 합성 면적은 %s µm²로, AdaPath_A 통합 합성 면적의 %.2f %%에 해당한다(단독 합성과 통합 "
@@ -685,27 +722,55 @@ para(doc, "입력이 어려워질 때 AdaPath가 실제로 후단 연산을 더 
      "환경을 모사한 열화(대비 감소 6단계, 3×3 블러 5단계, 가우시안 잡음 6단계, seed 고정)를 적용하고 모델 A의 AdaPath_A와 "
      "같은 가중치의 항상-Hard 설계(Baseline_A)를 RTL로 각각 실행하였다(총 34회, 표 %(t_robust)s, 그림 %(f_rmodes)s·%(f_racc)s). 원본과 "
      "대비 0.3 조건의 기준값을 먼저 재현한 뒤 전체를 실행하였다." % LBL, indent=True)
+table(doc, "입력 열화 생성 조건", ["종류", "수준", "변환 및 처리"], [
+    ["대비 축소", "1.0, 0.7, 0.5, 0.4, 0.3, 0.2", "픽셀값에 계수 c를 곱함"],
+    ["평균 블러", "0, 1, 2, 3, 4회", "영 패딩 3×3 평균 필터를 반복 적용"],
+    ["가우시안 잡음", "σ=0, 20, 40, 60, 80, 100", "픽셀 단위 N(0, σ²) 가산, seed=2026"],
+], [2.5, 6.4, 7.1], size=9,
+    note="변환 후 np.rint로 반올림하고 [0,255]로 포화시켰다. σ는 8-bit 픽셀값 단위이다. "
+         "종류별 수준을 나열된 순서로 생성하며 난수 생성기의 상태를 이어 사용하였다.")
+robust_rows = []
+for kind, levels in LEVELS.items():
+    for level in levels:
+        a, b = ROBUST[kind, level, 'ada'], ROBUST[kind, level, 'base']
+        name = {'contrast': '대비', 'blur': '블러', 'gauss': '잡음 σ'}[kind]
+        robust_rows.append([f'{name} {level:g}', f"{a['correct']/10:.1f}", f"{b['correct']/10:.1f}",
+                           f"{(a['correct']-b['correct'])/10:+.1f}", f"{a['hard']/10:.1f}",
+                           f"{a['avg_cycles']:.2f}", f"{(985-a['avg_cycles'])/985*100:.2f}"])
 table(doc, "입력 열화 조건별 결과 (모델 A, RTL, TL = TH = 63, 주최 측 입력 1,000회)",
-      ["조건", "AdaPath 정확도", "Baseline_A 정확도", "AdaPath Hard 비율", "AdaPath 평균 cycle", "Baseline_A 대비 cycle"], [
-    ["원본", "97.0 %", "97.0 %", "4.0 %", "851.8", "13.5 % 감소"],
-    ["대비 × 0.3", "93.0 %", "93.0 %", "38.0 %", "910.0", "7.6 % 감소"],
-    ["대비 × 0.2", "80.0 %", "76.0 %", "72.0 %", "968.1", "1.7 % 감소"],
-    ["블러 4회", "87.0 %", "90.0 %", "38.0 %", "910.0", "7.6 % 감소"],
-    ["가우시안 σ = 100", "74.9 %", "83.0 %", "36.0 %", "906.6", "8.0 % 감소"],
-], [3.0, 2.6, 2.8, 2.8, 2.8, 2.8], hl_rows=(1, 2),
-    note="Baseline_A의 평균 cycle은 모든 조건에서 985.0이다. cycle 감소율은 MAC·전력·면적 절감률이 아니다. TL = TH이므로 "
-         "Medium은 0이며, 3경로의 이득을 검증한 실험이 아니다.")
+      ["조건", "AdaPath\n정확도 (%)", "Baseline\n정확도 (%)", "차이\n(%p)", "Hard\n(%)", "AdaPath\n평균 cycle", "cycle\n감소 (%)"],
+      robust_rows, [2.2, 2.5, 2.5, 1.5, 1.5, 3.0, 2.8], hl_rows=(0, 4, 10, 16), size=8.5,
+      note="차이는 AdaPath−Baseline이다. Baseline_A는 모든 조건에서 985.00 cycle이며 감소율은 (985−C_AdaPath)/985×100이다. "
+           "모든 AdaPath 조건에서 Medium=0, Easy 비율은 100−Hard(%)이다. cycle 감소율은 MAC·전력·에너지 감소율이 아니다. "
+           "17조건×2설계에서 정상 출력과 모드 합은 모두 1,000개이며, 세 종류의 무열화 기준점은 중복 포함된다.")
 figure(doc, os.path.join(OUT, "hs_fig_robustness_modes.png"),
        "입력 열화 강도에 따른 AdaPath_A의 Hard 경로 비율(위)과 평균 처리 cycle(아래) (RTL 실측)", 16.5)
 figure(doc, os.path.join(OUT, "hs_fig_robustness_acc.png"),
        "입력 열화 강도에 따른 정확도: AdaPath_A vs Baseline_A (RTL 실측)", 16.5)
 para(doc, "세 열화 모두에서 열화가 강해질수록 Hard 비율과 평균 cycle이 증가하였다. 특히 대비를 1.0에서 0.2로 낮추면 Hard 비율이 "
-     "4 %%에서 72 %%로 늘어, **입력 난이도에 비례하여 연산을 배분하는 동작**이 RTL에서 확인되었다. 대비 감소에서는 정확도가 "
+     "4 %%에서 72 %%로 늘어, **평가한 열화 수준에 따라 연산을 더 배분하는 동작**이 RTL에서 확인되었다. 대비 감소에서는 정확도가 "
      "Baseline_A와 같거나 높았다(0.2에서 80.0 %% vs 76.0 %%). 반면 강한 블러(4회, 87.0 %% vs 90.0 %%)와 강한 가우시안 잡음(σ = 100, "
      "74.9 %% vs 83.0 %%)에서는 AdaPath의 정확도가 낮았다. 이 조건에서는 Hard 비율이 36~38 %%에 머물러, 일부 입력이 높은 Score "
      "Margin으로 Easy에서 종료되었을 가능성이 있다. 다만 집계 결과만으로 개별 오류의 원인을 입증하지는 않았다(MNIST 테스트셋의 "
      "높은 Margin 오분류 분석은 4.2절). 정확도가 열화 강도에 대해 항상 단조 감소하지 않은 점(대비 0.5에서 99.0 %%)도 고유 100장 "
      "입력의 특성으로 해석한다." % LBL, indent=True)
+
+para(doc, "대비 0.3에서는 AdaPath_A와 Baseline_A의 정확도가 93.0%로 같고 cycle은 7.62% 감소하였다. "
+     "반면 σ=100에서는 7.96%의 cycle 감소와 8.1%p의 정확도 손실이 함께 나타났다. 큰 Score Margin은 "
+     "확률로 보정된 신뢰도가 아니므로 ‘Early Classifier가 확신을 갖고 틀리는 경우’가 가능하다. 다만 잡음 "
+     "실험의 집계 CSV만으로 오류가 발생한 경로나 원인을 확정하지 않았다. 4.2절과 부록 C의 무열화 "
+     "소프트웨어 오류 사례는 별도 입력·수치 조건의 분석이며, 잡음 입력의 직접 원인 검증으로 대체할 수 없다.", indent=True)
+h2(doc, "3.11 추가 RTL 실험의 재현성과 해석 범위")
+para(doc, "실험 1·2는 기존 RTL과 out/rtl_data_mnist_A/ 가중치를 고정하여 수행하였다. Python 3.12.14와 "
+     "Icarus Verilog 12.0(devel)을 사용하였으며 기존 설계 .v 파일은 수정하지 않았다. 실험 1은 run_sweep.sh A와 "
+     "같은 테스트벤치·컴파일 인수·16개 임계값을 Windows 실행기로 구동하였고, 실험 2는 make_noisy_inputs.py의 "
+     "변환과 같은 RTL 비교 조건을 사용하였다. 소스 기준은 5b9d9d2ce36e86ef7d3a3dfd46eac903435a209f이며, "
+     "입력·소스·가중치 해시와 실행별 로그는 results_hs/exp1_artifacts/ 및 results_hs/exp2_artifacts/에 보존하였다. "
+     "전체 결과 표는 rtl/sweep_A.csv와 rtl/robustness_A.csv에서 직접 생성하였다.", indent=True)
+para(doc, "원본 입력은 고유 100장의 10회 반복이다. 대비·블러는 결정적 변환이므로 반복을 독립 표본으로 "
+     "간주할 수 없다. 잡음은 반복마다 서로 다른 실현값을 가하지만 원본 이미지의 다양성을 늘리지는 않으며, "
+     "단일 seed로 잡음 실현 간 변동성도 평가하지 못하였다. 따라서 이 RTL 결과에는 독립 1,000표본을 전제한 "
+     "신뢰구간이나 유의성 검정을 적용하지 않았다. 이는 3.3절의 이미지 단위 소프트웨어 통계 검정과 구분한다.", indent=True)
 
 # =================================================================== 4
 h1(doc, "4. 결과 및 기대효과")
@@ -719,9 +784,13 @@ table(doc, "최종 결과 요약 (지정주제: Reference 대비 AdaPath_A)", ["
     ["추론당 에너지 (nJ, VCD 기반 추정)", f1(E_REF), f1(E_A), chg(E_A, E_REF)],
     ["Cell Area (µm²)", f0(A["refchip"]), f0(A["adapath_A"]), chg(A["adapath_A"], A["refchip"])],
 ], [5.4, 3.4, 3.4, 3.8], hl_rows=(1, 3, 5))
+para(doc, "위 성능은 무열화 입력과 사전 지정 TH=63의 조건부 결과이다. 평가한 TH=0, 10, 20, 30은 "
+     "같은 입력에서 98.0%와 845.00 cycle을 보여 TH=63보다 유리하므로 TH=63의 보편적 최적성을 주장하지 않는다. "
+     "강한 잡음에서는 8.1%p의 정확도 손실이 발생하였다. 적응형 경로의 이득은 입력 분포와 허용 오류에 따라 달라지며, "
+     "동작점 변경에는 별도 검증이 필요하다.", indent=True)
 h2(doc, "4.2 평가 범위, 한계 및 향후 개선")
 bullet(doc, "**정확도 표본:** 주최 입력은 고유 100장이 10회 반복된 1,000회 입력이므로 1,000개의 독립 이미지에 대한 일반화 "
-       "평가와 구분한다. 일반화 성능은 MNIST 테스트셋 10,000장 결과(표 @t_acc@)로 제시하였다.")
+       "평가와 구분한다. MNIST 테스트셋 10,000장 결과(표 @t_acc@)는 임계값 탐색에도 사용된 동일셋 결과이며, 사후 분할 교차 평가와 외부 미사용 테스트셋 검증을 구분한다.")
 bullet(doc, "**임계값 선정의 일반화:** 2-fold 교차 평가(3.3절)에서 선정 데이터의 0.5 %p 제약이 평가 데이터에서는 보장되지 "
        "않았다(특히 WM-811K). 학습 단계부터 분리된 검증셋으로 임계값을 정하고, 미사용 외부 테스트셋으로 평가하는 절차가 필요하다.")
 bullet(doc, "**높은 Score Margin의 오분류:** 모델 A에서 Easy로 판정된 9,400장 중 129장(전체의 1.29 %, Easy 내부 1.37 %)이 "
