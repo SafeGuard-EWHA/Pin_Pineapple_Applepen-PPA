@@ -1,0 +1,143 @@
+{
+  "base_commit": "4990d117fcc571183000605a514ad5d9c7d5c98a",
+  "seed": 2026,
+  "thresholds": {
+    "t_low": 0.20984198570251464,
+    "t_high": 0.6432941722869873,
+    "n": 954,
+    "correct": 775,
+    "full_correct": 778,
+    "accuracy_pct": 81.23689727463312,
+    "full_accuracy_pct": 81.55136268343816,
+    "delta_pp": -0.31446540880503143,
+    "avg_mac": 62848.0,
+    "mac_saving_hard_pct": 23.639191290824257,
+    "mac_saving_baseline_pct": 23.46063912704599,
+    "easy_n": 401,
+    "medium_n": 152,
+    "hard_n": 401,
+    "easy_pct": 42.0335429769392,
+    "medium_pct": 15.932914046121594,
+    "hard_pct": 42.0335429769392
+  },
+  "classes": [
+    {
+      "class": "none",
+      "n": 245,
+      "easy_n": 2,
+      "medium_n": 39,
+      "hard_n": 204,
+      "easy_pct": 0.8163265306122449,
+      "medium_pct": 15.918367346938776,
+      "hard_pct": 83.26530612244898,
+      "full_correct": 182,
+      "ada_correct": 182,
+      "full_accuracy_pct": 74.28571428571429,
+      "ada_accuracy_pct": 74.28571428571429,
+      "delta_pp": 0.0,
+      "median_margin": 0.1166689395904541
+    },
+    {
+      "class": "Center",
+      "n": 251,
+      "easy_n": 195,
+      "medium_n": 12,
+      "hard_n": 44,
+      "easy_pct": 77.68924302788845,
+      "medium_pct": 4.780876494023905,
+      "hard_pct": 17.529880478087648,
+      "full_correct": 236,
+      "ada_correct": 238,
+      "full_accuracy_pct": 94.02390438247012,
+      "ada_accuracy_pct": 94.8207171314741,
+      "delta_pp": 0.796812749003984,
+      "median_margin": 3.1812517642974854
+    },
+    {
+      "class": "Edge-Ring",
+      "n": 230,
+      "easy_n": 194,
+      "medium_n": 23,
+      "hard_n": 13,
+      "easy_pct": 84.34782608695652,
+      "medium_pct": 10.0,
+      "hard_pct": 5.6521739130434785,
+      "full_correct": 215,
+      "ada_correct": 217,
+      "full_accuracy_pct": 93.47826086956522,
+      "ada_accuracy_pct": 94.34782608695652,
+      "delta_pp": 0.8695652173913043,
+      "median_margin": 2.125401735305786
+    },
+    {
+      "class": "Scratch",
+      "n": 228,
+      "easy_n": 10,
+      "medium_n": 78,
+      "hard_n": 140,
+      "easy_pct": 4.385964912280702,
+      "medium_pct": 34.21052631578947,
+      "hard_pct": 61.40350877192982,
+      "full_correct": 145,
+      "ada_correct": 138,
+      "full_accuracy_pct": 63.59649122807018,
+      "ada_accuracy_pct": 60.526315789473685,
+      "delta_pp": -3.0701754385964914,
+      "median_margin": 0.18228411674499512
+    }
+  ],
+  "confusion": {
+    "Baseline_Full": [
+      [
+        182,
+        1,
+        8,
+        54
+      ],
+      [
+        11,
+        236,
+        1,
+        3
+      ],
+      [
+        12,
+        1,
+        215,
+        2
+      ],
+      [
+        68,
+        6,
+        9,
+        145
+      ]
+    ],
+    "AdaPath": [
+      [
+        182,
+        2,
+        9,
+        52
+      ],
+      [
+        9,
+        238,
+        1,
+        3
+      ],
+      [
+        12,
+        0,
+        217,
+        1
+      ],
+      [
+        70,
+        9,
+        11,
+        138
+      ]
+    ]
+  }
+}

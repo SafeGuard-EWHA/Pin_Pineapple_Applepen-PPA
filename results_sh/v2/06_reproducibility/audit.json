@@ -1,0 +1,216 @@
+{
+  "base_commit": "4990d117fcc571183000605a514ad5d9c7d5c98a",
+  "inference_seed": 2026,
+  "tool_versions": [
+    {
+      "tool": "Yosys / ABC",
+      "original_result_version": "확인 필요",
+      "source": "합성 통계/스크립트는 있으나 버전 배너와 커밋 없음",
+      "this_analysis": "실행하지 않음"
+    },
+    {
+      "tool": "OpenROAD",
+      "original_result_version": "26Q3-1305-gf552262465",
+      "source": "orfs/reports_final/adapath_A_sta.rpt:1 및 power_A_easy.rpt:1",
+      "this_analysis": "실행하지 않음"
+    },
+    {
+      "tool": "OpenSTA",
+      "original_result_version": "OpenROAD 내장 사용; 독립 OpenSTA 버전은 확인 필요",
+      "source": "flow_scripts/vcd_power_odb.tcl:6–7, openroad report_power",
+      "this_analysis": "실행하지 않음"
+    },
+    {
+      "tool": "Icarus Verilog",
+      "original_result_version": "확인 필요",
+      "source": "glsim/run_*.sh의 iverilog/vvp 명령, 버전 출력 없음",
+      "this_analysis": "실행하지 않음"
+    },
+    {
+      "tool": "Vivado",
+      "original_result_version": "2023.1 (문서·캡처 표기), build 세부값 확인 필요",
+      "source": "evidence/README.md:5, 보고서 3.4·그림 7",
+      "this_analysis": "실행하지 않음"
+    },
+    {
+      "tool": "Python",
+      "original_result_version": "학습 당시 확인 필요",
+      "source": "원본 환경 lock/버전 로그 없음",
+      "this_analysis": "3.12.14"
+    },
+    {
+      "tool": "PyTorch",
+      "original_result_version": "학습 당시 확인 필요",
+      "source": "체크포인트에는 state/arch만 존재",
+      "this_analysis": "2.9.1+cpu"
+    }
+  ],
+  "commands": [
+    {
+      "stage": "Training",
+      "command": "cd python; python train.py --arch A --n_class 10 --prefix mnist",
+      "data": "MNIST train/test NPZ; test는 epoch별 출력",
+      "threshold": "없음",
+      "status": "README 명령 예시; 실제 실행 CLI·seed 확인 필요",
+      "source": "README.md; python/train.py"
+    },
+    {
+      "stage": "Original threshold selection",
+      "command": "cd python; python analyze_margin.py --arch A --prefix mnist --out <model_and_data_folder>",
+      "data": "MNIST 10000; WM 954, 같은 셋 선정·평가",
+      "threshold": "A 1.1608357596/1.1608357596; B 1.5987654805/2.5930354309; WM .2098419857/.6432941723",
+      "status": "이번 float 추론으로 기존 보고 동작점 재현",
+      "source": "python/analyze_margin.py; out/archA/table_modes_mnist.md; out/table_modes*.md"
+    },
+    {
+      "stage": "Integer export",
+      "command": "python export_int8.py --arch A --prefix mnist --t_low 1.161 --t_high 1.161",
+      "data": "학습 체크포인트; 정수화 calibration 자료는 export 코드 참조",
+      "threshold": "RTL A 63/63; B 71/119; WM 13/41",
+      "status": "설정 파일 확인, 이번 정수화 재실행 없음",
+      "source": "README.md; out/rtl_data_*/thresholds.vh"
+    },
+    {
+      "stage": "Synthesis",
+      "command": "make DESIGN_CONFIG=./designs/asap7/<variant>/config.mk clean_synth synth",
+      "data": "ORFS staged sources + ASAP7",
+      "threshold": "각 variant의 thresholds.vh",
+      "status": "스크립트 명령 확인, stage 절대 경로 치환·원본 외부 파일 필요",
+      "source": "flow_scripts/queue_final.sh:17; synth_v3.sh:20"
+    },
+    {
+      "stage": "STA",
+      "command": "PLATFORM_DIR=<...> ODB=<...>/1_synth.odb SDC=<...> REPORT=<...> openroad -exit <...>/sta_odb.tcl",
+      "data": "합성 ODB; 1000 ps 및 참고 2500 ps SDC",
+      "threshold": "해당 설계 고정 설정",
+      "status": "스크립트에 저장된 호출; 환경 경로 조정 필요",
+      "source": "flow_scripts/sta_one.sh:8–11"
+    },
+    {
+      "stage": "A gate simulation",
+      "command": "iverilog -g2012 -I. -o gl_adA.vvp adapath_A_net.v std_cell_fn/*.v tb_gl_A.v; vvp gl_adA.vvp +START=1 +VCD=gl_adA_easy.vcd",
+      "data": "주최 input_1000.txt의 지정 구간",
+      "threshold": "A 63/63",
+      "status": "run_A.sh·대표 런 로그 확보; 컴파일 넷리스트/셀 모델 별도",
+      "source": "glsim/run_A.sh:4–9"
+    },
+    {
+      "stage": "B / Reference gate simulation",
+      "command": "bash glsim/run_adapath.sh; bash glsim/run_ref.sh",
+      "data": "START 1/15/5, 각 4장",
+      "threshold": "B 71/119; Reference 해당 없음",
+      "status": "스크립트는 외부 idec_glsim 디렉터리 기준; 복사·경로 조정 필요",
+      "source": "glsim/run_adapath.sh; glsim/run_ref.sh"
+    },
+    {
+      "stage": "VCD power",
+      "command": "PLATFORM_DIR=<...> ODB=<...> SDC=<10ns.sdc> VCD=<run.vcd> SCOPE=tb_gatelevel/dut openroad -exit flow_scripts/vcd_power_odb.tcl",
+      "data": "100 MHz, 이미지마다 reset 12 cycle 포함",
+      "threshold": "A/B의 고정 RTL 설정",
+      "status": "대표 런 기반 추정; VCD 원본과 파일 해시 저장소에 없음",
+      "source": "flow_scripts/power_A.sh; queue_final.sh; vcd_power_odb.tcl"
+    },
+    {
+      "stage": "Vivado project",
+      "command": "vivado -mode batch -source vivado/submit/make_submit.tcl -tclargs <project_folder> <project_name>",
+      "data": "top_tb_1000; 고유 100장×10회 입력",
+      "threshold": "학습 가중치 상수와 threshold header",
+      "status": "프로젝트 생성 명령 확인; 실행 로그 4개는 README에만 열거",
+      "source": "vivado/submit/make_submit.tcl:1; evidence/README.md"
+    },
+    {
+      "stage": "This P0 analysis",
+      "command": "python results_sh/v2/prepare.py --repo . --cache work/v2_cache; python results_sh/v2/run_p0.py --cache work/v2_cache",
+      "data": "고정 NPZ; 2-fold×5 seeds 2026–2030",
+      "threshold": "보고 동작점·exact·legacy 구분",
+      "status": "이번 실행 완료; CPU 2 threads, inference seed 2026",
+      "source": "results_sh/v2/provenance/manifest.json"
+    },
+    {
+      "stage": "This P1 analysis",
+      "command": "python results_sh/v2/run_p1.py --repo . --cache work/v2_cache",
+      "data": "P0와 같은 float 예측·NPZ",
+      "threshold": "기존 보고 동작점",
+      "status": "이번 실행 완료; 새 추론/RTL 실험 없음",
+      "source": "results_sh/v2/run_p1.py"
+    }
+  ],
+  "vcd_runs": [
+    {
+      "design": "AdaPath_A",
+      "run": "Easy",
+      "start": 1,
+      "n": 4,
+      "images": "1–4",
+      "mix": "Easy 4",
+      "vcd": "gl_adA_easy.vcd",
+      "source": "glsim/run_A.sh:7"
+    },
+    {
+      "design": "AdaPath_A",
+      "run": "Hard mix",
+      "start": 5,
+      "n": 4,
+      "images": "5–8",
+      "mix": "Hard 1 + Easy 3",
+      "vcd": "gl_adA_hard.vcd",
+      "source": "glsim/run_A.sh:8"
+    },
+    {
+      "design": "Baseline_A",
+      "run": "Full",
+      "start": 1,
+      "n": 4,
+      "images": "1–4",
+      "mix": "Full 4",
+      "vcd": "gl_baA.vcd",
+      "source": "glsim/run_A.sh:9"
+    },
+    {
+      "design": "AdaPath_B",
+      "run": "Easy",
+      "start": 1,
+      "n": 4,
+      "images": "1–4",
+      "mix": "Easy 4",
+      "vcd": "gl_ad_easy.vcd",
+      "source": "glsim/run_adapath.sh"
+    },
+    {
+      "design": "AdaPath_B",
+      "run": "Medium mix",
+      "start": 15,
+      "n": 4,
+      "images": "15–18",
+      "mix": "Medium 2 + Easy 2",
+      "vcd": "gl_ad_med.vcd",
+      "source": "glsim/run_adapath.sh; evidence/gatelevel/adapath_B_runs.txt"
+    },
+    {
+      "design": "AdaPath_B",
+      "run": "Hard mix",
+      "start": 5,
+      "n": 4,
+      "images": "5–8",
+      "mix": "Hard 1 + Easy 3",
+      "vcd": "gl_ad_hard.vcd",
+      "source": "glsim/run_adapath.sh"
+    },
+    {
+      "design": "Reference",
+      "run": "a/b/c",
+      "start": "1/15/5",
+      "n": 12,
+      "images": "1–4,15–18,5–8",
+      "mix": "Full 12",
+      "vcd": "gl_ref_a/b/c.vcd",
+      "source": "glsim/run_ref.sh"
+    }
+  ],
+  "missing_vivado_logs": [
+    "reference_top_tb_1000.log",
+    "adapath_A_top_tb_1000.log",
+    "adapath_B_top_tb_1000.log",
+    "adapath_A_relocated_copy.log"
+  ]
+}
