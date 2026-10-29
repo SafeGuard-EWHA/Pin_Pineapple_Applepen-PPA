@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_20261030/control_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_monitor
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_20261030/audit_WM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module audit_top

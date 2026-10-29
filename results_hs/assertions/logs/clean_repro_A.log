@@ -1,0 +1,1347 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Oct 30 04:38:12 2026
+# Process ID: 34208
+# Current directory: C:/Temp/ppa_observer_repro_20261030
+# Command line: vivado.exe -mode batch -source C:/Temp/ppa_observer_repro_20261030/run_A.tcl -log C:/Temp/ppa_observer_repro_20261030/A.log -journal C:/Temp/ppa_observer_repro_20261030/A.jou
+# Log file: C:/Temp/ppa_observer_repro_20261030/A.log
+# Journal file: C:/Temp/ppa_observer_repro_20261030/A.jou
+# Running On        :DESKTOP-HDTJ7PK
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26200
+# Processor Detail  :12th Gen Intel(R) Core(TM) i5-1240P
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:12
+# CPU Logical cores :16
+# Host memory       :16848 MB
+# Swap memory       :17179 MB
+# Total Virtual     :34028 MB
+# Available Virtual :4856 MB
+#-----------------------------------------------------------
+source C:/Temp/ppa_observer_repro_20261030/run_A.tcl
+# open_project C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/yhe44/idec_vivado/submit/PPA_AdaPath_NPU_A' since last save.
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.gen/sources_1'.
+WARNING: [filemgmt 56-3] IPUserFilesDir: Could not find the directory 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.ip_user_files'.
+Scanning sources...
+Finished scanning sources
+INFO: [Project 1-230] Project 'PPA_AdaPath_NPU_A.xpr' upgraded for this version of Vivado.
+open_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 510.031 ; gain = 203.660
+# add_files -fileset sim_1 {C:/Temp/ppa_observer_repro_20261030/control_monitor.v C:/Temp/ppa_observer_repro_20261030/audit_A.v}
+# set_property top top_tb_1000 [get_filesets sim_1]
+# set_property xsim.elaborate.xelab.more_options {xil_defaultlib.audit_top} [get_filesets sim_1]
+# set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+# launch_simulation -mode behavioral -step compile
+Command: launch_simulation -step compile -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'top_tb_1000'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2024.1/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb_1000' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/0_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/1_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/2_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/3_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/4_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/5_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/6_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/7_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/8_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/9_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_1.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_2.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_3.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_11.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_12.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_13.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_21.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_22.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_23.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_31.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_32.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_33.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/fc_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/fc_weight.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/input_1000.txt'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj top_tb_1000_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adapath_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module chip
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv1_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_buf
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module conv2_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module difficulty_decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module early_classifier
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fc_engine
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fmap_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mac_tree
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_relu_n
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mode_control_fsm
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module score_margin_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top2_finder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/sim/top_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-311] analyzing module top_tb_1000
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 514.531 ; gain = 4.500
+# cd C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim
+# puts [exec C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xvlog.exe --work xil_defaultlib C:/Temp/ppa_observer_repro_20261030/control_monitor.v C:/Temp/ppa_observer_repro_20261030/audit_A.v]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/control_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_monitor
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_repro_20261030/audit_A.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module audit_top
+# launch_simulation -mode behavioral -step elaborate
+Command: launch_simulation -step elaborate -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'top_tb_1000'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_1000_behav xil_defaultlib.top_tb_1000 xil_defaultlib.glbl -log elaborate.log xil_defaultlib.audit_top"
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot top_tb_1000_behav xil_defaultlib.top_tb_1000 xil_defaultlib.glbl -log elaborate.log xil_defaultlib.audit_top 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" Line 16. Module adapath_top(C2=3,C2_MED=1,SH_CONV1=7,SH_FCE=7,SH_FCL=7,SH_FCF=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" Line 8. Module conv1_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" Line 12. Module early_classifier(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" Line 9. Module conv2_engine(C2=3) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(C_USE=1,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=16,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/adapath_top.v" Line 16. Module adapath_top(C2=3,C2_MED=1,SH_CONV1=7,SH_FCE=7,SH_FCL=7,SH_FCF=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_engine.v" Line 8. Module conv1_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv1_buf.v" Line 2. Module conv1_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(DATA_W=9,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fmap_buffer.v" Line 12. Module fmap_buffer_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/early_classifier.v" Line 12. Module early_classifier(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/score_margin_calc.v" Line 9. Module score_margin_calc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/difficulty_decoder.v" Line 13. Module difficulty_decoder doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mode_control_fsm.v" Line 14. Module mode_control_fsm doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_engine.v" Line 9. Module conv2_engine(C2=3) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/conv2_buf.v" Line 2. Module conv2_buf doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=75) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/maxpool_relu_n.v" Line 10. Module maxpool_relu_n(HALF_WIDTH=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(SHIFT=8) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=48) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/fc_engine.v" Line 11. Module fc_engine(C_USE=1,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/mac_tree.v" Line 12. Module mac_tree(N=16,SHIFT=7) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/src/top2_finder.v" Line 16. Module top2_finder_default doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.conv1_buf
+Compiling module xil_defaultlib.mac_tree(DATA_W=9,SHIFT=7)
+Compiling module xil_defaultlib.conv1_engine(SHIFT=7)
+Compiling module xil_defaultlib.maxpool_relu_n_default
+Compiling module xil_defaultlib.fmap_buffer_default
+Compiling module xil_defaultlib.mac_tree(N=48,SHIFT=7)
+Compiling module xil_defaultlib.fc_engine(SHIFT=7)
+Compiling module xil_defaultlib.early_classifier(SHIFT=7)
+Compiling module xil_defaultlib.top2_finder_default
+Compiling module xil_defaultlib.score_margin_calc
+Compiling module xil_defaultlib.difficulty_decoder
+Compiling module xil_defaultlib.mode_control_fsm
+Compiling module xil_defaultlib.conv2_buf
+Compiling module xil_defaultlib.mac_tree(N=75)
+Compiling module xil_defaultlib.conv2_engine(C2=3)
+Compiling module xil_defaultlib.maxpool_relu_n(HALF_WIDTH=4)
+Compiling module xil_defaultlib.mac_tree(N=48)
+Compiling module xil_defaultlib.fc_engine(SHIFT=8)
+Compiling module xil_defaultlib.mac_tree(N=16,SHIFT=7)
+Compiling module xil_defaultlib.fc_engine(C_USE=1,SHIFT=7)
+Compiling module xil_defaultlib.adapath_top(C2=3,C2_MED=1,SH_CON...
+Compiling module xil_defaultlib.chip
+Compiling module xil_defaultlib.top_tb_1000
+Compiling module xil_defaultlib.glbl
+Compiling module xil_defaultlib.control_monitor(C2=3,C2_MED=1,TL...
+Compiling module xil_defaultlib.audit_top
+Built simulation snapshot top_tb_1000_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 514.531 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '7' seconds
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 514.531 ; gain = 0.000
+# launch_simulation -mode behavioral -step simulate
+Command: launch_simulation -step simulate -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'top_tb_1000'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2024.1/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'top_tb_1000' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/0_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/1_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/2_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/3_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/4_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/5_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/6_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/7_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/8_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/9_0.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_1.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_2.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv1_weight_3.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_11.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_12.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_13.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_21.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_22.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_23.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_31.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_32.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/conv2_weight_33.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/fc_bias.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/fc_weight.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim/input_1000.txt'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "top_tb_1000_behav -key {Behavioral:sim_1:Functional:top_tb_1000} -tclbatch {top_tb_1000.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source top_tb_1000.tcl
+## set curr_wave [current_wave_config]
+## if { [string length $curr_wave] == 0 } {
+##   if { [llength [get_objects]] > 0} {
+##     add_wave /
+##     set_property needs_save false [current_wave_config]
+##   } else {
+##      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+##   }
+## }
+WARNING: [Wavedata 42-489] Can't add object "/top_tb_1000/pixels" to the wave window because it has 6272000 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+## run 0ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'top_tb_1000_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+# run all
+1st input image : original value = 9, decision = 9 at 18665 ps ==> Success
+2nd input image : original value = 5, decision = 5 at 27145 ps ==> Success
+3rd input image : original value = 4, decision = 4 at 35625 ps ==> Success
+4th input image : original value = 9, decision = 9 at 44105 ps ==> Success
+5th input image : original value = 2, decision = 2 at 52585 ps ==> Success
+6th input image : original value = 7, decision = 7 at 61065 ps ==> Success
+7th input image : original value = 8, decision = 8 at 69545 ps ==> Success
+8th input image : original value = 2, decision = 2 at 78025 ps ==> Success
+9th input image : original value = 2, decision = 7 at 86505 ps ==> Fail
+10th input image : original value = 1, decision = 1 at 94985 ps ==> Success
+11st input image : original value = 0, decision = 0 at 103465 ps ==> Success
+12nd input image : original value = 4, decision = 4 at 111945 ps ==> Success
+13rd input image : original value = 8, decision = 8 at 120425 ps ==> Success
+14th input image : original value = 8, decision = 8 at 128905 ps ==> Success
+15th input image : original value = 5, decision = 5 at 137385 ps ==> Success
+16th input image : original value = 0, decision = 0 at 145865 ps ==> Success
+17th input image : original value = 9, decision = 9 at 154345 ps ==> Success
+18th input image : original value = 5, decision = 5 at 162825 ps ==> Success
+19th input image : original value = 4, decision = 4 at 171305 ps ==> Success
+20th input image : original value = 7, decision = 7 at 179785 ps ==> Success
+21st input image : original value = 2, decision = 2 at 188265 ps ==> Success
+22nd input image : original value = 0, decision = 0 at 196745 ps ==> Success
+23rd input image : original value = 6, decision = 6 at 205225 ps ==> Success
+24th input image : original value = 1, decision = 1 at 213705 ps ==> Success
+25th input image : original value = 6, decision = 6 at 222185 ps ==> Success
+26th input image : original value = 0, decision = 0 at 230665 ps ==> Success
+27th input image : original value = 7, decision = 7 at 239145 ps ==> Success
+28th input image : original value = 8, decision = 8 at 247625 ps ==> Success
+29th input image : original value = 1, decision = 1 at 256105 ps ==> Success
+30th input image : original value = 4, decision = 4 at 264585 ps ==> Success
+31st input image : original value = 0, decision = 0 at 273065 ps ==> Success
+32nd input image : original value = 7, decision = 7 at 281545 ps ==> Success
+33rd input image : original value = 4, decision = 4 at 290025 ps ==> Success
+34th input image : original value = 7, decision = 7 at 298505 ps ==> Success
+35th input image : original value = 4, decision = 4 at 306985 ps ==> Success
+36th input image : original value = 6, decision = 6 at 315465 ps ==> Success
+37th input image : original value = 1, decision = 1 at 323945 ps ==> Success
+38th input image : original value = 4, decision = 4 at 332425 ps ==> Success
+39th input image : original value = 2, decision = 2 at 340905 ps ==> Success
+40th input image : original value = 6, decision = 6 at 349385 ps ==> Success
+41st input image : original value = 2, decision = 2 at 357865 ps ==> Success
+42nd input image : original value = 8, decision = 8 at 366345 ps ==> Success
+43rd input image : original value = 2, decision = 2 at 374825 ps ==> Success
+44th input image : original value = 3, decision = 3 at 383305 ps ==> Success
+45th input image : original value = 2, decision = 2 at 391785 ps ==> Success
+46th input image : original value = 5, decision = 5 at 401975 ps ==> Success
+47th input image : original value = 9, decision = 9 at 410455 ps ==> Success
+48th input image : original value = 4, decision = 4 at 418935 ps ==> Success
+49th input image : original value = 3, decision = 3 at 427415 ps ==> Success
+50th input image : original value = 2, decision = 1 at 437605 ps ==> Fail
+51st input image : original value = 8, decision = 8 at 446085 ps ==> Success
+52nd input image : original value = 4, decision = 4 at 454565 ps ==> Success
+53rd input image : original value = 7, decision = 7 at 463045 ps ==> Success
+54th input image : original value = 7, decision = 7 at 471525 ps ==> Success
+55th input image : original value = 9, decision = 9 at 480005 ps ==> Success
+56th input image : original value = 9, decision = 9 at 488485 ps ==> Success
+57th input image : original value = 9, decision = 9 at 496965 ps ==> Success
+58th input image : original value = 7, decision = 7 at 505445 ps ==> Success
+59th input image : original value = 3, decision = 3 at 513925 ps ==> Success
+60th input image : original value = 6, decision = 6 at 522405 ps ==> Success
+61st input image : original value = 4, decision = 4 at 530885 ps ==> Success
+62nd input image : original value = 2, decision = 2 at 539365 ps ==> Success
+63rd input image : original value = 4, decision = 4 at 547845 ps ==> Success
+64th input image : original value = 4, decision = 4 at 556325 ps ==> Success
+65th input image : original value = 9, decision = 9 at 564805 ps ==> Success
+66th input image : original value = 8, decision = 8 at 573285 ps ==> Success
+67th input image : original value = 9, decision = 9 at 581765 ps ==> Success
+68th input image : original value = 4, decision = 4 at 590245 ps ==> Success
+69th input image : original value = 0, decision = 0 at 598725 ps ==> Success
+70th input image : original value = 5, decision = 5 at 607205 ps ==> Success
+71st input image : original value = 8, decision = 8 at 615685 ps ==> Success
+72nd input image : original value = 0, decision = 0 at 624165 ps ==> Success
+73rd input image : original value = 3, decision = 3 at 632645 ps ==> Success
+74th input image : original value = 7, decision = 7 at 641125 ps ==> Success
+75th input image : original value = 4, decision = 4 at 649605 ps ==> Success
+76th input image : original value = 3, decision = 3 at 658085 ps ==> Success
+77th input image : original value = 2, decision = 2 at 666565 ps ==> Success
+78th input image : original value = 1, decision = 1 at 675045 ps ==> Success
+79th input image : original value = 3, decision = 3 at 683525 ps ==> Success
+80th input image : original value = 5, decision = 5 at 692005 ps ==> Success
+81st input image : original value = 7, decision = 7 at 700485 ps ==> Success
+82nd input image : original value = 6, decision = 6 at 708965 ps ==> Success
+83rd input image : original value = 9, decision = 9 at 717445 ps ==> Success
+84th input image : original value = 0, decision = 0 at 725925 ps ==> Success
+85th input image : original value = 7, decision = 7 at 736115 ps ==> Success
+86th input image : original value = 1, decision = 1 at 744595 ps ==> Success
+87th input image : original value = 5, decision = 5 at 753075 ps ==> Success
+88th input image : original value = 5, decision = 5 at 761555 ps ==> Success
+89th input image : original value = 8, decision = 8 at 770035 ps ==> Success
+90th input image : original value = 3, decision = 3 at 778515 ps ==> Success
+91st input image : original value = 5, decision = 5 at 786995 ps ==> Success
+92nd input image : original value = 5, decision = 5 at 795475 ps ==> Success
+93rd input image : original value = 6, decision = 6 at 803955 ps ==> Success
+94th input image : original value = 9, decision = 9 at 812435 ps ==> Success
+95th input image : original value = 0, decision = 0 at 820915 ps ==> Success
+96th input image : original value = 4, decision = 4 at 829395 ps ==> Success
+97th input image : original value = 4, decision = 4 at 837875 ps ==> Success
+98th input image : original value = 4, decision = 4 at 846355 ps ==> Success
+99th input image : original value = 9, decision = 9 at 854835 ps ==> Success
+100th input image : original value = 0, decision = 0 at 863315 ps ==> Success
+101st input image : original value = 5, decision = 5 at 873505 ps ==> Success
+102nd input image : original value = 9, decision = 9 at 881985 ps ==> Success
+103rd input image : original value = 4, decision = 4 at 890465 ps ==> Success
+104th input image : original value = 9, decision = 9 at 898945 ps ==> Success
+105th input image : original value = 3, decision = 3 at 907425 ps ==> Success
+106th input image : original value = 2, decision = 2 at 915905 ps ==> Success
+107th input image : original value = 8, decision = 8 at 924385 ps ==> Success
+108th input image : original value = 8, decision = 8 at 932865 ps ==> Success
+109th input image : original value = 1, decision = 1 at 941345 ps ==> Success
+110th input image : original value = 1, decision = 1 at 949825 ps ==> Success
+111st input image : original value = 7, decision = 7 at 958305 ps ==> Success
+112nd input image : original value = 6, decision = 6 at 966785 ps ==> Success
+113rd input image : original value = 3, decision = 3 at 975265 ps ==> Success
+114th input image : original value = 5, decision = 5 at 983745 ps ==> Success
+115th input image : original value = 4, decision = 4 at 992225 ps ==> Success
+116th input image : original value = 5, decision = 5 at 1000705 ps ==> Success
+117th input image : original value = 6, decision = 6 at 1009185 ps ==> Success
+118th input image : original value = 1, decision = 1 at 1017665 ps ==> Success
+119th input image : original value = 0, decision = 0 at 1026145 ps ==> Success
+120th input image : original value = 9, decision = 9 at 1034625 ps ==> Success
+121st input image : original value = 6, decision = 6 at 1043105 ps ==> Success
+122nd input image : original value = 3, decision = 3 at 1051585 ps ==> Success
+123rd input image : original value = 4, decision = 4 at 1060065 ps ==> Success
+124th input image : original value = 3, decision = 3 at 1068545 ps ==> Success
+125th input image : original value = 5, decision = 5 at 1077025 ps ==> Success
+126th input image : original value = 4, decision = 4 at 1085505 ps ==> Success
+127th input image : original value = 2, decision = 7 at 1093985 ps ==> Fail
+128th input image : original value = 1, decision = 1 at 1102465 ps ==> Success
+129th input image : original value = 7, decision = 7 at 1110945 ps ==> Success
+130th input image : original value = 6, decision = 6 at 1119425 ps ==> Success
+131st input image : original value = 4, decision = 4 at 1127905 ps ==> Success
+132nd input image : original value = 3, decision = 3 at 1136385 ps ==> Success
+133rd input image : original value = 0, decision = 0 at 1144865 ps ==> Success
+134th input image : original value = 6, decision = 6 at 1153345 ps ==> Success
+135th input image : original value = 4, decision = 4 at 1161825 ps ==> Success
+136th input image : original value = 7, decision = 7 at 1170305 ps ==> Success
+137th input image : original value = 2, decision = 2 at 1178785 ps ==> Success
+138th input image : original value = 9, decision = 9 at 1187265 ps ==> Success
+139th input image : original value = 0, decision = 0 at 1195745 ps ==> Success
+140th input image : original value = 1, decision = 1 at 1204225 ps ==> Success
+141st input image : original value = 4, decision = 4 at 1212705 ps ==> Success
+142nd input image : original value = 5, decision = 5 at 1221185 ps ==> Success
+143rd input image : original value = 9, decision = 9 at 1229665 ps ==> Success
+144th input image : original value = 6, decision = 6 at 1238145 ps ==> Success
+145th input image : original value = 3, decision = 3 at 1246625 ps ==> Success
+146th input image : original value = 9, decision = 9 at 1255105 ps ==> Success
+147th input image : original value = 7, decision = 7 at 1263585 ps ==> Success
+148th input image : original value = 7, decision = 7 at 1272065 ps ==> Success
+149th input image : original value = 4, decision = 4 at 1280545 ps ==> Success
+150th input image : original value = 6, decision = 6 at 1289025 ps ==> Success
+151st input image : original value = 3, decision = 3 at 1297505 ps ==> Success
+152nd input image : original value = 8, decision = 8 at 1305985 ps ==> Success
+153rd input image : original value = 5, decision = 5 at 1314465 ps ==> Success
+154th input image : original value = 0, decision = 0 at 1322945 ps ==> Success
+155th input image : original value = 4, decision = 4 at 1331425 ps ==> Success
+156th input image : original value = 0, decision = 0 at 1339905 ps ==> Success
+157th input image : original value = 7, decision = 7 at 1348385 ps ==> Success
+158th input image : original value = 8, decision = 8 at 1356865 ps ==> Success
+159th input image : original value = 8, decision = 8 at 1365345 ps ==> Success
+160th input image : original value = 2, decision = 2 at 1373825 ps ==> Success
+161st input image : original value = 8, decision = 8 at 1382305 ps ==> Success
+162nd input image : original value = 2, decision = 2 at 1390785 ps ==> Success
+163rd input image : original value = 2, decision = 2 at 1399265 ps ==> Success
+164th input image : original value = 5, decision = 5 at 1407745 ps ==> Success
+165th input image : original value = 0, decision = 0 at 1416225 ps ==> Success
+166th input image : original value = 9, decision = 9 at 1424705 ps ==> Success
+167th input image : original value = 8, decision = 8 at 1433185 ps ==> Success
+168th input image : original value = 9, decision = 9 at 1441665 ps ==> Success
+169th input image : original value = 2, decision = 2 at 1450145 ps ==> Success
+170th input image : original value = 9, decision = 9 at 1458625 ps ==> Success
+171st input image : original value = 3, decision = 3 at 1467105 ps ==> Success
+172nd input image : original value = 2, decision = 2 at 1475585 ps ==> Success
+173rd input image : original value = 9, decision = 9 at 1484065 ps ==> Success
+174th input image : original value = 1, decision = 1 at 1492545 ps ==> Success
+175th input image : original value = 0, decision = 0 at 1501025 ps ==> Success
+176th input image : original value = 1, decision = 1 at 1509505 ps ==> Success
+177th input image : original value = 1, decision = 1 at 1517985 ps ==> Success
+178th input image : original value = 4, decision = 4 at 1526465 ps ==> Success
+179th input image : original value = 3, decision = 3 at 1534945 ps ==> Success
+180th input image : original value = 1, decision = 1 at 1543425 ps ==> Success
+181st input image : original value = 5, decision = 5 at 1551905 ps ==> Success
+182nd input image : original value = 4, decision = 4 at 1560385 ps ==> Success
+183rd input image : original value = 2, decision = 7 at 1568865 ps ==> Fail
+184th input image : original value = 6, decision = 6 at 1577345 ps ==> Success
+185th input image : original value = 9, decision = 9 at 1585825 ps ==> Success
+186th input image : original value = 5, decision = 5 at 1594305 ps ==> Success
+187th input image : original value = 6, decision = 6 at 1602785 ps ==> Success
+188th input image : original value = 4, decision = 4 at 1611265 ps ==> Success
+189th input image : original value = 9, decision = 9 at 1619745 ps ==> Success
+190th input image : original value = 9, decision = 9 at 1628225 ps ==> Success
+191st input image : original value = 1, decision = 1 at 1636705 ps ==> Success
+192nd input image : original value = 8, decision = 8 at 1645185 ps ==> Success
+193rd input image : original value = 5, decision = 5 at 1653665 ps ==> Success
+194th input image : original value = 8, decision = 8 at 1662145 ps ==> Success
+195th input image : original value = 3, decision = 3 at 1670625 ps ==> Success
+196th input image : original value = 4, decision = 4 at 1679105 ps ==> Success
+197th input image : original value = 7, decision = 7 at 1687585 ps ==> Success
+198th input image : original value = 4, decision = 4 at 1696065 ps ==> Success
+199th input image : original value = 3, decision = 3 at 1704545 ps ==> Success
+200th input image : original value = 1, decision = 1 at 1713025 ps ==> Success
+201st input image : original value = 1, decision = 1 at 1721505 ps ==> Success
+202nd input image : original value = 5, decision = 5 at 1729985 ps ==> Success
+203rd input image : original value = 5, decision = 5 at 1738465 ps ==> Success
+204th input image : original value = 8, decision = 8 at 1746945 ps ==> Success
+205th input image : original value = 0, decision = 0 at 1755425 ps ==> Success
+206th input image : original value = 8, decision = 8 at 1763905 ps ==> Success
+207th input image : original value = 0, decision = 0 at 1772385 ps ==> Success
+208th input image : original value = 0, decision = 0 at 1780865 ps ==> Success
+209th input image : original value = 3, decision = 3 at 1789345 ps ==> Success
+210th input image : original value = 6, decision = 6 at 1797825 ps ==> Success
+211st input image : original value = 0, decision = 0 at 1806305 ps ==> Success
+212nd input image : original value = 2, decision = 2 at 1814785 ps ==> Success
+213rd input image : original value = 4, decision = 4 at 1823265 ps ==> Success
+214th input image : original value = 9, decision = 9 at 1831745 ps ==> Success
+215th input image : original value = 4, decision = 4 at 1840225 ps ==> Success
+216th input image : original value = 9, decision = 9 at 1848705 ps ==> Success
+217th input image : original value = 5, decision = 5 at 1857185 ps ==> Success
+218th input image : original value = 3, decision = 3 at 1865665 ps ==> Success
+219th input image : original value = 1, decision = 1 at 1874145 ps ==> Success
+220th input image : original value = 0, decision = 0 at 1882625 ps ==> Success
+221st input image : original value = 3, decision = 3 at 1891105 ps ==> Success
+222nd input image : original value = 5, decision = 5 at 1899585 ps ==> Success
+223rd input image : original value = 9, decision = 9 at 1908065 ps ==> Success
+224th input image : original value = 9, decision = 9 at 1916545 ps ==> Success
+225th input image : original value = 8, decision = 8 at 1925025 ps ==> Success
+226th input image : original value = 9, decision = 9 at 1933505 ps ==> Success
+227th input image : original value = 9, decision = 9 at 1941985 ps ==> Success
+228th input image : original value = 2, decision = 2 at 1950465 ps ==> Success
+229th input image : original value = 5, decision = 5 at 1958945 ps ==> Success
+230th input image : original value = 7, decision = 7 at 1969135 ps ==> Success
+231st input image : original value = 1, decision = 1 at 1977615 ps ==> Success
+232nd input image : original value = 3, decision = 3 at 1986095 ps ==> Success
+233rd input image : original value = 6, decision = 6 at 1994575 ps ==> Success
+234th input image : original value = 0, decision = 0 at 2003055 ps ==> Success
+235th input image : original value = 4, decision = 4 at 2011535 ps ==> Success
+236th input image : original value = 0, decision = 0 at 2020015 ps ==> Success
+237th input image : original value = 6, decision = 6 at 2028495 ps ==> Success
+238th input image : original value = 5, decision = 5 at 2036975 ps ==> Success
+239th input image : original value = 5, decision = 5 at 2045455 ps ==> Success
+240th input image : original value = 2, decision = 7 at 2053935 ps ==> Fail
+241st input image : original value = 4, decision = 4 at 2062415 ps ==> Success
+242nd input image : original value = 9, decision = 9 at 2070895 ps ==> Success
+243rd input image : original value = 3, decision = 3 at 2079375 ps ==> Success
+244th input image : original value = 0, decision = 0 at 2087855 ps ==> Success
+245th input image : original value = 4, decision = 4 at 2096335 ps ==> Success
+246th input image : original value = 8, decision = 8 at 2104815 ps ==> Success
+247th input image : original value = 3, decision = 3 at 2113295 ps ==> Success
+248th input image : original value = 8, decision = 8 at 2121775 ps ==> Success
+249th input image : original value = 6, decision = 6 at 2130255 ps ==> Success
+250th input image : original value = 7, decision = 7 at 2138735 ps ==> Success
+251st input image : original value = 9, decision = 9 at 2147215 ps ==> Success
+252nd input image : original value = 1, decision = 1 at 2155695 ps ==> Success
+253rd input image : original value = 4, decision = 4 at 2164175 ps ==> Success
+254th input image : original value = 2, decision = 2 at 2172655 ps ==> Success
+255th input image : original value = 0, decision = 0 at 2181135 ps ==> Success
+256th input image : original value = 0, decision = 0 at 2189615 ps ==> Success
+257th input image : original value = 9, decision = 9 at 2198095 ps ==> Success
+258th input image : original value = 0, decision = 0 at 2206575 ps ==> Success
+259th input image : original value = 3, decision = 3 at 2215055 ps ==> Success
+260th input image : original value = 3, decision = 3 at 2223535 ps ==> Success
+261st input image : original value = 2, decision = 2 at 2232015 ps ==> Success
+262nd input image : original value = 2, decision = 2 at 2240495 ps ==> Success
+263rd input image : original value = 3, decision = 3 at 2248975 ps ==> Success
+264th input image : original value = 0, decision = 0 at 2257455 ps ==> Success
+265th input image : original value = 2, decision = 2 at 2265935 ps ==> Success
+266th input image : original value = 5, decision = 5 at 2274415 ps ==> Success
+267th input image : original value = 4, decision = 4 at 2282895 ps ==> Success
+268th input image : original value = 4, decision = 4 at 2291375 ps ==> Success
+269th input image : original value = 8, decision = 8 at 2299855 ps ==> Success
+270th input image : original value = 7, decision = 7 at 2310045 ps ==> Success
+271st input image : original value = 4, decision = 4 at 2318525 ps ==> Success
+272nd input image : original value = 9, decision = 9 at 2327005 ps ==> Success
+273rd input image : original value = 4, decision = 4 at 2335485 ps ==> Success
+274th input image : original value = 7, decision = 7 at 2343965 ps ==> Success
+275th input image : original value = 2, decision = 2 at 2352445 ps ==> Success
+276th input image : original value = 1, decision = 1 at 2360925 ps ==> Success
+277th input image : original value = 4, decision = 4 at 2369405 ps ==> Success
+278th input image : original value = 6, decision = 6 at 2377885 ps ==> Success
+279th input image : original value = 1, decision = 1 at 2386365 ps ==> Success
+280th input image : original value = 7, decision = 7 at 2394845 ps ==> Success
+281st input image : original value = 3, decision = 3 at 2403325 ps ==> Success
+282nd input image : original value = 3, decision = 3 at 2411805 ps ==> Success
+283rd input image : original value = 9, decision = 9 at 2420285 ps ==> Success
+284th input image : original value = 8, decision = 8 at 2428765 ps ==> Success
+285th input image : original value = 0, decision = 0 at 2437245 ps ==> Success
+286th input image : original value = 0, decision = 0 at 2445725 ps ==> Success
+287th input image : original value = 5, decision = 5 at 2454205 ps ==> Success
+288th input image : original value = 2, decision = 2 at 2462685 ps ==> Success
+289th input image : original value = 2, decision = 7 at 2471165 ps ==> Fail
+290th input image : original value = 4, decision = 4 at 2479645 ps ==> Success
+291st input image : original value = 0, decision = 0 at 2488125 ps ==> Success
+292nd input image : original value = 1, decision = 1 at 2496605 ps ==> Success
+293rd input image : original value = 3, decision = 3 at 2505085 ps ==> Success
+294th input image : original value = 6, decision = 6 at 2513565 ps ==> Success
+295th input image : original value = 5, decision = 5 at 2522045 ps ==> Success
+296th input image : original value = 7, decision = 7 at 2532235 ps ==> Success
+297th input image : original value = 0, decision = 0 at 2540715 ps ==> Success
+298th input image : original value = 4, decision = 4 at 2549195 ps ==> Success
+299th input image : original value = 8, decision = 8 at 2557675 ps ==> Success
+300th input image : original value = 4, decision = 4 at 2566155 ps ==> Success
+301st input image : original value = 0, decision = 0 at 2574635 ps ==> Success
+302nd input image : original value = 2, decision = 7 at 2583115 ps ==> Fail
+303rd input image : original value = 1, decision = 1 at 2591595 ps ==> Success
+304th input image : original value = 0, decision = 0 at 2600075 ps ==> Success
+305th input image : original value = 7, decision = 7 at 2608555 ps ==> Success
+306th input image : original value = 8, decision = 8 at 2617035 ps ==> Success
+307th input image : original value = 4, decision = 4 at 2625515 ps ==> Success
+308th input image : original value = 7, decision = 7 at 2633995 ps ==> Success
+309th input image : original value = 2, decision = 2 at 2642475 ps ==> Success
+310th input image : original value = 5, decision = 5 at 2650955 ps ==> Success
+311st input image : original value = 7, decision = 7 at 2659435 ps ==> Success
+312nd input image : original value = 8, decision = 8 at 2667915 ps ==> Success
+313rd input image : original value = 2, decision = 2 at 2676395 ps ==> Success
+314th input image : original value = 1, decision = 2 at 2686585 ps ==> Fail
+315th input image : original value = 5, decision = 5 at 2695065 ps ==> Success
+316th input image : original value = 3, decision = 3 at 2703545 ps ==> Success
+317th input image : original value = 5, decision = 5 at 2712025 ps ==> Success
+318th input image : original value = 3, decision = 3 at 2720505 ps ==> Success
+319th input image : original value = 2, decision = 7 at 2728985 ps ==> Fail
+320th input image : original value = 8, decision = 8 at 2737465 ps ==> Success
+321st input image : original value = 4, decision = 4 at 2745945 ps ==> Success
+322nd input image : original value = 9, decision = 9 at 2754425 ps ==> Success
+323rd input image : original value = 2, decision = 2 at 2762905 ps ==> Success
+324th input image : original value = 0, decision = 0 at 2771385 ps ==> Success
+325th input image : original value = 2, decision = 2 at 2779865 ps ==> Success
+326th input image : original value = 5, decision = 5 at 2788345 ps ==> Success
+327th input image : original value = 8, decision = 8 at 2796825 ps ==> Success
+328th input image : original value = 5, decision = 5 at 2805305 ps ==> Success
+329th input image : original value = 3, decision = 3 at 2813785 ps ==> Success
+330th input image : original value = 0, decision = 0 at 2822265 ps ==> Success
+331st input image : original value = 5, decision = 5 at 2830745 ps ==> Success
+332nd input image : original value = 4, decision = 4 at 2839225 ps ==> Success
+333rd input image : original value = 4, decision = 4 at 2847705 ps ==> Success
+334th input image : original value = 3, decision = 3 at 2856185 ps ==> Success
+335th input image : original value = 9, decision = 9 at 2864665 ps ==> Success
+336th input image : original value = 7, decision = 7 at 2873145 ps ==> Success
+337th input image : original value = 4, decision = 4 at 2881625 ps ==> Success
+338th input image : original value = 5, decision = 5 at 2890105 ps ==> Success
+339th input image : original value = 1, decision = 1 at 2898585 ps ==> Success
+340th input image : original value = 7, decision = 7 at 2907065 ps ==> Success
+341st input image : original value = 8, decision = 8 at 2915545 ps ==> Success
+342nd input image : original value = 1, decision = 1 at 2924025 ps ==> Success
+343rd input image : original value = 6, decision = 6 at 2932505 ps ==> Success
+344th input image : original value = 1, decision = 1 at 2940985 ps ==> Success
+345th input image : original value = 7, decision = 7 at 2949465 ps ==> Success
+346th input image : original value = 6, decision = 6 at 2957945 ps ==> Success
+347th input image : original value = 9, decision = 9 at 2966425 ps ==> Success
+348th input image : original value = 4, decision = 4 at 2974905 ps ==> Success
+349th input image : original value = 8, decision = 8 at 2983385 ps ==> Success
+350th input image : original value = 4, decision = 4 at 2991865 ps ==> Success
+351st input image : original value = 7, decision = 7 at 3000345 ps ==> Success
+352nd input image : original value = 4, decision = 4 at 3008825 ps ==> Success
+353rd input image : original value = 0, decision = 0 at 3017305 ps ==> Success
+354th input image : original value = 6, decision = 6 at 3025785 ps ==> Success
+355th input image : original value = 0, decision = 0 at 3034265 ps ==> Success
+356th input image : original value = 9, decision = 9 at 3042745 ps ==> Success
+357th input image : original value = 0, decision = 0 at 3051225 ps ==> Success
+358th input image : original value = 7, decision = 7 at 3059705 ps ==> Success
+359th input image : original value = 4, decision = 4 at 3068185 ps ==> Success
+360th input image : original value = 1, decision = 1 at 3076665 ps ==> Success
+361st input image : original value = 2, decision = 7 at 3085145 ps ==> Fail
+362nd input image : original value = 4, decision = 4 at 3093625 ps ==> Success
+363rd input image : original value = 0, decision = 0 at 3102105 ps ==> Success
+364th input image : original value = 3, decision = 3 at 3110585 ps ==> Success
+365th input image : original value = 0, decision = 0 at 3119065 ps ==> Success
+366th input image : original value = 5, decision = 5 at 3127545 ps ==> Success
+367th input image : original value = 3, decision = 3 at 3136025 ps ==> Success
+368th input image : original value = 2, decision = 2 at 3144505 ps ==> Success
+369th input image : original value = 8, decision = 8 at 3152985 ps ==> Success
+370th input image : original value = 4, decision = 4 at 3161465 ps ==> Success
+371st input image : original value = 4, decision = 4 at 3169945 ps ==> Success
+372nd input image : original value = 9, decision = 9 at 3178425 ps ==> Success
+373rd input image : original value = 8, decision = 8 at 3186905 ps ==> Success
+374th input image : original value = 8, decision = 8 at 3195385 ps ==> Success
+375th input image : original value = 1, decision = 1 at 3203865 ps ==> Success
+376th input image : original value = 6, decision = 6 at 3212345 ps ==> Success
+377th input image : original value = 2, decision = 2 at 3220825 ps ==> Success
+378th input image : original value = 6, decision = 6 at 3229305 ps ==> Success
+379th input image : original value = 5, decision = 5 at 3237785 ps ==> Success
+380th input image : original value = 9, decision = 9 at 3246265 ps ==> Success
+381st input image : original value = 4, decision = 4 at 3254745 ps ==> Success
+382nd input image : original value = 7, decision = 7 at 3263225 ps ==> Success
+383rd input image : original value = 5, decision = 5 at 3271705 ps ==> Success
+384th input image : original value = 5, decision = 5 at 3280185 ps ==> Success
+385th input image : original value = 3, decision = 3 at 3288665 ps ==> Success
+386th input image : original value = 1, decision = 1 at 3297145 ps ==> Success
+387th input image : original value = 5, decision = 5 at 3305625 ps ==> Success
+388th input image : original value = 7, decision = 7 at 3314105 ps ==> Success
+389th input image : original value = 8, decision = 8 at 3322585 ps ==> Success
+390th input image : original value = 0, decision = 0 at 3331065 ps ==> Success
+391st input image : original value = 2, decision = 2 at 3339545 ps ==> Success
+392nd input image : original value = 1, decision = 1 at 3348025 ps ==> Success
+393rd input image : original value = 1, decision = 1 at 3356505 ps ==> Success
+394th input image : original value = 7, decision = 7 at 3364985 ps ==> Success
+395th input image : original value = 7, decision = 7 at 3373465 ps ==> Success
+396th input image : original value = 9, decision = 9 at 3381945 ps ==> Success
+397th input image : original value = 7, decision = 7 at 3390425 ps ==> Success
+398th input image : original value = 9, decision = 9 at 3398905 ps ==> Success
+399th input image : original value = 0, decision = 0 at 3407385 ps ==> Success
+400th input image : original value = 0, decision = 0 at 3415865 ps ==> Success
+401st input image : original value = 6, decision = 6 at 3424345 ps ==> Success
+402nd input image : original value = 7, decision = 7 at 3434535 ps ==> Success
+403rd input image : original value = 9, decision = 9 at 3443015 ps ==> Success
+404th input image : original value = 3, decision = 3 at 3451495 ps ==> Success
+405th input image : original value = 5, decision = 5 at 3459975 ps ==> Success
+406th input image : original value = 9, decision = 9 at 3468455 ps ==> Success
+407th input image : original value = 2, decision = 2 at 3476935 ps ==> Success
+408th input image : original value = 1, decision = 2 at 3487125 ps ==> Fail
+409th input image : original value = 6, decision = 6 at 3495605 ps ==> Success
+410th input image : original value = 2, decision = 2 at 3504085 ps ==> Success
+411st input image : original value = 5, decision = 5 at 3514275 ps ==> Success
+412nd input image : original value = 3, decision = 3 at 3522755 ps ==> Success
+413rd input image : original value = 2, decision = 1 at 3532945 ps ==> Fail
+414th input image : original value = 7, decision = 7 at 3541425 ps ==> Success
+415th input image : original value = 4, decision = 4 at 3549905 ps ==> Success
+416th input image : original value = 8, decision = 8 at 3558385 ps ==> Success
+417th input image : original value = 9, decision = 9 at 3566865 ps ==> Success
+418th input image : original value = 9, decision = 9 at 3575345 ps ==> Success
+419th input image : original value = 1, decision = 1 at 3583825 ps ==> Success
+420th input image : original value = 1, decision = 1 at 3592305 ps ==> Success
+421st input image : original value = 7, decision = 7 at 3600785 ps ==> Success
+422nd input image : original value = 5, decision = 5 at 3610975 ps ==> Success
+423rd input image : original value = 0, decision = 0 at 3619455 ps ==> Success
+424th input image : original value = 6, decision = 6 at 3627935 ps ==> Success
+425th input image : original value = 4, decision = 4 at 3636415 ps ==> Success
+426th input image : original value = 0, decision = 0 at 3644895 ps ==> Success
+427th input image : original value = 8, decision = 8 at 3653375 ps ==> Success
+428th input image : original value = 1, decision = 1 at 3661855 ps ==> Success
+429th input image : original value = 5, decision = 5 at 3670335 ps ==> Success
+430th input image : original value = 8, decision = 8 at 3678815 ps ==> Success
+431st input image : original value = 9, decision = 9 at 3687295 ps ==> Success
+432nd input image : original value = 1, decision = 1 at 3695775 ps ==> Success
+433rd input image : original value = 8, decision = 8 at 3704255 ps ==> Success
+434th input image : original value = 6, decision = 6 at 3712735 ps ==> Success
+435th input image : original value = 2, decision = 2 at 3721215 ps ==> Success
+436th input image : original value = 4, decision = 4 at 3729695 ps ==> Success
+437th input image : original value = 4, decision = 4 at 3738175 ps ==> Success
+438th input image : original value = 0, decision = 0 at 3746655 ps ==> Success
+439th input image : original value = 5, decision = 5 at 3755135 ps ==> Success
+440th input image : original value = 1, decision = 1 at 3763615 ps ==> Success
+441st input image : original value = 6, decision = 6 at 3772095 ps ==> Success
+442nd input image : original value = 6, decision = 6 at 3780575 ps ==> Success
+443rd input image : original value = 6, decision = 6 at 3789055 ps ==> Success
+444th input image : original value = 0, decision = 0 at 3797535 ps ==> Success
+445th input image : original value = 8, decision = 8 at 3806015 ps ==> Success
+446th input image : original value = 0, decision = 0 at 3814495 ps ==> Success
+447th input image : original value = 2, decision = 2 at 3822975 ps ==> Success
+448th input image : original value = 3, decision = 3 at 3831455 ps ==> Success
+449th input image : original value = 8, decision = 8 at 3839935 ps ==> Success
+450th input image : original value = 7, decision = 7 at 3848415 ps ==> Success
+451st input image : original value = 4, decision = 4 at 3856895 ps ==> Success
+452nd input image : original value = 5, decision = 5 at 3865375 ps ==> Success
+453rd input image : original value = 9, decision = 9 at 3873855 ps ==> Success
+454th input image : original value = 6, decision = 6 at 3882335 ps ==> Success
+455th input image : original value = 8, decision = 8 at 3890815 ps ==> Success
+456th input image : original value = 7, decision = 7 at 3899295 ps ==> Success
+457th input image : original value = 3, decision = 3 at 3907775 ps ==> Success
+458th input image : original value = 1, decision = 1 at 3916255 ps ==> Success
+459th input image : original value = 1, decision = 1 at 3924735 ps ==> Success
+460th input image : original value = 2, decision = 2 at 3933215 ps ==> Success
+461st input image : original value = 7, decision = 7 at 3941695 ps ==> Success
+462nd input image : original value = 9, decision = 9 at 3950175 ps ==> Success
+463rd input image : original value = 8, decision = 8 at 3958655 ps ==> Success
+464th input image : original value = 1, decision = 1 at 3967135 ps ==> Success
+465th input image : original value = 1, decision = 1 at 3975615 ps ==> Success
+466th input image : original value = 9, decision = 9 at 3984095 ps ==> Success
+467th input image : original value = 2, decision = 2 at 3992575 ps ==> Success
+468th input image : original value = 8, decision = 8 at 4001055 ps ==> Success
+469th input image : original value = 8, decision = 8 at 4009535 ps ==> Success
+470th input image : original value = 1, decision = 1 at 4018015 ps ==> Success
+471st input image : original value = 9, decision = 9 at 4026495 ps ==> Success
+472nd input image : original value = 0, decision = 0 at 4034975 ps ==> Success
+473rd input image : original value = 0, decision = 0 at 4043455 ps ==> Success
+474th input image : original value = 3, decision = 3 at 4051935 ps ==> Success
+475th input image : original value = 8, decision = 8 at 4060415 ps ==> Success
+476th input image : original value = 8, decision = 8 at 4068895 ps ==> Success
+477th input image : original value = 4, decision = 4 at 4077375 ps ==> Success
+478th input image : original value = 9, decision = 9 at 4085855 ps ==> Success
+479th input image : original value = 8, decision = 8 at 4094335 ps ==> Success
+480th input image : original value = 3, decision = 3 at 4102815 ps ==> Success
+481st input image : original value = 1, decision = 1 at 4111295 ps ==> Success
+482nd input image : original value = 8, decision = 8 at 4119775 ps ==> Success
+483rd input image : original value = 2, decision = 2 at 4128255 ps ==> Success
+484th input image : original value = 4, decision = 4 at 4136735 ps ==> Success
+485th input image : original value = 6, decision = 6 at 4145215 ps ==> Success
+486th input image : original value = 0, decision = 0 at 4153695 ps ==> Success
+487th input image : original value = 8, decision = 8 at 4162175 ps ==> Success
+488th input image : original value = 7, decision = 7 at 4170655 ps ==> Success
+489th input image : original value = 7, decision = 7 at 4179135 ps ==> Success
+490th input image : original value = 0, decision = 0 at 4187615 ps ==> Success
+491st input image : original value = 1, decision = 1 at 4196095 ps ==> Success
+492nd input image : original value = 3, decision = 3 at 4204575 ps ==> Success
+493rd input image : original value = 2, decision = 2 at 4213055 ps ==> Success
+494th input image : original value = 9, decision = 9 at 4221535 ps ==> Success
+495th input image : original value = 9, decision = 9 at 4230015 ps ==> Success
+496th input image : original value = 9, decision = 9 at 4238495 ps ==> Success
+497th input image : original value = 0, decision = 0 at 4246975 ps ==> Success
+498th input image : original value = 0, decision = 0 at 4255455 ps ==> Success
+499th input image : original value = 3, decision = 3 at 4263935 ps ==> Success
+500th input image : original value = 1, decision = 1 at 4272415 ps ==> Success
+501st input image : original value = 0, decision = 0 at 4280895 ps ==> Success
+502nd input image : original value = 2, decision = 2 at 4289375 ps ==> Success
+503rd input image : original value = 9, decision = 9 at 4297855 ps ==> Success
+504th input image : original value = 9, decision = 9 at 4306335 ps ==> Success
+505th input image : original value = 3, decision = 3 at 4314815 ps ==> Success
+506th input image : original value = 1, decision = 2 at 4325005 ps ==> Fail
+507th input image : original value = 1, decision = 1 at 4333485 ps ==> Success
+508th input image : original value = 3, decision = 3 at 4341965 ps ==> Success
+509th input image : original value = 4, decision = 4 at 4350445 ps ==> Success
+510th input image : original value = 9, decision = 9 at 4358925 ps ==> Success
+511st input image : original value = 2, decision = 2 at 4367405 ps ==> Success
+512nd input image : original value = 7, decision = 7 at 4375885 ps ==> Success
+513rd input image : original value = 1, decision = 1 at 4384365 ps ==> Success
+514th input image : original value = 3, decision = 3 at 4392845 ps ==> Success
+515th input image : original value = 9, decision = 9 at 4401325 ps ==> Success
+516th input image : original value = 5, decision = 5 at 4409805 ps ==> Success
+517th input image : original value = 1, decision = 1 at 4418285 ps ==> Success
+518th input image : original value = 1, decision = 1 at 4426765 ps ==> Success
+519th input image : original value = 2, decision = 1 at 4436955 ps ==> Fail
+520th input image : original value = 3, decision = 3 at 4445435 ps ==> Success
+521st input image : original value = 3, decision = 3 at 4453915 ps ==> Success
+522nd input image : original value = 0, decision = 0 at 4462395 ps ==> Success
+523rd input image : original value = 8, decision = 8 at 4470875 ps ==> Success
+524th input image : original value = 4, decision = 4 at 4479355 ps ==> Success
+525th input image : original value = 1, decision = 1 at 4487835 ps ==> Success
+526th input image : original value = 9, decision = 9 at 4496315 ps ==> Success
+527th input image : original value = 8, decision = 8 at 4504795 ps ==> Success
+528th input image : original value = 4, decision = 4 at 4513275 ps ==> Success
+529th input image : original value = 0, decision = 0 at 4521755 ps ==> Success
+530th input image : original value = 6, decision = 6 at 4530235 ps ==> Success
+531st input image : original value = 8, decision = 8 at 4538715 ps ==> Success
+532nd input image : original value = 1, decision = 1 at 4547195 ps ==> Success
+533rd input image : original value = 7, decision = 7 at 4557385 ps ==> Success
+534th input image : original value = 6, decision = 6 at 4565865 ps ==> Success
+535th input image : original value = 5, decision = 5 at 4574345 ps ==> Success
+536th input image : original value = 6, decision = 6 at 4582825 ps ==> Success
+537th input image : original value = 4, decision = 4 at 4591305 ps ==> Success
+538th input image : original value = 4, decision = 4 at 4599785 ps ==> Success
+539th input image : original value = 8, decision = 8 at 4608265 ps ==> Success
+540th input image : original value = 0, decision = 0 at 4616745 ps ==> Success
+541st input image : original value = 0, decision = 0 at 4625225 ps ==> Success
+542nd input image : original value = 3, decision = 3 at 4633705 ps ==> Success
+543rd input image : original value = 6, decision = 6 at 4642185 ps ==> Success
+544th input image : original value = 3, decision = 3 at 4650665 ps ==> Success
+545th input image : original value = 7, decision = 7 at 4659145 ps ==> Success
+546th input image : original value = 4, decision = 4 at 4667625 ps ==> Success
+547th input image : original value = 3, decision = 3 at 4676105 ps ==> Success
+548th input image : original value = 9, decision = 9 at 4684585 ps ==> Success
+549th input image : original value = 9, decision = 9 at 4693065 ps ==> Success
+550th input image : original value = 0, decision = 0 at 4701545 ps ==> Success
+551st input image : original value = 2, decision = 7 at 4710025 ps ==> Fail
+552nd input image : original value = 5, decision = 5 at 4718505 ps ==> Success
+553rd input image : original value = 4, decision = 4 at 4726985 ps ==> Success
+554th input image : original value = 6, decision = 6 at 4735465 ps ==> Success
+555th input image : original value = 4, decision = 4 at 4743945 ps ==> Success
+556th input image : original value = 2, decision = 2 at 4752425 ps ==> Success
+557th input image : original value = 6, decision = 6 at 4760905 ps ==> Success
+558th input image : original value = 6, decision = 6 at 4769385 ps ==> Success
+559th input image : original value = 8, decision = 8 at 4777865 ps ==> Success
+560th input image : original value = 0, decision = 0 at 4786345 ps ==> Success
+561st input image : original value = 3, decision = 3 at 4794825 ps ==> Success
+562nd input image : original value = 2, decision = 2 at 4803305 ps ==> Success
+563rd input image : original value = 3, decision = 3 at 4811785 ps ==> Success
+564th input image : original value = 8, decision = 8 at 4820265 ps ==> Success
+565th input image : original value = 9, decision = 9 at 4828745 ps ==> Success
+566th input image : original value = 2, decision = 2 at 4837225 ps ==> Success
+567th input image : original value = 8, decision = 8 at 4845705 ps ==> Success
+568th input image : original value = 1, decision = 1 at 4854185 ps ==> Success
+569th input image : original value = 4, decision = 4 at 4862665 ps ==> Success
+570th input image : original value = 1, decision = 1 at 4871145 ps ==> Success
+571st input image : original value = 9, decision = 9 at 4879625 ps ==> Success
+572nd input image : original value = 3, decision = 3 at 4888105 ps ==> Success
+573rd input image : original value = 2, decision = 1 at 4898295 ps ==> Fail
+574th input image : original value = 8, decision = 8 at 4906775 ps ==> Success
+575th input image : original value = 4, decision = 4 at 4915255 ps ==> Success
+576th input image : original value = 7, decision = 7 at 4923735 ps ==> Success
+577th input image : original value = 8, decision = 8 at 4932215 ps ==> Success
+578th input image : original value = 4, decision = 4 at 4940695 ps ==> Success
+579th input image : original value = 0, decision = 0 at 4949175 ps ==> Success
+580th input image : original value = 0, decision = 0 at 4957655 ps ==> Success
+581st input image : original value = 1, decision = 2 at 4967845 ps ==> Fail
+582nd input image : original value = 4, decision = 4 at 4976325 ps ==> Success
+583rd input image : original value = 7, decision = 7 at 4984805 ps ==> Success
+584th input image : original value = 8, decision = 8 at 4993285 ps ==> Success
+585th input image : original value = 8, decision = 8 at 5001765 ps ==> Success
+586th input image : original value = 7, decision = 7 at 5010245 ps ==> Success
+587th input image : original value = 9, decision = 9 at 5018725 ps ==> Success
+588th input image : original value = 9, decision = 9 at 5027205 ps ==> Success
+589th input image : original value = 1, decision = 1 at 5035685 ps ==> Success
+590th input image : original value = 6, decision = 6 at 5044165 ps ==> Success
+591st input image : original value = 9, decision = 9 at 5052645 ps ==> Success
+592nd input image : original value = 0, decision = 0 at 5061125 ps ==> Success
+593rd input image : original value = 3, decision = 3 at 5069605 ps ==> Success
+594th input image : original value = 7, decision = 7 at 5078085 ps ==> Success
+595th input image : original value = 9, decision = 9 at 5086565 ps ==> Success
+596th input image : original value = 5, decision = 5 at 5095045 ps ==> Success
+597th input image : original value = 4, decision = 4 at 5103525 ps ==> Success
+598th input image : original value = 7, decision = 7 at 5112005 ps ==> Success
+599th input image : original value = 5, decision = 5 at 5120485 ps ==> Success
+600th input image : original value = 7, decision = 7 at 5130675 ps ==> Success
+601st input image : original value = 5, decision = 5 at 5140865 ps ==> Success
+602nd input image : original value = 4, decision = 4 at 5149345 ps ==> Success
+603rd input image : original value = 2, decision = 2 at 5157825 ps ==> Success
+604th input image : original value = 0, decision = 0 at 5166305 ps ==> Success
+605th input image : original value = 2, decision = 2 at 5174785 ps ==> Success
+606th input image : original value = 7, decision = 7 at 5183265 ps ==> Success
+607th input image : original value = 6, decision = 6 at 5191745 ps ==> Success
+608th input image : original value = 7, decision = 7 at 5200225 ps ==> Success
+609th input image : original value = 2, decision = 1 at 5210415 ps ==> Fail
+610th input image : original value = 9, decision = 9 at 5218895 ps ==> Success
+611st input image : original value = 7, decision = 7 at 5227375 ps ==> Success
+612nd input image : original value = 3, decision = 3 at 5235855 ps ==> Success
+613rd input image : original value = 6, decision = 6 at 5244335 ps ==> Success
+614th input image : original value = 3, decision = 3 at 5252815 ps ==> Success
+615th input image : original value = 1, decision = 1 at 5261295 ps ==> Success
+616th input image : original value = 8, decision = 8 at 5269775 ps ==> Success
+617th input image : original value = 2, decision = 2 at 5278255 ps ==> Success
+618th input image : original value = 8, decision = 8 at 5286735 ps ==> Success
+619th input image : original value = 1, decision = 1 at 5295215 ps ==> Success
+620th input image : original value = 9, decision = 9 at 5303695 ps ==> Success
+621st input image : original value = 0, decision = 0 at 5312175 ps ==> Success
+622nd input image : original value = 2, decision = 2 at 5320655 ps ==> Success
+623rd input image : original value = 7, decision = 7 at 5329135 ps ==> Success
+624th input image : original value = 3, decision = 3 at 5337615 ps ==> Success
+625th input image : original value = 9, decision = 9 at 5346095 ps ==> Success
+626th input image : original value = 9, decision = 9 at 5354575 ps ==> Success
+627th input image : original value = 2, decision = 2 at 5363055 ps ==> Success
+628th input image : original value = 0, decision = 0 at 5371535 ps ==> Success
+629th input image : original value = 1, decision = 1 at 5380015 ps ==> Success
+630th input image : original value = 9, decision = 9 at 5388495 ps ==> Success
+631st input image : original value = 3, decision = 3 at 5396975 ps ==> Success
+632nd input image : original value = 0, decision = 0 at 5405455 ps ==> Success
+633rd input image : original value = 7, decision = 7 at 5413935 ps ==> Success
+634th input image : original value = 5, decision = 5 at 5422415 ps ==> Success
+635th input image : original value = 1, decision = 1 at 5430895 ps ==> Success
+636th input image : original value = 9, decision = 9 at 5439375 ps ==> Success
+637th input image : original value = 4, decision = 4 at 5447855 ps ==> Success
+638th input image : original value = 4, decision = 4 at 5456335 ps ==> Success
+639th input image : original value = 0, decision = 0 at 5464815 ps ==> Success
+640th input image : original value = 2, decision = 2 at 5473295 ps ==> Success
+641st input image : original value = 8, decision = 8 at 5481775 ps ==> Success
+642nd input image : original value = 0, decision = 0 at 5490255 ps ==> Success
+643rd input image : original value = 1, decision = 1 at 5498735 ps ==> Success
+644th input image : original value = 2, decision = 2 at 5507215 ps ==> Success
+645th input image : original value = 3, decision = 3 at 5515695 ps ==> Success
+646th input image : original value = 1, decision = 1 at 5524175 ps ==> Success
+647th input image : original value = 4, decision = 4 at 5532655 ps ==> Success
+648th input image : original value = 2, decision = 2 at 5541135 ps ==> Success
+649th input image : original value = 0, decision = 0 at 5549615 ps ==> Success
+650th input image : original value = 5, decision = 5 at 5558095 ps ==> Success
+651st input image : original value = 3, decision = 3 at 5566575 ps ==> Success
+652nd input image : original value = 4, decision = 4 at 5575055 ps ==> Success
+653rd input image : original value = 5, decision = 5 at 5585245 ps ==> Success
+654th input image : original value = 9, decision = 9 at 5593725 ps ==> Success
+655th input image : original value = 5, decision = 5 at 5603915 ps ==> Success
+656th input image : original value = 5, decision = 5 at 5612395 ps ==> Success
+657th input image : original value = 3, decision = 3 at 5620875 ps ==> Success
+658th input image : original value = 9, decision = 9 at 5629355 ps ==> Success
+659th input image : original value = 9, decision = 9 at 5637835 ps ==> Success
+660th input image : original value = 9, decision = 9 at 5646315 ps ==> Success
+661st input image : original value = 7, decision = 7 at 5654795 ps ==> Success
+662nd input image : original value = 3, decision = 3 at 5663275 ps ==> Success
+663rd input image : original value = 4, decision = 4 at 5671755 ps ==> Success
+664th input image : original value = 1, decision = 1 at 5680235 ps ==> Success
+665th input image : original value = 3, decision = 3 at 5688715 ps ==> Success
+666th input image : original value = 4, decision = 4 at 5697195 ps ==> Success
+667th input image : original value = 0, decision = 0 at 5705675 ps ==> Success
+668th input image : original value = 0, decision = 0 at 5714155 ps ==> Success
+669th input image : original value = 7, decision = 7 at 5722635 ps ==> Success
+670th input image : original value = 4, decision = 4 at 5731115 ps ==> Success
+671st input image : original value = 1, decision = 2 at 5741305 ps ==> Fail
+672nd input image : original value = 0, decision = 0 at 5749785 ps ==> Success
+673rd input image : original value = 8, decision = 8 at 5758265 ps ==> Success
+674th input image : original value = 1, decision = 1 at 5766745 ps ==> Success
+675th input image : original value = 1, decision = 1 at 5775225 ps ==> Success
+676th input image : original value = 6, decision = 6 at 5783705 ps ==> Success
+677th input image : original value = 7, decision = 7 at 5792185 ps ==> Success
+678th input image : original value = 2, decision = 7 at 5800665 ps ==> Fail
+679th input image : original value = 6, decision = 6 at 5809145 ps ==> Success
+680th input image : original value = 5, decision = 5 at 5817625 ps ==> Success
+681st input image : original value = 4, decision = 4 at 5826105 ps ==> Success
+682nd input image : original value = 7, decision = 7 at 5834585 ps ==> Success
+683rd input image : original value = 0, decision = 0 at 5843065 ps ==> Success
+684th input image : original value = 2, decision = 2 at 5851545 ps ==> Success
+685th input image : original value = 0, decision = 0 at 5860025 ps ==> Success
+686th input image : original value = 8, decision = 8 at 5868505 ps ==> Success
+687th input image : original value = 6, decision = 6 at 5876985 ps ==> Success
+688th input image : original value = 5, decision = 5 at 5885465 ps ==> Success
+689th input image : original value = 4, decision = 4 at 5893945 ps ==> Success
+690th input image : original value = 8, decision = 8 at 5902425 ps ==> Success
+691st input image : original value = 6, decision = 6 at 5910905 ps ==> Success
+692nd input image : original value = 4, decision = 4 at 5919385 ps ==> Success
+693rd input image : original value = 5, decision = 5 at 5927865 ps ==> Success
+694th input image : original value = 2, decision = 2 at 5936345 ps ==> Success
+695th input image : original value = 8, decision = 8 at 5944825 ps ==> Success
+696th input image : original value = 9, decision = 9 at 5953305 ps ==> Success
+697th input image : original value = 0, decision = 0 at 5961785 ps ==> Success
+698th input image : original value = 3, decision = 3 at 5970265 ps ==> Success
+699th input image : original value = 4, decision = 4 at 5978745 ps ==> Success
+700th input image : original value = 5, decision = 5 at 5987225 ps ==> Success
+701st input image : original value = 7, decision = 7 at 5995705 ps ==> Success
+702nd input image : original value = 1, decision = 1 at 6004185 ps ==> Success
+703rd input image : original value = 5, decision = 5 at 6012665 ps ==> Success
+704th input image : original value = 6, decision = 6 at 6021145 ps ==> Success
+705th input image : original value = 6, decision = 6 at 6029625 ps ==> Success
+706th input image : original value = 8, decision = 8 at 6038105 ps ==> Success
+707th input image : original value = 2, decision = 2 at 6046585 ps ==> Success
+708th input image : original value = 2, decision = 7 at 6055065 ps ==> Fail
+709th input image : original value = 0, decision = 0 at 6063545 ps ==> Success
+710th input image : original value = 8, decision = 8 at 6072025 ps ==> Success
+711st input image : original value = 9, decision = 9 at 6080505 ps ==> Success
+712nd input image : original value = 6, decision = 6 at 6088985 ps ==> Success
+713rd input image : original value = 6, decision = 6 at 6097465 ps ==> Success
+714th input image : original value = 1, decision = 1 at 6105945 ps ==> Success
+715th input image : original value = 8, decision = 8 at 6114425 ps ==> Success
+716th input image : original value = 6, decision = 6 at 6122905 ps ==> Success
+717th input image : original value = 8, decision = 8 at 6131385 ps ==> Success
+718th input image : original value = 8, decision = 8 at 6139865 ps ==> Success
+719th input image : original value = 2, decision = 7 at 6148345 ps ==> Fail
+720th input image : original value = 4, decision = 4 at 6156825 ps ==> Success
+721st input image : original value = 8, decision = 8 at 6165305 ps ==> Success
+722nd input image : original value = 0, decision = 0 at 6173785 ps ==> Success
+723rd input image : original value = 1, decision = 2 at 6183975 ps ==> Fail
+724th input image : original value = 8, decision = 8 at 6192455 ps ==> Success
+725th input image : original value = 7, decision = 7 at 6200935 ps ==> Success
+726th input image : original value = 3, decision = 3 at 6209415 ps ==> Success
+727th input image : original value = 2, decision = 1 at 6219605 ps ==> Fail
+728th input image : original value = 7, decision = 7 at 6228085 ps ==> Success
+729th input image : original value = 2, decision = 2 at 6236565 ps ==> Success
+730th input image : original value = 2, decision = 2 at 6245045 ps ==> Success
+731st input image : original value = 4, decision = 4 at 6253525 ps ==> Success
+732nd input image : original value = 0, decision = 0 at 6262005 ps ==> Success
+733rd input image : original value = 4, decision = 4 at 6270485 ps ==> Success
+734th input image : original value = 5, decision = 5 at 6278965 ps ==> Success
+735th input image : original value = 6, decision = 6 at 6287445 ps ==> Success
+736th input image : original value = 8, decision = 8 at 6295925 ps ==> Success
+737th input image : original value = 8, decision = 8 at 6304405 ps ==> Success
+738th input image : original value = 1, decision = 1 at 6312885 ps ==> Success
+739th input image : original value = 8, decision = 8 at 6321365 ps ==> Success
+740th input image : original value = 3, decision = 3 at 6329845 ps ==> Success
+741st input image : original value = 5, decision = 5 at 6338325 ps ==> Success
+742nd input image : original value = 5, decision = 5 at 6346805 ps ==> Success
+743rd input image : original value = 0, decision = 0 at 6355285 ps ==> Success
+744th input image : original value = 3, decision = 3 at 6363765 ps ==> Success
+745th input image : original value = 5, decision = 5 at 6373955 ps ==> Success
+746th input image : original value = 8, decision = 8 at 6382435 ps ==> Success
+747th input image : original value = 7, decision = 7 at 6390915 ps ==> Success
+748th input image : original value = 0, decision = 0 at 6399395 ps ==> Success
+749th input image : original value = 2, decision = 2 at 6407875 ps ==> Success
+750th input image : original value = 7, decision = 7 at 6416355 ps ==> Success
+751st input image : original value = 4, decision = 4 at 6424835 ps ==> Success
+752nd input image : original value = 7, decision = 7 at 6433315 ps ==> Success
+753rd input image : original value = 6, decision = 6 at 6441795 ps ==> Success
+754th input image : original value = 1, decision = 1 at 6450275 ps ==> Success
+755th input image : original value = 8, decision = 8 at 6458755 ps ==> Success
+756th input image : original value = 8, decision = 8 at 6467235 ps ==> Success
+757th input image : original value = 7, decision = 7 at 6475715 ps ==> Success
+758th input image : original value = 2, decision = 1 at 6485905 ps ==> Fail
+759th input image : original value = 7, decision = 7 at 6494385 ps ==> Success
+760th input image : original value = 3, decision = 3 at 6502865 ps ==> Success
+761st input image : original value = 2, decision = 2 at 6511345 ps ==> Success
+762nd input image : original value = 4, decision = 4 at 6519825 ps ==> Success
+763rd input image : original value = 3, decision = 3 at 6528305 ps ==> Success
+764th input image : original value = 9, decision = 9 at 6536785 ps ==> Success
+765th input image : original value = 5, decision = 5 at 6545265 ps ==> Success
+766th input image : original value = 9, decision = 9 at 6553745 ps ==> Success
+767th input image : original value = 3, decision = 3 at 6562225 ps ==> Success
+768th input image : original value = 6, decision = 6 at 6570705 ps ==> Success
+769th input image : original value = 2, decision = 2 at 6579185 ps ==> Success
+770th input image : original value = 6, decision = 6 at 6587665 ps ==> Success
+771st input image : original value = 5, decision = 5 at 6596145 ps ==> Success
+772nd input image : original value = 7, decision = 7 at 6604625 ps ==> Success
+773rd input image : original value = 5, decision = 5 at 6613105 ps ==> Success
+774th input image : original value = 8, decision = 8 at 6621585 ps ==> Success
+775th input image : original value = 4, decision = 4 at 6630065 ps ==> Success
+776th input image : original value = 7, decision = 7 at 6638545 ps ==> Success
+777th input image : original value = 4, decision = 4 at 6647025 ps ==> Success
+778th input image : original value = 9, decision = 9 at 6655505 ps ==> Success
+779th input image : original value = 4, decision = 4 at 6663985 ps ==> Success
+780th input image : original value = 8, decision = 8 at 6672465 ps ==> Success
+781st input image : original value = 9, decision = 9 at 6680945 ps ==> Success
+782nd input image : original value = 7, decision = 7 at 6691135 ps ==> Success
+783rd input image : original value = 5, decision = 5 at 6699615 ps ==> Success
+784th input image : original value = 2, decision = 2 at 6708095 ps ==> Success
+785th input image : original value = 6, decision = 6 at 6716575 ps ==> Success
+786th input image : original value = 9, decision = 9 at 6725055 ps ==> Success
+787th input image : original value = 2, decision = 2 at 6733535 ps ==> Success
+788th input image : original value = 4, decision = 4 at 6742015 ps ==> Success
+789th input image : original value = 6, decision = 6 at 6750495 ps ==> Success
+790th input image : original value = 7, decision = 7 at 6758975 ps ==> Success
+791st input image : original value = 8, decision = 8 at 6767455 ps ==> Success
+792nd input image : original value = 3, decision = 3 at 6775935 ps ==> Success
+793rd input image : original value = 7, decision = 7 at 6784415 ps ==> Success
+794th input image : original value = 0, decision = 0 at 6792895 ps ==> Success
+795th input image : original value = 8, decision = 8 at 6801375 ps ==> Success
+796th input image : original value = 3, decision = 3 at 6809855 ps ==> Success
+797th input image : original value = 6, decision = 6 at 6818335 ps ==> Success
+798th input image : original value = 5, decision = 5 at 6826815 ps ==> Success
+799th input image : original value = 6, decision = 6 at 6835295 ps ==> Success
+800th input image : original value = 3, decision = 3 at 6843775 ps ==> Success
+801st input image : original value = 5, decision = 5 at 6852255 ps ==> Success
+802nd input image : original value = 5, decision = 5 at 6860735 ps ==> Success
+803rd input image : original value = 7, decision = 7 at 6870925 ps ==> Success
+804th input image : original value = 2, decision = 2 at 6879405 ps ==> Success
+805th input image : original value = 0, decision = 0 at 6887885 ps ==> Success
+806th input image : original value = 3, decision = 3 at 6896365 ps ==> Success
+807th input image : original value = 5, decision = 5 at 6904845 ps ==> Success
+808th input image : original value = 6, decision = 6 at 6913325 ps ==> Success
+809th input image : original value = 8, decision = 8 at 6921805 ps ==> Success
+810th input image : original value = 2, decision = 2 at 6930285 ps ==> Success
+811st input image : original value = 7, decision = 7 at 6938765 ps ==> Success
+812nd input image : original value = 8, decision = 8 at 6947245 ps ==> Success
+813rd input image : original value = 5, decision = 5 at 6955725 ps ==> Success
+814th input image : original value = 2, decision = 2 at 6964205 ps ==> Success
+815th input image : original value = 4, decision = 4 at 6972685 ps ==> Success
+816th input image : original value = 3, decision = 3 at 6981165 ps ==> Success
+817th input image : original value = 4, decision = 4 at 6989645 ps ==> Success
+818th input image : original value = 1, decision = 1 at 6998125 ps ==> Success
+819th input image : original value = 1, decision = 1 at 7006605 ps ==> Success
+820th input image : original value = 0, decision = 0 at 7015085 ps ==> Success
+821st input image : original value = 3, decision = 3 at 7023565 ps ==> Success
+822nd input image : original value = 5, decision = 5 at 7032045 ps ==> Success
+823rd input image : original value = 3, decision = 3 at 7040525 ps ==> Success
+824th input image : original value = 7, decision = 7 at 7049005 ps ==> Success
+825th input image : original value = 6, decision = 6 at 7057485 ps ==> Success
+826th input image : original value = 5, decision = 5 at 7065965 ps ==> Success
+827th input image : original value = 7, decision = 7 at 7074445 ps ==> Success
+828th input image : original value = 1, decision = 2 at 7084635 ps ==> Fail
+829th input image : original value = 0, decision = 0 at 7093115 ps ==> Success
+830th input image : original value = 1, decision = 1 at 7101595 ps ==> Success
+831st input image : original value = 7, decision = 7 at 7110075 ps ==> Success
+832nd input image : original value = 7, decision = 7 at 7120265 ps ==> Success
+833rd input image : original value = 5, decision = 5 at 7128745 ps ==> Success
+834th input image : original value = 6, decision = 6 at 7137225 ps ==> Success
+835th input image : original value = 7, decision = 7 at 7145705 ps ==> Success
+836th input image : original value = 5, decision = 5 at 7154185 ps ==> Success
+837th input image : original value = 6, decision = 6 at 7162665 ps ==> Success
+838th input image : original value = 5, decision = 5 at 7172855 ps ==> Success
+839th input image : original value = 2, decision = 2 at 7181335 ps ==> Success
+840th input image : original value = 1, decision = 1 at 7189815 ps ==> Success
+841st input image : original value = 0, decision = 0 at 7198295 ps ==> Success
+842nd input image : original value = 9, decision = 9 at 7206775 ps ==> Success
+843rd input image : original value = 6, decision = 6 at 7215255 ps ==> Success
+844th input image : original value = 6, decision = 6 at 7223735 ps ==> Success
+845th input image : original value = 5, decision = 5 at 7232215 ps ==> Success
+846th input image : original value = 9, decision = 9 at 7240695 ps ==> Success
+847th input image : original value = 7, decision = 7 at 7249175 ps ==> Success
+848th input image : original value = 4, decision = 4 at 7257655 ps ==> Success
+849th input image : original value = 8, decision = 8 at 7266135 ps ==> Success
+850th input image : original value = 4, decision = 4 at 7274615 ps ==> Success
+851st input image : original value = 1, decision = 1 at 7283095 ps ==> Success
+852nd input image : original value = 2, decision = 2 at 7291575 ps ==> Success
+853rd input image : original value = 3, decision = 3 at 7300055 ps ==> Success
+854th input image : original value = 8, decision = 8 at 7308535 ps ==> Success
+855th input image : original value = 7, decision = 7 at 7317015 ps ==> Success
+856th input image : original value = 0, decision = 0 at 7325495 ps ==> Success
+857th input image : original value = 1, decision = 1 at 7333975 ps ==> Success
+858th input image : original value = 8, decision = 8 at 7342455 ps ==> Success
+859th input image : original value = 2, decision = 2 at 7350935 ps ==> Success
+860th input image : original value = 4, decision = 4 at 7359415 ps ==> Success
+861st input image : original value = 5, decision = 5 at 7367895 ps ==> Success
+862nd input image : original value = 9, decision = 9 at 7376375 ps ==> Success
+863rd input image : original value = 5, decision = 5 at 7386565 ps ==> Success
+864th input image : original value = 7, decision = 7 at 7395045 ps ==> Success
+865th input image : original value = 7, decision = 7 at 7403525 ps ==> Success
+866th input image : original value = 7, decision = 7 at 7412005 ps ==> Success
+867th input image : original value = 1, decision = 2 at 7422195 ps ==> Fail
+868th input image : original value = 1, decision = 1 at 7430675 ps ==> Success
+869th input image : original value = 6, decision = 6 at 7439155 ps ==> Success
+870th input image : original value = 5, decision = 5 at 7447635 ps ==> Success
+871st input image : original value = 8, decision = 8 at 7456115 ps ==> Success
+872nd input image : original value = 2, decision = 2 at 7464595 ps ==> Success
+873rd input image : original value = 2, decision = 2 at 7473075 ps ==> Success
+874th input image : original value = 9, decision = 9 at 7481555 ps ==> Success
+875th input image : original value = 3, decision = 3 at 7490035 ps ==> Success
+876th input image : original value = 8, decision = 8 at 7498515 ps ==> Success
+877th input image : original value = 4, decision = 4 at 7506995 ps ==> Success
+878th input image : original value = 2, decision = 7 at 7515475 ps ==> Fail
+879th input image : original value = 0, decision = 10 at 7525665 ps ==> Fail
+880th input image : original value = 7, decision = 7 at 7534145 ps ==> Success
+881st input image : original value = 2, decision = 2 at 7542625 ps ==> Success
+882nd input image : original value = 4, decision = 4 at 7551105 ps ==> Success
+883rd input image : original value = 4, decision = 4 at 7559585 ps ==> Success
+884th input image : original value = 6, decision = 6 at 7568065 ps ==> Success
+885th input image : original value = 6, decision = 6 at 7576545 ps ==> Success
+886th input image : original value = 5, decision = 5 at 7585025 ps ==> Success
+887th input image : original value = 3, decision = 3 at 7593505 ps ==> Success
+888th input image : original value = 7, decision = 7 at 7601985 ps ==> Success
+889th input image : original value = 9, decision = 9 at 7610465 ps ==> Success
+890th input image : original value = 8, decision = 8 at 7618945 ps ==> Success
+891st input image : original value = 3, decision = 3 at 7627425 ps ==> Success
+892nd input image : original value = 4, decision = 4 at 7635905 ps ==> Success
+893rd input image : original value = 3, decision = 3 at 7644385 ps ==> Success
+894th input image : original value = 7, decision = 7 at 7652865 ps ==> Success
+895th input image : original value = 1, decision = 1 at 7661345 ps ==> Success
+896th input image : original value = 2, decision = 2 at 7669825 ps ==> Success
+897th input image : original value = 4, decision = 4 at 7678305 ps ==> Success
+898th input image : original value = 4, decision = 4 at 7686785 ps ==> Success
+899th input image : original value = 7, decision = 7 at 7695265 ps ==> Success
+900th input image : original value = 8, decision = 8 at 7703745 ps ==> Success
+901st input image : original value = 0, decision = 0 at 7712225 ps ==> Success
+902nd input image : original value = 8, decision = 8 at 7720705 ps ==> Success
+903rd input image : original value = 9, decision = 9 at 7729185 ps ==> Success
+904th input image : original value = 5, decision = 5 at 7737665 ps ==> Success
+905th input image : original value = 2, decision = 2 at 7746145 ps ==> Success
+906th input image : original value = 6, decision = 6 at 7754625 ps ==> Success
+907th input image : original value = 2, decision = 1 at 7764815 ps ==> Fail
+908th input image : original value = 3, decision = 3 at 7773295 ps ==> Success
+909th input image : original value = 3, decision = 3 at 7781775 ps ==> Success
+910th input image : original value = 2, decision = 2 at 7790255 ps ==> Success
+911st input image : original value = 7, decision = 7 at 7800445 ps ==> Success
+912nd input image : original value = 5, decision = 5 at 7808925 ps ==> Success
+913rd input image : original value = 7, decision = 7 at 7817405 ps ==> Success
+914th input image : original value = 0, decision = 0 at 7825885 ps ==> Success
+915th input image : original value = 7, decision = 7 at 7834365 ps ==> Success
+916th input image : original value = 0, decision = 0 at 7842845 ps ==> Success
+917th input image : original value = 2, decision = 1 at 7853035 ps ==> Fail
+918th input image : original value = 6, decision = 6 at 7861515 ps ==> Success
+919th input image : original value = 6, decision = 6 at 7869995 ps ==> Success
+920th input image : original value = 0, decision = 0 at 7878475 ps ==> Success
+921st input image : original value = 6, decision = 6 at 7886955 ps ==> Success
+922nd input image : original value = 3, decision = 3 at 7895435 ps ==> Success
+923rd input image : original value = 0, decision = 0 at 7903915 ps ==> Success
+924th input image : original value = 8, decision = 8 at 7912395 ps ==> Success
+925th input image : original value = 8, decision = 8 at 7920875 ps ==> Success
+926th input image : original value = 6, decision = 6 at 7929355 ps ==> Success
+927th input image : original value = 8, decision = 8 at 7937835 ps ==> Success
+928th input image : original value = 4, decision = 4 at 7946315 ps ==> Success
+929th input image : original value = 0, decision = 0 at 7954795 ps ==> Success
+930th input image : original value = 9, decision = 9 at 7963275 ps ==> Success
+931st input image : original value = 3, decision = 3 at 7971755 ps ==> Success
+932nd input image : original value = 8, decision = 8 at 7980235 ps ==> Success
+933rd input image : original value = 5, decision = 5 at 7988715 ps ==> Success
+934th input image : original value = 1, decision = 1 at 7997195 ps ==> Success
+935th input image : original value = 4, decision = 4 at 8005675 ps ==> Success
+936th input image : original value = 5, decision = 5 at 8014155 ps ==> Success
+937th input image : original value = 0, decision = 0 at 8022635 ps ==> Success
+938th input image : original value = 7, decision = 7 at 8031115 ps ==> Success
+939th input image : original value = 4, decision = 4 at 8039595 ps ==> Success
+940th input image : original value = 7, decision = 7 at 8048075 ps ==> Success
+941st input image : original value = 8, decision = 8 at 8056555 ps ==> Success
+942nd input image : original value = 8, decision = 8 at 8065035 ps ==> Success
+943rd input image : original value = 2, decision = 2 at 8073515 ps ==> Success
+944th input image : original value = 0, decision = 0 at 8081995 ps ==> Success
+945th input image : original value = 4, decision = 4 at 8090475 ps ==> Success
+946th input image : original value = 6, decision = 6 at 8098955 ps ==> Success
+947th input image : original value = 7, decision = 7 at 8107435 ps ==> Success
+948th input image : original value = 3, decision = 3 at 8115915 ps ==> Success
+949th input image : original value = 3, decision = 3 at 8124395 ps ==> Success
+950th input image : original value = 8, decision = 8 at 8132875 ps ==> Success
+951st input image : original value = 2, decision = 2 at 8141355 ps ==> Success
+952nd input image : original value = 8, decision = 8 at 8149835 ps ==> Success
+953rd input image : original value = 4, decision = 4 at 8158315 ps ==> Success
+954th input image : original value = 9, decision = 9 at 8166795 ps ==> Success
+955th input image : original value = 2, decision = 2 at 8175275 ps ==> Success
+956th input image : original value = 8, decision = 8 at 8183755 ps ==> Success
+957th input image : original value = 8, decision = 8 at 8192235 ps ==> Success
+958th input image : original value = 4, decision = 4 at 8200715 ps ==> Success
+959th input image : original value = 7, decision = 7 at 8209195 ps ==> Success
+960th input image : original value = 2, decision = 2 at 8217675 ps ==> Success
+961st input image : original value = 4, decision = 4 at 8226155 ps ==> Success
+962nd input image : original value = 9, decision = 9 at 8234635 ps ==> Success
+963rd input image : original value = 0, decision = 0 at 8243115 ps ==> Success
+964th input image : original value = 1, decision = 1 at 8251595 ps ==> Success
+965th input image : original value = 2, decision = 2 at 8260075 ps ==> Success
+966th input image : original value = 7, decision = 7 at 8268555 ps ==> Success
+967th input image : original value = 4, decision = 4 at 8277035 ps ==> Success
+968th input image : original value = 6, decision = 6 at 8285515 ps ==> Success
+969th input image : original value = 5, decision = 5 at 8293995 ps ==> Success
+970th input image : original value = 3, decision = 3 at 8302475 ps ==> Success
+971st input image : original value = 7, decision = 7 at 8310955 ps ==> Success
+972nd input image : original value = 8, decision = 8 at 8319435 ps ==> Success
+973rd input image : original value = 2, decision = 2 at 8327915 ps ==> Success
+974th input image : original value = 1, decision = 2 at 8338105 ps ==> Fail
+975th input image : original value = 4, decision = 4 at 8346585 ps ==> Success
+976th input image : original value = 6, decision = 6 at 8355065 ps ==> Success
+977th input image : original value = 5, decision = 5 at 8363545 ps ==> Success
+978th input image : original value = 2, decision = 2 at 8372025 ps ==> Success
+979th input image : original value = 4, decision = 4 at 8380505 ps ==> Success
+980th input image : original value = 6, decision = 6 at 8388985 ps ==> Success
+981st input image : original value = 2, decision = 2 at 8397465 ps ==> Success
+982nd input image : original value = 8, decision = 8 at 8405945 ps ==> Success
+983rd input image : original value = 2, decision = 7 at 8414425 ps ==> Fail
+984th input image : original value = 7, decision = 7 at 8422905 ps ==> Success
+985th input image : original value = 0, decision = 0 at 8431385 ps ==> Success
+986th input image : original value = 7, decision = 7 at 8439865 ps ==> Success
+987th input image : original value = 3, decision = 3 at 8448345 ps ==> Success
+988th input image : original value = 2, decision = 2 at 8456825 ps ==> Success
+989th input image : original value = 5, decision = 5 at 8465305 ps ==> Success
+990th input image : original value = 6, decision = 6 at 8473785 ps ==> Success
+991st input image : original value = 1, decision = 1 at 8482265 ps ==> Success
+992nd input image : original value = 5, decision = 5 at 8490745 ps ==> Success
+993rd input image : original value = 3, decision = 3 at 8499225 ps ==> Success
+994th input image : original value = 4, decision = 4 at 8507705 ps ==> Success
+995th input image : original value = 7, decision = 7 at 8516185 ps ==> Success
+996th input image : original value = 8, decision = 8 at 8524665 ps ==> Success
+997th input image : original value = 9, decision = 9 at 8533145 ps ==> Success
+998th input image : original value = 8, decision = 8 at 8541625 ps ==> Success
+999th input image : original value = 3, decision = 3 at 8550105 ps ==> Success
+1000th input image : original value = 2, decision = 7 at 8558585 ps ==> Fail
+
+
+------ Final Accuracy for 1000 Input Image ------
+Accuracy :  96%
+$stop called at time : 8566445 ps : File "C:/Temp/ppa_observer_repro_20261030/PPA_AdaPath_NPU_A/sim/top_tb.v" Line 391
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 532.203 ; gain = 0.000
+# puts "SCORED_ACCURACY=[get_value -radix unsigned /top_tb_1000/accuracy]"
+SCORED_ACCURACY=966
+# puts "AUDIT starts=[get_value -radix unsigned /audit_top/mon/starts]"
+AUDIT starts=1002
+# puts "AUDIT completed=[get_value -radix unsigned /audit_top/mon/completed]"
+AUDIT completed=1001
+# puts "AUDIT aborted=[get_value -radix unsigned /audit_top/mon/aborted]"
+AUDIT aborted=0
+# puts "AUDIT active=[get_value -radix unsigned /audit_top/mon/active]"
+AUDIT active=1
+# puts "AUDIT max_cycles=[get_value -radix unsigned /audit_top/mon/max_cycles]"
+AUDIT max_cycles=1016
+# puts "AUDIT easy=[get_value -radix unsigned /audit_top/mon/easy]"
+AUDIT easy=960
+# puts "AUDIT n_medium=[get_value -radix unsigned /audit_top/mon/n_medium]"
+AUDIT n_medium=0
+# puts "AUDIT hard=[get_value -radix unsigned /audit_top/mon/hard]"
+AUDIT hard=41
+# puts "AUDIT unknown_mode=[get_value -radix unsigned /audit_top/mon/unknown_mode]"
+AUDIT unknown_mode=0
+# puts "AUDIT margin_low=[get_value -radix unsigned /audit_top/mon/margin_low]"
+AUDIT margin_low=39
+# puts "AUDIT margin_mid=[get_value -radix unsigned /audit_top/mon/margin_mid]"
+AUDIT margin_mid=0
+# puts "AUDIT margin_high=[get_value -radix unsigned /audit_top/mon/margin_high]"
+AUDIT margin_high=960
+# puts "AUDIT margin_unknown=[get_value -radix unsigned /audit_top/mon/margin_unknown]"
+AUDIT margin_unknown=2
+# puts "AUDIT easy_checks=[get_value -radix unsigned /audit_top/mon/easy_checks]"
+AUDIT easy_checks=1920
+# puts "AUDIT medium_checks=[get_value -radix unsigned /audit_top/mon/medium_checks]"
+AUDIT medium_checks=0
+# puts "AUDIT mux_checks=[get_value -radix unsigned /audit_top/mon/mux_checks]"
+AUDIT mux_checks=8012
+# puts "AUDIT deadline_checks=[get_value -radix unsigned /audit_top/mon/deadline_checks]"
+AUDIT deadline_checks=1001
+# puts "AUDIT easy_errors=[get_value -radix unsigned /audit_top/mon/easy_errors]"
+AUDIT easy_errors=0
+# puts "AUDIT medium_errors=[get_value -radix unsigned /audit_top/mon/medium_errors]"
+AUDIT medium_errors=0
+# puts "AUDIT mux_errors=[get_value -radix unsigned /audit_top/mon/mux_errors]"
+AUDIT mux_errors=0
+# puts "AUDIT deadline_errors=[get_value -radix unsigned /audit_top/mon/deadline_errors]"
+AUDIT deadline_errors=0
+# puts "AUDIT unknown_controls=[get_value -radix unsigned /audit_top/mon/unknown_controls]"
+AUDIT unknown_controls=0
+# puts "AUDIT unknown_input_cycles=[get_value -radix unsigned /audit_top/mon/unknown_input_cycles]"
+AUDIT unknown_input_cycles=2096
+# puts "AUDIT unknown_decisions=[get_value -radix unsigned /audit_top/mon/unknown_decisions]"
+AUDIT unknown_decisions=1
+# close_sim
+INFO: xsimkernel Simulation Memory Usage: 22832 KB (Peak: 22832 KB), Simulation CPU Usage: 13312 ms
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 30 04:38:53 2026...

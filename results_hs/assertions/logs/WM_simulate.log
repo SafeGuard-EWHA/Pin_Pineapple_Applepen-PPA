@@ -1,0 +1,12 @@
+Time resolution is 1 ps
+------ Final Accuracy for 954 WM-811K Test Images ------
+Accuracy : 774 / 954 = 81.13 %
+Golden match (decision)              : 954 / 954
+Golden match (decision, mode, margin): 954 / 954
+Mode Easy / Medium / Hard            : 404 / 167 / 383
+Class 0 recall : 179 / 245
+Class 1 recall : 238 / 251
+Class 2 recall : 216 / 230
+Class 3 recall : 141 / 228
+$finish called at time : 8959256 ns : File "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/sim/tb_wm.v" Line 74
+INFO: xsimkernel Simulation Memory Usage: 21660 KB (Peak: 21660 KB), Simulation CPU Usage: 28202 ms
