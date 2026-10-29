@@ -48,3 +48,25 @@ bash run_sim.sh
 - 데이터셋 원본(MNIST, WM-811K `LSWMD.pkl`) — 공개 데이터, `python/data_*.py`로 재생성
 - 주최 측 레퍼런스 RTL·데이터(`verilog_ref/`) — 대회 배포물
 - 시뮬레이션 덤프(`.vcd`, `.vvp`)와 합성 넷리스트 — 용량이 크고 스크립트로 재생성 가능
+
+## 추가 실험 1: 런타임 임계값 스윕 (하드웨어 실측 동작 곡선)
+
+`adapath_top`에 `USE_REG_TH` 파라미터와 `th_low_i` / `th_high_i` 포트가 추가되었다.
+기본값(`USE_REG_TH=0`)에서는 기존과 동일하게 `thresholds.vh`의 고정 임계값을 쓴다
+(기존 회귀 200/200, 27/27, 1,000장 결과 동일 확인).
+
+```bash
+# 주최측 input_1000.txt 를 verilog_ref/data/ 에 둔 뒤 (저장소 루트 기준)
+cd rtl
+bash run_sweep.sh A      # 모델 A: T_low = T_high 스윕 -> sweep_A.csv
+bash run_sweep.sh B      # 모델 B: T_low=71 고정, T_high 스윕 -> sweep_B.csv
+```
+
+검증된 기준점 (이 값이 나오면 환경 설정이 맞는 것):
+
+| 모델 | TL, TH | 정답 수 | 평균 cycle | Easy / Med / Hard |
+|---|---|---|---|---|
+| A | 63, 63 | 970 | 851.84 | 960 / 0 / 40 |
+| B | 71, 119 | 1000 | 867.23 | 870 / 60 / 70 |
+
+CSV로 "정확도 vs 평균 cycle" 곡선을 그리면 된다. 임계값 1회 실행에 약 1~2분이 걸린다.

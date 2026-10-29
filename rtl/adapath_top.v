@@ -23,7 +23,8 @@ module adapath_top #(
     parameter SH_CONV2 = 8,
     parameter SH_FCE   = 9,
     parameter SH_FCL   = 9,
-    parameter SH_FCF   = 9
+    parameter SH_FCF   = 9,
+    parameter USE_REG_TH = 0          // 1: th_low_i/th_high_i 포트로 런타임 임계값 사용
 ) (
     input                         clk,
     input                         rst_n,
@@ -40,6 +41,9 @@ module adapath_top #(
     input  [N_CLASS*16-1:0]       b_fcl,
     input  [N_CLASS*C2*16*8-1:0]  w_fcf,            // full  : 128 -> N
     input  [N_CLASS*16-1:0]       b_fcf,
+    // ---- runtime thresholds (USE_REG_TH=1 일 때만 사용) ----
+    input  [11:0]                 th_low_i,
+    input  [11:0]                 th_high_i,
     // ---- outputs ----
     output [$clog2(N_CLASS)-1:0]  decision,
     output                        valid_out,
@@ -91,9 +95,9 @@ module adapath_top #(
             .clk(clk), .rst_n(rst_n), .valid_in(v_t2), .top1(top1), .top2(top2),
             .margin(margin), .valid_out(v_mg));
         wire [1:0] mode_raw;
-        difficulty_decoder #(.SCORE_W(12)) u_dec (
+        difficulty_decoder #(.SCORE_W(12), .USE_REG_TH(USE_REG_TH)) u_dec (
             .clk(clk), .rst_n(rst_n), .valid_in(v_mg), .margin(margin),
-            .th_low_i(12'd0), .th_high_i(12'd0), .mode(mode_raw), .valid_out(mode_v));
+            .th_low_i(th_low_i), .th_high_i(th_high_i), .mode(mode_raw), .valid_out(mode_v));
         // Early-Exit(2단계) 변형: Medium 을 Hard 로 접는다
         assign mode = (VARIANT == 1 && mode_raw == MODE_MEDIUM) ? MODE_HARD : mode_raw;
         assign base_front_done = 1'b0;
