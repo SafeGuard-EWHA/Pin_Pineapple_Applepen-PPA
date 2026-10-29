@@ -105,3 +105,9 @@ Baseline보다 낮아질 수 있다 — 결과를 그대로 보고하고 한계�
 
 `tb_threshold_sweep.v` 옵션: `-DMODEL_A`(모델 A), `-DBASELINE`(항상 Hard), `+IMG=<파일>`(입력 교체), `+TL= +TH=`(임계값).
 주최측 input_1000.txt는 서로 다른 100장이 10번 반복된 구성이라, 결정적 열화(contrast, blur)의 결과는 10장 단위로 움직인다.
+
+## 분석용 테스트 데이터 (data_test/)
+
+`mnist_test.npz`(10,000장), `wm811k_test.npz`(954장, 4개 클래스 균형 추출)를 분석 재현용으로 포함한다.
+`python/analyze_margin.py` 등은 `--out` 경로에서 `<prefix>_test.npz`와 `adapath_<prefix>_<arch>.pt`를 찾으므로,
+`out/`에 복사하거나 `--out`으로 두 파일이 함께 있는 폴더를 지정한다.
