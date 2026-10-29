@@ -13,6 +13,72 @@ Easy / Medium / Hard 경로를 선택하는 NPU 데이터패스. ASAP7 7nm(OpenR
 | 자유주제 | 모델 B (conv2 8ch), WM-811K 4-class | 적용 전·후 PPA |
 | 확장 | 모델 B, MNIST | Medium 경로 효과 분석 |
 
+## 결과보고서
+
+📄 **[결과보고서 PDF](report/결과보고서_PPA.pdf)** · [Word](report/결과보고서_PPA.docx) · 생성 코드 [report/make_final_report.py](report/make_final_report.py)
+
+## 주요 결과 (지정주제: 주최 측 Reference 대비 AdaPath_A)
+
+| 지표 | Reference | **AdaPath_A** | 변화 |
+|---|---:|---:|---:|
+| 정답 (주최 측 입력 순차 1,000회) | 970 | **970** | 유지 |
+| 평균 처리 cycle / 추론 | 1,334 | **851.8** | 36.1 % 감소 |
+| 추정 Fmax (pre-layout, 클럭 주기 스윕) | 569.8 MHz | 543.1 MHz | 4.7 % 감소 |
+| 추론 지연 @Fmax | 2,341 ns | **1,568 ns** | 33.0 % 감소 |
+| 추론당 에너지 (게이트레벨 VCD 기반 추정) | 17.7 nJ | **16.2 nJ** | 8.9 % 감소 |
+| Cell Area (ASAP7) | 32,085 µm² | 49,858 µm² | 55.4 % 증가 |
+
+- 판단 회로(Top-2 토너먼트 트리)는 동작 주파수를 낮추지 않는다: AdaPath_A 543.1 MHz ≈ 판단 회로 없는 Baseline_A 543.3 MHz
+- 자유주제 WM-811K: RTL이 정수 Golden과 **954 / 954 비트 단위 일치**, Easy / Medium / Hard = 404 / 167 / 383 (3경로 모두 동작)
+- 제출용 Vivado 프로젝트: [vivado/submit/](vivado/submit/) (A: 지정주제, B: 확장, WM: 자유주제)
+
+## 주요 그래프
+
+### 구조와 설계 흐름
+| 데이터·제어 흐름 | 설계·평가 흐름 |
+|---|---|
+| ![arch](out/fig_arch.png) | ![flow](out/fig_flow.png) |
+
+**Top-2 Finder 개선** — 직렬 비교 체인 18단 → 이진 토너먼트 트리 4레벨 (판단 회로 임계 경로 약 4배 단축)
+
+![top2](out/fig_top2.png)
+
+### Reference 대비 PPA (정확도 동일 조건)
+![compare](out/fig_final_compare.png)
+
+### 에너지는 어디서 쓰이는가 — 블록별 추론당 에너지
+Easy에서도 후단부 레지스터가 클럭만 받으며 3.65 nJ를 소모 → 클럭 게이팅 시 상한 추정 평균 12.7 nJ (Reference 대비 28.7 % 감소)
+
+![block](out/fig_block_energy.png)
+
+### 에너지 손익분기점 — Easy 비율이 약 79 %를 넘어야 Reference보다 에너지가 줄어든다
+![breakeven](out/fig_energy_breakeven.png)
+
+### Vivado 2023.1 실행 (주최 측 top_tb_1000)
+같은 41,500 cycle 동안 Reference 30장 vs AdaPath_A 47장 완료 (논리 시뮬레이션 시간축)
+
+![vivado_throughput](out/fig_vivado_ref_vs_ada.png)
+
+Hard 판정 이미지의 내부 처리 순서: 판정 → FSM BACK → 특징 버퍼 재생 → Conv2 전 채널 → Full FC → 출력
+
+![vivado_hard](out/fig_vivado_detail_hard.png)
+
+### 입력이 어려워지면 연산을 더 쓴다 (RTL 실측, 열화 입력)
+![robust](out/fig_robustness_modes.png)
+
+### 런타임 임계값 스윕 (RTL 실측)
+![sweep](out/fig_sweep_A.png)
+
+### 왜 Score Margin인가 — 난이도 지표 비교 (모델 A)
+![metrics](results_sh/v2/02_metrics/fig_metric_comparison.png)
+
+### Medium 경로의 기여 (Early-Exit vs AdaPath, WM-811K)
+| Pareto 비교 | WM-811K 클래스별 경로 배분 |
+|---|---|
+| ![iso](out/fig_iso_accuracy_wm811k.png) | ![wmclass](results_sh/v2/04_wm_classes/fig_wm_class_modes.png) |
+
+> 수치의 측정 조건(RTL 실측 / Python float 분석 / VCD 기반 추정 / pre-layout STA)과 한계는 결과보고서 3~4장에 정리되어 있다.
+
 ## 폴더 구조
 
 | 경로 | 내용 |
