@@ -1,0 +1,310 @@
+{
+  "status": "complete",
+  "completed_at": "2026-10-30T02:06:07.199747+09:00",
+  "runs": [
+    {
+      "row": [
+        "63",
+        "63",
+        "970",
+        "851.84",
+        "960",
+        "0",
+        "40"
+      ],
+      "elapsed_seconds": 92.10899999993853,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=63",
+        "+TH=63"
+      ],
+      "completed_at": "2026-10-30T01:53:13.466533+09:00"
+    },
+    {
+      "row": [
+        "0",
+        "0",
+        "980",
+        "845.00",
+        "1000",
+        "0",
+        "0"
+      ],
+      "elapsed_seconds": 139.65599999995902,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=0",
+        "+TH=0"
+      ],
+      "completed_at": "2026-10-30T01:55:33.186830+09:00"
+    },
+    {
+      "row": [
+        "10",
+        "10",
+        "980",
+        "845.00",
+        "1000",
+        "0",
+        "0"
+      ],
+      "elapsed_seconds": 139.375,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=10",
+        "+TH=10"
+      ],
+      "completed_at": "2026-10-30T01:55:32.897910+09:00"
+    },
+    {
+      "row": [
+        "20",
+        "20",
+        "980",
+        "845.00",
+        "1000",
+        "0",
+        "0"
+      ],
+      "elapsed_seconds": 138.8279999999795,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=20",
+        "+TH=20"
+      ],
+      "completed_at": "2026-10-30T01:55:32.372296+09:00"
+    },
+    {
+      "row": [
+        "30",
+        "30",
+        "980",
+        "845.00",
+        "1000",
+        "0",
+        "0"
+      ],
+      "elapsed_seconds": 139.14000000001397,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=30",
+        "+TH=30"
+      ],
+      "completed_at": "2026-10-30T01:55:32.680490+09:00"
+    },
+    {
+      "row": [
+        "40",
+        "40",
+        "970",
+        "848.42",
+        "980",
+        "0",
+        "20"
+      ],
+      "elapsed_seconds": 169.6720000000205,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=40",
+        "+TH=40"
+      ],
+      "completed_at": "2026-10-30T01:58:22.041930+09:00"
+    },
+    {
+      "row": [
+        "50",
+        "50",
+        "970",
+        "850.13",
+        "970",
+        "0",
+        "30"
+      ],
+      "elapsed_seconds": 171.28099999995902,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=50",
+        "+TH=50"
+      ],
+      "completed_at": "2026-10-30T01:58:23.965017+09:00"
+    },
+    {
+      "row": [
+        "80",
+        "80",
+        "970",
+        "853.55",
+        "950",
+        "0",
+        "50"
+      ],
+      "elapsed_seconds": 175.90599999995902,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=80",
+        "+TH=80"
+      ],
+      "completed_at": "2026-10-30T01:58:28.808368+09:00"
+    },
+    {
+      "row": [
+        "100",
+        "100",
+        "970",
+        "856.97",
+        "930",
+        "0",
+        "70"
+      ],
+      "elapsed_seconds": 180.51599999994505,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=100",
+        "+TH=100"
+      ],
+      "completed_at": "2026-10-30T01:58:33.708044+09:00"
+    },
+    {
+      "row": [
+        "119",
+        "119",
+        "970",
+        "860.39",
+        "910",
+        "0",
+        "90"
+      ],
+      "elapsed_seconds": 182.59299999999348,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=119",
+        "+TH=119"
+      ],
+      "completed_at": "2026-10-30T02:01:24.634906+09:00"
+    },
+    {
+      "row": [
+        "140",
+        "140",
+        "970",
+        "868.94",
+        "860",
+        "0",
+        "140"
+      ],
+      "elapsed_seconds": 194.34400000004098,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=140",
+        "+TH=140"
+      ],
+      "completed_at": "2026-10-30T02:01:38.313064+09:00"
+    },
+    {
+      "row": [
+        "170",
+        "170",
+        "970",
+        "868.94",
+        "860",
+        "0",
+        "140"
+      ],
+      "elapsed_seconds": 195.64099999994505,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=170",
+        "+TH=170"
+      ],
+      "completed_at": "2026-10-30T02:01:44.449537+09:00"
+    },
+    {
+      "row": [
+        "200",
+        "200",
+        "970",
+        "880.91",
+        "790",
+        "0",
+        "210"
+      ],
+      "elapsed_seconds": 213.18700000003446,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=200",
+        "+TH=200"
+      ],
+      "completed_at": "2026-10-30T02:02:06.881790+09:00"
+    },
+    {
+      "row": [
+        "250",
+        "250",
+        "970",
+        "903.14",
+        "660",
+        "0",
+        "340"
+      ],
+      "elapsed_seconds": 219.56299999996554,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=250",
+        "+TH=250"
+      ],
+      "completed_at": "2026-10-30T02:05:04.195630+09:00"
+    },
+    {
+      "row": [
+        "300",
+        "300",
+        "970",
+        "928.79",
+        "510",
+        "0",
+        "490"
+      ],
+      "elapsed_seconds": 236.89099999994505,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=300",
+        "+TH=300"
+      ],
+      "completed_at": "2026-10-30T02:05:35.203418+09:00"
+    },
+    {
+      "row": [
+        "400",
+        "400",
+        "970",
+        "969.83",
+        "270",
+        "0",
+        "730"
+      ],
+      "elapsed_seconds": 262.73400000005495,
+      "command": [
+        "C:\\Users\\\ucc44\ud76c\uacbd\\Documents\\Codex\\2026-10-29\\new-chat\\work\\iverilog\\bin\\vvp.exe",
+        "codex_sweep_A.vvp",
+        "+TL=400",
+        "+TH=400"
+      ],
+      "completed_at": "2026-10-30T02:06:07.192823+09:00"
+    }
+  ]
+}
