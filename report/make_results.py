@@ -86,7 +86,7 @@ res = {
     "runs_nJ": {"B": Eb, "A": Ea},
     "power_split": {"A_easy_seq_pct": seq_pct,
                     "groups": {t: power(t) for t in ("A_easy", "A_hard", "Abase", "ref_a", "B_easy")}},
-    "mac": {"ref": 58080, "A_easy": 43680, "A_med": 48640, "A_hard": 58560,
+    "mac": {"ref": 58080, "Abase": 58080, "A_easy": 43680, "A_med": 48640, "A_hard": 58560,
             "B_easy": 43680, "B_med": 63520, "B_hard": 83360},
     "acc": {"ref_seq": 97.0, "A_seq": 97.0, "Abase_seq": 97.0, "B_seq": 100.0,
             "ref_org": 96.7, "A_org": 96.6, "B_org": 99.9},
@@ -102,9 +102,12 @@ res = {
            "B_acc": "98.12", "B_macsave": "40.9", "B_int8": "97.80 % (float 97.95 %)"},
     "iso": {"mn_gain": "0 ~ 2.2 %", "wm_gain": "2 ~ 3 %",
             "mn_acc": "최대 +0.19 %p", "wm_acc": "최대 +1.68 %p"},
-    "wm": {"n_test": 954, "acc_base": 81.55, "acc_ada": 81.24, "mac_base": 82304, "mac_ada": 62848,
-           "mode": {"easy": 0.420, "med": 0.159, "hard": 0.421}, "mode_str": "42.0 / 15.9 / 42.0 %",
-           "cyc_ada": 0.420 * 845 + 0.580 * 1016},
+    # WM-811K 테스트 954장 실측 개수: Easy 401 / Medium 152 / Hard 401
+    # Baseline_WM(VARIANT 0)은 Early FC 가 없으므로 43,200 + 38,400 + 512 = 82,112 MAC
+    "wm": {"n_test": 954, "acc_base": 81.55, "acc_ada": 81.24, "mac_base": 82112, "mac_ada": 62848,
+           "counts": {"easy": 401, "med": 152, "hard": 401},
+           "mode": {"easy": 401 / 954, "med": 152 / 954, "hard": 401 / 954}, "mode_str": "401 / 152 / 401 (42.0 / 15.9 / 42.0 %)",
+           "cyc_ada": (401 * 845 + 553 * 1016) / 954},
 }
 json.dump(res, open(os.path.join(HERE, "results.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(json.dumps({k: res[k] for k in ("area", "crit", "energy_nJ", "power_split")}, indent=1, ensure_ascii=False))
@@ -123,7 +126,7 @@ mac_A = mr["easy"] * 43680 + mr["hard"] * 58560
 E_A = mr["easy"] * A_easy + mr["hard"] * A_hard
 metrics = ["평균 cycle", "지연 @Fmax", "추론당 에너지", "평균 MAC", "면적"]
 ref = [1334, 1334 / fmax["refchip"], E_ref, 58080, res["area"]["refchip"]]
-base = [985, 985 / fmax["baseline_A"], A_base, 58560, res["area"]["baseline_A"]]
+base = [985, 985 / fmax["baseline_A"], A_base, 58080, res["area"]["baseline_A"]]
 ada = [cyc_A, cyc_A / fmax["adapath_A"], E_A, mac_A, res["area"]["adapath_A"]]
 nb = [b / r for b, r in zip(base, ref)]
 na = [a / r for a, r in zip(ada, ref)]
@@ -151,7 +154,7 @@ for s in ("left", "bottom"):
     ax.spines[s].set_color(GRID)
 ax.tick_params(colors=MUTED)
 ax.legend(fontsize=8.5, frameon=False, loc="upper left")
-ax.set_title("정확도 동일(97.0 %) 조건에서 Reference 대비 PPA", fontsize=10.5, color=INK)
+ax.set_title("정확도 동일(970/1,000) 조건에서 Reference 대비 비용 지표", fontsize=10.5, color=INK)
 fig.tight_layout()
 fig.savefig(os.path.join(OUT, "fig_final_compare.png"), dpi=200)
 print("figure saved")
