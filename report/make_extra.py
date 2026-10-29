@@ -1,6 +1,7 @@
 """블록별 에너지 분해 + 클럭 주기 스윕 Fmax -> results.json 에 추가하고 그림 생성.
 
     python make_extra.py <reports_extra 경로>
+    python make_extra.py --plot      (results.json 의 저장값으로 그림만 다시 그림)
 """
 import json
 import os
@@ -10,6 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "out")
 REP = sys.argv[1]
+PLOT_ONLY = REP == "--plot"
 GL = r"C:\Users\yhe44\idec_glsim"
 RES = os.path.join(HERE, "results.json")
 R = json.load(open(RES, encoding="utf-8"))
@@ -53,51 +55,54 @@ def block_energy(tag, vcd, n_img):
     return e
 
 
-ref = block_energy("ref_a", "gl_ref_a.vcd", 4)
-base = block_energy("Abase", "gl_baA.vcd", 4)
-easy = block_energy("A_easy", "gl_adA_easy.vcd", 4)
-run_h = block_energy("A_hard", "gl_adA_hard.vcd", 4)
-hard = {b: run_h.get(b, 0) * 4 - 3 * easy.get(b, 0) for b in set(run_h) | set(easy)}
-mr = R["mode_ratio"]["A"]
-avgA = {b: mr["easy"] * easy.get(b, 0) + mr["hard"] * hard.get(b, 0) for b in set(easy) | set(hard)}
-blocks = {"Reference": ref, "Baseline_A": base, "AdaPath_A Easy": easy, "AdaPath_A Hard": hard,
-          "AdaPath_A 평균": avgA}
-for k, v in blocks.items():
-    print("%-16s total %.2f nJ  " % (k, sum(v.values())) +
-          "  ".join("%s %.2f" % (b, v[b]) for b in ORDER if b in v and abs(v[b]) > 0.005))
+if PLOT_ONLY:
+    blocks = R["block_energy_nJ"]
+else:
+    ref = block_energy("ref_a", "gl_ref_a.vcd", 4)
+    base = block_energy("Abase", "gl_baA.vcd", 4)
+    easy = block_energy("A_easy", "gl_adA_easy.vcd", 4)
+    run_h = block_energy("A_hard", "gl_adA_hard.vcd", 4)
+    hard = {b: run_h.get(b, 0) * 4 - 3 * easy.get(b, 0) for b in set(run_h) | set(easy)}
+    mr = R["mode_ratio"]["A"]
+    avgA = {b: mr["easy"] * easy.get(b, 0) + mr["hard"] * hard.get(b, 0) for b in set(easy) | set(hard)}
+    blocks = {"Reference": ref, "Baseline_A": base, "AdaPath_A Easy": easy, "AdaPath_A Hard": hard,
+              "AdaPath_A 평균": avgA}
+    for k, v in blocks.items():
+        print("%-16s total %.2f nJ  " % (k, sum(v.values())) +
+              "  ".join("%s %.2f" % (b, v[b]) for b in ORDER if b in v and abs(v[b]) > 0.005))
 
 
-# ---------------- 주기 스윕 -> Fmax ----------------
-def fmax_from_sweep(design):
-    pts = {"io20": [], "static_w": []}
-    for line in open(os.path.join(REP, "sweep_%s.txt" % design), encoding="utf-8"):
-        mode, P, w = line.split()[:3]
-        pts[mode].append((float(P), float(w)))
-    out = {}
-    for mode, xs in pts.items():
-        xs.sort()
-        pmin = None
-        for (p0, w0), (p1, w1) in zip(xs, xs[1:]):
-            if w0 < 0 <= w1:                   # slack 은 주기에 선형 -> 0 교차점 보간
-                pmin = p0 + (0 - w0) * (p1 - p0) / (w1 - w0)
-                break
-        if pmin is None and xs and xs[0][1] >= 0:
-            pmin = xs[0][0]
-        out[mode] = {"period_ps": pmin, "fmax_mhz": 1e6 / pmin if pmin else None}
-    return out
+    # ---------------- 주기 스윕 -> Fmax ----------------
+    def fmax_from_sweep(design):
+        pts = {"io20": [], "static_w": []}
+        for line in open(os.path.join(REP, "sweep_%s.txt" % design), encoding="utf-8"):
+            mode, P, w = line.split()[:3]
+            pts[mode].append((float(P), float(w)))
+        out = {}
+        for mode, xs in pts.items():
+            xs.sort()
+            pmin = None
+            for (p0, w0), (p1, w1) in zip(xs, xs[1:]):
+                if w0 < 0 <= w1:                   # slack 은 주기에 선형 -> 0 교차점 보간
+                    pmin = p0 + (0 - w0) * (p1 - p0) / (w1 - w0)
+                    break
+            if pmin is None and xs and xs[0][1] >= 0:
+                pmin = xs[0][0]
+            out[mode] = {"period_ps": pmin, "fmax_mhz": 1e6 / pmin if pmin else None}
+        return out
 
 
-SW = {}
-for d in ("refchip", "baseline_A", "adapath_A", "baseline", "adapath", "baseline_wm", "adapath_wm"):
-    if os.path.exists(os.path.join(REP, "sweep_%s.txt" % d)):
-        SW[d] = fmax_from_sweep(d)
-        print("%-12s io20 %.0f ps (%.1f MHz)   static_w %.0f ps (%.1f MHz)" % (
-            d, SW[d]["io20"]["period_ps"], SW[d]["io20"]["fmax_mhz"],
-            SW[d]["static_w"]["period_ps"], SW[d]["static_w"]["fmax_mhz"]))
+    SW = {}
+    for d in ("refchip", "baseline_A", "adapath_A", "baseline", "adapath", "baseline_wm", "adapath_wm"):
+        if os.path.exists(os.path.join(REP, "sweep_%s.txt" % d)):
+            SW[d] = fmax_from_sweep(d)
+            print("%-12s io20 %.0f ps (%.1f MHz)   static_w %.0f ps (%.1f MHz)" % (
+                d, SW[d]["io20"]["period_ps"], SW[d]["io20"]["fmax_mhz"],
+                SW[d]["static_w"]["period_ps"], SW[d]["static_w"]["fmax_mhz"]))
 
-R["block_energy_nJ"] = blocks
-R["fmax_sweep"] = SW
-json.dump(R, open(RES, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    R["block_energy_nJ"] = blocks
+    R["fmax_sweep"] = SW
+    json.dump(R, open(RES, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 # ---------------- 그림: 블록별 에너지 누적 막대 ----------------
 import matplotlib
@@ -118,7 +123,7 @@ for b in ORDER:
     vals = [max(blocks[n].get(b, 0.0), 0.0) for n in names]
     if max(vals) < 0.01:
         continue
-    ax.bar(range(len(names)), vals, 0.62, bottom=bottom, color=COL[b], label=b, edgecolor="white", linewidth=1.2, zorder=3)
+    ax.bar(range(len(names)), vals, 0.62, bottom=bottom, color=COL[b], label=b.replace("·", " 및 "), edgecolor="white", linewidth=1.2, zorder=3)
     bottom = [x + y for x, y in zip(bottom, vals)]
 for i, t in enumerate(bottom):
     ax.text(i, t + 0.3, "%.1f nJ" % t, ha="center", va="bottom", fontsize=9.5, color=INK, fontweight="bold")
