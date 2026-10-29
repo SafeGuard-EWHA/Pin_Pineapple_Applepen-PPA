@@ -120,6 +120,16 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "Malgun Gothic"
 plt.rcParams["axes.unicode_minus"] = False
 fmax = {d: 1e6 / v for d, v in res["crit"].items()}
+_sw = os.path.join(GL, "reports_extra")
+if os.path.isdir(_sw):              # 클럭 주기 스윕 결과(SDC 규칙)가 있으면 그것을 사용
+    for d in list(fmax):
+        f = os.path.join(_sw, "sweep_%s.txt" % d)
+        if os.path.exists(f):
+            xs = sorted((float(l.split()[1]), float(l.split()[2])) for l in open(f) if l.startswith("io20"))
+            for (p0, w0), (p1, w1) in zip(xs, xs[1:]):
+                if w0 < 0 <= w1:
+                    fmax[d] = 1e6 / (p0 - w0 * (p1 - p0) / (w1 - w0))
+                    break
 mr = res["mode_ratio"]["A"]
 cyc_A = mr["easy"] * 845 + mr["hard"] * 1016
 mac_A = mr["easy"] * 43680 + mr["hard"] * 58560

@@ -178,7 +178,11 @@ def chg(new, old):
 
 # ----------------------------------------------------------------- 값 준비
 A, D = R["area"], R["crit"]
-FMAX = {k: 1e6 / v for k, v in D.items()}
+SW = R["fmax_sweep"]          # 클럭 주기 스윕으로 구한 통과 주기 (slack = 0 교차점)
+PER = {k: SW[k]["io20"]["period_ps"] for k in SW}
+FMAX = {k: SW[k]["io20"]["fmax_mhz"] for k in SW}           # 원 SDC 규칙 (입출력 지연 = 주기의 20 %)
+FMAX_S = {k: SW[k]["static_w"]["fmax_mhz"] for k in SW}     # 가중치 포트 정적 (false path)
+BE = R["block_energy_nJ"]
 E = R["energy_nJ"]
 MAC = R["mac"]
 ACC = R["acc"]
@@ -437,22 +441,29 @@ para(doc, "Hard 판정 시 내부 동작은 ① Early Classifier 완료 → ② 
      indent=True)
 
 h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
-para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC: 1 GHz 목표, 입출력 지연 20 %)으로 합성하고 OpenROAD로 "
-     "pre-layout STA를 수행하였다. 가중치는 모든 설계에서 입력 포트로 두었다. 1 GHz 제약에서 모든 설계가 음수 slack이므로, "
-     "임계 경로 지연을 1000 ps − WNS로 구하고 그 역수를 pre-layout 추정 Fmax로 사용하였다.", indent=True)
+para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC 규칙: 입출력 지연 = 클럭 주기의 20 %)으로 합성하고 "
+     "OpenROAD로 pre-layout STA를 수행하였다. 가중치는 모든 설계에서 입력 포트로 두었다. 입력 지연이 주기에 비례하므로, "
+     "단일 주기의 WNS로 Fmax를 역산하지 않고 클럭 주기를 1.0~2.4 ns로 스윕하여 최악 slack이 0이 되는 주기(인접 두 점의 "
+     "선형 보간)를 통과 주기로 구하였다. 또한 추론 중 값이 바뀌지 않는 가중치 포트를 false path로 둔 조건(레지스터 간·"
+     "픽셀 입력 경로 기준)의 Fmax를 함께 제시한다.", indent=True)
 rows = []
 for key, name in (("refchip", "Reference"), ("baseline_A", "Baseline_A"), ("adapath_A", "**AdaPath_A**"),
                   ("baseline", "Baseline_B"), ("adapath", "AdaPath_B")):
-    rows.append([name, f0(A[key]), "%+.1f %%" % pct(A[key], A["refchip"]), f0(D[key]), f1(FMAX[key])])
-table(doc, "합성 결과 (pre-layout)", ["설계", "Cell Area (µm²)", "Reference 대비", "임계 경로 (ps)", "추정 Fmax (MHz)"],
-      rows, [3.4, 3.4, 3.2, 3.2, 3.2], hl_rows=(2,))
-para(doc, "Top-2 Finder 개선 후 AdaPath_A의 임계 경로는 판단 회로가 아니며, 판단 회로가 없는 Baseline_A와 사실상 같은 Fmax"
-     "(%s vs %s MHz, 차이 %.2f %%)를 얻었다. Reference 대비 %.0f %% 낮은 것은 Conv2 MAC 경로(입력 포트 지연 포함)에서 "
-     "결정되며 판단 회로와 무관하다. 면적 증가는 Feature Map Buffer(5,184 bit), Early Classifier FC, 제어 회로에서 "
-     "발생한다. 판단·제어 회로(Top-2, Margin, Decoder, FSM) 단독 합성 면적은 %s µm²로, AdaPath_A 통합 합성 면적의 "
-     "%.2f %%에 해당한다(단독 합성과 통합 합성의 최적화 차이가 있어 참고치)."
-     % (f1(FMAX["baseline_A"]), f1(FMAX["adapath_A"]), abs(pct(FMAX["adapath_A"], FMAX["baseline_A"])),
-        -pct(FMAX["adapath_A"], FMAX["refchip"]), f1(rg["area_v2"]), region2_ratio), indent=True)
+    rows.append([name, f0(A[key]), "%+.1f %%" % pct(A[key], A["refchip"]), f0(PER[key]), f1(FMAX[key]), f1(FMAX_S[key])])
+table(doc, "합성 결과 (pre-layout, 클럭 주기 스윕)",
+      ["설계", "Cell Area (µm²)", "Reference 대비", "통과 주기 (ps)", "Fmax (MHz, SDC 규칙)", "Fmax (MHz, 가중치 정적)"],
+      rows, [2.8, 2.8, 2.6, 2.6, 3.1, 3.1], hl_rows=(2,),
+      note="통과 주기·Fmax(SDC 규칙)는 입출력 지연 20 % 조건에서 최악 slack = 0인 주기이다. 이 조건의 임계 경로는 세 설계 "
+           "모두 가중치 입력 포트에서 시작한다. '가중치 정적'은 가중치 포트를 false path로 둔 결과이다.")
+para(doc, "Top-2 Finder 개선 후 AdaPath_A의 Fmax는 판단 회로가 없는 Baseline_A와 두 조건 모두에서 같다(SDC 규칙 %s vs %s MHz, "
+     "가중치 정적 %s vs %s MHz). 즉 판단 회로가 동작 주파수를 낮추지 않는다. Reference 대비 SDC 규칙 기준 %.1f %%, 가중치 "
+     "정적 기준 %.1f %% 낮은데, 이는 판단 회로가 아니라 본 팀 데이터패스(Conv2 가중치 입력 경로, FC·FSM 제어 경로)에서 "
+     "결정된다. 면적 증가는 Feature Map Buffer(5,184 bit), Early Classifier FC, 제어 회로에서 발생한다. 판단·제어 회로(Top-2, "
+     "Margin, Decoder, FSM) 단독 합성 면적은 %s µm²로, AdaPath_A 통합 합성 면적의 %.2f %%에 해당한다(단독 합성과 통합 "
+     "합성의 최적화 차이가 있어 참고치)."
+     % (f1(FMAX["adapath_A"]), f1(FMAX["baseline_A"]), f1(FMAX_S["adapath_A"]), f1(FMAX_S["baseline_A"]),
+        -pct(FMAX["adapath_A"], FMAX["refchip"]), -pct(FMAX_S["adapath_A"], FMAX_S["refchip"]),
+        f1(rg["area_v2"]), region2_ratio), indent=True)
 
 h2(doc, "3.7 게이트레벨 VCD 기반 전력 및 추론당 에너지")
 para(doc, "벡터 없는(vectorless) 전력 추정은 기본 또는 지정 활동률을 적용하므로 입력별 모드 활성 패턴을 충분히 반영하지 "
@@ -482,10 +493,24 @@ para(doc, "에너지 결과는 두 단계로 해석된다. 본 팀 데이터패�
      % (-pct(CYC["base"], CYC["ref"]), pct(E_ABASE, E_REF), -pct(E_A, E_ABASE), -pct(E_A, E_REF),
         -pct(MAC_A, MAC["ref"]), pct(A["adapath_A"], A["refchip"])), indent=True)
 pw = R["power_split"]
-para(doc, "전력 구성을 보면 AdaPath_A의 Easy 런에서 순차 소자(레지스터)가 전체 전력의 %.0f %%를 차지한다. 이 분석은 CTS 이전이라 "
-     "클럭망 전력이 포함되지 않았으므로, 전력 구성은 배치·배선 이후 다시 평가해야 한다. 남은 에너지의 대부분이 연산보다 "
-     "레지스터에서 소모되므로, Easy 모드에서 후단부 레지스터의 클럭을 차단하는 클럭 게이팅이 다음 개선 대상이다(4.2절)."
-     % pw["A_easy_seq_pct"], indent=True)
+EZ, HD, BS = BE["AdaPath_A Easy"], BE["AdaPath_A Hard"], BE["Baseline_A"]
+IDLE = sum(EZ.get(b, 0) for b in ("Conv2", "Pool2", "FC (Full)", "Light FC"))
+E_EZ_CG = E["A_easy"] - IDLE
+E_A_CG = MODE["A"]["easy"] * E_EZ_CG + MODE["A"]["hard"] * E["A_hard"]
+para(doc, "에너지가 어디서 소모되는지 확인하기 위해 셀 단위 전력을 블록별로 합산하였다(그림 12). 합성 과정에서 이름이 유지되는 "
+     "레지스터는 소속 블록으로, 이름이 없는 조합 논리는 하나의 항목으로 집계하였다. 세 가지가 확인된다. ① 연산 생략 효과는 "
+     "조합 논리에서 뚜렷하다. Easy에서 조합 논리 에너지는 %.2f nJ로 Baseline_A(%.2f nJ)의 절반 이하이다. ② 반면 Easy에서도 "
+     "Conv2·Pool2·FC의 레지스터는 연산 없이 클럭만 공급받으며 **%.2f nJ(Easy 에너지의 %.0f %%)**를 소모한다. ③ Feature Map "
+     "Buffer(5,184 bit 레지스터)는 Easy에서 %.2f nJ(%.0f %%)로 가장 큰 단일 블록이다. 이 분석은 CTS 이전이라 클럭망 전력이 "
+     "포함되지 않았으며(Easy 런에서 순차 소자 비중 %.0f %%), 배치·배선 이후 다시 평가해야 한다."
+     % (EZ["조합 논리 (블록 미분류)"], BS["조합 논리 (블록 미분류)"], IDLE, IDLE / E["A_easy"] * 100,
+        EZ["Feature Map Buffer"], EZ["Feature Map Buffer"] / E["A_easy"] * 100, pw["A_easy_seq_pct"]), indent=True)
+figure(doc, os.path.join(OUT, "fig_block_energy.png"),
+       "블록별 추론당 에너지 (게이트레벨 VCD 기반 추정, 100 MHz; Reference는 이미지 1~4 런, Hard는 런 차감 추정)", 16.5)
+para(doc, "②의 유휴 에너지는 Easy 판정 시 후단부 레지스터의 클럭을 차단하는 클럭 게이팅의 직접적인 대상이다. 이 에너지를 모두 "
+     "제거할 수 있다고 가정한 상한 추정에서 Easy 에너지는 %.1f nJ, 가중 평균은 %.1f nJ로 Reference 대비 %s이 된다. ICG 셀과 "
+     "게이팅 제어의 오버헤드는 반영하지 않은 값이므로 실제 이득은 이보다 작으며, 구현과 재측정으로 확인해야 한다(4.2절)."
+     % (E_EZ_CG, E_A_CG, chg(E_A_CG, E_REF)), indent=True)
 table(doc, "효율 지표", ["설계", "실행 MAC", "에너지 (nJ)", "실효 TOPS/W", "등가 TOPS/W"], [
     ["Reference", f0(MAC["ref"]), f1(E_REF), f2(topsw(MAC["ref"], E_REF)), f2(topsw(MAC["ref"], E_REF))],
     ["Baseline_A", f0(MAC["Abase"]), f1(E_ABASE), f2(topsw(MAC["Abase"], E_ABASE)), f2(topsw(MAC["ref"], E_ABASE))],
@@ -494,7 +519,7 @@ table(doc, "효율 지표", ["설계", "실행 MAC", "에너지 (nJ)", "실효 T
     note="1 MAC = 2 operations. 실효 TOPS/W = 2 × 실행 MAC / 추론당 에너지. 등가 TOPS/W = 2 × Reference MAC(%s) / 추론당 "
          "에너지로, 같은 분류 작업을 완료하는 효율이다. 본 측정에서는 실행 MAC 감소율이 에너지 감소율보다 커서 AdaPath_A의 "
          "실효 지표가 낮아졌으므로, 두 지표를 평균 에너지·정확도와 함께 제시한다." % f0(MAC["ref"]))
-para(doc, "모드별 에너지를 고정한 혼합 모델로 입력 분포에 따른 에너지 이득 조건을 분석하였다(그림 12). Easy 비율을 p라 하면 "
+para(doc, "모드별 에너지를 고정한 혼합 모델로 입력 분포에 따른 에너지 이득 조건을 분석하였다(그림 13). Easy 비율을 p라 하면 "
      "모델 A의 평균 에너지는 E_A(p) = %.2f − %.2f·p nJ이다. 이 모델에서 Reference 대비 에너지 이득은 Easy 비율이 약 "
      "**%.1f %%를 넘을 때** 발생하고, Baseline_A 대비 손익분기점은 약 %.1f %%이다. 반면 Baseline_A 대비 처리 cycle의 "
      "손익분기점은 약 %.1f %%이므로, Easy 비율 %.0f~%.0f %% 구간에서는 처리 cycle이 줄어도 에너지는 늘어날 수 있다. 즉 "
@@ -560,10 +585,12 @@ bullet(doc, "**임계값 선정:** 임계값을 테스트셋에서 탐색한 결
        "고정한 뒤 미사용 테스트셋으로 평가하는 절차가 추가로 필요하다.")
 bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 배치·"
        "배선, 클럭망, 실제 입력 분포를 반영한 후속 검증이 필요하다. WM-811K 에너지는 대리 추정이다.")
-bullet(doc, "**순차 소자 전력:** 남은 에너지의 대부분이 레지스터 전력이다. 모드 신호로 후단부 레지스터의 클럭을 차단하는 클럭 "
-       "게이팅(ICG 셀)을 적용하면 Easy 모드 에너지를 추가로 줄일 수 있다.")
-bullet(doc, "**면적:** Feature Map Buffer와 Early Classifier가 면적 증가의 주요인이다. 버퍼를 SRAM 매크로로 바꾸거나 Early "
-       "Classifier를 Full FC와 시분할 공유하면 오버헤드를 줄일 수 있다.")
+bullet(doc, "**클럭 게이팅:** Easy에서도 후단부 레지스터가 %.2f nJ를 소모한다(그림 12). 모드 신호로 후단부 클럭을 차단하는 "
+       "클럭 게이팅(ICG 셀)을 적용하면, 오버헤드를 제외한 상한 추정으로 평균 에너지를 %.1f nJ(Reference 대비 %s)까지 줄일 수 "
+       "있다." % (IDLE, E_A_CG, chg(E_A_CG, E_REF)))
+bullet(doc, "**Feature Map Buffer:** 5,184 bit 레지스터 버퍼가 면적과 Easy 에너지(%.0f %%)의 가장 큰 단일 항목이다. SRAM 매크로로 "
+       "바꾸거나, Early Classifier를 Full FC와 시분할 공유하면 면적·에너지 오버헤드를 줄일 수 있다."
+       % (EZ["Feature Map Buffer"] / E["A_easy"] * 100))
 bullet(doc, "**런타임 동작점 조정:** difficulty_decoder는 레지스터 임계값 모드(USE_REG_TH)를 지원하므로, 런타임에 정확도–연산량 "
        "동작점을 조정하는 운용으로 확장할 수 있다(전압·주파수를 바꾸는 DVFS와는 구분).")
 h2(doc, "4.3 기대효과")
