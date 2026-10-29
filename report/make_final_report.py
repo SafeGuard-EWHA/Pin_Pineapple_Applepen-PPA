@@ -11,10 +11,12 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
+from experiment_sections import add_experiments, load_results
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "out")
 R = json.load(open(os.path.join(HERE, "results.json"), encoding="utf-8"))
+load_results(os.path.dirname(HERE))
 
 FONT = "맑은 고딕"
 fig_no = [0]
@@ -250,8 +252,8 @@ para(doc, "고정 경로 CNN 가속기는 입력 난이도와 관계없이 모�
      "상당수는 얕은 특징만으로도 분류가 가능하며, 이들에게 전체 경로를 적용하는 것은 연산·시간·에너지의 낭비이다. 본 과제는 "
      "전단부(Conv1) 직후 **Early Classifier 점수의 Top-1과 Top-2 차이(Score Margin)**를 난이도 지표로 사용하여, 입력마다 "
      "Easy / Medium / Hard 경로 중 하나를 선택하는 **난이도 적응형 NPU Datapath(AdaPath-NPU)**를 설계하였다.", indent=True)
-para(doc, "Early-Exit 계열 기법(BranchyNet 등)은 분기 판단에 확률 분포의 엔트로피를 사용하므로 확률·로그 계산 또는 그 근사 "
-     "회로가 필요하다. 본 설계는 비교기와 감산기만으로 계산되는 Score Margin을 사용하며, 같은 판단 결과로 후단 연산을 "
+para(doc, "Early-Exit 계열의 엔트로피 기반 판단은 확률 분포와 로그 또는 그 근사를 사용한다. "
+     "본 설계는 점수의 비교와 감산으로 계산되는 Score Margin을 사용하며, 같은 판단 결과로 후단 연산을 "
      "생략(Easy)하거나 일부 채널만 활성화(Medium)한다. 주최 측 평가 구조에 맞추어 과제를 다음과 같이 구성하였다.", indent=True)
 table(doc, "평가 항목별 과제 구성", ["구분", "대상 모델 / 데이터", "수행 내용"], [
     ["지정주제 (50 %)", "주최 측 MNIST 레퍼런스 가속기와 주 경로 계층·채널 구성이 같은 모델 A",
@@ -279,6 +281,11 @@ para(doc, "본 과제의 기여는 다음 세 가지이다. 첫째, Score Margin
      "처리 cycle 증가 없이 판단 회로의 조합 경로를 단축하였다. 셋째, 주최 측 Reference와 항상 Hard 경로를 실행하는 "
      "Baseline_A를 함께 비교하여 데이터패스 변경 효과와 적응형 경로 선택 효과를 분리하였다. 모델 A는 선정 임계값에서 "
      "Easy/Hard 두 경로를 사용하며, Medium 경로의 기여는 확장 모델에서 별도로 평가하였다.", indent=True)
+para(doc, "모델 A의 사전 지정점 TH=63에서 주최 입력 순차 1,000회의 정답 수는 Reference와 같은 970개였으며, "
+     "평균 처리 cycle은 1,334에서 851.84로 36.1% 감소하였다. 소수 입력 VCD에 기반한 에너지 추정은 8.9% 감소하였으나 "
+     "셀 면적은 55.4% 증가하였다. 추가 실험에서는 같은 입력의 TH=0, 10, 20, 30이 더 높은 정확도와 더 적은 cycle을 보였고, "
+     "잡음 σ=100에서 AdaPath_A는 Baseline_A보다 정확도가 8.1%p 낮았다. 따라서 적응형 계산의 이득은 "
+     "입력 분포와 동작점에 의존하며, 본 보고서는 구현 성과와 적용 한계를 함께 제시한다.", indent=True)
 
 # =================================================================== 2
 h1(doc, "2. 설계 목표")
@@ -286,8 +293,8 @@ para(doc, "지정주제의 전제 조건(정확도 유지)에서 PPA 개선을 �
      "(MAC) 감소가 아니라 게이트레벨 스위칭 기반의 추론당 에너지로 평가한다. ② 판단 회로가 동작 주파수를 낮추지 않아야 "
      "한다. ③ Medium 경로의 기여는 Medium이 없는 2경로 구조와 분리하여 평가한다.", indent=True)
 table(doc, "설계 목표 및 결과 (지정주제: Reference 대비 AdaPath_A)", ["항목", "목표", "결과", "판정"], [
-    ["분류 정확도", "Reference 이상 유지",
-     "970 / 1,000 (Reference 970 / 1,000, 주최 입력 순차 실행)", "달성"],
+    ["분류 정확도", "무열화 순차 입력에서 Reference 이상",
+     "970 / 1,000 (Reference 970 / 1,000); 열화 조건은 3.11절에서 별도 평가", "해당 조건 달성"],
     ["평균 처리 cycle", "Reference 대비 단축",
      "%s → %s cycle (%s)" % (f0(CYC["ref"]), f0(CYC_A), chg(CYC_A, CYC["ref"])), "달성"],
     ["추론 지연 (pre-layout Fmax 기준)", "Reference 대비 단축",
@@ -354,14 +361,14 @@ table(doc, "Top-2 구조 개선에 따른 판단·제어 회로 단독 합성 �
 
 h2(doc, "3.3 소프트웨어 모델링, 임계값 탐색, 정수 양자화")
 para(doc, "세 출력(Early / Light / Full)을 가진 3-head 모델을 MNIST 학습셋 60,000장으로 공동 학습하였다(표 6). 이후 "
-     "테스트셋에서 (T_low, T_high)를 전수 탐색하여 '정확도 손실 0.5 %p 이내에서 평균 MAC 최소'인 동작점을 선택하였다. 이는 "
+     "테스트셋에서 (T_low, T_high)의 후보 조합을 탐색하여 '정확도 손실 0.5 %p 이내에서 평균 MAC 최소'인 동작점을 선택하였다. 이는 "
      "테스트셋 기반 동작점 탐색 결과이며, 독립 검증셋으로 임계값을 고정한 뒤 미사용 테스트셋으로 평가하는 절차는 4.2절의 "
      "보완 과제로 남긴다. 정수 규약은 가중치 INT8, 활성값과 점수 인터페이스 signed 12-bit(포화), bias 누산기 도메인 16-bit, "
      "재양자화 반올림 시프트이며, 이 규약으로 RTL과 비트 단위로 일치하는 Golden 모델을 생성하였다.", indent=True)
 table(doc, "학습 설정 (모델 A·B, MNIST / WM-811K 공통)", ["항목", "설정", "항목", "설정"], [
     ["Optimizer", "Adam, lr 2×10⁻³", "Scheduler", "Cosine annealing"],
     ["Epoch / Batch", "30 / 128", "손실", "CE(Full) + 0.5·CE(Early) + 0.5·CE(Light)"],
-    ["입력", "28×28, [0,1] 정규화", "Random seed", "고정하지 않음 (재학습 시 ±0.1 %p 수준 변동 가능)"],
+    ["입력", "28×28, [0,1] 정규화", "Random seed", "실제 학습 seed 기록 미확인; 재학습 변동성 미평가"],
 ], [3.0, 4.6, 2.6, 6.8])
 sw = R["sw"]
 table(doc, "모델별 정확도와 선정 동작점 (MNIST 테스트셋 10,000장)", ["항목", "모델 A (지정주제)", "모델 B (확장)"], [
@@ -373,8 +380,9 @@ table(doc, "모델별 정확도와 선정 동작점 (MNIST 테스트셋 10,000�
     ["정수 Hard 경로 정확도 (1,000장, 같은 표본의 float 대비)", sw["A_int8"], "97.80 % (float 97.95 %)"],
 ], [6.6, 5.2, 5.2])
 para(doc, "모델 A는 Conv2가 3채널뿐이어서 1채널 Light 경로의 정확도(%s %%)가 낮다. 임계값 탐색은 Medium 구간을 두지 않는 "
-     "것(T_low = T_high)이 최적이라고 판단하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. 반면 후단부가 큰 모델 B와 "
-     "WM-811K에서는 Medium이 선택된다(3.8절)." % sw["A_light"], indent=True)
+     "동작점(T_low = T_high)을 선택하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. "
+     "이는 탐색한 입력·목적함수·후보 범위에서의 선택이며 전역 최적성이나 정수 TH=63의 최적성을 뜻하지 않는다. "
+     "정수 임계값 스윕 결과는 3.10절에 제시하였다. 반면 후단부가 큰 모델 B와 WM-811K에서는 Medium이 선택된다(3.8절)." % sw["A_light"], indent=True)
 figure(doc, os.path.join(OUT, "archA", "fig_margin_hist_mnist.png"), "모델 A의 Score Margin 분포와 선정 임계값", 12.0)
 
 h2(doc, "3.4 RTL 설계와 주최 측 인터페이스 호환")
@@ -412,8 +420,13 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
 ], [2.6, 2.6, 2.4, 2.8, 3.0, 3.0], hl_rows=(2,),
     note="input_1000.txt는 서로 다른 100장이 10번 반복된 1,000회 입력이므로 1,000개의 독립 표본이 아니다. '순차 입력'은 "
          "1,000회를 순서대로 1회씩 처리한 결과이고, cycle은 start(rst_n 해제)부터 valid_out까지이다. '주최 TB'는 "
-         "$urandom_range로 복원 무작위 추출하므로 설계마다 추출된 표본 구성이 달라 정답률이 소폭 다르며, cycle은 연속한 "
+         "$urandom_range로 복원 무작위 추출하므로 순차 입력과 표본 구성이 달라질 수 있으며, cycle은 연속한 "
          "valid_out 사이 간격(리셋 포함)의 평균이다.")
+para(doc, "주최 TB의 기록값과 순차 평가를 동일 표본의 쌍대 비교로 취급하지 않았다. 제출 ZIP의 원본 TB에는 "
+     "pixels[0:783999]에 대해 $urandom_range(0,1000)을 사용하는 경계 조건이 존재한다. "
+     "인덱스 1000이 선택되면 유효 이미지 범위를 벗어나므로, 해당 실행의 정확도 차이를 표본 구성 차이만으로 확정할 수 없다. "
+     "본 추가 실험은 순차 입력 TB를 사용하였으며, 주최 TB는 수정하지 않고 해당 실행에서의 범위 밖 선택 여부를 "
+     "별도 진단할 검증 항목으로 남겼다.", size=9, indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_console.png"),
        "Vivado 2023.1 실행 화면 — 주최 측 top_tb_1000 실행 결과 (AdaPath_A)", 16.0)
 para(doc, "제출 프로젝트(.xpr)를 Vivado 2023.1에서 그대로 실행한 화면이다. 주최 측 테스트벤치가 1,000회 처리 후 $stop(391행)에서 "
@@ -423,6 +436,9 @@ figure(doc, os.path.join(OUT, "fig_vivado_ref_vs_ada.png"),
        "같은 0~415 ns 동안의 처리량 (Vivado, 주최 측 TB): Reference 30장 vs AdaPath_A 46장", 17.0)
 para(doc, "같은 테스트벤치·같은 클럭에서 415 ns 동안 Reference는 30장, AdaPath_A는 46장을 분류하였다(두 설계 모두 해당 "
      "구간 전부 정답). 이미지당 평균 처리 cycle이 1,336에서 855로 줄어든 효과가 파형에 그대로 나타난다.", indent=True)
+para(doc, "이 파형의 시간축은 주최 TB의 timescale 1ps/1ps와 always #5 설정에 따른 기능 시뮬레이션 시간이다. "
+     "10 ps 클럭 주기는 물리 회로의 실현 가능한 동작 주파수를 의미하지 않는다. "
+     "실제 지연의 추정은 3.6절의 STA 조건을 사용하며, 3.7절의 전력 분석은 별도의 100 MHz 게이트레벨 조건이다.", size=9, indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_detail_easy_hard.png"),
        "Vivado 파형 (376~415 ns): Easy 이미지 42~45와 Hard 이미지 46의 내부 동작 비교", 17.0)
 para(doc, "Easy 이미지(42~45)는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
@@ -440,6 +456,9 @@ h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
 para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC: 1 GHz 목표, 입출력 지연 20 %)으로 합성하고 OpenROAD로 "
      "pre-layout STA를 수행하였다. 가중치는 모든 설계에서 입력 포트로 두었다. 1 GHz 제약에서 모든 설계가 음수 slack이므로, "
      "임계 경로 지연을 1000 ps − WNS로 구하고 그 역수를 pre-layout 추정 Fmax로 사용하였다.", indent=True)
+para(doc, "이 환산은 원래 1 GHz 제약에서 설정된 I/O 지연을 고정한 추정이다. "
+     "목표 주기를 바꾸면서 I/O 지연도 주기의 20%로 다시 설정하는 경우에는 동일한 Fmax가 보장되지 않으며, "
+     "주기별 재분석이 필요하다. 배치·배선 및 클럭망 합성 이후의 최대 동작 주파수를 검증한 결과와 구분하였다.", size=9, indent=True)
 rows = []
 for key, name in (("refchip", "Reference"), ("baseline_A", "Baseline_A"), ("adapath_A", "**AdaPath_A**"),
                   ("baseline", "Baseline_B"), ("adapath", "AdaPath_B")):
@@ -507,7 +526,7 @@ figure(doc, os.path.join(OUT, "fig_energy_breakeven.png"),
 
 h2(doc, "3.8 Medium 경로의 기여 분리")
 para(doc, "Medium 경로의 순수 기여를 분리하기 위해, 같은 Early Classifier와 Score Margin을 쓰되 Medium이 없는 Early-Exit"
-     "(2경로)와 AdaPath(3경로)를 임계값 전수 탐색으로 비교하였다(동일 정확도에서 최소 평균 MAC).", indent=True)
+     "(2경로)와 AdaPath(3경로)를 후보 임계값 조합 탐색으로 비교하였다(동일 정확도에서 최소 평균 MAC).", indent=True)
 iso = R["iso"]
 table(doc, "Early-Exit 대비 AdaPath(Medium 추가)의 이득", ["조건", "MNIST (모델 B)", "WM-811K (모델 B)"], [
     ["동일 정확도에서 추가 MAC 절감", iso["mn_gain"], iso["wm_gain"]],
@@ -541,7 +560,11 @@ table(doc, "WM-811K 적용 전·후 비교 (Baseline_WM = 항상 Hard)", ["항�
          "Baseline_WM 값으로 AdaPath_B Hard 에너지를 사용하였으나 Baseline_WM에는 Early 경로가 없으므로, 4개 클래스 설계의 "
          "직접 전력 측정 결과와 구분한다.")
 
+# ---------------- committed RTL experiment results ----------------
+add_experiments(doc, os.path.dirname(HERE), para, h2, table, figure)
+
 # =================================================================== 4
+doc.add_page_break()
 h1(doc, "4. 결과 및 기대효과")
 h2(doc, "4.1 결과 요약")
 table(doc, "최종 결과 요약 (지정주제: Reference 대비 AdaPath_A)", ["지표", "Reference", "AdaPath_A", "변화"], [
@@ -553,13 +576,23 @@ table(doc, "최종 결과 요약 (지정주제: Reference 대비 AdaPath_A)", ["
     ["추론당 에너지 (nJ, VCD 기반 추정)", f1(E_REF), f1(E_A), chg(E_A, E_REF)],
     ["Cell Area (µm²)", f0(A["refchip"]), f0(A["adapath_A"]), chg(A["adapath_A"], A["refchip"])],
 ], [5.4, 3.4, 3.4, 3.8], hl_rows=(1, 3, 5))
+para(doc, "위 성과는 무열화 입력과 TH=63의 지정 조건에 해당한다. 임계값 스윕에서 TH=0, 10, 20, 30은 "
+     "같은 입력에서 98.0%와 845.00 cycle을 보여 TH=63보다 유리하였으므로, TH=63의 최적성은 주장하지 않았다. "
+     "열화 평가에서는 대비 0.3에서 Baseline_A와 같은 정확도로 cycle을 7.62% 줄였으나, "
+     "잡음 σ=100에서는 7.96%의 cycle 감소와 8.1%p의 정확도 손실이 함께 나타났다. "
+     "적응형 경로의 설계 가치는 평균 계산 비용의 조절 가능성에 있으며, 정확도 유지의 범위는 입력 분포에 따라 제한된다.", indent=True)
 h2(doc, "4.2 평가 범위, 한계 및 향후 개선")
 bullet(doc, "**정확도 표본:** 주최 입력은 고유 100장이 10회 반복된 1,000회 입력이므로 1,000개의 독립 이미지에 대한 일반화 "
-       "평가와 구분한다. 일반화 성능은 MNIST 테스트셋 10,000장 결과(표 7)로 제시하였다.")
+       "평가와 구분한다. MNIST 테스트셋 10,000장 결과(표 7)도 임계값 탐색에 사용한 동일 집합의 성능이므로 "
+       "완전히 독립적인 최종 평가로 해석하지 않았다. 잡음 조건은 단일 seed이며 반복 실험의 변동성을 평가하지 않았다.")
 bullet(doc, "**임계값 선정:** 임계값을 테스트셋에서 탐색한 결과는 해당 데이터의 동작점 탐색이다. 독립 검증셋에서 임계값을 "
        "고정한 뒤 미사용 테스트셋으로 평가하는 절차가 추가로 필요하다.")
+bullet(doc, "**열화 강건성:** Hard 비율 증가만으로 정확도 유지가 보장되지 않는다. "
+       "강한 잡음에서의 정확도 손실에 대해서는 입력별 margin·경로·예측을 대응시켜 원인을 분석하고, "
+       "오류 허용 범위를 만족하는 임계값을 별도 검증해야 한다.")
 bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 배치·"
-       "배선, 클럭망, 실제 입력 분포를 반영한 후속 검증이 필요하다. WM-811K 에너지는 대리 추정이다.")
+       "배선, 클럭망, 실제 입력 분포를 반영한 후속 검증이 필요하다. WM-811K 에너지는 대리 추정이다. "
+       "열화 실험에서는 전력을 다시 측정하지 않았으므로 cycle 감소율을 에너지 절감률로 대체하지 않았다.")
 bullet(doc, "**순차 소자 전력:** 남은 에너지의 대부분이 레지스터 전력이다. 모드 신호로 후단부 레지스터의 클럭을 차단하는 클럭 "
        "게이팅(ICG 셀)을 적용하면 Easy 모드 에너지를 추가로 줄일 수 있다.")
 bullet(doc, "**면적:** Feature Map Buffer와 Early Classifier가 면적 증가의 주요인이다. 버퍼를 SRAM 매크로로 바꾸거나 Early "
