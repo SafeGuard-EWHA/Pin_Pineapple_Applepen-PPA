@@ -1,6 +1,6 @@
 {
-  "source_commit": "dc151207b527216164528630ab8e1add2a63edff",
-  "figures": 24,
+  "source_commit": "e4b7a3cfd5c89cd5d33b3a90cdf7c84a497b288a",
+  "figures": 26,
   "tables": 31,
   "control_evidence_commit": "7364903c0ec1f4352448bcc64ae6c9e193811a37",
   "control_checks": {
@@ -72,13 +72,13 @@
   },
   "experiments_rerun": false,
   "files": {
-    "report\\결과보고서_PPA.docx": "d1b56d8e885e48cb380033b93e4f90f23eba57ea10a56719c4f81489d785689c",
-    "report\\make_final_report.py": "c2b5032591153435d3b8593e0388ba87ee80f0e27be9b841dc51f50b68f9e55c",
+    "report\\결과보고서_PPA.docx": "e494bb92e78d54e6740b61b93f54f85ae6a87704b28e33b9700659ccc6122f05",
+    "report\\make_final_report.py": "3c953a8b5c58b5d699013e48099b3060d09ac4be0e1453159e77be600fcb990e",
     "report\\results.json": "08f7badbb65ba7451bb3a423347088b00cd8387355ebf09347c9bb48872c800b"
   },
   "pdf_checked": true,
-  "pdf_pages": 38,
-  "pdf_sha256": "1fdea9445b5e16f793dd5f1926c1ff8c2b9dc977ceb0c6c279cf2771f1632e4c",
+  "pdf_pages": 40,
+  "pdf_sha256": "801e66ef76b020cdea9ca34b8701f012dcc016d6fb5467346bf1c905b1d4501a",
   "pdf_toc_updated": true,
   "figure_pages": [
     [
@@ -131,11 +131,11 @@
     ],
     [
       13,
-      20
+      19
     ],
     [
       14,
-      22
+      21
     ],
     [
       15,
@@ -155,7 +155,7 @@
     ],
     [
       19,
-      28
+      27
     ],
     [
       20,
@@ -167,15 +167,23 @@
     ],
     [
       22,
-      30
+      31
     ],
     [
       23,
-      36
+      32
     ],
     [
       24,
-      37
+      32
+    ],
+    [
+      25,
+      38
+    ],
+    [
+      26,
+      39
     ]
   ],
   "outside_page_text": []

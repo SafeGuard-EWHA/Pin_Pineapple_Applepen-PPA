@@ -1,7 +1,7 @@
 {
-  "pdf_sha256": "1fdea9445b5e16f793dd5f1926c1ff8c2b9dc977ceb0c6c279cf2771f1632e4c",
-  "docx_sha256": "d1b56d8e885e48cb380033b93e4f90f23eba57ea10a56719c4f81489d785689c",
-  "page_count": 38,
+  "pdf_sha256": "801e66ef76b020cdea9ca34b8701f012dcc016d6fb5467346bf1c905b1d4501a",
+  "docx_sha256": "e494bb92e78d54e6740b61b93f54f85ae6a87704b28e33b9700659ccc6122f05",
+  "page_count": 40,
   "reviewed_pages": [
     1,
     2,
@@ -40,19 +40,25 @@
     35,
     36,
     37,
-    38
+    38,
+    39,
+    40
   ],
   "renderer": "Poppler pdftoppm 115 dpi",
   "pdf_export": "LibreOffice 26.8.2.2; TOC and fields updated through UNO",
-  "figures": 24,
+  "figures": 26,
   "tables": 31,
-  "visual_findings": "No clipping, overlapping, or figure/caption separation observed. Table 25 spans pages 29-30 with repeated header.",
+  "visual_findings": "No clipping, overlapping, or figure/caption separation observed. Table 25 spans pages 31-32 with repeated header.",
   "control_table": {
     "number": 14,
-    "page": 19
+    "page": 20
+  },
+  "wm_path_figure": {
+    "number": 20,
+    "page": 29
   },
   "wm_medium_figure": {
-    "number": 19,
-    "page": 28
+    "number": 21,
+    "page": 30
   }
 }

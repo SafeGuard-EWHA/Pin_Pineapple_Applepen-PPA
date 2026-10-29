@@ -4,6 +4,7 @@
 """
 import json
 import os
+import csv
 from experiment_sections import load_results
 
 from docx import Document
@@ -17,6 +18,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "out")
 R = json.load(open(os.path.join(HERE, "results.json"), encoding="utf-8"))
 CONTROL = json.load(open(os.path.join(HERE, '..', 'results_hs', 'assertions', 'summary.json'), encoding='utf-8'))
+WM_TRANSACTIONS = list(csv.DictReader(open(os.path.join(HERE, '..', 'results_hs', 'assertions', 'WM_transactions.csv'), encoding='utf-8')))
+WM_OBS_AVG_CYC = sum(int(r['cycles']) for r in WM_TRANSACTIONS) / len(WM_TRANSACTIONS)
 
 SWEEP, ROBUST, LEVELS = load_results(os.path.dirname(HERE))
 TB_CHECK = json.load(open(os.path.join(HERE, '..', 'results_hs', 'corrected_tb', 'validation.json'), encoding='utf-8'))
@@ -46,8 +49,10 @@ LBL = {
     "f_twofold": FIGN["sh2_fig_twofold.png"], "f_wrapper": FIGN["fig_wrapper.png"], "f_sweep": FIGN["hs_fig_sweep_A.png"],
     "f_block": FIGN["fig_block_energy.png"], "f_breakeven": FIGN["fig_energy_breakeven.png"],
     "f_wmclass": FIGN["sh2_fig_wm_class_modes.png"], "f_rmodes": FIGN["hs_fig_robustness_modes.png"],
-    "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["hs_medium_wave_measured.png"],
+    "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"],
+    "f_wmpaths": FIGN["fig_vivado_wm_paths.png"],
     "t_control": _tn("제어 조건의 동적 검사"),
+    "t_wmppa": _tn("WM-811K 적용 전후 비교"),
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
     "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_verify": _tn("기능 검증 결과"),
@@ -314,7 +319,6 @@ def figure(doc, path, text, width=15.0):
         'hs_fig_sweep_A.png': 'out/fig_sweep_A.png',
         'hs_fig_robustness_modes.png': 'out/fig_robustness_modes.png',
         'hs_fig_robustness_acc.png': 'out/fig_robustness_acc.png',
-        'hs_medium_wave_measured.png': 'results_hs/medium_wave/medium_wave_measured.png',
     }
     if os.path.basename(path) in sources:
         path = os.path.join(HERE, '..', sources[os.path.basename(path)])
@@ -413,6 +417,7 @@ for toc_name in ('TOC 1', 'TOC 2'):
         doc.styles.add_style(toc_name, 1, builtin=True)
     toc_style = doc.styles[toc_name]
     toc_style.font.name = FONT
+    toc_style._element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'), FONT)
     toc_style.font.size = Pt(10)
     toc_style.paragraph_format.space_before = Pt(0)
     toc_style.paragraph_format.space_after = Pt(3)
@@ -782,6 +787,8 @@ para(doc, "제출 패키지의 이식성과 재현성을 확인하기 위해, �
      "Golden 일치 954 / 954를 재현하였고, Easy / Medium / Hard 사용 횟수도 404 / 167 / 383으로 같았다. 이 결과는 동봉한 "
      "테스트 입력에 대한 제출 패키지의 실행 재현성을 뒷받침하며, 비공개 평가 입력에 대한 정확도를 보증하는 결과로 "
      "해석하지 않는다. 캡처와 전체 로그는 results_hs/submit_check/에 보존하였다." % LBL, indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_submit3.png"),
+       "독립 PC의 Vivado 2024.1에서 제출 ZIP 3종을 실행한 Tcl 콘솔. 콘솔 백분율은 원본 TB의 정수 연산 표시이며 정답 수와 구분한다.", 15.0)
 h3(doc, "3.5.5 제어 조건 검사 및 검증 범위")
 para(doc, "Vivado 2024.1에서 원본 RTL, TB 및 제출 ZIP을 변경하지 않고, 별도의 읽기 전용 관측 모듈을 "
      "시뮬레이션 최상위에 추가하여 4개 제어 조건을 검사하였다(표 @t_control@). start와 모드 수락은 클럭 상승 "
@@ -969,10 +976,11 @@ table(doc, "WM-811K 적용 전후 비교 (Baseline_WM = 항상 Hard)", ["항목"
     ["평균 MAC / 이미지", f0(WM["mac_base"]), f0(WM["mac_ada"]), chg(WM["mac_ada"], WM["mac_base"])],
     ["Cell Area (µm²)", f0(A["baseline_wm"]), f0(A["adapath_wm"]), chg(A["adapath_wm"], A["baseline_wm"])],
     ["추정 Fmax (MHz)", f1(FMAX["baseline_wm"]), f1(FMAX["adapath_wm"]), "-"],
-    ["평균 처리 cycle / 이미지", f0(CYC["base"]), f0(WM["cyc_ada"]), chg(WM["cyc_ada"], CYC["base"])],
+    ["평균 cycle (10-class cycle 가정)", f0(CYC["base"]), f0(WM["cyc_ada"]), chg(WM["cyc_ada"], CYC["base"])],
     ["추론당 에너지 (nJ, 대리 추정)", f1(E_WM_BASE), f1(E_WM), chg(E_WM, E_WM_BASE)],
 ], [5.0, 3.4, 4.6, 3.0], hl_rows=(6,),
-    note="WM 에너지는 10개 클래스 AdaPath_B의 모드별 VCD 기반 에너지에 WM-811K 모드 비율을 가중한 대리 추정이다. "
+    note="cycle 행은 10-class MNIST의 Baseline 985, Easy 845, 후단 1,016 cycle을 WM float 모드 비율로 가중한 기존 계산값이며, "
+         "4-class WM RTL의 실측 cycle이 아니다. WM 에너지는 10개 클래스 AdaPath_B의 모드별 VCD 기반 에너지에 WM-811K 모드 비율을 가중한 대리 추정이다. "
          "Baseline_WM 값으로 AdaPath_B Hard 에너지를 사용하였으나 Baseline_WM에는 Early 경로가 없으므로, 4개 클래스 설계의 "
          "직접 전력 측정 결과와 구분한다.")
 h3(doc, "3.9.1 RTL 검증 (Vivado)")
@@ -991,15 +999,32 @@ table(doc, "WM-811K RTL 검증 결과 (Vivado 2023.1, 정수 연산, 테스트 9
     ["**전체**", "954", "**774 (81.13 %)**", "777 (81.45 %)"],
 ], [3.4, 1.6, 4.4, 4.4], hl_rows=(4,),
     note="AdaPath RTL은 Golden 판정과 954 / 954 일치. 모드 Easy / Medium / Hard = 404 / 167 / 383 (정수 임계값 13 / 41).")
+h3(doc, "3.9.2 경로별 동작 파형과 제어 조건 검증 (Vivado)")
+para(doc, "세 경로가 하드웨어에서 실제로 다르게 동작하는지 같은 Vivado 프로젝트의 파형으로 확인하였다(그림 @f_wmpaths@). "
+     "WM-811K 테스트 처음 7장은 Hard, Hard, Medium, Medium, Hard, Medium, Easy 순으로 판정되었다. Hard에서는 Conv2 8채널 전체"
+     "(ch_en = 0xFF)와 Full FC가, Medium에서는 하위 4채널(0x0F)과 Light FC가 켜졌다. Easy(Score Margin 68)에서는 Conv2와 "
+     "후단 Light/Full FC를 비활성화하고 Early 점수로 출력하였다. 관측기의 start→valid 상승 에지 간격은 Easy 839 cycle, "
+     "Medium과 Hard 각각 1,004 cycle이었다(WM_transactions.csv). 이는 관측기의 이벤트 정의에 따른 값으로 기존 TB의 cycle "
+     "카운터 값과 구분한다. ^^Medium은 Hard와 같은 응답 cycle 수를 사용하면서 후단부 활성 연산량을 줄였다^^. "
+     "따라서 이 파형을 Medium의 지연 단축 근거로 해석하지 않으며, WM의 에너지 효과는 앞서 제시한 대리 추정의 범위로 한정한다.", indent=True)
+para(doc, "동일한 관측기 정의로 집계한 WM 954장의 평균은 %.2f cycle이었다((404 × 839 + 550 × 1,004) / 954). "
+     "이는 표 @t_wmppa@의 10-class cycle 가정에 따른 944.12 cycle과 구분한다. 4-class Baseline_WM의 같은 관측기 기준 "
+     "cycle은 측정하지 않았으므로, 이 값으로 새로운 Baseline_WM 대비 지연 감소율을 제시하지 않았다." % WM_OBS_AVG_CYC, indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_wm_paths.png"),
+       "Vivado 파형 (WM-811K): 처음 7개 입력의 경로별 후단부 enable과 Easy 출력 구간 확대. "
+       "10 ns 클럭의 기능 시뮬레이션이며 물리적 Fmax와 구분한다.", 17.0)
 para(doc, "실제 제출용 WM 프로젝트의 세 번째 입력(index 2)을 Vivado 2024.1에서 관측한 결과, 정수 Score Margin은 16으로 "
      "13 ≤ margin < 41을 만족하여 mode = 1(Medium)이 선택되었다(그림 @f_wm_medium@). 후단 활성 구간 "
      "28.605~30.255 µs에서 ch_en = 0x0F, Conv2 및 Light FC 활성, Full FC 비활성이 확인되었다. 이후 "
-     "30.265~30.275 µs에 valid_out_6 = 1과 decision = 0이 관측되어 정답 및 Golden과 일치하였다. "
+     "원시 VCD의 30.265~30.275 µs 구간에서 valid_out_6 = 1과 decision = 0이 관측되어 정답 및 Golden과 일치하였다. "
      "출력 이후 mode = 2는 다음 입력을 위한 리셋 기본값이며, 해당 입력이 Hard로 변경되었음을 뜻하지 않는다.", indent=True)
-figure(doc, os.path.join(OUT, "hs_medium_wave_measured.png"),
-       "WM-811K 세 번째 입력의 Medium 경로와 유효 출력. Vivado 2024.1의 실제 VCD를 재도식화하였다. "
-       "기능 시뮬레이션 클럭은 10 ns이며 물리적 Fmax와 구분한다. 왼쪽: 후단 활성 구간, 오른쪽: 유효 출력 확대.", width=15.5)
-h3(doc, "3.9.2 클래스별 분석")
+figure(doc, os.path.join(OUT, "fig_vivado_wm_medium.png"),
+       "Vivado 파형 확대 (WM-811K 세 번째 입력, Medium 후단 활성 구간): margin 16, mode 1, ch_en 0x0F, "
+       "fc_light_en 1, fc_full_en 0. 유효 출력 펄스는 이 캡처 이후이며 원시 VCD에서 별도로 확인하였다.", width=17.0)
+para(doc, "단일 파형 이외의 입력에 대한 제어 조건 검사 결과는 표 @t_control@에 제시하였다. WM Medium 167장의 "
+     "27,555개 활성 cycle을 포함하여 검사된 조건의 위반은 0건이었다. 모델 A의 Medium 미실행, 마지막 start 미평가 및 "
+     "초기 X 관측을 포함한 검증 범위와 제한사항은 3.5.5절과 results_hs/assertions/에 명시하였다.", indent=True)
+h3(doc, "3.9.3 클래스별 분석")
 para(doc, "전체 평균만으로는 결함 종류별 영향을 알 수 없으므로 클래스별 경로 배분과 정확도를 분석하였다(표 "
      "%(t_wmclass)s, 그림 %(f_wmclass)s). Edge-Ring(84.3 %%)과 Center(77.7 %%)는 대부분 Easy로 조기 종료되며 AdaPath 정확도가 Full보다 "
      "오히려 약간 높았다. 반면 정상(none)은 83.3 %%가 Hard로 갔고, Scratch는 Easy가 4.4 %%에 그치며 recall이 Full 63.6 %%에서 "

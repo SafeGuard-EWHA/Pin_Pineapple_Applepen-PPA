@@ -10,7 +10,7 @@ from docx.oxml.ns import qn
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(__file__).resolve().parent
-SOURCE_COMMIT = 'dc151207b527216164528630ab8e1add2a63edff'
+SOURCE_COMMIT = 'e4b7a3cfd5c89cd5d33b3a90cdf7c84a497b288a'
 CONTROL_COMMIT = '7364903c0ec1f4352448bcc64ae6c9e193811a37'
 
 
@@ -78,6 +78,13 @@ def main():
     assert control['A']['n_medium'] == 0 and control['A']['active'] == 1
     assert control['A']['unknown_decisions'] == 1
     assert control['WM']['n_medium'] == 167 and control['WM']['medium_checks'] == 27555
+    transactions = list(csv.DictReader((ROOT/'results_hs/assertions/WM_transactions.csv').open(encoding='utf-8')))
+    assert len(transactions) == 954
+    assert [int(r['mode']) for r in transactions[:7]] == [2,2,1,1,2,1,0]
+    assert all(int(r['cycles']) == (839 if r['mode']=='0' else 1004) for r in transactions)
+    wm_observed_cycles = sum(int(r['cycles']) for r in transactions)/len(transactions)
+    assert f'{wm_observed_cycles:.2f} cycle' in text
+    assert '4-class WM RTL의 실측 cycle이 아니다' in text
     for token in ('0 / 해당 없음', '27,555 / 0', '1,001 / 0', '91,704 / 0',
                   '마지막 1회는 종료 시 미평가', 'A 2,096회, WM 221회', '28.605~30.255 µs',
                   '30.265~30.275 µs', 'ch_en = 0x0F', '형식 검증은 아니다'):

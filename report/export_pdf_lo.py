@@ -73,10 +73,17 @@ def main():
         updated = source.with_name(source.stem + '_fields.docx')
         doc.storeToURL(updated.as_uri(), (prop('FilterName', 'Office Open XML Text'), prop('Overwrite', True)))
         pdf = source.with_suffix('.pdf')
-        doc.storeToURL(pdf.as_uri(), (prop('FilterName', 'writer_pdf_Export'), prop('Overwrite', True)))
+        pdf_temp = source.with_name(source.stem + '_fields_' + str(time.time_ns()) + '.pdf')
+        doc.storeToURL(pdf_temp.as_uri(), (prop('FilterName', 'writer_pdf_Export'), prop('Overwrite', True)))
         doc.close(True)
         doc = None
-        updated.replace(source)
+        try:
+            pdf_temp.replace(pdf)
+            updated.replace(source)
+        except PermissionError:
+            print('Export succeeded, but replacement needs write access. '
+                  'Keep the generated files:', updated, pdf_temp, flush=True)
+            raise
         print('Updated TOC/fields and exported:', source, pdf, flush=True)
     finally:
         if doc is not None:
