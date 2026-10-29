@@ -1,0 +1,42 @@
+open_project C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.xpr
+add_files -fileset sim_1 {C:/Temp/ppa_observer_20261030/control_monitor.v C:/Temp/ppa_observer_20261030/audit_WM.v}
+set_property top tb_wm [get_filesets sim_1]
+set_property xsim.elaborate.xelab.more_options {xil_defaultlib.audit_top} [get_filesets sim_1]
+set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+launch_simulation -mode behavioral -step compile
+cd C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim
+puts [exec C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xvlog.exe --work xil_defaultlib C:/Temp/ppa_observer_20261030/control_monitor.v C:/Temp/ppa_observer_20261030/audit_WM.v]
+launch_simulation -mode behavioral -step elaborate
+launch_simulation -mode behavioral -step simulate
+open_vcd C:/Temp/ppa_observer_20261030/medium_first3.vcd
+log_vcd /tb_wm/clk /tb_wm/data_in /tb_wm/dut/u_core/margin /tb_wm/dut/u_core/mode /tb_wm/dut/u_core/ch_en /tb_wm/dut/u_core/conv2_en /tb_wm/dut/u_core/fc_light_en /tb_wm/dut/u_core/fc_full_en /tb_wm/valid_out_6 /tb_wm/decision /tb_wm/i /tb_wm/dut/start /tb_wm/dut/u_core/result_sel
+run 31000 ns
+close_vcd
+run all
+puts "AUDIT starts=[get_value -radix unsigned /audit_top/mon/starts]"
+puts "AUDIT completed=[get_value -radix unsigned /audit_top/mon/completed]"
+puts "AUDIT aborted=[get_value -radix unsigned /audit_top/mon/aborted]"
+puts "AUDIT active=[get_value -radix unsigned /audit_top/mon/active]"
+puts "AUDIT max_cycles=[get_value -radix unsigned /audit_top/mon/max_cycles]"
+puts "AUDIT easy=[get_value -radix unsigned /audit_top/mon/easy]"
+puts "AUDIT n_medium=[get_value -radix unsigned /audit_top/mon/n_medium]"
+puts "AUDIT hard=[get_value -radix unsigned /audit_top/mon/hard]"
+puts "AUDIT unknown_mode=[get_value -radix unsigned /audit_top/mon/unknown_mode]"
+puts "AUDIT margin_low=[get_value -radix unsigned /audit_top/mon/margin_low]"
+puts "AUDIT margin_mid=[get_value -radix unsigned /audit_top/mon/margin_mid]"
+puts "AUDIT margin_high=[get_value -radix unsigned /audit_top/mon/margin_high]"
+puts "AUDIT margin_unknown=[get_value -radix unsigned /audit_top/mon/margin_unknown]"
+puts "AUDIT easy_checks=[get_value -radix unsigned /audit_top/mon/easy_checks]"
+puts "AUDIT medium_checks=[get_value -radix unsigned /audit_top/mon/medium_checks]"
+puts "AUDIT mux_checks=[get_value -radix unsigned /audit_top/mon/mux_checks]"
+puts "AUDIT deadline_checks=[get_value -radix unsigned /audit_top/mon/deadline_checks]"
+puts "AUDIT easy_errors=[get_value -radix unsigned /audit_top/mon/easy_errors]"
+puts "AUDIT medium_errors=[get_value -radix unsigned /audit_top/mon/medium_errors]"
+puts "AUDIT mux_errors=[get_value -radix unsigned /audit_top/mon/mux_errors]"
+puts "AUDIT deadline_errors=[get_value -radix unsigned /audit_top/mon/deadline_errors]"
+puts "AUDIT unknown_controls=[get_value -radix unsigned /audit_top/mon/unknown_controls]"
+puts "AUDIT unknown_input_cycles=[get_value -radix unsigned /audit_top/mon/unknown_input_cycles]"
+puts "AUDIT unknown_decisions=[get_value -radix unsigned /audit_top/mon/unknown_decisions]"
+close_sim
+close_project
+exit

@@ -1,0 +1,16 @@
+{
+  "A": {
+    "zip_sha256": "69513fcb68c475a58b8401021582ab500bc4d8a3e72e4704c1abb8a7f391a0cd",
+    "changed_original_members": [
+      "PPA_AdaPath_NPU_A/PPA_AdaPath_NPU_A.xpr"
+    ],
+    "RTL_TB_data_unchanged": true
+  },
+  "WM": {
+    "zip_sha256": "d5a22080ca9bb5ccbfda58941f49f25bc46e365db0dd1c8382f0d5e14855d38e",
+    "changed_original_members": [
+      "PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.xpr"
+    ],
+    "RTL_TB_data_unchanged": true
+  }
+}

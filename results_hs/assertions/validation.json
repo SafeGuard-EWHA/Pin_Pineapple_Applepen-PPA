@@ -1,0 +1,14 @@
+{
+  "A": {
+    "completed_rows": 1001,
+    "max_cycles": 1016,
+    "counts_match": true,
+    "scored_lines_identical_to_original": 1000,
+    "scored_correct": 966
+  },
+  "WM": {
+    "completed_rows": 954,
+    "max_cycles": 1004,
+    "counts_match": true
+  }
+}

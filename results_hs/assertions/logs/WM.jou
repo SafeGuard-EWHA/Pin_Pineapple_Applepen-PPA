@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Oct 30 04:34:16 2026
+# Process ID: 22328
+# Current directory: C:/Temp/ppa_observer_20261030
+# Command line: vivado.exe -mode batch -source C:/Temp/ppa_observer_20261030/run_WM.tcl -log C:/Temp/ppa_observer_20261030/WM.log -journal C:/Temp/ppa_observer_20261030/WM.jou
+# Log file: C:/Temp/ppa_observer_20261030/WM.log
+# Journal file: C:/Temp/ppa_observer_20261030/WM.jou
+# Running On        :DESKTOP-HDTJ7PK
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26200
+# Processor Detail  :12th Gen Intel(R) Core(TM) i5-1240P
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:12
+# CPU Logical cores :16
+# Host memory       :16848 MB
+# Swap memory       :17179 MB
+# Total Virtual     :34028 MB
+# Available Virtual :4847 MB
+#-----------------------------------------------------------
+source C:/Temp/ppa_observer_20261030/run_WM.tcl
+source tb_wm.tcl

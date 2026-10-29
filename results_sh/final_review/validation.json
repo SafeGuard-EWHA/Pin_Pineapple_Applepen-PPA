@@ -1,0 +1,182 @@
+{
+  "source_commit": "dc151207b527216164528630ab8e1add2a63edff",
+  "figures": 24,
+  "tables": 31,
+  "control_evidence_commit": "7364903c0ec1f4352448bcc64ae6c9e193811a37",
+  "control_checks": {
+    "A": {
+      "starts": 1002,
+      "completed": 1001,
+      "aborted": 0,
+      "active": 1,
+      "max_cycles": 1016,
+      "easy": 960,
+      "n_medium": 0,
+      "hard": 41,
+      "unknown_mode": 0,
+      "margin_low": 39,
+      "margin_mid": 0,
+      "margin_high": 960,
+      "margin_unknown": 2,
+      "easy_checks": 1920,
+      "medium_checks": 0,
+      "mux_checks": 8012,
+      "deadline_checks": 1001,
+      "easy_errors": 0,
+      "medium_errors": 0,
+      "mux_errors": 0,
+      "deadline_errors": 0,
+      "unknown_controls": 0,
+      "unknown_input_cycles": 2096,
+      "unknown_decisions": 1
+    },
+    "WM": {
+      "starts": 954,
+      "completed": 954,
+      "aborted": 0,
+      "active": 0,
+      "max_cycles": 1004,
+      "easy": 404,
+      "n_medium": 167,
+      "hard": 383,
+      "unknown_mode": 0,
+      "margin_low": 383,
+      "margin_mid": 167,
+      "margin_high": 404,
+      "margin_unknown": 0,
+      "easy_checks": 808,
+      "medium_checks": 27555,
+      "mux_checks": 91704,
+      "deadline_checks": 954,
+      "easy_errors": 0,
+      "medium_errors": 0,
+      "mux_errors": 0,
+      "deadline_errors": 0,
+      "unknown_controls": 0,
+      "unknown_input_cycles": 221,
+      "unknown_decisions": 0
+    }
+  },
+  "docx_checks_passed": true,
+  "arithmetic": {
+    "a_energy_nj": 16.15753840192,
+    "a_cycles": 851.8399999999999,
+    "reference_latency_ns": 2341.2124317212892,
+    "a_latency_ns": 1568.590297450928,
+    "energy_saving_pct": 8.926189813479557,
+    "cycle_saving_pct": 36.14392803598202,
+    "latency_saving_pct": 33.00094104242902,
+    "area_increase_pct": 55.393327662173355,
+    "easy_energy_breakeven_pct": 79.0908092033288,
+    "wm_float_proxy_energy_nj": 26.182382244993704
+  },
+  "experiments_rerun": false,
+  "files": {
+    "report\\결과보고서_PPA.docx": "d1b56d8e885e48cb380033b93e4f90f23eba57ea10a56719c4f81489d785689c",
+    "report\\make_final_report.py": "c2b5032591153435d3b8593e0388ba87ee80f0e27be9b841dc51f50b68f9e55c",
+    "report\\results.json": "08f7badbb65ba7451bb3a423347088b00cd8387355ebf09347c9bb48872c800b"
+  },
+  "pdf_checked": true,
+  "pdf_pages": 38,
+  "pdf_sha256": "1fdea9445b5e16f793dd5f1926c1ff8c2b9dc977ceb0c6c279cf2771f1632e4c",
+  "pdf_toc_updated": true,
+  "figure_pages": [
+    [
+      1,
+      7
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      8
+    ],
+    [
+      4,
+      9
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      6,
+      11
+    ],
+    [
+      7,
+      12
+    ],
+    [
+      8,
+      14
+    ],
+    [
+      9,
+      16
+    ],
+    [
+      10,
+      17
+    ],
+    [
+      11,
+      17
+    ],
+    [
+      12,
+      18
+    ],
+    [
+      13,
+      20
+    ],
+    [
+      14,
+      22
+    ],
+    [
+      15,
+      23
+    ],
+    [
+      16,
+      24
+    ],
+    [
+      17,
+      25
+    ],
+    [
+      18,
+      26
+    ],
+    [
+      19,
+      28
+    ],
+    [
+      20,
+      29
+    ],
+    [
+      21,
+      30
+    ],
+    [
+      22,
+      30
+    ],
+    [
+      23,
+      36
+    ],
+    [
+      24,
+      37
+    ]
+  ],
+  "outside_page_text": []
+}
