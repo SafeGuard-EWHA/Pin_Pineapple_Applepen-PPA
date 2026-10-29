@@ -1,0 +1,512 @@
+[
+  {
+    "condition": "blur_0_ada",
+    "row": [
+      "blur",
+      "0",
+      "ada",
+      "970",
+      "851.84",
+      "960",
+      "0",
+      "40"
+    ],
+    "seconds": 311.7970000000205,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,851.84,960,0,40\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 960 / Medium 0 / Hard 40\ntb_threshold_sweep.v:153: $finish called at 8568396000 (1ps)\n"
+  },
+  {
+    "condition": "blur_0_base",
+    "row": [
+      "blur",
+      "0",
+      "base",
+      "970",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 753.5620000000345,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "blur_1_ada",
+    "row": [
+      "blur",
+      "1",
+      "ada",
+      "970",
+      "853.55",
+      "950",
+      "0",
+      "50"
+    ],
+    "seconds": 399.14000000001397,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=c9\nSWEEP,63,63,970,853.55,950,0,50\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 950 / Medium 0 / Hard 50\ntb_threshold_sweep.v:153: $finish called at 8585496000 (1ps)\n"
+  },
+  {
+    "condition": "blur_1_base",
+    "row": [
+      "blur",
+      "1",
+      "base",
+      "970",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 880.7810000000754,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=c9\nSWEEP,63,63,970,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "blur_2_ada",
+    "row": [
+      "blur",
+      "2",
+      "ada",
+      "960",
+      "863.81",
+      "890",
+      "0",
+      "110"
+    ],
+    "seconds": 588.359000000055,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=a3\nSWEEP,63,63,960,863.81,890,0,110\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 960 / 1000 = 96.0 %\n모드 분포    : Easy 890 / Medium 0 / Hard 110\ntb_threshold_sweep.v:153: $finish called at 8688096000 (1ps)\n"
+  },
+  {
+    "condition": "blur_2_base",
+    "row": [
+      "blur",
+      "2",
+      "base",
+      "960",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 414.26500000001397,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=a3\nSWEEP,63,63,960,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 960 / 1000 = 96.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "blur_3_ada",
+    "row": [
+      "blur",
+      "3",
+      "ada",
+      "920",
+      "884.33",
+      "770",
+      "0",
+      "230"
+    ],
+    "seconds": 257.795999999973,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=8e\nSWEEP,63,63,920,884.33,770,0,230\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 920 / 1000 = 92.0 %\n모드 분포    : Easy 770 / Medium 0 / Hard 230\ntb_threshold_sweep.v:153: $finish called at 8893296000 (1ps)\n"
+  },
+  {
+    "condition": "blur_3_base",
+    "row": [
+      "blur",
+      "3",
+      "base",
+      "930",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 447.8429999999935,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=8e\nSWEEP,63,63,930,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 930 / 1000 = 93.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "blur_4_ada",
+    "row": [
+      "blur",
+      "4",
+      "ada",
+      "870",
+      "909.98",
+      "620",
+      "0",
+      "380"
+    ],
+    "seconds": 298.14000000001397,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=7f\nSWEEP,63,63,870,909.98,620,0,380\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 870 / 1000 = 87.0 %\n모드 분포    : Easy 620 / Medium 0 / Hard 380\ntb_threshold_sweep.v:153: $finish called at 9149796000 (1ps)\n"
+  },
+  {
+    "condition": "blur_4_base",
+    "row": [
+      "blur",
+      "4",
+      "base",
+      "900",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 542.4689999999246,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=7f\nSWEEP,63,63,900,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 900 / 1000 = 90.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.2_ada",
+    "row": [
+      "contrast",
+      "0.2",
+      "ada",
+      "800",
+      "968.12",
+      "280",
+      "0",
+      "720"
+    ],
+    "seconds": 372.125,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=33\nSWEEP,63,63,800,968.12,280,0,720\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 800 / 1000 = 80.0 %\n모드 분포    : Easy 280 / Medium 0 / Hard 720\ntb_threshold_sweep.v:153: $finish called at 9731196000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.2_base",
+    "row": [
+      "contrast",
+      "0.2",
+      "base",
+      "760",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 394.094000000041,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=33\nSWEEP,63,63,760,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 760 / 1000 = 76.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.3_ada",
+    "row": [
+      "contrast",
+      "0.3",
+      "ada",
+      "930",
+      "909.98",
+      "620",
+      "0",
+      "380"
+    ],
+    "seconds": 274.0470000000205,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=4c\nSWEEP,63,63,930,909.98,620,0,380\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 930 / 1000 = 93.0 %\n모드 분포    : Easy 620 / Medium 0 / Hard 380\ntb_threshold_sweep.v:153: $finish called at 9149796000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.3_base",
+    "row": [
+      "contrast",
+      "0.3",
+      "base",
+      "930",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 352.969000000041,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=4c\nSWEEP,63,63,930,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 930 / 1000 = 93.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.4_ada",
+    "row": [
+      "contrast",
+      "0.4",
+      "ada",
+      "970",
+      "877.49",
+      "810",
+      "0",
+      "190"
+    ],
+    "seconds": 211.125,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=65\nSWEEP,63,63,970,877.49,810,0,190\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 810 / Medium 0 / Hard 190\ntb_threshold_sweep.v:153: $finish called at 8824896000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.4_base",
+    "row": [
+      "contrast",
+      "0.4",
+      "base",
+      "960",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 358.64000000001397,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=65\nSWEEP,63,63,960,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 960 / 1000 = 96.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.5_ada",
+    "row": [
+      "contrast",
+      "0.5",
+      "ada",
+      "990",
+      "867.23",
+      "870",
+      "0",
+      "130"
+    ],
+    "seconds": 185.42199999990407,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=7e\nSWEEP,63,63,990,867.23,870,0,130\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 990 / 1000 = 99.0 %\n모드 분포    : Easy 870 / Medium 0 / Hard 130\ntb_threshold_sweep.v:153: $finish called at 8722296000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.5_base",
+    "row": [
+      "contrast",
+      "0.5",
+      "base",
+      "990",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 357.78100000007544,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=7e\nSWEEP,63,63,990,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 990 / 1000 = 99.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.7_ada",
+    "row": [
+      "contrast",
+      "0.7",
+      "ada",
+      "970",
+      "853.55",
+      "950",
+      "0",
+      "50"
+    ],
+    "seconds": 181.90600000007544,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=b1\nSWEEP,63,63,970,853.55,950,0,50\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 950 / Medium 0 / Hard 50\ntb_threshold_sweep.v:153: $finish called at 8585496000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_0.7_base",
+    "row": [
+      "contrast",
+      "0.7",
+      "base",
+      "970",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 362.59399999992456,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=b1\nSWEEP,63,63,970,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_1_ada",
+    "row": [
+      "contrast",
+      "1",
+      "ada",
+      "970",
+      "851.84",
+      "960",
+      "0",
+      "40"
+    ],
+    "seconds": 174.0,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,851.84,960,0,40\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 960 / Medium 0 / Hard 40\ntb_threshold_sweep.v:153: $finish called at 8568396000 (1ps)\n"
+  },
+  {
+    "condition": "contrast_1_base",
+    "row": [
+      "contrast",
+      "1",
+      "base",
+      "970",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 356.780999999959,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_0_ada",
+    "row": [
+      "gauss",
+      "0",
+      "ada",
+      "970",
+      "851.84",
+      "960",
+      "0",
+      "40"
+    ],
+    "seconds": 152.9529999999795,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,851.84,960,0,40\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 960 / Medium 0 / Hard 40\ntb_threshold_sweep.v:153: $finish called at 8568396000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_0_base",
+    "row": [
+      "gauss",
+      "0",
+      "base",
+      "970",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 360.68800000008196,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=fd\nSWEEP,63,63,970,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 970 / 1000 = 97.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_20_ada",
+    "row": [
+      "gauss",
+      "20",
+      "ada",
+      "972",
+      "853.37",
+      "951",
+      "0",
+      "49"
+    ],
+    "seconds": 294.469000000041,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=de\nSWEEP,63,63,972,853.37,951,0,49\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 972 / 1000 = 97.2 %\n모드 분포    : Easy 951 / Medium 0 / Hard 49\ntb_threshold_sweep.v:153: $finish called at 8583786000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_20_base",
+    "row": [
+      "gauss",
+      "20",
+      "base",
+      "973",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 492.030999999959,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=de\nSWEEP,63,63,973,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 973 / 1000 = 97.3 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_40_ada",
+    "row": [
+      "gauss",
+      "40",
+      "ada",
+      "980",
+      "863.81",
+      "890",
+      "0",
+      "110"
+    ],
+    "seconds": 298.704000000027,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=3f pixels[400]=ff\nSWEEP,63,63,980,863.81,890,0,110\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 980 / 1000 = 98.0 %\n모드 분포    : Easy 890 / Medium 0 / Hard 110\ntb_threshold_sweep.v:153: $finish called at 8688096000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_40_base",
+    "row": [
+      "gauss",
+      "40",
+      "base",
+      "983",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 523.2179999999935,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=3f pixels[400]=ff\nSWEEP,63,63,983,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 983 / 1000 = 98.3 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_60_ada",
+    "row": [
+      "gauss",
+      "60",
+      "ada",
+      "942",
+      "879.37",
+      "799",
+      "0",
+      "201"
+    ],
+    "seconds": 341.2820000000065,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=ff\nSWEEP,63,63,942,879.37,799,0,201\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 942 / 1000 = 94.2 %\n모드 분포    : Easy 799 / Medium 0 / Hard 201\ntb_threshold_sweep.v:153: $finish called at 8843706000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_60_base",
+    "row": [
+      "gauss",
+      "60",
+      "base",
+      "969",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 493.5,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=ff\nSWEEP,63,63,969,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 969 / 1000 = 96.9 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_80_ada",
+    "row": [
+      "gauss",
+      "80",
+      "ada",
+      "858",
+      "899.03",
+      "684",
+      "0",
+      "316"
+    ],
+    "seconds": 345.25,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=cf\nSWEEP,63,63,858,899.03,684,0,316\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 858 / 1000 = 85.8 %\n모드 분포    : Easy 684 / Medium 0 / Hard 316\ntb_threshold_sweep.v:153: $finish called at 9040356000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_80_base",
+    "row": [
+      "gauss",
+      "80",
+      "base",
+      "911",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 427.81200000003446,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=cf\nSWEEP,63,63,911,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 911 / 1000 = 91.1 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_100_ada",
+    "row": [
+      "gauss",
+      "100",
+      "ada",
+      "749",
+      "906.56",
+      "640",
+      "0",
+      "360"
+    ],
+    "seconds": 386.3279999999795,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=9f\nSWEEP,63,63,749,906.56,640,0,360\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 749 / 1000 = 74.9 %\n모드 분포    : Easy 640 / Medium 0 / Hard 360\ntb_threshold_sweep.v:153: $finish called at 9115596000 (1ps)\n"
+  },
+  {
+    "condition": "gauss_100_base",
+    "row": [
+      "gauss",
+      "100",
+      "base",
+      "830",
+      "985.00",
+      "0",
+      "0",
+      "1000"
+    ],
+    "seconds": 535.5779999999795,
+    "stdout_stderr": "official input_1000.txt : 1000 images (label = index % 10)\n  sanity: pixels[0]=0 pixels[400]=9f\nSWEEP,63,63,830,985.00,0,0,1000\n==== 주최측 input_1000.txt 실측 ====\nvalid_out 정상 출력 : 1000 / 1000\n정확도(label): 830 / 1000 = 83.0 %\n모드 분포    : Easy 0 / Medium 0 / Hard 1000\ntb_threshold_sweep.v:153: $finish called at 9899996000 (1ps)\n"
+  }
+]
