@@ -1,0 +1,212 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Oct 30 04:34:16 2026
+# Process ID: 22328
+# Current directory: C:/Temp/ppa_observer_20261030
+# Command line: vivado.exe -mode batch -source C:/Temp/ppa_observer_20261030/run_WM.tcl -log C:/Temp/ppa_observer_20261030/WM.log -journal C:/Temp/ppa_observer_20261030/WM.jou
+# Log file: C:/Temp/ppa_observer_20261030/WM.log
+# Journal file: C:/Temp/ppa_observer_20261030/WM.jou
+# Running On        :DESKTOP-HDTJ7PK
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26200
+# Processor Detail  :12th Gen Intel(R) Core(TM) i5-1240P
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:12
+# CPU Logical cores :16
+# Host memory       :16848 MB
+# Swap memory       :17179 MB
+# Total Virtual     :34028 MB
+# Available Virtual :4847 MB
+#-----------------------------------------------------------
+source C:/Temp/ppa_observer_20261030/run_WM.tcl
+# open_project C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.xpr
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+open_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 509.086 ; gain = 201.480
+# add_files -fileset sim_1 {C:/Temp/ppa_observer_20261030/control_monitor.v C:/Temp/ppa_observer_20261030/audit_WM.v}
+WARNING: [filemgmt 56-12] File 'C:/Temp/ppa_observer_20261030/control_monitor.v' cannot be added to the project because it already exists in the project, skipping this file
+WARNING: [filemgmt 56-12] File 'C:/Temp/ppa_observer_20261030/audit_WM.v' cannot be added to the project because it already exists in the project, skipping this file
+# set_property top tb_wm [get_filesets sim_1]
+# set_property xsim.elaborate.xelab.more_options {xil_defaultlib.audit_top} [get_filesets sim_1]
+# set_property xsim.simulate.runtime 0ns [get_filesets sim_1]
+# launch_simulation -mode behavioral -step compile
+Command: launch_simulation -step compile -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_wm'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2024.1/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_wm' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_expect.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_input_954.txt'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj tb_wm_vlog.prj"
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+# cd C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim
+# puts [exec C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xvlog.exe --work xil_defaultlib C:/Temp/ppa_observer_20261030/control_monitor.v C:/Temp/ppa_observer_20261030/audit_WM.v]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_20261030/control_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module control_monitor
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/ppa_observer_20261030/audit_WM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module audit_top
+# launch_simulation -mode behavioral -step elaborate
+Command: launch_simulation -step elaborate -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_wm'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_wm_behav xil_defaultlib.tb_wm xil_defaultlib.glbl -log elaborate.log xil_defaultlib.audit_top"
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_wm_behav xil_defaultlib.tb_wm xil_defaultlib.glbl -log elaborate.log xil_defaultlib.audit_top 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'th_low_i' is not connected on this instance [C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/src/chip_adapath.v:43]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/src/adapath_top.v" Line 16. Module adapath_top(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/src/chip_adapath.v" Line 11. Module chip doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/src/adapath_top.v" Line 16. Module adapath_top(N_CLASS=4) doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.conv1_buf
+Compiling module xil_defaultlib.mac_tree(DATA_W=9)
+Compiling module xil_defaultlib.conv1_engine_default
+Compiling module xil_defaultlib.maxpool_relu_n_default
+Compiling module xil_defaultlib.fmap_buffer_default
+Compiling module xil_defaultlib.mac_tree(N=48,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(OUT_N=4)
+Compiling module xil_defaultlib.early_classifier(N_CLASS=4)
+Compiling module xil_defaultlib.top2_finder(N=4)
+Compiling module xil_defaultlib.score_margin_calc
+Compiling module xil_defaultlib.difficulty_decoder
+Compiling module xil_defaultlib.mode_control_fsm
+Compiling module xil_defaultlib.conv2_buf
+Compiling module xil_defaultlib.mac_tree(N=75)
+Compiling module xil_defaultlib.conv2_engine_default
+Compiling module xil_defaultlib.maxpool_relu_n(C=8,HALF_WIDTH=4)
+Compiling module xil_defaultlib.mac_tree(N=128,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(C_IN=8,C_USE=8,OUT_N=4...
+Compiling module xil_defaultlib.mac_tree(N=64,SHIFT=9)
+Compiling module xil_defaultlib.fc_engine(C_IN=8,C_USE=4,OUT_N=4...
+Compiling module xil_defaultlib.adapath_top(N_CLASS=4)
+Compiling module xil_defaultlib.chip
+Compiling module xil_defaultlib.tb_wm
+Compiling module xil_defaultlib.glbl
+Compiling module xil_defaultlib.control_monitor
+Compiling module xil_defaultlib.audit_top
+Built simulation snapshot tb_wm_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+# launch_simulation -mode behavioral -step simulate
+Command: launch_simulation -step simulate -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_wm'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2024.1/tps/boost_1_72_0'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_wm' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_expect.txt'
+INFO: [SIM-utils-43] Exported 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim/wm_input_954.txt'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/PPA_AdaPath_NPU_WM.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_wm_behav -key {Behavioral:sim_1:Functional:tb_wm} -tclbatch {tb_wm.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_wm.tcl
+## set curr_wave [current_wave_config]
+## if { [string length $curr_wave] == 0 } {
+##   if { [llength [get_objects]] > 0} {
+##     add_wave /
+##     set_property needs_save false [current_wave_config]
+##   } else {
+##      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+##   }
+## }
+WARNING: [Wavedata 42-489] Can't add object "/tb_wm/pixels" to the wave window because it has 5983488 bits, which exceeds the display limit of 65536 bits.  To change the display limit, use the command "set_property display_limit <new limit> [current_wave_config]".
+## run 0ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_wm_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 0ns
+# open_vcd C:/Temp/ppa_observer_20261030/medium_first3.vcd
+# log_vcd /tb_wm/clk /tb_wm/data_in /tb_wm/dut/u_core/margin /tb_wm/dut/u_core/mode /tb_wm/dut/u_core/ch_en /tb_wm/dut/u_core/conv2_en /tb_wm/dut/u_core/fc_light_en /tb_wm/dut/u_core/fc_full_en /tb_wm/valid_out_6 /tb_wm/decision /tb_wm/i /tb_wm/dut/start /tb_wm/dut/u_core/result_sel
+# run 31000 ns
+# close_vcd
+# run all
+------ Final Accuracy for 954 WM-811K Test Images ------
+Accuracy : 774 / 954 = 81.13 %
+Golden match (decision)              : 954 / 954
+Golden match (decision, mode, margin): 954 / 954
+Mode Easy / Medium / Hard            : 404 / 167 / 383
+Class 0 recall : 179 / 245
+Class 1 recall : 238 / 251
+Class 2 recall : 216 / 230
+Class 3 recall : 141 / 228
+$finish called at time : 8959256 ns : File "C:/Temp/ppa_observer_20261030/PPA_AdaPath_NPU_WM/sim/tb_wm.v" Line 74
+run: Time (s): cpu = 00:00:02 ; elapsed = 00:00:28 . Memory (MB): peak = 528.637 ; gain = 0.000
+# puts "AUDIT starts=[get_value -radix unsigned /audit_top/mon/starts]"
+AUDIT starts=954
+# puts "AUDIT completed=[get_value -radix unsigned /audit_top/mon/completed]"
+AUDIT completed=954
+# puts "AUDIT aborted=[get_value -radix unsigned /audit_top/mon/aborted]"
+AUDIT aborted=0
+# puts "AUDIT active=[get_value -radix unsigned /audit_top/mon/active]"
+AUDIT active=0
+# puts "AUDIT max_cycles=[get_value -radix unsigned /audit_top/mon/max_cycles]"
+AUDIT max_cycles=1004
+# puts "AUDIT easy=[get_value -radix unsigned /audit_top/mon/easy]"
+AUDIT easy=404
+# puts "AUDIT n_medium=[get_value -radix unsigned /audit_top/mon/n_medium]"
+AUDIT n_medium=167
+# puts "AUDIT hard=[get_value -radix unsigned /audit_top/mon/hard]"
+AUDIT hard=383
+# puts "AUDIT unknown_mode=[get_value -radix unsigned /audit_top/mon/unknown_mode]"
+AUDIT unknown_mode=0
+# puts "AUDIT margin_low=[get_value -radix unsigned /audit_top/mon/margin_low]"
+AUDIT margin_low=383
+# puts "AUDIT margin_mid=[get_value -radix unsigned /audit_top/mon/margin_mid]"
+AUDIT margin_mid=167
+# puts "AUDIT margin_high=[get_value -radix unsigned /audit_top/mon/margin_high]"
+AUDIT margin_high=404
+# puts "AUDIT margin_unknown=[get_value -radix unsigned /audit_top/mon/margin_unknown]"
+AUDIT margin_unknown=0
+# puts "AUDIT easy_checks=[get_value -radix unsigned /audit_top/mon/easy_checks]"
+AUDIT easy_checks=808
+# puts "AUDIT medium_checks=[get_value -radix unsigned /audit_top/mon/medium_checks]"
+AUDIT medium_checks=27555
+# puts "AUDIT mux_checks=[get_value -radix unsigned /audit_top/mon/mux_checks]"
+AUDIT mux_checks=91704
+# puts "AUDIT deadline_checks=[get_value -radix unsigned /audit_top/mon/deadline_checks]"
+AUDIT deadline_checks=954
+# puts "AUDIT easy_errors=[get_value -radix unsigned /audit_top/mon/easy_errors]"
+AUDIT easy_errors=0
+# puts "AUDIT medium_errors=[get_value -radix unsigned /audit_top/mon/medium_errors]"
+AUDIT medium_errors=0
+# puts "AUDIT mux_errors=[get_value -radix unsigned /audit_top/mon/mux_errors]"
+AUDIT mux_errors=0
+# puts "AUDIT deadline_errors=[get_value -radix unsigned /audit_top/mon/deadline_errors]"
+AUDIT deadline_errors=0
+# puts "AUDIT unknown_controls=[get_value -radix unsigned /audit_top/mon/unknown_controls]"
+AUDIT unknown_controls=0
+# puts "AUDIT unknown_input_cycles=[get_value -radix unsigned /audit_top/mon/unknown_input_cycles]"
+AUDIT unknown_input_cycles=221
+# puts "AUDIT unknown_decisions=[get_value -radix unsigned /audit_top/mon/unknown_decisions]"
+AUDIT unknown_decisions=0
+# close_sim
+INFO: xsimkernel Simulation Memory Usage: 21660 KB (Peak: 21660 KB), Simulation CPU Usage: 28202 ms
+INFO: [Simtcl 6-16] Simulation closed
+# close_project
+# exit
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 30 04:35:07 2026...

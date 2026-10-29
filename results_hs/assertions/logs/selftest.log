@@ -1,0 +1,2 @@
+SELFTEST PASS clean=3 injected_easy=1 injected_medium=1 injected_mux=1 injected_deadline=1
+C:/Users/ä���/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/assertions/monitor_selftest.v:38: $finish called at 405300 (1ps)
