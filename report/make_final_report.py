@@ -48,7 +48,8 @@ LBL = {
     "f_racc": FIGN["hs_fig_robustness_acc.png"],
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
-    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_verify": _tn("기능 검증 결과"),
+    "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_assert": _tn("제어 불변 조건 검사 결과"),
+    "f_wmpaths": FIGN["fig_vivado_wm_paths.png"], "t_verify": _tn("기능 검증 결과"),
 }
 
 
@@ -118,6 +119,9 @@ EMPH = [
     "2경로와 3경로 중 유리한 구성까지 선택하는 구조라는 점이 의미가 있다",
     "9개 사례 모두 margin, mode, decision이 정수 Golden과 일치하였다",
     # 3.9 ~ 3.11
+    "Medium의 이득은 지연이 아니라 후단부 연산량과 에너지 절감에 있다",
+    "954장 전체에서 위반이 0건이었고",
+    "같은 Vivado 프로젝트의 파형으로 확인하였다",
     "모델 B 구조(4개 클래스 출력)에 같은 AdaPath 기법을 적용하였으며",
     "4개 클래스 설계의 직접 전력 측정 결과와 구분한다",
     "판정, 모드, Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고",
@@ -761,6 +765,8 @@ para(doc, "제출 패키지의 이식성과 재현성을 확인하기 위해, �
      "Golden 일치 954 / 954를 재현하였고, Easy / Medium / Hard 사용 횟수도 404 / 167 / 383으로 같았다. 이 결과는 동봉한 "
      "테스트 입력에 대한 제출 패키지의 실행 재현성을 뒷받침하며, 비공개 평가 입력에 대한 정확도를 보증하는 결과로 "
      "해석하지 않는다. 캡처와 전체 로그는 results_hs/submit_check/에 보존하였다." % LBL, indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_submit3.png"),
+       "독립 PC의 Vivado 2024.1에서 제출 ZIP 3종을 실행한 Tcl 콘솔 (콘솔 백분율은 원본 TB의 정수 연산 표시)", 15.0)
 h3(doc, "3.5.5 런타임 임계값 스윕 (RTL 실측)")
 para(doc, "difficulty_decoder의 레지스터 임계값 모드(USE_REG_TH)를 최상위 포트로 연결하고, "
      "주최 측 입력 1,000회에 대해 TL = TH를 0~400으로 바꿔 가며 16개 동작점을 RTL로 측정하였다(그림 %(f_sweep)s). TH = 63에서 "
@@ -941,7 +947,32 @@ table(doc, "WM-811K RTL 검증 결과 (Vivado 2023.1, 정수 연산, 테스트 9
     ["**전체**", "954", "**774 (81.13 %)**", "777 (81.45 %)"],
 ], [3.4, 1.6, 4.4, 4.4], hl_rows=(4,),
     note="AdaPath RTL은 Golden 판정과 954 / 954 일치. 모드 Easy / Medium / Hard = 404 / 167 / 383 (정수 임계값 13 / 41).")
-h3(doc, "3.9.2 클래스별 분석")
+h3(doc, "3.9.2 경로별 동작 파형과 제어 조건 검증 (Vivado)")
+para(doc, "세 경로가 하드웨어에서 실제로 다르게 동작하는지 같은 Vivado 프로젝트의 파형으로 확인하였다(그림 %(f_wmpaths)s). "
+     "WM-811K 테스트 처음 7장은 Hard, Hard, Medium, Medium, Hard, Medium, Easy 순으로 판정되었다. Hard에서는 Conv2 8채널 전체"
+     "(채널 enable 0xFF)와 Full FC가, Medium에서는 하위 4채널(0x0F)과 Light FC가 켜졌고, Easy(Score Margin 68)에서는 Conv2와 "
+     "두 FC가 모두 꺼진 채 Early 점수로 바로 출력되었다. 처리 시간은 Easy가 839 cycle, Medium과 Hard가 각각 1,004 cycle이었다. "
+     "즉 본 구현에서 Medium은 Hard와 같은 시간에 절반의 Conv2 채널과 작은 FC만 사용하므로, Medium의 이득은 지연이 아니라 "
+     "후단부 연산량과 에너지 절감에 있다." % LBL, indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_wm_paths.png"),
+       "Vivado 파형 (WM-811K, 논리 시뮬레이션): 경로별 후단부 enable 비교와 Easy 출력 구간 확대", 17.0)
+figure(doc, os.path.join(OUT, "fig_vivado_wm_medium.png"),
+       "Vivado 파형 확대 (WM-811K 세 번째 이미지, Medium): margin 16에서 mode 1, ch_en 0x0F, fc_light_en 1, fc_full_en 0", 17.0)
+para(doc, "단일 파형을 넘어 전체 입력에서 제어 동작을 확인하기 위해, 원본 RTL과 테스트벤치를 그대로 두고 신호를 읽기만 하는 "
+     "관찰 모듈을 추가하여 네 가지 제어 조건을 매 cycle 검사하였다(표 %(t_assert)s, Vivado 2024.1). WM에서는 Medium 후단 활성 "
+     "27,555 cycle을 포함한 954장 전체에서 위반이 0건이었고, 모델 A에서도 검사된 조건의 위반은 없었다. 모델 A는 Medium을 "
+     "실행하지 않으므로 Medium 조건의 근거로 쓰지 않았고, 원본 TB가 종료될 때 남은 마지막 start 1회의 응답은 평가하지 못했다. "
+     "관찰 모듈은 오류를 의도적으로 주입한 자체 시험에서 네 종류 오류를 모두 검출하였다. 이 결과는 평가 입력에 대한 "
+     "시뮬레이션 검증이며 모든 입력에 대한 형식 검증은 아니다(results_hs/assertions/)." % LBL, indent=True)
+table(doc, "제어 불변 조건 검사 결과 (Vivado 2024.1, 원본 RTL과 TB 유지)", ["검사 조건", "모델 A 검사 수", "A 위반", "WM 검사 수", "WM 위반"], [
+    ["Easy 판정 후 Conv2 비활성", "1,920 cycle", "0", "808 cycle", "0"],
+    ["Medium: 하위 채널, Light FC만 활성", "미실행", "해당 없음", "27,555 cycle", "0"],
+    ["start 후 4,000 cycle 이내 응답", "1,001회 완료", "0", "954회 완료", "0"],
+    ["결과 선택 신호와 경로 일치", "8,012 cycle", "0", "91,704 cycle", "0"],
+], [5.6, 3.0, 1.9, 3.0, 1.9],
+    note="검사 수는 조건에 따라 활성 cycle 수 또는 완료된 추론 횟수이다. A의 완료 1,001회에는 채점에서 제외되는 초기 출력 1회가 "
+         "포함되며, 원본 TB 종료 시점의 마지막 start 1회는 미평가이다.")
+h3(doc, "3.9.3 클래스별 분석")
 para(doc, "전체 평균만으로는 결함 종류별 영향을 알 수 없으므로 클래스별 경로 배분과 정확도를 분석하였다(표 "
      "%(t_wmclass)s, 그림 %(f_wmclass)s). Edge-Ring(84.3 %%)과 Center(77.7 %%)는 대부분 Easy로 조기 종료되며 AdaPath 정확도가 Full보다 "
      "오히려 약간 높았다. 반면 정상(none)은 83.3 %%가 Hard로 갔고, Scratch는 Easy가 4.4 %%에 그치며 recall이 Full 63.6 %%에서 "
