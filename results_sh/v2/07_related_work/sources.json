@@ -1,0 +1,63 @@
+{
+  "base_commit": "4990d117fcc571183000605a514ad5d9c7d5c98a",
+  "seed": "해당 없음: 문헌 검토",
+  "verified_on": "2026-10-29",
+  "papers": [
+    {
+      "name": "BranchyNet",
+      "title": "BranchyNet: Fast Inference via Early Exiting from Deep Neural Networks",
+      "authors": "Surat Teerapittayanon; Bradley McDanel; H. T. Kung",
+      "venue_year": "ICPR 2016",
+      "url": "https://doi.org/10.1109/ICPR.2016.7900006",
+      "primary_pdf": "https://arxiv.org/pdf/1709.01686",
+      "metric": "softmax entropy",
+      "paths": "LeNet 2; AlexNet/ResNet 3",
+      "hardware": "CPU/GPU 평가; 전용 RTL 구현은 제시하지 않음",
+      "evaluation": "MNIST/CIFAR-10 정확도 및 평균 추론 시간",
+      "evidence": "Sec. III-C, IV; Table I",
+      "verified_date": "2026-10-29"
+    },
+    {
+      "name": "CascadeCNN",
+      "title": "CascadeCNN: Pushing the Performance Limits of Quantisation in Convolutional Neural Networks",
+      "authors": "Alexandros Kouris; Stylianos I. Venieris; Christos-Savvas Bouganis",
+      "venue_year": "FPL 2018",
+      "url": "https://arxiv.org/abs/1807.05053",
+      "primary_pdf": "https://arxiv.org/pdf/1807.05053",
+      "metric": "정렬 확률의 generalized Best-vs-Second-Best (gBvSB)",
+      "paths": "저정밀도 종료 / 고정밀도 재계산의 2단계",
+      "hardware": "FPGA CNN + ARM CPU softmax/CEU",
+      "evaluation": "ImageNet, AlexNet/VGG-16; ZC706/ZCU102 실측 성능·오류 허용량",
+      "evidence": "첫 페이지 학회 표기; Sec. III-C Eq.(2), IV-A/C",
+      "verified_date": "2026-10-29"
+    },
+    {
+      "name": "Shallow-Deep Networks",
+      "title": "Shallow-Deep Networks: Understanding and Mitigating Network Overthinking",
+      "authors": "Yigitcan Kaya; Sanghyun Hong; Tudor Dumitras",
+      "venue_year": "ICML 2019, PMLR 97:3301–3310",
+      "url": "https://proceedings.mlr.press/v97/kaya19a.html",
+      "primary_pdf": "https://proceedings.mlr.press/v97/kaya19a/kaya19a.pdf",
+      "metric": "최대 클래스 확률 (confidence)",
+      "paths": "내부 분류기 6 + 최종 1 = 7",
+      "hardware": "소프트웨어 모델 분석; 전용 RTL 구현은 제시하지 않음",
+      "evaluation": "CIFAR-10/100, Tiny ImageNet; 정확도–FLOPs 예산, unlabeled holdout으로 임계값 설정",
+      "evidence": "Sec. 3.1, 5.1; Table 3",
+      "verified_date": "2026-10-29"
+    },
+    {
+      "name": "AdaPath-NPU",
+      "title": "AdaPath-NPU (본 설계)",
+      "authors": "본 프로젝트 팀",
+      "venue_year": "IDEC 결과보고서 2026",
+      "url": "https://github.com/SafeGuard-EWHA/Pin_Pineapple_Applepen-PPA/tree/4990d117fcc571183000605a514ad5d9c7d5c98a",
+      "primary_pdf": "report/결과보고서_PPA.pdf",
+      "metric": "정수 로짓 Top-1 − Top-2 Margin",
+      "paths": "선정 A: 2 / B: 3",
+      "hardware": "Verilog RTL, ASAP7 pre-layout 합성·STA 및 대표 VCD 전력 추정",
+      "evaluation": "MNIST/WM 정확도·MAC; 이번 2-fold 분석; 주최 TB 기능 검증",
+      "evidence": "보고서 2.3, 3.4–3.9; results_sh/v2",
+      "verified_date": "2026-10-29"
+    }
+  ]
+}

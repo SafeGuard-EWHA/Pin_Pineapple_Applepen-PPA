@@ -1,0 +1,83 @@
+source,line,text
+README.md,40,python export_int8.py --arch A --prefix mnist --t_low 1.161 --t_high 1.161
+README.md,61,bash run_sweep.sh A      # 모델 A: T_low = T_high 스윕 -> sweep_A.csv
+README.md,62,"bash run_sweep.sh B      # 모델 B: T_low=71 고정, T_high 스윕 -> sweep_B.csv"
+python/train.py,3,    python train.py --arch B --epochs 30
+python/train.py,71,"    torch.save({""state"": model.state_dict(), ""arch"": arch.__dict__}, ckpt_path)"
+python/train.py,79,"    p.add_argument(""--epochs"", type=int, default=30)"
+python/train.py,81,"    p.add_argument(""--lr"", type=float, default=2e-3)"
+python/data_mnist.py,41,"    p.add_argument(""--seed"", type=int, default=0)"
+python/data_wm811k.py,92,"    p.add_argument(""--seed"", type=int, default=0)"
+python/analyze_margin.py,1,"""""""Score-Margin 분포 분석 + T_high / T_low 최적화 + 모드 비율 / MAC 절감 산출."
+python/analyze_margin.py,58,"def eval_point(r, a, t_low, t_high):"
+python/analyze_margin.py,59,"    """"""(T_low, T_high) 한 점에서의 모드 배분 / 정확도 / 평균 MAC."""""""
+python/analyze_margin.py,61,    easy = m >= t_high
+python/analyze_margin.py,62,    hard = m < t_low
+python/analyze_margin.py,72,"        ""t_low"": t_low, ""t_high"": t_high,"
+python/analyze_margin.py,103,        for th in cand[i:]:                       # T_low <= T_high 만
+python/analyze_margin.py,123,"             ""| 정확도 손실 허용 | T_low | T_high | Easy | Medium | Hard | 정확도 | 평균 MAC | MAC 절감 |"","
+python/analyze_margin.py,130,"                     % (tol * 100, q[""t_low""], q[""t_high""],"
+python/analyze_margin.py,156,        # 허용치가 커질수록 스윕이 T_low == T_high 로 수렴(=Medium 소멸)할 수 있어
+python/analyze_margin.py,161,"            if q and q[""t_low""] < q[""t_high""]:"
+python/analyze_margin.py,167,"        xcap = max(xcap, (best[""t_high""] if best else 0) * 1.3, 1e-6)"
+python/analyze_margin.py,173,"            ax.axvline(best[""t_low""], ls=""--"", c=""k"", lw=1)"
+python/analyze_margin.py,175,"            ax.text(best[""t_low""], top * .96, "" T_low"", fontsize=9, va=""top"")"
+python/analyze_margin.py,176,"            if best[""t_high""] > best[""t_low""]:"
+python/analyze_margin.py,177,"                ax.axvline(best[""t_high""], ls=""--"", c=""k"", lw=1)"
+python/analyze_margin.py,178,"                ax.text(best[""t_high""], top * .88, "" T_high"", fontsize=9, va=""top"")"
+python/analyze_margin.py,208,"    print(""\n※ 선정된 T_low / T_high 는 export_int8.py 에서 정수 스케일로 변환해야"")"
+python/export_int8.py,12,    python export_int8.py --arch B --t_low 0.231 --t_high 0.331
+python/export_int8.py,276,"    t_low = int(np.quantile(mg_i, (mg_f < a.t_low).mean())) if a.t_low is not None \"
+python/export_int8.py,278,"    t_high = int(np.quantile(mg_i, (mg_f < a.t_high).mean())) if a.t_high is not None \"
+python/export_int8.py,282,"        fp.write(""localparam signed [11:0] T_LOW  = 12'sd%d;\n"" % t_low)"
+python/export_int8.py,283,"        fp.write(""localparam signed [11:0] T_HIGH = 12'sd%d;\n"" % t_high)"
+python/export_int8.py,285,"    easy, hard = mg_i >= t_high, mg_i < t_low"
+python/export_int8.py,287,"    print(""\n  T_LOW = %d, T_HIGH = %d"" % (t_low, t_high))"
+python/export_int8.py,308,"    p.add_argument(""--t_low"", type=float, default=None,"
+python/export_int8.py,309,"                   help=""analyze_margin.py 가 출력한 float T_low"")"
+python/export_int8.py,310,"    p.add_argument(""--t_high"", type=float, default=None,"
+python/export_int8.py,311,"                   help=""analyze_margin.py 가 출력한 float T_high"")"
+python/export_int8.py,312,"    p.add_argument(""--q_low"", type=float, default=0.25, help=""t_low 미지정 시 사용할 분위수"")"
+python/export_int8.py,313,"    p.add_argument(""--q_high"", type=float, default=0.60, help=""t_high 미지정 시 사용할 분위수"")"
+flow_scripts/queue_final.sh,17,  make DESIGN_CONFIG=./designs/asap7/$v/config.mk clean_synth synth > $F/${v}_synth.log 2>&1
+flow_scripts/queue_final.sh,33,"    openroad -exit $SP/vcd_power_odb.tcl 2>&1 | grep -v -E ""STA-1212|ODB-0"" > $F/power_$4.log"
+flow_scripts/synth_v3.sh,20,  make DESIGN_CONFIG=./designs/asap7/$v/config.mk clean_synth synth > $V3/${v}_synth.log 2>&1
+flow_scripts/synth_v3.sh,23,  sed 's/set clk_period 1000/set clk_period 2500/' designs/asap7/$v/constraint.sdc > $V3/${v}_2500.sdc
+flow_scripts/synth_v3.sh,27,    SDC=$SDC TOP=$top REPORT=$V3/${v}_sta$suf.txt openroad -exit $PKG/sta_prelayout.tcl > $V3/${v}_sta$suf.log 2>&1
+flow_scripts/power_A.sh,10,"    openroad -exit $SP/vcd_power_odb.tcl 2>&1 | grep -v -E ""STA-1212|ODB-0"" > $F/power_$4.log"
+flow_scripts/sta_one.sh,7,sed 's/set clk_period 1000/set clk_period 2500/' designs/asap7/$v/constraint.sdc > $OUT/${v}_2500.sdc
+flow_scripts/sta_one.sh,11,"    openroad -exit $SP/sta_odb.tcl 2>&1 | grep -v -E ""STA-1212|ODB-0"" > $OUT/${v}_sta$suf.log"
+flow_scripts/vcd_power_odb.tcl,6,read_vcd -scope $::env(SCOPE) $::env(VCD)
+orfs/sta_prelayout.tcl,2,# 사용:  openroad -exit sta_prelayout.tcl   (환경변수 PLATFORM_DIR NETLIST SDC TOP REPORT)
+orfs/sta_prelayout.tcl,9,# OpenROAD 는 read_verilog 전에 기술(LEF)이 필요하다
+orfs/reports_final/adapath_A_sta.rpt,1,OpenROAD 26Q3-1305-gf552262465 
+orfs/reports_final/power_A_easy.rpt,1,OpenROAD 26Q3-1305-gf552262465 
+orfs/designs_final/cfg/adapath_A/constraint.sdc,4,set clk_period 1000
+orfs/designs_final/cfg/adapath_A/constraint.sdc,8,create_clock -name $clk_name -period $clk_period $clk_port
+orfs/designs_final/cfg/adapath_A/constraint.sdc,11,set_input_delay  [expr $clk_period * $clk_io_pct] -clock $clk_name $non_clock_inputs
+orfs/designs_final/cfg/adapath_A/constraint.sdc,12,set_output_delay [expr $clk_period * $clk_io_pct] -clock $clk_name [all_outputs]
+glsim/run_A.sh,3,"export PATH=""/c/iverilog/bin:$PATH"""
+glsim/run_A.sh,4,iverilog -g2012 -I. -o gl_adA.vvp adapath_A_net.v std_cell_fn/*.v tb_gl_A.v 2>&1 | grep -v -i warning | head -3
+glsim/run_A.sh,5,iverilog -g2012 -I. -DTOP_BASELINE -o gl_baA.vvp baseline_A_net.v std_cell_fn/*.v tb_gl_A.v 2>&1 | grep -v -i warning | head -3
+glsim/run_A.sh,7,"vvp gl_adA.vvp +START=1 +VCD=gl_adA_easy.vcd | grep -E ""img|gate"""
+glsim/run_A.sh,8,"vvp gl_adA.vvp +START=5 +VCD=gl_adA_hard.vcd | grep -E ""img|gate"""
+glsim/run_A.sh,9,"vvp gl_baA.vvp +START=1 +VCD=gl_baA.vcd | grep -E ""img|gate"""
+glsim/run_adapath.sh,3,"export PATH=""/c/iverilog/bin:$PATH"""
+glsim/run_adapath.sh,5,"iverilog -g2012 -I. -o gl_adapath_v2.vvp adapath_v2_net.v std_cell_fn/*.v tb_gl_adapath.v 2>&1 | grep -v -i ""warning"" | head -5"
+glsim/run_adapath.sh,8,"  vvp gl_adapath_v2.vvp +START=$2 +VCD=gl_ad_$1.vcd 2>&1 | grep -E ""img|gate-level"""
+glsim/run_ref.sh,3,"export PATH=""/c/iverilog/bin:$PATH"""
+glsim/run_ref.sh,5,iverilog -g2012 -DN_IMG=4 -o gl_ref.vvp ref_net.v std_cell_fn/*.v tb_gl_ref.v 2>&1 | grep -v -i warning | head -5
+glsim/run_ref.sh,8,"  vvp gl_ref.vvp +START=$2 +VCD=gl_ref_$1.vcd 2>&1 | grep -E ""img|gate-level"""
+glsim/tb_gl_A.v,8,//    iverilog -g2012 -I. -DTOP_ADAPATH -o gl.vvp \
+glsim/tb_gl_A.v,9,//        <netlist>.v ../verilog_ref/std_cell/*.v tb_gatelevel.v && vvp gl.vvp
+glsim/tb_gl_A.v,126,            rst_n = 0; start = 0; repeat (12) @(posedge clk); #1;
+glsim/tb_gl_adapath.v,8,//    iverilog -g2012 -I. -DTOP_ADAPATH -o gl.vvp \
+glsim/tb_gl_adapath.v,9,//        <netlist>.v ../verilog_ref/std_cell/*.v tb_gatelevel.v && vvp gl.vvp
+glsim/tb_gl_adapath.v,126,            rst_n = 0; start = 0; repeat (12) @(posedge clk); #1;
+evidence/README.md,10,"| gatelevel/sta_and_power_B_ref.txt, power_A.txt | OpenSTA read_vcd 전력 (Total 행: 내부 / 스위칭 / 누설 / 합계, W)과 VCD 종료 시각(ps) |"
+out/rtl_data_mnist_A/thresholds.vh,2,localparam signed [11:0] T_LOW  = 12'sd63;
+out/rtl_data_mnist_A/thresholds.vh,3,localparam signed [11:0] T_HIGH = 12'sd63;
+out/rtl_data_mnist/thresholds.vh,2,localparam signed [11:0] T_LOW  = 12'sd71;
+out/rtl_data_mnist/thresholds.vh,3,localparam signed [11:0] T_HIGH = 12'sd119;
+out/rtl_data_wm811k/thresholds.vh,2,localparam signed [11:0] T_LOW  = 12'sd13;
+out/rtl_data_wm811k/thresholds.vh,3,localparam signed [11:0] T_HIGH = 12'sd41;

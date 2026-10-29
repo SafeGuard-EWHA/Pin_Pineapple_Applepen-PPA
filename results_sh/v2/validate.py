@@ -23,5 +23,18 @@ def main():
         for seed,f in ss.items():
             assert len(f['A'])==len(f['B']);assert set(f['A']).isdisjoint(f['B']);assert sorted(f['A']+f['B'])==list(range(expected[key][0]))
     info.update({'calibration_budget_all_60':True,'all_split_partitions_verified':True,'png':dpi,'base_commit':BASE_COMMIT,'seed':INFERENCE_SEED,'split_seeds':SEEDS})
-    dump(OUT/'provenance'/'validation.json',info);print('P0 independent checks PASS',flush=True)
+    if (OUT/'04_wm_classes/results.json').exists():
+        wm=json.loads((OUT/'04_wm_classes/results.json').read_text(encoding='utf8'));rows=wm['classes'];cm=wm['confusion'];assert sum(r['n'] for r in rows)==954
+        assert [sum(r[k] for r in rows) for k in ['easy_n','medium_n','hard_n']]==[401,152,401]
+        for name,key,total in [('Baseline_Full','full_correct',778),('AdaPath','ada_correct',775)]:
+            a=np.array(cm[name]);assert a.sum()==954 and np.trace(a)==total
+            assert np.array_equal(a.sum(1),[r['n'] for r in rows]);assert np.array_equal(a.diagonal(),[r[key] for r in rows])
+        er=json.loads((OUT/'05_error_analysis/summary.json').read_text());es=list(csv.DictReader((OUT/'05_error_analysis/all_easy_errors.csv').open()))
+        assert len(es)==er['easy_wrong_n']==129
+        assert sum(r['full_pred']==r['y'] for r in es)==er['full_would_recover_easy_errors']==58
+        assert all(float(r['margin'])>=er['threshold'] and r['early_pred']!=r['y'] for r in es)
+        pairs=list(csv.DictReader((OUT/'05_error_analysis/easy_error_pairs.csv').open()));assert sum(int(r['count']) for r in pairs)==129
+        assert len({r['sample_id'] for r in es})==129
+        info['P1']={'wm_class_confusion_totals_match':True,'wm_mode_totals_match':True,'easy_error_labels_and_recovery_match':True,'easy_error_pair_total_match':True}
+    dump(OUT/'provenance'/'validation.json',info);print('Independent checks PASS',flush=True)
 if __name__=='__main__':main()

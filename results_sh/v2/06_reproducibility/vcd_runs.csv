@@ -1,0 +1,8 @@
+design,run,start,n,images,mix,vcd,source
+AdaPath_A,Easy,1,4,1–4,Easy 4,gl_adA_easy.vcd,glsim/run_A.sh:7
+AdaPath_A,Hard mix,5,4,5–8,Hard 1 + Easy 3,gl_adA_hard.vcd,glsim/run_A.sh:8
+Baseline_A,Full,1,4,1–4,Full 4,gl_baA.vcd,glsim/run_A.sh:9
+AdaPath_B,Easy,1,4,1–4,Easy 4,gl_ad_easy.vcd,glsim/run_adapath.sh
+AdaPath_B,Medium mix,15,4,15–18,Medium 2 + Easy 2,gl_ad_med.vcd,glsim/run_adapath.sh; evidence/gatelevel/adapath_B_runs.txt
+AdaPath_B,Hard mix,5,4,5–8,Hard 1 + Easy 3,gl_ad_hard.vcd,glsim/run_adapath.sh
+Reference,a/b/c,1/15/5,12,"1–4,15–18,5–8",Full 12,gl_ref_a/b/c.vcd,glsim/run_ref.sh

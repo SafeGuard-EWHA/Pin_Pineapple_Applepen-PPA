@@ -6,11 +6,11 @@ import argparse,shutil,copy
 def main():
     p=argparse.ArgumentParser();p.add_argument('--repo',required=True,type=Path);p.add_argument('--cache',required=True,type=Path);a=p.parse_args();a.repo=a.repo.resolve();a.cache=a.cache.resolve();a.cache.mkdir(parents=True,exist_ok=True)
     sys.path.insert(0,str(a.repo/'python'))
-    import torch
+    import torch,scipy,matplotlib
     from analyze_margin import collect,ARCHS
     from model import AdaPathNet
     torch.manual_seed(INFERENCE_SEED);np.random.seed(INFERENCE_SEED);torch.set_num_threads(2);torch.use_deterministic_algorithms(True)
-    info={'base_commit':BASE_COMMIT,'inference_seed':INFERENCE_SEED,'split_seeds':SEEDS,'python':platform.python_version(),'platform':platform.platform(),'torch':torch.__version__,'numpy':np.__version__,'device':'CPU','threads':2,'inputs':{},'models':{}}
+    info={'base_commit':BASE_COMMIT,'inference_seed':INFERENCE_SEED,'split_seeds':SEEDS,'python':platform.python_version(),'platform':platform.platform(),'torch':torch.__version__,'numpy':np.__version__,'scipy':scipy.__version__,'matplotlib':matplotlib.__version__,'device':'CPU','threads':2,'inputs':{},'models':{}}
     for rel in ['README.md','python/analyze_margin.py','python/model.py','python/arch.py','python/train.py','python/data_wm811k.py','rtl/top2_finder.v','report/결과보고서_PPA.pdf','report/results.json']:
         info['inputs'][rel]=provenance(a.repo/rel)
     for key in ['mnist_A','mnist_B','wm811k_B']:

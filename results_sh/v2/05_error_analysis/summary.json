@@ -1,0 +1,14 @@
+{
+  "source_commit": "4990d117fcc571183000605a514ad5d9c7d5c98a",
+  "inference_seed": 2026,
+  "n": 10000,
+  "easy_n": 9400,
+  "hard_n": 600,
+  "easy_wrong_n": 129,
+  "easy_wrong_pct_all": 1.29,
+  "easy_wrong_pct_easy": 1.372340425531915,
+  "full_would_recover_easy_errors": 58,
+  "easy_errors_also_wrong_full": 71,
+  "max_margin_easy_error": 8.128220558166504,
+  "threshold": 1.1608357596397398
+}
