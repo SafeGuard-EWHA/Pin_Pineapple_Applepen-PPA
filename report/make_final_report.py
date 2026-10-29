@@ -369,8 +369,18 @@ table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
 ], [3.0, 3.2, 3.8, 3.2, 3.4], hl_rows=(2,),
     note="주최 측 TB는 $urandom_range로 이미지를 무작위 추출하므로 설계마다 추출 순서가 달라 ±0.1~0.3 %p 차이가 "
          "생긴다. 동일 이미지 집합(순차 1,000장)에서 AdaPath_A와 Reference는 정답 수가 970개로 같다.")
-figure(doc, os.path.join(OUT, "gtkwave_easy.png"), "Easy 모드 파형(GTKWave): 판단 직후 출력, 후단부 비활성", 15.5)
-figure(doc, os.path.join(OUT, "gtkwave_hard.png"), "Hard 모드 파형(GTKWave): 버퍼 재생 후 Conv2·Full FC 수행", 15.5)
+figure(doc, os.path.join(OUT, "fig_vivado_wave_overview.png"),
+       "Vivado 2023.1 시뮬레이션 파형 — 주최 측 top_tb.v, AdaPath_A, 0~415 ns (이미지 1~47)", 17.0)
+para(doc, "후단부 활성 신호(conv2_en, fc_full_en)는 47장 중 단 두 번만 켜진다. 첫 번째는 주최 측 TB가 첫 이미지 전에 "
+     "입력이 미정(X)인 상태로 한 번 동작시키는 구간으로, 판정이 미정일 때 Hard로 진행하도록 설계한 대로 동작한다. 두 번째는 "
+     "이미지 46이다. 나머지 이미지는 모두 Easy로 판정되어 후단부가 한 번도 동작하지 않으며, 누적 정답 수(accuracy)는 "
+     "매 이미지 증가한다.", indent=True)
+figure(doc, os.path.join(OUT, "fig_vivado_wave_zoom.png"),
+       "Vivado 파형 확대 (335~415 ns): Easy 이미지 vs Hard 이미지(46번, Score Margin 57 < 임계값 63)", 17.0)
+para(doc, "확대 구간에서 Easy 이미지는 판단 직후 결과를 출력하고 다음 이미지로 넘어가므로 Conv2·Full FC 활성 신호가 꺼진 채 "
+     "유지된다. 이미지 46은 Score Margin이 57로 임계값 63보다 작아 Hard로 판정되고, Feature Map Buffer를 재생하며 "
+     "Conv2와 Full FC가 동작한 뒤(초록 구간) 정답을 출력한다. mode·margin 레지스터는 이미지마다 리셋되며, Easy 판정은 "
+     "출력 직전 수 cycle 동안만 유지되므로 이 배율에서는 리셋값(Hard=2)이 주로 보인다.", indent=True)
 
 h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
 para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC: 1 GHz 목표, 입출력 지연 20 %)으로 합성하고 "
