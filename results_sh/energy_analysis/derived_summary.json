@@ -1,0 +1,20 @@
+{
+  "analysis_kind": "fixed conditional energy mixture; no new simulation",
+  "source_main_commit": "9b192246ef0cde397824c757ad552d779532b549",
+  "input_file": "source_results.json",
+  "easy_energy_nJ": 15.782923563999999,
+  "hard_energy_nJ": 25.148294512,
+  "reference_energy_nJ": 17.741146844333333,
+  "baseline_A_energy_nJ": 20.796625181000003,
+  "break_even_easy_fraction_vs_reference": 0.790908092033288,
+  "break_even_easy_fraction_vs_baseline_A": 0.46465530892071144,
+  "reported_easy_fraction": 0.96,
+  "reported_mixture_energy_nJ": 16.15753840192,
+  "saving_vs_reference_pct": 8.926189813479557,
+  "saving_vs_baseline_A_pct": 22.306921140831626,
+  "maximum_saving_vs_reference_pct": 11.037749123635754,
+  "energy_reduction_per_1pp_easy_nJ": 0.09365370948000001,
+  "energy_headroom_vs_reference_at_reported_mix_nJ": 1.5836084424133325,
+  "cycle_break_even_easy_fraction_vs_baseline_A": 0.18128654970760233,
+  "cycle_vs_reference_all_hard_pct": 23.838080959520237
+}

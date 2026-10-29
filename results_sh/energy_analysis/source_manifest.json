@@ -1,0 +1,176 @@
+{
+  "source_commit": "9b192246ef0cde397824c757ad552d779532b549",
+  "sources": [
+    {
+      "path": "report/results.json",
+      "blob_sha": "1078d13b57457554e43fb1a1c09b45d2191afb1a",
+      "size": 3301
+    },
+    {
+      "path": "report/make_results.py",
+      "blob_sha": "451984eaa47d76e5e16285daee4ce8407a92eb3e",
+      "size": 7491
+    },
+    {
+      "path": "README.md",
+      "blob_sha": "b5c869cb04eb4017a3b05ed96c2648c76fe7358f",
+      "size": 5919
+    },
+    {
+      "path": "glsim/run_A.sh",
+      "blob_sha": "0c778d7a87db754da04c2352ce036f2b0c4194f8",
+      "size": 567
+    },
+    {
+      "path": "glsim/run_ref.sh",
+      "blob_sha": "3040868fb1276c10ffa28de604f11e5c9b0a2033",
+      "size": 402
+    },
+    {
+      "path": "glsim/tb_gl_A.v",
+      "blob_sha": "a43b3b24b9bc04d28ee9c1f417921da71d8f4977",
+      "size": 5750
+    },
+    {
+      "path": "glsim/tb_gl_ref.v",
+      "blob_sha": "a327ce310729b0911b987eab22a3bc4b59e51dd7",
+      "size": 4338
+    },
+    {
+      "path": "flow_scripts/power_A.sh",
+      "blob_sha": "e53e51c6c0fd51bd54fac720ecdb17a0b6be040e",
+      "size": 979
+    },
+    {
+      "path": "flow_scripts/vcd_power_odb.tcl",
+      "blob_sha": "a17c56c6f88b03a203de485847c27394c1e6d34b",
+      "size": 338
+    },
+    {
+      "path": "flow_scripts/sta_odb.tcl",
+      "blob_sha": "ffb576b57fd5bb36e838714f5ce64b4449dec9cb",
+      "size": 1006
+    },
+    {
+      "path": "flow_scripts/constraint_10ns.sdc",
+      "blob_sha": "f07dea1ea21e4c2ac76bf7c2a0ee5f320823eefc",
+      "size": 478
+    },
+    {
+      "path": "orfs/designs_final/cfg/adapath_A/constraint.sdc",
+      "blob_sha": "31fdd2da74ae6da194f25eff0192465c11c0b955",
+      "size": 477
+    },
+    {
+      "path": "orfs/designs_final/cfg/baseline_A/constraint.sdc",
+      "blob_sha": "31fdd2da74ae6da194f25eff0192465c11c0b955",
+      "size": 477
+    },
+    {
+      "path": "orfs/designs_final/cfg/refchip/constraint.sdc",
+      "blob_sha": "31fdd2da74ae6da194f25eff0192465c11c0b955",
+      "size": 477
+    },
+    {
+      "path": "orfs/reports_final/adapath_A_sta.rpt",
+      "blob_sha": "f917230ac7d0f856397596390bd3291aae8427c8",
+      "size": 5489
+    },
+    {
+      "path": "orfs/reports_final/adapath_A_sta.txt",
+      "blob_sha": "2614da2c9cbd9ea8bcf8c2649749a795df073159",
+      "size": 48
+    },
+    {
+      "path": "orfs/reports_final/baseline_A_sta.txt",
+      "blob_sha": "7b1ab76f8db186341fd3cb79ff38222909c19803",
+      "size": 47
+    },
+    {
+      "path": "orfs/reports_final/refchip_sta.txt",
+      "blob_sha": "ac298d19d2fc6eb2808d7aa2098bc236487a64aa",
+      "size": 48
+    },
+    {
+      "path": "orfs/reports_final/adapath_A_synth_stat.txt",
+      "blob_sha": "ec6498b03c7b1ebf09efe20e14f086185eaaa455",
+      "size": 5307
+    },
+    {
+      "path": "orfs/reports_final/baseline_A_synth_stat.txt",
+      "blob_sha": "9f06cdd40fb206f473c7d7ec0062f66d1bb32bda",
+      "size": 5488
+    },
+    {
+      "path": "orfs/reports_final/power_A_easy.rpt",
+      "blob_sha": "c873d72bcae4cd91662be96df714ff078cea42b4",
+      "size": 1487
+    },
+    {
+      "path": "orfs/reports_final/power_A_hard.rpt",
+      "blob_sha": "8b1d67e53d7dca4f13cd7a9f74e2f19d08af2891",
+      "size": 1487
+    },
+    {
+      "path": "orfs/reports_final/power_Abase.rpt",
+      "blob_sha": "f09ec39219f17ac9a2d0c19a8f38d8440626108c",
+      "size": 1487
+    },
+    {
+      "path": "orfs/reports_final/power_ref_a.rpt",
+      "blob_sha": "284eaefbd7f39346d45f5edcf7d1f90b16b81799",
+      "size": 1486
+    },
+    {
+      "path": "orfs/reports_final/power_ref_b.rpt",
+      "blob_sha": "04c4f2a6f308934263d331c33e7084fac2b84570",
+      "size": 1486
+    },
+    {
+      "path": "orfs/reports_final/power_ref_c.rpt",
+      "blob_sha": "35eb74089eda156bd7877e111eaf1cf9c3ffac06",
+      "size": 1486
+    }
+  ],
+  "checks": {
+    "power_A_easy": {
+      "report_W": 0.001839716,
+      "json_W": 0.001839716,
+      "match": true
+    },
+    "power_A_hard": {
+      "report_W": 0.002012354,
+      "json_W": 0.002012354,
+      "match": true
+    },
+    "power_Abase": {
+      "report_W": 0.002084039,
+      "json_W": 0.002084039,
+      "match": true
+    },
+    "power_ref_a": {
+      "report_W": 0.001309291,
+      "json_W": 0.001309291,
+      "match": true
+    },
+    "sta_adapath_A": {
+      "wns_ps": -673.1314421667043,
+      "derived_period_ps": 1673.1314421667043,
+      "json_period_ps": 1673.1314421667043,
+      "match": true
+    },
+    "sta_baseline_A": {
+      "wns_ps": -672.502611843044,
+      "derived_period_ps": 1672.502611843044,
+      "json_period_ps": 1672.502611843044,
+      "match": true
+    },
+    "sta_refchip": {
+      "wns_ps": -604.0256097227782,
+      "derived_period_ps": 1604.0256097227782,
+      "json_period_ps": 1604.0256097227782,
+      "match": true
+    }
+  },
+  "limits": "Read-only report/source comparison; no toolchain or VCD rerun."
+}
