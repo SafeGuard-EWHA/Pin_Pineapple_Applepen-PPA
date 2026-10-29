@@ -1,0 +1,10 @@
+{
+  "base_core_sha256": "13cc9f90a0b3891e18dd37659d3dd0ff2787588e57d7af940d4646c8a306ca11",
+  "gated_instances": [
+    "u_conv2",
+    "u_pool2",
+    "u_fcf",
+    "G_LIGHT.u_fcl"
+  ],
+  "clock_gate": "low-transparent latch + AND; technology mapping not yet verified"
+}
