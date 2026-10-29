@@ -1,0 +1,108 @@
+--- 2025KNU_CCDC/Reference code/cnn_verilog/verilog/top_tb.v
+
++++ submission_A/sim/top_tb.v
+
+@@ -69,7 +69,7 @@
+
+ 
+ // Read image text file
+ initial begin
+-  $readmemh("C:/cnn_verilog/data/2_0.txt", pixels);
++  $readmemh("2_0.txt", pixels);
+   clk <= 1'b0;
+   rst_n <= 1'b1;
+   #3
+@@ -79,24 +79,24 @@
+
+ end
+ initial begin
+    //conv1
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_1.txt", weight_11);
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_2.txt", weight_12);
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_3.txt", weight_13);
+-   $readmemh("C:/cnn_verilog/data/conv1_bias.txt", bias_1);
++   $readmemh("conv1_weight_1.txt", weight_11);
++   $readmemh("conv1_weight_2.txt", weight_12);
++   $readmemh("conv1_weight_3.txt", weight_13);
++   $readmemh("conv1_bias.txt", bias_1);
+    //conv2
+-   $readmemh("C:/cnn_verilog/data/conv2_bias.txt", bias_2);
+-   	$readmemh("C:/cnn_verilog/data/conv2_weight_11.txt", weight_211);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_12.txt", weight_212);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_13.txt", weight_213);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_21.txt", weight_221);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_22.txt", weight_222);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_23.txt", weight_223);
+-    $readmemh("C:/cnn_verilog/data/conv2_weight_31.txt", weight_231);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_32.txt", weight_232);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_33.txt", weight_233);
++   $readmemh("conv2_bias.txt", bias_2);
++   	$readmemh("conv2_weight_11.txt", weight_211);
++	$readmemh("conv2_weight_12.txt", weight_212);
++	$readmemh("conv2_weight_13.txt", weight_213);
++	$readmemh("conv2_weight_21.txt", weight_221);
++	$readmemh("conv2_weight_22.txt", weight_222);
++	$readmemh("conv2_weight_23.txt", weight_223);
++    $readmemh("conv2_weight_31.txt", weight_231);
++	$readmemh("conv2_weight_32.txt", weight_232);
++	$readmemh("conv2_weight_33.txt", weight_233);
+    //fullyconnected
+-   $readmemh("C:/cnn_verilog/data/fc_weight.txt", weight_fc);
+-   $readmemh("C:/cnn_verilog/data/fc_bias.txt", bias_fc);
++   $readmemh("fc_weight.txt", weight_fc);
++   $readmemh("fc_bias.txt", bias_fc);
+  end
+  
+ always @(posedge clk) begin
+@@ -252,24 +252,24 @@
+
+ 
+ initial begin
+    //conv1
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_1.txt", weight_11);
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_2.txt", weight_12);
+-   $readmemh("C:/cnn_verilog/data/conv1_weight_3.txt", weight_13);
+-   $readmemh("C:/cnn_verilog/data/conv1_bias.txt", bias_1);
++   $readmemh("conv1_weight_1.txt", weight_11);
++   $readmemh("conv1_weight_2.txt", weight_12);
++   $readmemh("conv1_weight_3.txt", weight_13);
++   $readmemh("conv1_bias.txt", bias_1);
+    //conv2
+-   $readmemh("C:/cnn_verilog/data/conv2_bias.txt", bias_2);
+-   	$readmemh("C:/cnn_verilog/data/conv2_weight_11.txt", weight_211);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_12.txt", weight_212);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_13.txt", weight_213);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_21.txt", weight_221);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_22.txt", weight_222);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_23.txt", weight_223);
+-    $readmemh("C:/cnn_verilog/data/conv2_weight_31.txt", weight_231);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_32.txt", weight_232);
+-	$readmemh("C:/cnn_verilog/data/conv2_weight_33.txt", weight_233);
++   $readmemh("conv2_bias.txt", bias_2);
++   	$readmemh("conv2_weight_11.txt", weight_211);
++	$readmemh("conv2_weight_12.txt", weight_212);
++	$readmemh("conv2_weight_13.txt", weight_213);
++	$readmemh("conv2_weight_21.txt", weight_221);
++	$readmemh("conv2_weight_22.txt", weight_222);
++	$readmemh("conv2_weight_23.txt", weight_223);
++    $readmemh("conv2_weight_31.txt", weight_231);
++	$readmemh("conv2_weight_32.txt", weight_232);
++	$readmemh("conv2_weight_33.txt", weight_233);
+    //fullyconnected
+-   $readmemh("C:/cnn_verilog/data/fc_weight.txt", weight_fc);
+-   $readmemh("C:/cnn_verilog/data/fc_bias.txt", bias_fc);
++   $readmemh("fc_weight.txt", weight_fc);
++   $readmemh("fc_bias.txt", bias_fc);
+  end
+  
+ 
+@@ -313,7 +313,7 @@
+
+ 
+ // Read image text file
+ initial begin
+-  $readmemh("C:/cnn_verilog/data/input_1000.txt", pixels);
++  $readmemh("input_1000.txt", pixels);
+   cnt <= 0;
+   img_idx <= 0;
+   clk <= 1'b0;

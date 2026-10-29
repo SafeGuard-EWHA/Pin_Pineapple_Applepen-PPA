@@ -1,0 +1,20 @@
+TB 원본과 제출본 비교 결과
+
+비교한 원본: 인계 자료에서 공식 배포 원본으로 보존한 reference/2025KNU_CCDC.zip → Reference code.zip → Reference code/cnn_verilog/verilog/top_tb.v.
+원본 ZIP SHA-256은 인계 manifest.json과 일치하였다.
+비교한 제출본: vivado/submit/PPA_AdaPath_NPU_A.zip → PPA_AdaPath_NPU_A/sim/top_tb.v. B 제출 ZIP도 같은 결론이다.
+
+두 파일은 각 400줄이다. 줄바꿈을 정규화한 후 변경된 34줄은 모두 $readmemh의 C:/cnn_verilog/data/ 접두사를 없앤 파일 경로 수정이다. 이 경로 차이를 제외하면 파일 전체가 동일하다. 로직 변경은 없다.
+
+원본과 제출본의 동일한 위치:
+193행: pixels [0:783999] — 1,000개 이미지 공간.
+199행 및 315~330행: state 선언은 있으나 초기 블록에 state 초기화가 없다.
+375행: $urandom_range(0, 1000) — 이미지 인덱스 1000 선택 가능.
+381행 및 385행: 배열 읽기 후 img_idx==784를 검사하여 785번째 읽기가 발생하는 구조.
+386~391행: cnt 증가와 cnt==1000 검사 및 $stop 종료 로직.
+
+결론: 앞서 지적한 TB 코드상의 문제 조건은 보관된 공식 배포본에 이미 있었으며 제출본을 만들 때 팀원이 해당 로직을 바꿔 새로 만든 문제가 아니다.
+
+증거 범위: 이는 보관된 공식 배포 ZIP과 제출 ZIP 사이의 정적 비교이다. 주최 측 서버에서 최신 배포본이나 정오표를 새로 확인한 것은 아니다. 앞서 관측한 X 출력 1회와 총 출력 1001회는 AdaPath 제출 RTL과 해당 TB를 Icarus로 실행한 결과이며, 주최 측 레퍼런스 RTL에서도 같은 횟수가 발생한다는 뜻은 아니다.
+
+이번 확인으로 원본 TB, RTL, 보고서, GitHub 브랜치를 수정하지 않았다. 전체 경로 차분은 TB差分.diff, 해시와 변경 줄은 comparison.json에 있다.

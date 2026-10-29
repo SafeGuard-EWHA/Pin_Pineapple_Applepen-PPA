@@ -1,0 +1,180 @@
+{
+  "archive_sha256": "ffecd9057fff9968e412399b29c7a54022ac581ac87160f27cd001024c16f9ff",
+  "original_tb_sha256": "9fb96f977981f25b280c1b0bef4c7d8e9d362e21f34d3481359b96f9d51400e0",
+  "submission_tb_sha256": "29632ef46d3afa1991f32f66636b981bfea0660555773dd1c7831c8f31ba3174",
+  "normalized_line_count": 400,
+  "changed_lines": 34,
+  "equal_after_lineending_and_data_prefix_normalization": true,
+  "changes": [
+    {
+      "line": 72,
+      "original": "  $readmemh(\"C:/cnn_verilog/data/2_0.txt\", pixels);",
+      "submission": "  $readmemh(\"2_0.txt\", pixels);"
+    },
+    {
+      "line": 82,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_1.txt\", weight_11);",
+      "submission": "   $readmemh(\"conv1_weight_1.txt\", weight_11);"
+    },
+    {
+      "line": 83,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_2.txt\", weight_12);",
+      "submission": "   $readmemh(\"conv1_weight_2.txt\", weight_12);"
+    },
+    {
+      "line": 84,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_3.txt\", weight_13);",
+      "submission": "   $readmemh(\"conv1_weight_3.txt\", weight_13);"
+    },
+    {
+      "line": 85,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_bias.txt\", bias_1);",
+      "submission": "   $readmemh(\"conv1_bias.txt\", bias_1);"
+    },
+    {
+      "line": 87,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv2_bias.txt\", bias_2);",
+      "submission": "   $readmemh(\"conv2_bias.txt\", bias_2);"
+    },
+    {
+      "line": 88,
+      "original": "   \t$readmemh(\"C:/cnn_verilog/data/conv2_weight_11.txt\", weight_211);",
+      "submission": "   \t$readmemh(\"conv2_weight_11.txt\", weight_211);"
+    },
+    {
+      "line": 89,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_12.txt\", weight_212);",
+      "submission": "\t$readmemh(\"conv2_weight_12.txt\", weight_212);"
+    },
+    {
+      "line": 90,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_13.txt\", weight_213);",
+      "submission": "\t$readmemh(\"conv2_weight_13.txt\", weight_213);"
+    },
+    {
+      "line": 91,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_21.txt\", weight_221);",
+      "submission": "\t$readmemh(\"conv2_weight_21.txt\", weight_221);"
+    },
+    {
+      "line": 92,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_22.txt\", weight_222);",
+      "submission": "\t$readmemh(\"conv2_weight_22.txt\", weight_222);"
+    },
+    {
+      "line": 93,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_23.txt\", weight_223);",
+      "submission": "\t$readmemh(\"conv2_weight_23.txt\", weight_223);"
+    },
+    {
+      "line": 94,
+      "original": "    $readmemh(\"C:/cnn_verilog/data/conv2_weight_31.txt\", weight_231);",
+      "submission": "    $readmemh(\"conv2_weight_31.txt\", weight_231);"
+    },
+    {
+      "line": 95,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_32.txt\", weight_232);",
+      "submission": "\t$readmemh(\"conv2_weight_32.txt\", weight_232);"
+    },
+    {
+      "line": 96,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_33.txt\", weight_233);",
+      "submission": "\t$readmemh(\"conv2_weight_33.txt\", weight_233);"
+    },
+    {
+      "line": 98,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/fc_weight.txt\", weight_fc);",
+      "submission": "   $readmemh(\"fc_weight.txt\", weight_fc);"
+    },
+    {
+      "line": 99,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/fc_bias.txt\", bias_fc);",
+      "submission": "   $readmemh(\"fc_bias.txt\", bias_fc);"
+    },
+    {
+      "line": 255,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_1.txt\", weight_11);",
+      "submission": "   $readmemh(\"conv1_weight_1.txt\", weight_11);"
+    },
+    {
+      "line": 256,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_2.txt\", weight_12);",
+      "submission": "   $readmemh(\"conv1_weight_2.txt\", weight_12);"
+    },
+    {
+      "line": 257,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_weight_3.txt\", weight_13);",
+      "submission": "   $readmemh(\"conv1_weight_3.txt\", weight_13);"
+    },
+    {
+      "line": 258,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv1_bias.txt\", bias_1);",
+      "submission": "   $readmemh(\"conv1_bias.txt\", bias_1);"
+    },
+    {
+      "line": 260,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/conv2_bias.txt\", bias_2);",
+      "submission": "   $readmemh(\"conv2_bias.txt\", bias_2);"
+    },
+    {
+      "line": 261,
+      "original": "   \t$readmemh(\"C:/cnn_verilog/data/conv2_weight_11.txt\", weight_211);",
+      "submission": "   \t$readmemh(\"conv2_weight_11.txt\", weight_211);"
+    },
+    {
+      "line": 262,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_12.txt\", weight_212);",
+      "submission": "\t$readmemh(\"conv2_weight_12.txt\", weight_212);"
+    },
+    {
+      "line": 263,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_13.txt\", weight_213);",
+      "submission": "\t$readmemh(\"conv2_weight_13.txt\", weight_213);"
+    },
+    {
+      "line": 264,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_21.txt\", weight_221);",
+      "submission": "\t$readmemh(\"conv2_weight_21.txt\", weight_221);"
+    },
+    {
+      "line": 265,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_22.txt\", weight_222);",
+      "submission": "\t$readmemh(\"conv2_weight_22.txt\", weight_222);"
+    },
+    {
+      "line": 266,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_23.txt\", weight_223);",
+      "submission": "\t$readmemh(\"conv2_weight_23.txt\", weight_223);"
+    },
+    {
+      "line": 267,
+      "original": "    $readmemh(\"C:/cnn_verilog/data/conv2_weight_31.txt\", weight_231);",
+      "submission": "    $readmemh(\"conv2_weight_31.txt\", weight_231);"
+    },
+    {
+      "line": 268,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_32.txt\", weight_232);",
+      "submission": "\t$readmemh(\"conv2_weight_32.txt\", weight_232);"
+    },
+    {
+      "line": 269,
+      "original": "\t$readmemh(\"C:/cnn_verilog/data/conv2_weight_33.txt\", weight_233);",
+      "submission": "\t$readmemh(\"conv2_weight_33.txt\", weight_233);"
+    },
+    {
+      "line": 271,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/fc_weight.txt\", weight_fc);",
+      "submission": "   $readmemh(\"fc_weight.txt\", weight_fc);"
+    },
+    {
+      "line": 272,
+      "original": "   $readmemh(\"C:/cnn_verilog/data/fc_bias.txt\", bias_fc);",
+      "submission": "   $readmemh(\"fc_bias.txt\", bias_fc);"
+    },
+    {
+      "line": 316,
+      "original": "  $readmemh(\"C:/cnn_verilog/data/input_1000.txt\", pixels);",
+      "submission": "  $readmemh(\"input_1000.txt\", pixels);"
+    }
+  ]
+}
