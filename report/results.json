@@ -1,0 +1,174 @@
+{
+ "area": {
+  "refchip": 32084.86464,
+  "baseline_A": 45501.00156,
+  "adapath_A": 49857.73884,
+  "baseline": 74533.689,
+  "adapath": 98708.24754,
+  "baseline_wm": 75765.17412,
+  "adapath_wm": 92891.8773
+ },
+ "crit": {
+  "refchip": 1604.0256097227782,
+  "baseline_A": 1672.502611843044,
+  "adapath_A": 1673.1314421667043,
+  "baseline": 1844.8508593169613,
+  "adapath": 1815.0119500763928,
+  "baseline_wm": 1851.2655059342721,
+  "adapath_wm": 1815.182147266748
+ },
+ "energy_nJ": {
+  "ref": 17.741146844333333,
+  "Abase": 20.796625181000003,
+  "A_easy": 15.782923563999999,
+  "A_hard": 25.148294512,
+  "B_easy": 18.111152637000004,
+  "B_med": 28.324731218999993,
+  "B_hard": 33.44154939899998
+ },
+ "runs_nJ": {
+  "B": {
+   "easy": 72.44461054800001,
+   "med": 92.871767712,
+   "hard": 87.77500730999999
+  },
+  "A": {
+   "easy": 63.131694255999996,
+   "hard": 72.497065204
+  }
+ },
+ "power_split": {
+  "A_easy_seq_pct": 78.79292238584652,
+  "groups": {
+   "A_easy": {
+    "Sequential": 0.001449566,
+    "Combinational": 0.0003901988,
+    "Clock": 0.0,
+    "Macro": 0.0,
+    "Pad": 0.0,
+    "Total": 0.001839716
+   },
+   "A_hard": {
+    "Sequential": 0.001510259,
+    "Combinational": 0.0005021083,
+    "Clock": 0.0,
+    "Macro": 0.0,
+    "Pad": 0.0,
+    "Total": 0.002012354
+   },
+   "Abase": {
+    "Sequential": 0.00132072,
+    "Combinational": 0.0007633343,
+    "Clock": 0.0,
+    "Macro": 0.0,
+    "Pad": 0.0,
+    "Total": 0.002084039
+   },
+   "ref_a": {
+    "Sequential": 0.0007276337,
+    "Combinational": 0.0005816687,
+    "Clock": 0.0,
+    "Macro": 0.0,
+    "Pad": 0.0,
+    "Total": 0.001309291
+   },
+   "B_easy": {
+    "Sequential": 0.001681221,
+    "Combinational": 0.0004298309,
+    "Clock": 0.0,
+    "Macro": 0.0,
+    "Pad": 0.0,
+    "Total": 0.002111103
+   }
+  }
+ },
+ "mac": {
+  "ref": 58080,
+  "A_easy": 43680,
+  "A_med": 48640,
+  "A_hard": 58560,
+  "B_easy": 43680,
+  "B_med": 63520,
+  "B_hard": 83360
+ },
+ "acc": {
+  "ref_seq": 97.0,
+  "A_seq": 97.0,
+  "Abase_seq": 97.0,
+  "B_seq": 100.0,
+  "ref_org": 96.7,
+  "A_org": 96.6,
+  "B_org": 99.9
+ },
+ "cycles": {
+  "ref": 1334,
+  "ref_org": 1336,
+  "base": 985,
+  "easy": 845,
+  "hard": 1016,
+  "A_org": 854.8,
+  "B_org": 870.3
+ },
+ "mode_ratio": {
+  "A": {
+   "easy": 0.96,
+   "hard": 0.04
+  },
+  "B": {
+   "easy": 0.87,
+   "med": 0.06,
+   "hard": 0.07
+  }
+ },
+ "modes_seq": {
+  "A": "960 / 0 / 40",
+  "B": "870 / 60 / 70"
+ },
+ "region2": {
+  "area_v1": 384.5,
+  "area_v2": 325.1,
+  "crit_v1": 4293,
+  "crit_v2": 1071
+ },
+ "verify": {
+  "org_ref": "96.7 %",
+  "org_A": "96.6 %",
+  "org_B": "99.9 %"
+ },
+ "sw": {
+  "A_full": "97.53",
+  "A_light": "91.14",
+  "A_early": "96.21",
+  "A_modes": "94.0 / 0 / 6.0 %",
+  "A_acc": "97.47",
+  "A_macsave": "23.9",
+  "A_int8": "97.10 % (float 96.80 %, n=1,000)",
+  "B_full": "98.51",
+  "B_light": "97.76",
+  "B_early": "95.18",
+  "B_modes": "82 / 8 / 10 %",
+  "B_acc": "98.12",
+  "B_macsave": "40.9",
+  "B_int8": "97.80 % (float 97.95 %)"
+ },
+ "iso": {
+  "mn_gain": "0 ~ 2.2 %",
+  "wm_gain": "2 ~ 3 %",
+  "mn_acc": "최대 +0.19 %p",
+  "wm_acc": "최대 +1.68 %p"
+ },
+ "wm": {
+  "n_test": 954,
+  "acc_base": 81.55,
+  "acc_ada": 81.24,
+  "mac_base": 82304,
+  "mac_ada": 62848,
+  "mode": {
+   "easy": 0.42,
+   "med": 0.159,
+   "hard": 0.421
+  },
+  "mode_str": "42.0 / 15.9 / 42.0 %",
+  "cyc_ada": 944.18
+ }
+}

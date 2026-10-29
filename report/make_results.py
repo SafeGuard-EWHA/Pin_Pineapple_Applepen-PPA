@@ -59,7 +59,9 @@ def run_energy_nJ(tag, vcd):
     return power(tag)["Total"] * vcd_seconds(os.path.join(GL, vcd)) * 1e9
 
 
-R_MANUAL_AREA = {}
+# reports_v2 / reports_v3 합성 결과 (synth_stat 'Chip area')
+R_MANUAL_AREA = {"refchip": 32084.864640, "baseline": 74533.689000, "adapath": 98708.247540,
+                 "baseline_wm": 75765.174120, "adapath_wm": 92891.877300}
 
 # ---------------- 런별 에너지 -> 모드별 분리 ----------------
 Eb = {m: run_energy_nJ("B_" + m, "gl_ad_%s.vcd" % m) for m in ("easy", "med", "hard")}
@@ -134,13 +136,13 @@ for xs, vals, col, lab in (([i - w / 2 - 0.01 for i in x], nb, "#2a78d6", "Basel
                            ([i + w / 2 + 0.01 for i in x], na, "#eb6834", "AdaPath_A (제안)")):
     bars = ax.bar(xs, vals, w, color=col, label=lab, zorder=3)
     for b, v in zip(bars, vals):
-        ax.text(b.get_x() + b.get_width() / 2, v + 0.03, "%.2f" % v, ha="center", va="bottom",
-                fontsize=8.5, color=INK)
+        ax.text(b.get_x() + b.get_width() / 2, v - 0.04, "%.2f" % v, ha="center", va="top",
+                fontsize=9, color="white", fontweight="bold", zorder=4)
 ax.axhline(1.0, ls="--", lw=1.2, color=MUTED, zorder=2)
-ax.text(len(metrics) - 0.5, 1.02, "Reference = 1.0", ha="right", va="bottom", fontsize=8.5, color=MUTED)
+ax.text(-0.62, 1.02, "Reference = 1.0", ha="left", va="bottom", fontsize=8.5, color=MUTED)
 ax.set_xticks(list(x))
 ax.set_xticklabels(metrics, fontsize=9.5, color=INK)
-ax.set_ylabel("Reference 대비 비율 (낮을수록 좋음, 면적 제외)", fontsize=8.5, color=MUTED)
+ax.set_ylabel("Reference 대비 비율 (낮을수록 좋음)", fontsize=8.5, color=MUTED)
 ax.set_ylim(0, max(max(nb), max(na)) * 1.18)
 ax.grid(axis="y", color=GRID, lw=0.8, zorder=0)
 for s in ("top", "right"):

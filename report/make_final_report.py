@@ -269,9 +269,10 @@ table(doc, "설계 목표 및 달성 결과 (지정주제: Reference 대비)", [
     ["추론당 에너지", "Reference 대비 감소 (게이트레벨 실측)",
      "%s → %s nJ (%+.1f %%)" % (f1(E_REF), f1(E_A), pct(E_A, E_REF)),
      "달성" if E_A < E_REF else "미달"],
-    ["최대 동작 주파수", "Reference 대비 저하 없음",
-     "%s → %s MHz" % (f0(FMAX["refchip"]), f0(FMAX["adapath_A"])),
-     "달성" if FMAX["adapath_A"] >= FMAX["refchip"] * 0.98 else "미달"],
+    ["최대 동작 주파수", "판단 회로로 인한 저하 없음",
+     "Baseline_A %s = AdaPath_A %s MHz (Reference %s MHz)" % (
+         f0(FMAX["baseline_A"]), f0(FMAX["adapath_A"]), f0(FMAX["refchip"])),
+     "달성" if FMAX["adapath_A"] >= FMAX["baseline_A"] * 0.99 else "미달"],
     ["판단 회로 오버헤드", "전체 면적의 5 % 이내",
      "%s µm² (%.2f %%)" % (f1(R["region2"]["area_v2"]), region2_ratio), "달성"],
     ["입출력 인터페이스", "Reference와 동일", "동일 포트 래퍼, 주최 측 TB 무수정 동작", "달성"],
@@ -381,9 +382,12 @@ for key, name in (("refchip", "Reference"), ("baseline_A", "Baseline_A"), ("adap
     rows.append([name, f0(A[key]), "%+.1f %%" % pct(A[key], A["refchip"]), f0(D[key]), f0(FMAX[key])])
 table(doc, "합성 결과 (pre-layout)", ["설계", "Cell Area (µm²)", "Reference 대비", "임계 경로 (ps)", "Fmax (MHz)"],
       rows, [3.4, 3.4, 3.2, 3.2, 3.0], hl_rows=(2,))
-para(doc, "Top-2 Finder 개선 후 AdaPath의 임계 경로는 더 이상 판단 회로가 아니며, Reference와 같은 수준의 "
-     "동작 주파수를 확보하였다. 면적 증가는 Early Classifier FC, Feature Map Buffer(5,184 bit), 제어 회로에서 "
-     "발생하며 판단 회로(Region 2) 자체는 %s µm²로 전체의 %.2f %%이다." % (f1(rg["area_v2"]), region2_ratio), indent=True)
+para(doc, "Top-2 Finder 개선 후 AdaPath_A의 임계 경로는 더 이상 판단 회로가 아니며, 판단 회로가 없는 Baseline_A와 "
+     "동일한 %s MHz를 확보하였다(중간 단계에서는 판단 회로 때문에 489 → 238 MHz로 저하). Reference 대비 %.0f %% 낮은 "
+     "것은 Conv2 MAC 경로(입력 포트 지연 포함)에서 결정되며 판단 회로와 무관하다. 면적 증가는 Feature Map Buffer"
+     "(5,184 bit), Early Classifier FC, 제어 회로에서 발생하며 판단 회로(Region 2) 자체는 %s µm²로 AdaPath_A 전체의 "
+     "%.2f %%이다." % (f0(FMAX["adapath_A"]), -pct(FMAX["adapath_A"], FMAX["refchip"]), f1(rg["area_v2"]), region2_ratio),
+     indent=True)
 
 h2(doc, "3.7 게이트레벨 전력 및 추론당 에너지 (VCD 기반)")
 para(doc, "벡터 없는 정적 전력 추정은 모든 블록이 항상 스위칭한다고 가정하므로 모드 게이팅 효과를 반영하지 못한다. "
@@ -396,27 +400,31 @@ table(doc, "모드별 추론당 에너지 (게이트레벨 실측, 동일 이미
     ["Baseline_A (항상 Hard)", f1(E_ABASE), "%+.1f %%" % pct(E_ABASE, E_REF)],
     ["AdaPath_A — Easy", f1(E["A_easy"]), "%+.1f %%" % pct(E["A_easy"], E_REF)],
     ["AdaPath_A — Hard", f1(E["A_hard"]), "%+.1f %%" % pct(E["A_hard"], E_REF)],
-    ["**AdaPath_A 가중 평균** (E/H = %.0f/%.0f %%)" % (MODE["A"]["easy"] * 100, MODE["A"]["hard"] * 100),
+    ["AdaPath_A 가중 평균 (E/H = %.0f/%.0f %%)" % (MODE["A"]["easy"] * 100, MODE["A"]["hard"] * 100),
      "**%s**" % f1(E_A), "**%+.1f %%**" % pct(E_A, E_REF)],
     ["AdaPath_B 가중 평균 (확장 모델)", f1(E_B), "%+.1f %%" % pct(E_B, E_REF)],
 ], [7.0, 4.0, 4.0], hl_rows=(4,))
 figure(doc, os.path.join(OUT, "fig_final_compare.png"), "Reference 대비 정확도·지연·에너지·면적 비교 (Reference = 1.0)", 15.0)
-para(doc, "에너지 이득은 두 단계로 나뉜다. 데이터패스 자체(Baseline_A)는 Reference와 같은 신경망을 더 적은 cycle로 "
-     "처리하여 %+.1f %%의 에너지 변화를 보였고, 여기에 AdaPath 적응 경로가 추가로 %+.1f %%를 더해 최종 %+.1f %%를 "
-     "얻었다. 지도교수 피드백 ①과 같이 MAC 감소율(%+.1f %%)과 에너지 감소율은 일치하지 않으며, 그 차이는 "
-     "추가된 분기 회로와 순차 소자(플립플롭·클럭)의 전력 때문이다."
-     % (pct(E_ABASE, E_REF), pct(E_A, E_ABASE), pct(E_A, E_REF), pct(MAC_A, MAC["ref"])), indent=True)
+para(doc, "에너지 결과는 두 단계로 해석된다. 먼저 본 팀 데이터패스(Baseline_A)는 처리 cycle을 %.0f %% 줄였지만, "
+     "Feature Map Buffer 등 레지스터가 늘어나 추론당 에너지는 Reference보다 %+.1f %% 많았다. 여기에 AdaPath 적응 "
+     "경로가 같은 데이터패스 대비 %+.1f %%를 줄여, 최종적으로 Reference 대비 %+.1f %%의 에너지 감소를 얻었다. "
+     "즉 Reference 대비 이득은 전적으로 AdaPath 기법에서 나온다. 또한 지도교수 피드백 ①과 같이 MAC 감소율"
+     "(%+.1f %%)과 에너지 감소율은 일치하지 않으며, 그 차이는 추가된 분기 회로와 순차 소자의 전력 때문이다."
+     % (-pct(CYC["base"], CYC["ref"]), pct(E_ABASE, E_REF), pct(E_A, E_ABASE), pct(E_A, E_REF),
+        pct(MAC_A, MAC["ref"])), indent=True)
 pw = R["power_split"]
-para(doc, "전력 구성을 보면 AdaPath_A의 Easy 런에서 순차 소자(레지스터+클럭)가 전체 전력의 %.0f %%를 차지한다. "
-     "즉 남은 에너지의 대부분은 연산이 아니라 클럭이 공급되는 레지스터에서 소모되며, Easy 모드에서 후단부 "
-     "레지스터의 클럭을 차단하는 클럭 게이팅이 다음 개선 대상이다(4장)." % pw["A_easy_seq_pct"], indent=True)
-table(doc, "효율 지표 (실효 TOPS/W = 2 × 평균 MAC / 추론당 에너지)", ["설계", "평균 MAC", "에너지 (nJ)", "실효 TOPS/W"], [
-    ["Reference", f0(MAC["ref"]), f1(E_REF), f2(topsw(MAC["ref"], E_REF))],
-    ["Baseline_A", f0(MAC["A_hard"]), f1(E_ABASE), f2(topsw(MAC["A_hard"], E_ABASE))],
-    ["**AdaPath_A**", f0(MAC_A), f1(E_A), "**%s**" % f2(topsw(MAC_A, E_A))],
-], [4.0, 4.0, 4.0, 4.0], hl_rows=(2,),
-    note="AdaPath의 '실효' 지표는 실제로 수행한 연산만 계산하므로, 생략한 연산까지 포함한 '등가' 처리량 기준으로는 "
-         "Reference 대비 에너지 감소율만큼 효율이 향상된 것과 같다.")
+para(doc, "전력 구성을 보면 AdaPath_A의 Easy 런에서 순차 소자(레지스터)가 전체 전력의 %.0f %%를 차지한다. 이 값은 "
+     "배치·배선 전(pre-CTS) 분석이라 클럭 트리 전력이 빠진 것으로, 실제 칩에서는 순차 관련 비중이 더 커진다. 즉 남은 "
+     "에너지의 대부분은 연산이 아니라 클럭이 공급되는 레지스터에서 소모되며, Easy 모드에서 후단부 레지스터의 클럭을 "
+     "차단하는 클럭 게이팅이 다음 개선 대상이다(4장)." % pw["A_easy_seq_pct"], indent=True)
+table(doc, "효율 지표", ["설계", "실제 수행 MAC", "에너지 (nJ)", "실효 TOPS/W", "등가 TOPS/W"], [
+    ["Reference", f0(MAC["ref"]), f1(E_REF), f2(topsw(MAC["ref"], E_REF)), f2(topsw(MAC["ref"], E_REF))],
+    ["Baseline_A", f0(MAC["A_hard"]), f1(E_ABASE), f2(topsw(MAC["A_hard"], E_ABASE)), f2(topsw(MAC["ref"], E_ABASE))],
+    ["**AdaPath_A**", f0(MAC_A), f1(E_A), f2(topsw(MAC_A, E_A)), "**%s**" % f2(topsw(MAC["ref"], E_A))],
+], [3.4, 3.2, 3.0, 3.2, 3.2], hl_rows=(2,),
+    note="실효 TOPS/W = 2 × 실제 수행 MAC / 추론당 에너지.  등가 TOPS/W = 2 × Reference MAC(%s) / 추론당 에너지 — "
+         "같은 분류 작업을 기준으로 한 효율로, AdaPath가 생략한 연산까지 포함한다. AdaPath는 연산을 생략해 에너지를 "
+         "줄이므로 실효 지표는 낮아지고 등가 지표가 실제 이득을 나타낸다." % f0(MAC["ref"]))
 
 h2(doc, "3.8 Medium 경로의 효과 분석 (지도교수 피드백 ②)")
 para(doc, "Medium 경로의 순수 기여를 분리하기 위해, 같은 Early Classifier·같은 Score Margin을 쓰되 Medium이 없는 "

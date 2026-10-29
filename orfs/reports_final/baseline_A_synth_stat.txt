@@ -1,0 +1,95 @@
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_FF_nldm_220122.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+Found gzip magic in file `/home/yhe44/OpenROAD-flow-scripts/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_FF_nldm_211120.lib.gz', decompressing using zlib.
+
+17. Printing statistics.
+
+=== baseline_A_npu ===
+
+        +----------------------------Count including submodules.
+        |        +-------------------Area including submodules.
+        |        |        +----------Local count, excluding submodules.
+        |        |        |        +-Local area, excluding submodules.
+        |        |        |        | 
+   420678        -   420678        - wires
+   432626        -   432626        - wire bits
+       18        -       18        - public wires
+    11966        -    11966        - public wire bits
+       18        -       18        - ports
+    11966        -    11966        - port bits
+        -        -        -        - memories
+        -        -        -        - memory bits
+        -        -        -        - processes
+   420679 4.55E+04   420679 4.55E+04 cells
+    21608 1.89E+03    21608 1.89E+03   AND2x2_ASAP7_75t_R
+       23    3.353       23    3.353   AND2x4_ASAP7_75t_R
+        2     0.35        2     0.35   AND2x6_ASAP7_75t_R
+     2500    218.7     2500    218.7   AND3x1_ASAP7_75t_R
+        4    0.408        4    0.408   AND3x2_ASAP7_75t_R
+        1    0.204        1    0.204   AND3x4_ASAP7_75t_R
+      128   13.064      128   13.064   AND4x1_ASAP7_75t_R
+       58    6.765       58    6.765   AND5x1_ASAP7_75t_R
+        1    0.233        1    0.233   AO211x2_ASAP7_75t_R
+    33646 2.94E+03    33646 2.94E+03   AO21x1_ASAP7_75t_R
+       46    4.695       46    4.695   AO21x2_ASAP7_75t_R
+     1544  225.115     1544  225.115   AO221x1_ASAP7_75t_R
+        1     0.16        1     0.16   AO221x2_ASAP7_75t_R
+      869   114.03      869   114.03   AO22x1_ASAP7_75t_R
+        7    1.633        7    1.633   AO31x2_ASAP7_75t_R
+     1863    217.3     1863    217.3   AO32x1_ASAP7_75t_R
+      116   20.295      116   20.295   AOI211x1_ASAP7_75t_R
+    44256  5162.02    44256  5162.02   AOI21x1_ASAP7_75t_R
+      299   61.032      299   61.032   AOI221x1_ASAP7_75t_R
+     1503  219.137     1503  219.137   AOI22x1_ASAP7_75t_R
+       20    4.082       20    4.082   BUFx10_ASAP7_75t_R
+       78    20.47       78    20.47   BUFx12f_ASAP7_75t_R
+        1    0.321        1    0.321   BUFx16f_ASAP7_75t_R
+    12780  931.662    12780  931.662   BUFx2_ASAP7_75t_R
+     1121   98.065     1121   98.065   BUFx3_ASAP7_75t_R
+       23    2.347       23    2.347   BUFx4_ASAP7_75t_R
+      332   38.724      332   38.724   BUFx4f_ASAP7_75t_R
+       47    5.482       47    5.482   BUFx5_ASAP7_75t_R
+      373   54.383      373   54.383   BUFx6f_ASAP7_75t_R
+       36    6.299       36    6.299   BUFx8_ASAP7_75t_R
+    11222 3.27E+03    11222 3.27E+03   DFFHQNx1_ASAP7_75t_R
+        1    0.219        1    0.219   INVx13_ASAP7_75t_R
+    48177 2.11E+03    48177 2.11E+03   INVx1_ASAP7_75t_R
+     1082   63.102     1082   63.102   INVx2_ASAP7_75t_R
+       85    6.196       85    6.196   INVx3_ASAP7_75t_R
+       27    2.362       27    2.362   INVx4_ASAP7_75t_R
+        2    0.204        2    0.204   INVx5_ASAP7_75t_R
+        1    0.146        1    0.146   INVx8_ASAP7_75t_R
+    14557  1910.17    14557  1910.17   MAJx2_ASAP7_75t_R
+    51800 4.53E+03    51800 4.53E+03   NAND2x1_ASAP7_75t_R
+      383   55.841      383   55.841   NAND2x2_ASAP7_75t_R
+     3705  594.208     3705  594.208   NAND3x1_ASAP7_75t_R
+        4    1.166        4    1.166   NAND3x2_ASAP7_75t_R
+    45763    4E+03    45763    4E+03   NOR2x1_ASAP7_75t_R
+      627   91.417      627   91.417   NOR2x2_ASAP7_75t_R
+     1266  203.041     1266  203.041   NOR3x1_ASAP7_75t_R
+        2    0.583        2    0.583   NOR3x2_ASAP7_75t_R
+     1432  167.028     1432  167.028   OA211x2_ASAP7_75t_R
+     9677  987.635     9677  987.635   OA21x2_ASAP7_75t_R
+      162   37.791      162   37.791   OA221x2_ASAP7_75t_R
+      255   37.179      255   37.179   OA22x2_ASAP7_75t_R
+        6    1.312        6    1.312   OA31x2_ASAP7_75t_R
+    43119   5029.4    43119   5029.4   OAI21x1_ASAP7_75t_R
+      890  129.762      890  129.762   OAI22x1_ASAP7_75t_R
+      965   84.418      965   84.418   OR2x2_ASAP7_75t_R
+        1    0.117        1    0.117   OR2x4_ASAP7_75t_R
+      365    31.93      365    31.93   OR3x1_ASAP7_75t_R
+        2    0.204        2    0.204   OR3x2_ASAP7_75t_R
+        2    0.262        2    0.262   OR3x4_ASAP7_75t_R
+      453   46.233      453   46.233   OR4x1_ASAP7_75t_R
+       66    7.698       66    7.698   OR5x1_ASAP7_75t_R
+        1    0.044        1    0.044   TIEHIx1_ASAP7_75t_R
+        1    0.044        1    0.044   TIELOx1_ASAP7_75t_R
+       12      2.1       12      2.1   XNOR2x1_ASAP7_75t_R
+     6844  1.1E+03     6844  1.1E+03   XNOR2x2_ASAP7_75t_R
+      188   32.892      188   32.892   XOR2x1_ASAP7_75t_R
+    54248  8.7E+03    54248  8.7E+03   XOR2x2_ASAP7_75t_R
+
+   Chip area for module '\baseline_A_npu': 45501.001560
+     of which used for sequential elements: 3272.335200 (7.19%)
+

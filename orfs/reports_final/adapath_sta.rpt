@@ -1,0 +1,133 @@
+OpenROAD 26Q3-1305-gf552262465 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[WARNING ORD-2056] The following 9 liberty cell(s) do not have LEF masters and will be marked as dont-use:
+  DFFHQNV4Xx1_ASAP7_75t_R
+  DFFHQNV4Xx2_ASAP7_75t_R
+  DFFHQNV4Xx3_ASAP7_75t_R
+  DFFHQNV2Xx1_ASAP7_75t_R
+  DFFHQNV2Xx2_ASAP7_75t_R
+  DFFHQNV2Xx3_ASAP7_75t_R
+  DFFHQNH2V2Xx1_ASAP7_75t_R
+  DFFHQNH2V2Xx2_ASAP7_75t_R
+  DFFHQNH2V2Xx3_ASAP7_75t_R
+[WARNING STA-0366] port 'data_in*' not found.
+[WARNING STA-0366] port 'scores_flat*' not found.
+[WARNING STA-0366] port 'front_done' not found.
+[WARNING STA-0366] port 'back_done' not found.
+[WARNING STA-0366] port 'valid_in' not found.
+[WARNING STA-0503] report_checks -group_count is deprecated. Use -group_path_count instead.
+Startpoint: w_fcf[6014] (input port clocked by clk)
+Endpoint: u.u_fcf.u_mac.out[10]$_SDFFE_PN0P_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+ Delay   Time   Description
+-------------------------------------------------------
+   0.0    0.0   clock clk (rise edge)
+   0.0    0.0   clock network delay (ideal)
+ 200.0  200.0 v input external delay
+   0.0  200.0 v w_fcf[6014] (in)
+  10.1  210.1 ^ _1240865_/Y (OAI21x1_ASAP7_75t_R)
+  12.7  222.9 v _1240866_/Y (NOR2x1_ASAP7_75t_R)
+  17.2  240.1 ^ _1240870_/Y (OAI21x1_ASAP7_75t_R)
+  11.8  251.8 v _1240871_/Y (INVx1_ASAP7_75t_R)
+  35.9  287.8 ^ _1240872_/Y (OAI21x1_ASAP7_75t_R)
+  43.3  331.0 v _1241335_/Y (NAND2x1_ASAP7_75t_R)
+  32.7  363.7 ^ _1241336_/Y (NAND2x1_ASAP7_75t_R)
+  19.7  383.4 v _1241339_/Y (INVx1_ASAP7_75t_R)
+  19.4  402.7 ^ _1241340_/Y (NAND2x1_ASAP7_75t_R)
+  19.8  422.5 v _1241343_/Y (AOI21x1_ASAP7_75t_R)
+  20.3  442.9 ^ _1241419_/Y (NOR2x1_ASAP7_75t_R)
+  12.2  455.1 v _1241424_/Y (NAND2x1_ASAP7_75t_R)
+  25.0  480.1 ^ _1241425_/Y (NAND2x1_ASAP7_75t_R)
+  23.4  503.6 v _1241430_/Y (NOR2x1_ASAP7_75t_R)
+  26.9  530.5 ^ _1241433_/Y (OAI21x1_ASAP7_75t_R)
+  26.8  557.4 v _1241605_/Y (OAI21x1_ASAP7_75t_R)
+  17.0  574.4 ^ _1241609_/Y (INVx2_ASAP7_75t_R)
+  20.9  595.3 v _1241615_/Y (OAI21x1_ASAP7_75t_R)
+  16.7  612.0 ^ _1241616_/Y (AOI21x1_ASAP7_75t_R)
+  18.0  630.0 v _1241626_/Y (OAI21x1_ASAP7_75t_R)
+  30.3  660.3 ^ _1241634_/Y (NAND2x1_ASAP7_75t_R)
+  25.5  685.8 v _1241648_/Y (NOR2x1_ASAP7_75t_R)
+  21.4  707.2 ^ _1289948_/Y (NAND2x1_ASAP7_75t_R)
+  14.1  721.3 v _1289949_/Y (NOR2x1_ASAP7_75t_R)
+  14.4  735.7 ^ _1289950_/Y (NAND2x1_ASAP7_75t_R)
+  14.4  750.1 v _1289959_/Y (NAND2x1_ASAP7_75t_R)
+  37.2  787.3 ^ _1289960_/Y (XOR2x2_ASAP7_75t_R)
+  14.1  801.4 v _1289965_/Y (NAND2x1_ASAP7_75t_R)
+  25.6  827.1 ^ _1289998_/Y (AOI21x1_ASAP7_75t_R)
+  15.1  842.1 v _1289999_/Y (INVx1_ASAP7_75t_R)
+  21.4  863.5 ^ _1290000_/Y (NAND2x1_ASAP7_75t_R)
+  20.1  883.6 v _1290001_/Y (INVx1_ASAP7_75t_R)
+  25.3  908.9 ^ _1290002_/Y (AOI21x1_ASAP7_75t_R)
+  27.5  936.4 v _1290003_/Y (NOR2x1_ASAP7_75t_R)
+  16.8  953.2 ^ _1290004_/Y (INVx2_ASAP7_75t_R)
+  19.9  973.1 v _1290005_/Y (OAI21x1_ASAP7_75t_R)
+  17.1  990.2 ^ _1290009_/Y (NAND2x1_ASAP7_75t_R)
+   8.6  998.9 v _1290010_/Y (INVx1_ASAP7_75t_R)
+  29.4 1028.3 v _1290016_/Y (OA21x2_ASAP7_75t_R)
+  15.2 1043.5 ^ _1290017_/Y (INVx2_ASAP7_75t_R)
+  29.4 1072.9 ^ _1290465_/Y (MAJx2_ASAP7_75t_R)
+   9.8 1082.7 v _1290467_/Y (INVx1_ASAP7_75t_R)
+  14.6 1097.3 ^ _1290469_/Y (NOR2x1_ASAP7_75t_R)
+  17.9 1115.3 v _1290470_/Y (NOR2x1_ASAP7_75t_R)
+  42.9 1158.1 ^ _1292734_/Y (XOR2x2_ASAP7_75t_R)
+  15.3 1173.4 v _1294919_/Y (NAND2x2_ASAP7_75t_R)
+  17.6 1191.0 ^ _1294923_/Y (NAND2x2_ASAP7_75t_R)
+  15.2 1206.2 v _1294924_/Y (NOR2x2_ASAP7_75t_R)
+  23.6 1229.8 ^ _1294927_/Y (NOR3x1_ASAP7_75t_R)
+  23.4 1253.2 v _1294928_/Y (NOR2x1_ASAP7_75t_R)
+  30.4 1283.7 v _1294929_/Y (XOR2x1_ASAP7_75t_R)
+  41.0 1324.7 ^ _1301259_/Y (XOR2x2_ASAP7_75t_R)
+  38.2 1362.8 v _1301278_/Y (XNOR2x2_ASAP7_75t_R)
+  27.8 1390.6 v _1301279_/Y (XOR2x1_ASAP7_75t_R)
+  36.8 1427.4 ^ _1304691_/Y (XOR2x2_ASAP7_75t_R)
+  38.1 1465.5 v _1335303_/Y (XNOR2x2_ASAP7_75t_R)
+  25.7 1491.2 v _1335306_/Y (XOR2x1_ASAP7_75t_R)
+  40.8 1532.0 ^ _1335309_/Y (XOR2x2_ASAP7_75t_R)
+  17.0 1548.9 v _1335310_/Y (NOR2x1_ASAP7_75t_R)
+  19.4 1568.3 ^ _1335311_/Y (NOR2x1_ASAP7_75t_R)
+  15.9 1584.2 v _1335312_/Y (OAI21x1_ASAP7_75t_R)
+  15.0 1599.2 ^ _1335318_/Y (NAND3x1_ASAP7_75t_R)
+  16.3 1615.4 v _1335323_/Y (OAI21x1_ASAP7_75t_R)
+  39.4 1654.8 ^ _1335522_/Y (XOR2x2_ASAP7_75t_R)
+  10.2 1665.0 v _1335542_/Y (NAND2x1_ASAP7_75t_R)
+  12.6 1677.6 ^ _1335543_/Y (NOR2x1_ASAP7_75t_R)
+  10.6 1688.2 v _1335544_/Y (NAND2x1_ASAP7_75t_R)
+  11.3 1699.6 ^ _1335545_/Y (NOR2x1_ASAP7_75t_R)
+  10.3 1709.9 v _1335546_/Y (NAND2x1_ASAP7_75t_R)
+  22.4 1732.3 ^ _1335547_/Y (OAI21x1_ASAP7_75t_R)
+  35.9 1768.2 ^ _1335548_/Y (BUFx6f_ASAP7_75t_R)
+  13.4 1781.6 v _1335550_/Y (NAND3x1_ASAP7_75t_R)
+  12.6 1794.2 ^ _1335554_/Y (AOI21x1_ASAP7_75t_R)
+   0.0 1794.2 ^ u.u_fcf.u_mac.out[10]$_SDFFE_PN0P_/D (DFFHQNx1_ASAP7_75t_R)
+       1794.2   data arrival time
+
+1000.0 1000.0   clock clk (rise edge)
+   0.0 1000.0   clock network delay (ideal)
+   0.0 1000.0   clock reconvergence pessimism
+       1000.0 ^ u.u_fcf.u_mac.out[10]$_SDFFE_PN0P_/CLK (DFFHQNx1_ASAP7_75t_R)
+ -20.8  979.2   library setup time
+        979.2   data required time
+-------------------------------------------------------
+        979.2   data required time
+       -1794.2   data arrival time
+-------------------------------------------------------
+       -815.0   slack (VIOLATED)
+
+
+wns -815.0119500763928   tns -162677.39576024908
+Group                    Internal    Switching      Leakage        Total
+                            Power        Power        Power        Power (Watts)
+------------------------------------------------------------------------
+Sequential           1.831927e-02 4.308906e-07 3.238434e-06 1.832294e-02  98.1%
+Combinational        1.033895e-04 1.526770e-04 9.564486e-05 3.517114e-04   1.9%
+Clock                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Macro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Pad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+------------------------------------------------------------------------
+Total                1.842265e-02 1.531078e-04 9.887715e-05 1.867464e-02 100.0%
+                            98.7%         0.8%         0.5%
