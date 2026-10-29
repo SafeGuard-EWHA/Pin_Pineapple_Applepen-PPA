@@ -1,0 +1,19 @@
+{
+  "vivado": "2024.1 SW Build 5076996",
+  "reference_project_saved_version": "2023.2",
+  "team_previous_version": "2023.1",
+  "original_sources_and_data_unchanged": true,
+  "checks": {
+    "outputs": 1001,
+    "unscored_outputs": 1,
+    "unknown_decisions": 0,
+    "rand1000": 3,
+    "invalid_reads": 2355,
+    "unknown_reads": 2355,
+    "accuracy": 967,
+    "cnt": 1000
+  },
+  "printed_scored_results": 1000,
+  "mode": "behavioral simulation; Verilog original sources, SystemVerilog observer; default timescale 1ns/1ps for modules without explicit timescale; original TB 1ps/1ps remains unchanged",
+  "source_archive_sha256": "ffecd9057fff9968e412399b29c7a54022ac581ac87160f27cd001024c16f9ff"
+}

@@ -1,0 +1,25 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe top_tb_1000 official_observer -timescale 1ns/1ps -debug typical -s official_reference 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.conv1_buf
+Compiling module work.conv1_calc
+Compiling module work.conv1_layer
+Compiling module work.maxpool_relu
+Compiling module work.conv2_buf
+Compiling module work.conv2_calc
+Compiling module work.conv2_layer
+Compiling module work.maxpool_relu(HALF_WIDTH=4,HALF_W...
+Compiling module work.fully_connected
+Compiling module work.comparator
+Compiling module work.chip
+Compiling module work.top_tb_1000
+Compiling module work.official_observer
+Built simulation snapshot official_reference

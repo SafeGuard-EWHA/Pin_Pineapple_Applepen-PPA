@@ -1,0 +1,19 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/chip.v" into library work
+INFO: [VRFC 10-311] analyzing module chip
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/comparator.v" into library work
+INFO: [VRFC 10-311] analyzing module comparator
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/conv1.v" into library work
+INFO: [VRFC 10-311] analyzing module conv1_layer
+INFO: [VRFC 10-311] analyzing module conv1_buf
+INFO: [VRFC 10-311] analyzing module conv1_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/conv2.v" into library work
+INFO: [VRFC 10-311] analyzing module conv2_layer
+INFO: [VRFC 10-311] analyzing module conv2_buf
+INFO: [VRFC 10-311] analyzing module conv2_calc
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/fc.v" into library work
+INFO: [VRFC 10-311] analyzing module fully_connected
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/maxpool_relu.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_relu
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Temp/codex_ppa_reference_20261030/verilog/top_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module top_tb
+INFO: [VRFC 10-311] analyzing module top_tb_1000
