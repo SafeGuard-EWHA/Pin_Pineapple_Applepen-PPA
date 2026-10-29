@@ -29,7 +29,7 @@ FONT = "맑은 고딕"
 fig_no = [0]
 tab_no = [0]
 
-# ---- 그림·표 번호: 이 파일의 figure()/table() 호출 순서로 미리 계산하여 본문 참조(@키@, %(키)s)에 사용
+# ---- 그림 및 표 번호: 이 파일의 figure()/table() 호출 순서로 미리 계산하여 본문 참조(@키@, %(키)s)에 사용
 import re as _re
 _SRC = open(os.path.abspath(__file__), encoding="utf-8").read()
 FIGN = {n: i + 1 for i, n in enumerate(_re.findall(r'figure\(doc, os\.path\.join\(OUT, (?:"archA", )?"([^"]+)"', _SRC))}
@@ -47,13 +47,13 @@ LBL = {
     "f_wmclass": FIGN["sh2_fig_wm_class_modes.png"], "f_rmodes": FIGN["hs_fig_robustness_modes.png"],
     "f_racc": FIGN["hs_fig_robustness_acc.png"],
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
-    "t_twofold": _tn("임계값 선정·평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
+    "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
     "t_wmclass": _tn("WM-811K 클래스별"), "t_robust": _tn("입력 열화 조건별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_verify": _tn("기능 검증 결과"),
 }
 
 
 def lbl(text):
-    """본문의 @키@ 를 그림·표 번호로 치환."""
+    """본문의 @키@ 를 그림 및 표 번호로 치환."""
     return _re.sub(r"@(\w+)@", lambda m: str(LBL[m.group(1)]), text)
 
 
@@ -85,7 +85,7 @@ def para(doc, text="", size=10.5, bold=False, align=None, space_after=4, indent=
 
 
 def heading(doc, text, level):
-    # Word 기본 Heading 스타일을 써서 탐색 창·목차에 잡히게 하고, 모양만 본문 서체로 맞춘다
+    # Word 기본 Heading 스타일을 써서 탐색 창 및 목차에 잡히게 하고, 모양만 본문 서체로 맞춘다
     p = doc.add_paragraph(style="Heading %d" % level)
     p.paragraph_format.space_before = Pt(14 if level == 1 else 10)
     p.paragraph_format.space_after = Pt(6 if level == 1 else 4)
@@ -107,7 +107,7 @@ def bullet(doc, text, size=10.5):
     p.paragraph_format.left_indent = Cm(0.5)
     p.paragraph_format.first_line_indent = Cm(-0.35)
     p.paragraph_format.space_after = Pt(2)
-    parts = lbl("· " + text).split("**")
+    parts = lbl("• " + text).split("**")
     for i, t in enumerate(parts):
         if t:
             set_font(p.add_run(t), size, i % 2 == 1)
@@ -306,7 +306,7 @@ para(doc, "과제명: 반도체 결함 패턴 분류를 위한 Score-Margin 기�
 para(doc, "난이도 적응형 Tiny NPU Datapath 설계", 14, False, "c", 2)
 para(doc, "— OpenROAD(ORFS) 기반 ASAP7 7 nm PPA 비교 분석", 12, False, "c", 60)
 para(doc, "팀    명: Pin_Pineapple_Applepen(PPA)", 13, False, "c", 2)
-para(doc, "이화여자대학교 전자전기공학과  윤현서 · 최서현 · 윤홍은", 11, False, "c", 2)
+para(doc, "이화여자대학교 전자전기공학과  윤현서, 최서현, 윤홍은", 11, False, "c", 2)
 para(doc, "지도교수: 최종윤", 11, False, "c", 120)
 para(doc, "경북대학교 IDEC 2026 창의 회로설계 챌린지", 15, True, "c", 0)
 doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
@@ -330,7 +330,7 @@ _EZ0 = BE["AdaPath_A Easy"]
 _IDLE0 = sum(_EZ0.get(b, 0) for b in ("Conv2", "Pool2", "FC (Full)", "Light FC"))
 _E_CG0 = MODE["A"]["easy"] * (E["A_easy"] - _IDLE0) + MODE["A"]["hard"] * E["A_hard"]
 h1(doc, "요약")
-para(doc, "본 과제는 입력마다 Early Classifier 점수의 Top-1과 Top-2 차이(Score Margin)를 비교기·감산기만으로 계산하여 "
+para(doc, "본 과제는 입력마다 Early Classifier 점수의 Top-1과 Top-2 차이(Score Margin)를 비교기와 감산기만으로 계산하여 "
      "Easy / Medium / Hard 경로를 선택하는 난이도 적응형 NPU Datapath(AdaPath-NPU)를 설계하였다. 지정주제(MNIST)에서는 "
      "주최 측 Reference와 같은 주 경로 신경망(모델 A)을 사용하여, 주최 입력 순차 1,000회 기준 정답 수를 970회로 유지하면서 "
      "평균 처리 cycle(%s)과 추정 Fmax 기준 추론 지연(%s)을 함께 줄였다. ASAP7 pre-layout 게이트레벨 VCD 기반 추론당 에너지는 "
@@ -340,7 +340,7 @@ para(doc, "본 과제는 입력마다 Early Classifier 점수의 Top-1과 Top-2 
      "Reference 대비 %s에 이른다." % (chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF),
                               chg(A["adapath_A"], A["refchip"]), chg(_E_CG0, E_REF)), indent=True)
 para(doc, "자유주제(WM-811K 웨이퍼맵 4-class)에서는 같은 기법을 3-경로 모델에 적용하여, 주최 측 chip 인터페이스를 유지한 RTL이 "
-     "954장 전부에서 정수 Golden과 판정·모드·Score Margin이 비트 단위로 일치함(954 / 954)을 Vivado로 확인하였고, Easy / Medium / "
+     "954장 전부에서 정수 Golden과 판정, 모드, Score Margin이 비트 단위로 일치함(954 / 954)을 Vivado로 확인하였고, Easy / Medium / "
      "Hard 세 경로가 모두 사용됨(404 / 167 / 383장)을 보였다. 아울러 2-fold 교차 평가, 정확도 차이의 통계 검정, 입력 열화 실험을 "
      "통해 적응형 경로의 이득이 성립하는 조건과 한계를 함께 제시하였다.", indent=True)
 para(doc, "**핵심어:** Early-Exit, Score Margin, 적응형 추론, NPU, ASAP7, OpenROAD, 게이트레벨 전력, WM-811K", indent=True)
@@ -349,24 +349,24 @@ doc.add_page_break()
 # =================================================================== 1
 h1(doc, "1. 과제 개요")
 para(doc, "고정 경로 CNN 가속기는 입력 난이도와 관계없이 모든 입력에 동일한 연산 경로를 수행한다. 그러나 실제 입력의 "
-     "상당수는 얕은 특징만으로도 분류가 가능하며, 이들에게 전체 경로를 적용하는 것은 연산·시간·에너지의 낭비이다. 본 과제는 "
+     "상당수는 얕은 특징만으로도 분류가 가능하며, 이들에게 전체 경로를 적용하는 것은 연산, 시간, 에너지의 낭비이다. 본 과제는 "
      "전단부(Conv1) 직후 **Early Classifier 점수의 Top-1과 Top-2 차이(Score Margin)**를 난이도 지표로 사용하여, 입력마다 "
      "Easy / Medium / Hard 경로 중 하나를 선택하는 **난이도 적응형 NPU Datapath(AdaPath-NPU)**를 설계하였다.", indent=True)
-para(doc, "엔트로피 기반 Early-Exit 기법(BranchyNet 등)은 분기 판단에 확률 분포의 엔트로피를 사용하므로 확률·로그 계산 또는 그 근사 "
+para(doc, "엔트로피 기반 Early-Exit 기법(BranchyNet 등)은 분기 판단에 확률 분포의 엔트로피를 사용하므로 확률, 로그 계산 또는 그 근사 "
      "회로가 필요하다. 본 설계는 비교기와 감산기만으로 계산되는 Score Margin을 사용하며, 같은 판단 결과로 후단 연산을 "
      "생략(Easy)하거나 일부 채널만 활성화(Medium)한다.", indent=True)
 para(doc, "관련 연구로, BranchyNet[1]은 엔트로피 기반 조기 종료와 여러 출구의 공동 학습을 제시하였고, Shallow-Deep "
      "Networks[7]는 최대 클래스 확률에 따른 조기 종료와 과도한 후단 계산의 영향을 분석하였다. CascadeCNN[6]은 확률 벡터의 "
      "Best-vs-Second-Best 계열 지표로 저정밀도 추론과 고정밀도 재계산을 선택하였다(부록 B). 따라서 본 과제는 조기 종료나 "
-     "상위 점수 차이의 사용 자체를 새로운 개념으로 주장하지 않는다. 본 설계는 정수 로짓 차이의 비교·감산 회로, 공유 전단부와 "
-     "제한된 경로 선택, 주최 측 인터페이스 통합을 하나의 RTL로 구현하고, ASAP7 합성·STA와 게이트레벨 VCD 기반 전력 추정까지 "
-     "연결한 데 초점을 둔다. 플랫폼·모델 규모·평가셋이 달라 선행 연구와 절감률이나 면적을 직접 비교하지 않는다. "
+     "상위 점수 차이의 사용 자체를 새로운 개념으로 주장하지 않는다. 본 설계는 정수 로짓 차이의 비교 및 감산 회로, 공유 전단부와 "
+     "제한된 경로 선택, 주최 측 인터페이스 통합을 하나의 RTL로 구현하고, ASAP7 합성 및 STA와 게이트레벨 VCD 기반 전력 추정까지 "
+     "연결한 데 초점을 둔다. 플랫폼, 모델 규모, 평가셋이 달라 선행 연구와 절감률이나 면적을 직접 비교하지 않는다. "
      "주최 측 평가 구조에 맞추어 과제를 다음과 같이 구성하였다.", indent=True)
 table(doc, "평가 항목별 과제 구성", ["구분", "대상 모델 / 데이터", "수행 내용"], [
-    ["지정주제 (50 %)", "주최 측 MNIST 레퍼런스 가속기와 주 경로 계층·채널 구성이 같은 모델 A",
+    ["지정주제 (50 %)", "주최 측 MNIST 레퍼런스 가속기와 주 경로 계층 및 채널 구성이 같은 모델 A",
      "같은 주 경로에 AdaPath 적용 → 정확도 유지 조건에서 PPA 비교"],
     ["자유주제 (30 %)", "WM-811K 웨이퍼맵 결함 분류 (4개 클래스, 모델 B)",
-     "같은 기법의 적용 전·후 (Baseline_WM vs AdaPath_WM) PPA 비교"],
+     "같은 기법의 적용 전후 (Baseline_WM vs AdaPath_WM) PPA 비교"],
     ["확장 실험", "MNIST, 확장 모델 B (Conv2 8채널)", "후단부가 큰 모델에서 Medium 경로의 기여 분리"],
 ], [3.0, 5.8, 8.2])
 table(doc, "비교 설계 대응표 (모두 동일 RTL 소스 adapath_top.v에서 파라미터로 생성, Reference 제외)",
@@ -377,9 +377,9 @@ table(doc, "비교 설계 대응표 (모두 동일 RTL 소스 adapath_top.v에�
     ["Baseline_B", "0", "8 / -", "10", "MNIST", "확장 모델, 항상 Hard"],
     ["Early-Exit_B", "1", "8 / -", "10", "MNIST", "Medium 없는 2경로 (기여 분리용)"],
     ["AdaPath_B", "2", "8 / 4", "10", "MNIST", "확장 모델 3경로"],
-    ["Baseline_WM / AdaPath_WM", "0 / 2", "8 / 4", "4", "WM-811K", "자유주제 (N_CLASS=4, 가중치·임계값·shift 별도)"],
+    ["Baseline_WM / AdaPath_WM", "0 / 2", "8 / 4", "4", "WM-811K", "자유주제 (N_CLASS=4, 가중치, 임계값, shift 별도)"],
 ], [3.6, 1.6, 2.6, 1.3, 2.0, 5.9], hl_rows=(2,),
-    note="모델 A는 Reference와 주 경로(Conv1 3채널 → Conv2 3채널 → FC 48→10)의 계층·채널 구성이 같다. 다만 가중치는 본 팀이 "
+    note="모델 A는 Reference와 주 경로(Conv1 3채널 → Conv2 3채널 → FC 48→10)의 계층 및 채널 구성이 같다. 다만 가중치는 본 팀이 "
          "학습한 값이고, 정수 규약(가중치 INT8, 활성값 12-bit, bias 16-bit)과 Early Classifier 추가가 다르다. ASIC 합성에서는 "
          "세 설계 모두 가중치를 입력 포트로 두어 상수 전파 효과를 배제하였다.")
 para(doc, "본 과제의 기여는 다음 세 가지이다. 첫째, Score Margin으로 입력 난이도를 판정하고 공통 전단부 이후의 연산 경로를 "
@@ -412,21 +412,21 @@ table(doc, "설계 목표 및 결과 (지정주제: Reference 대비 AdaPath_A)"
      "Baseline_A %s / AdaPath_A %s MHz (Reference %s MHz)" % (
          f1(FMAX["baseline_A"]), f1(FMAX["adapath_A"]), f1(FMAX["refchip"])),
      "달성" if FMAX["adapath_A"] >= FMAX["baseline_A"] * 0.99 else "미달"],
-    ["판단·제어 회로 면적", "전체 면적의 5 % 이내",
+    ["판단 및 제어 회로 면적", "전체 면적의 5 % 이내",
      "%s µm² (AdaPath_A의 %.2f %%, 단독 합성 기준 참고치)" % (f1(rg["area_v2"]), region2_ratio), "달성"],
     ["입출력 인터페이스", "Reference와 동일", "동일 포트 래퍼, 주최 측 TB 로직 무수정 실행", "달성"],
-    ["자유주제 (WM-811K)", "적용 전·후 PPA 개선",
+    ["자유주제 (WM-811K)", "적용 전후 PPA 개선",
      "MAC %s, 정확도 %.2f %%p 하락, 에너지 %s (대리 추정)" % (
          chg(WM["mac_ada"], WM["mac_base"]), WM["acc_base"] - WM["acc_ada"], chg(E_WM, E_WM_BASE)),
      "추정 기준 달성"],
 ], [3.3, 3.6, 7.6, 2.0], hl_rows=(1, 2, 3))
-para(doc, "면적은 Early Classifier, Feature Map Buffer, 판단·제어 회로가 추가되므로 Reference보다 증가한다. 이는 지연·에너지 "
+para(doc, "면적은 Early Classifier, Feature Map Buffer, 판단 및 제어 회로가 추가되므로 Reference보다 증가한다. 이는 지연 및 에너지 "
      "이득과의 trade-off로 3.6~3.7절과 4장에서 정량적으로 분석한다.", indent=True)
 
 # =================================================================== 3
 h1(doc, "3. 설계 및 시뮬레이션")
-para(doc, "그림 @f_flow@은 학습부터 PPA 비교까지의 전체 설계·평가 흐름이다. 기능 검증은 Golden 모델과의 비트 정합으로, 전력은 "
-     "게이트레벨 VCD 활동 기반 추정으로, 비교는 동일 모델·입력·조건을 명시하여 수행하였다.", indent=True)
+para(doc, "그림 @f_flow@은 학습부터 PPA 비교까지의 전체 설계 및 평가 흐름이다. 기능 검증은 Golden 모델과의 비트 정합으로, 전력은 "
+     "게이트레벨 VCD 활동 기반 추정으로, 비교는 동일 모델, 입력, 조건을 명시하여 수행하였다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_flow.png"), "AdaPath-NPU 설계 및 평가 흐름", 16.5)
 
 h2(doc, "3.1 전체 구조 및 데이터 흐름")
@@ -457,20 +457,20 @@ para(doc, "10개 점수의 Top-2를 구하는 기존 회로는 Top-1 탐색(Pass
      "2위=max(A.v1, B.v2)이다. 동점이면 낮은 index가 이기므로 기존 회로와 출력이 같다. 4레벨은 트리의 구조적 깊이이며 "
      "4 cycle이나 표준셀 4단을 뜻하지 않는다. 출력 레지스터는 1단 그대로이므로 처리 cycle은 변하지 않는다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_top2.png"), "Top-2 Finder: 직렬 비교 체인에서 이진 토너먼트 트리로", 16.5)
-table(doc, "Top-2 구조 개선에 따른 판단·제어 회로 단독 합성 결과 (Top-2, Margin, Decoder, FSM; Early Classifier 제외)",
+table(doc, "Top-2 구조 개선에 따른 판단 및 제어 회로 단독 합성 결과 (Top-2, Margin, Decoder, FSM; Early Classifier 제외)",
       ["항목", "기존 (비교기 체인)", "개선 (토너먼트 트리)", "변화"], [
     ["임계 경로", "%s ps" % f0(rg["crit_v1"]), "%s ps" % f0(rg["crit_v2"]), "약 %.2f배 단축" % (rg["crit_v1"] / rg["crit_v2"])],
     ["면적", "%s µm²" % f1(rg["area_v1"]), "%s µm²" % f1(rg["area_v2"]), chg(rg["area_v2"], rg["area_v1"])],
     ["기능 동일성", "-", "테스트한 400,000 벡터에서 출력 비트 동일", "-"],
-], [3.0, 3.8, 6.2, 3.0], note="400,000 벡터는 무작위·동점 다수·경계값(최소/최대)·전부 동일 값을 포함한 테스트 결과이며, "
+], [3.0, 3.8, 6.2, 3.0], note="400,000 벡터는 무작위, 동점 다수, 경계값(최소/최대), 전부 동일 값을 포함한 테스트 결과이며, "
                               "전체 입력 공간에 대한 형식적 동등성 증명은 아니다.")
 para(doc, "**난이도 지표 비교.** Score Margin을 선택한 근거를 확인하기 위해, 같은 Early Classifier 로짓으로 Score Margin, 최대 "
      "softmax 확률, 엔트로피, Top-1 로짓을 비교하였다(모델 A, MNIST 10,000장, Python float 분석, 그림 @f_metrics@). Full 대비 정확도 손실 "
      "0.5 %p 제약에서 Score Margin은 네 지표 중 가장 작은 평균 MAC(44,079)을 보였으나 다른 지표와의 차이는 0.06~1.0 %로 작았고, "
      "Early 정답 여부를 구분하는 AUROC는 최대 softmax 확률(0.953)이 Score Margin(0.950)보다 약간 높았다. Score Margin은 확률 "
-     "정규화와 exp·log 같은 비선형 연산 없이 비교·감산으로 구현된다는 이점이 있지만, Top-1 로짓보다 연산이 적은 것은 아니므로 "
+     "정규화와 exp, log 같은 비선형 연산 없이 비교와 감산으로 구현된다는 이점이 있지만, Top-1 로짓보다 연산이 적은 것은 아니므로 "
      "'네 지표 중 최소 회로 비용'이라고 결론짓지 않는다. 즉 Score Margin은 비선형 연산 없이 유리한 정확도–연산량 절충을 보인 "
-     "지표로 해석한다(지표별 면적·지연은 측정하지 않음).", indent=True)
+     "지표로 해석한다(지표별 면적 및 지연은 측정하지 않음).", indent=True)
 table(doc, "난이도 지표 비교 (모델 A, Full 대비 정확도 손실 0.5 %p 제약, 동일셋 탐색)",
       ["지표", "필요 연산 (직접 계산 기준)", "AUROC", "정확도", "평균 MAC", "Hard 대비 MAC 절감"], [
     ["**Score Margin**", "비교 트리 + 감산 1 (exp/log/나눗셈 없음)", "0.950", "97.03 %", "44,079", "24.73 %"],
@@ -478,7 +478,7 @@ table(doc, "난이도 지표 비교 (모델 A, Full 대비 정확도 손실 0.5 
     ["엔트로피", "softmax + log 10, 곱셈 10, 덧셈 9", "0.950", "97.03 %", "44,256", "24.43 %"],
     ["Top-1 로짓", "비교 9 (최대값만)", "0.893", "97.03 %", "44,530", "23.96 %"],
 ], [3.0, 5.6, 1.6, 2.0, 2.2, 2.6], hl_rows=(0,),
-    note="연산 수는 직접 수식 기준이며 합성 후 셀 수·면적·지연이 아니다. 판정만 필요하면 최대값 정규화 등으로 비선형 연산을 "
+    note="연산 수는 직접 수식 기준이며 합성 후 셀 수, 면적, 지연이 아니다. 판정만 필요하면 최대값 정규화 등으로 비선형 연산을 "
          "줄일 수 있다. 같은 테스트셋에서 탐색한 결과로 낙관 편향이 있을 수 있으며, 2-fold 교차 평가 평균 정확도는 Margin "
          "97.02 %, 최대 softmax 96.99 %, 엔트로피 96.98 %, Top-1 97.00 %였다.")
 figure(doc, os.path.join(OUT, "sh2_fig_metric_comparison.png"),
@@ -490,9 +490,9 @@ para(doc, "세 출력(Early / Light / Full)을 가진 3-head 모델을 MNIST 학
      "0.5 %p는 주최 측 기준이 아니라 본 팀이 정한 내부 선정 규칙이다. 이 동작점은 테스트셋 기반 탐색 결과이므로, 임계값 선정과 "
      "평가를 분리한 교차 평가를 아래에 함께 제시한다. 정수 규약은 가중치 INT8, 활성값과 점수 인터페이스 signed 12-bit(포화), bias 누산기 도메인 16-bit, "
      "재양자화 반올림 시프트이며, 이 규약으로 RTL과 비트 단위로 일치하는 Golden 모델을 생성하였다.", indent=True)
-table(doc, "학습 설정 (모델 A·B, MNIST / WM-811K 공통)", ["항목", "설정", "항목", "설정"], [
+table(doc, "학습 설정 (모델 A와 B, MNIST / WM-811K 공통)", ["항목", "설정", "항목", "설정"], [
     ["Optimizer", "Adam, lr 2×10⁻³", "Scheduler", "Cosine annealing"],
-    ["Epoch / Batch", "30 / 128", "손실", "CE(Full) + 0.5·CE(Early) + 0.5·CE(Light)"],
+    ["Epoch / Batch", "30 / 128", "손실", "CE(Full) + 0.5×CE(Early) + 0.5×CE(Light)"],
     ["입력", "28×28, [0,1] 정규화", "Random seed", "seed 미고정; 반복 재학습 변동성 미평가"],
 ], [3.0, 4.6, 2.6, 6.8])
 sw = R["sw"]
@@ -516,7 +516,7 @@ para(doc, "**임계값 선정과 평가의 분리 (2-fold 교차 평가).** 임�
      "예산을 넘었다(WM 손실 2.26 ± 1.48 %%p). 즉 **선정 데이터에서 지킨 정확도 제약이 미사용 데이터에서 보장되지는 않으며**, "
      "특히 표본이 작고 클래스가 어려운 WM-811K에서 차이가 컸다. 이 분석은 이미 관찰된 테스트셋을 사후 분할한 것으로, 새로운 "
      "외부 테스트셋 검증은 아니다(표준편차는 분할 seed에 따른 변동)." % LBL, indent=True)
-table(doc, "임계값 선정·평가 분리 결과 (2-fold × 5 분할 seed, 평가 절반 기준, Python float)",
+table(doc, "임계값 선정 및 평가 분리 결과 (2-fold × 5 분할 seed, 평가 절반 기준, Python float)",
       ["모델", "탐색", "정확도 (%)", "Full 대비 손실 (%p)", "Hard 대비 MAC 절감 (%)", "Easy / Medium / Hard (%)", "예산 초과"], [
     ["MNIST A", "기존 보고점 (동일셋)", "97.47", "0.06", "23.89", "94.0 / 0 / 6.0", "-"],
     ["MNIST A", "25분위수 후보", "97.41 ± 0.18", "0.12", "23.99 ± 0.23", "94.4 / 0 / 5.6", "0 / 5"],
@@ -529,7 +529,7 @@ table(doc, "임계값 선정·평가 분리 결과 (2-fold × 5 분할 seed, 평
     note="선정 규칙: 선정 절반에서 Full 대비 정확도 손실 0.5 %p 이내의 최소 MAC. 평가 절반에서는 제약을 강제하지 않는다. "
          "MAC 절감의 분모는 Hard 경로(Early FC 포함)이다.")
 figure(doc, os.path.join(OUT, "sh2_fig_twofold.png"),
-       "임계값 선정·평가를 분리한 2-fold 결과 (5개 분할 seed의 평균 ± 표준편차, × = 기존 동일셋 동작점)", 16.0)
+       "임계값 선정 및 평가를 분리한 2-fold 결과 (5개 분할 seed의 평균 ± 표준편차, × = 기존 동일셋 동작점)", 16.0)
 para(doc, "**통계적 비교.** 기존 동작점에서 AdaPath와 같은 체크포인트의 Full 경로를 같은 이미지 쌍으로 비교하였다(표 %(t_stats)s). "
      "모델 A는 97.47 %% vs 97.53 %%(Wilson 95 %% 구간 97.14–97.76 %% vs 97.21–97.82 %%)이고, 불일치 쌍은 Full만 정답 58장, "
      "AdaPath만 정답 52장으로 McNemar exact p = 0.63이었다. 모델 B는 Full만 정답인 쌍이 54장 대 15장으로 유의한 정확도 하락"
@@ -545,31 +545,31 @@ table(doc, "기존 동작점의 AdaPath vs Full 통계 비교 (같은 체크포�
     note="b = Full만 정답, c = AdaPath만 정답. 양측 exact 검정, 세 비교에 Holm 보정.")
 
 h2(doc, "3.4 RTL 설계와 주최 측 인터페이스 호환")
-para(doc, "RTL은 채널 수·클래스 수를 파라미터화한 단일 소스(adapath_top.v)로 작성하였다. VARIANT(0: Baseline, 1: Early-Exit, "
-     "2: AdaPath)와 C2/C2_MED(모델 A·B), N_CLASS(MNIST 10, WM-811K 4) 및 각 모델의 가중치·임계값·shift 설정만 바꿔 표 @t_map@의 "
+para(doc, "RTL은 채널 수 및 클래스 수를 파라미터화한 단일 소스(adapath_top.v)로 작성하였다. VARIANT(0: Baseline, 1: Early-Exit, "
+     "2: AdaPath)와 C2/C2_MED(모델 A와 B), N_CLASS(MNIST 10, WM-811K 4) 및 각 모델의 가중치, 임계값, shift 설정만 바꿔 표 @t_map@의 "
      "비교 설계를 생성하였다. 주요 블록은 conv1_engine(75 MAC 병렬), fmap_buffer(144×36 bit), early_classifier, "
      "top2_finder, score_margin_calc, difficulty_decoder, mode_control_fsm, conv2_engine(채널 enable), "
      "fc_engine(Light/Full)이다.", indent=True)
-para(doc, "주최 측 평가는 제출 프로젝트의 테스트벤치에서 입력 파일만 교체하는 방식이므로, 레퍼런스 chip과 **포트 목록·폭이 "
+para(doc, "주최 측 평가는 제출 프로젝트의 테스트벤치에서 입력 파일만 교체하는 방식이므로, 레퍼런스 chip과 **포트 목록 및 폭이 "
      "같은 래퍼(chip_adapath.v)**를 제작하였다(그림 @f_wrapper@). 레퍼런스 가중치 포트는 호환용으로 입력만 받고 사용하지 않으며, "
      "**본 팀이 학습한 가중치는 래퍼 내부 상수(adapath_weights.vh)로 고정**하였다. 레퍼런스는 rst_n 해제 직후부터 픽셀을 "
      "받으므로, clk로 샘플링한 rst_n의 상승을 검출하여 코어의 start 펄스를 생성한다(reset low 구간이 최소 1 clk 이상 "
      "관측되어야 함). 주최 측 top_tb.v는 테스트벤치 로직을 수정하지 않았으며, 데이터 파일 경로만 프로젝트 내부 파일명으로 "
      "지정하였다. 시뮬레이션 top은 top_tb_1000, 도구는 Vivado 2023.1이다.", indent=True)
-figure(doc, os.path.join(OUT, "fig_wrapper.png"), "주최 측 chip 인터페이스를 유지하는 래퍼", 14.0)
+figure(doc, os.path.join(OUT, "fig_wrapper.png"), "주최 측 chip 인터페이스를 유지하는 래퍼", 16.0)
 
 h2(doc, "3.5 기능 검증")
 v = R["verify"]
 table(doc, "기능 검증 결과", ["검증 단계", "방법", "결과"], [
-    ["판단·제어 회로 단위", "Python Golden 200 벡터", "200 / 200 일치"],
-    ["Top-2 Finder 개선", "기존 회로와 400,000 벡터 비교 (무작위·동점·경계값)", "테스트 벡터 전부 출력 동일"],
+    ["판단 및 제어 회로 단위", "Python Golden 200 벡터", "200 / 200 일치"],
+    ["Top-2 Finder 개선", "기존 회로와 400,000 벡터 비교 (무작위, 동점, 경계값)", "테스트 벡터 전부 출력 동일"],
     ["End-to-end", "3종 구조 × 9장, 모드별 대표 이미지", "27 / 27 Golden 일치"],
     ["1,000장 회귀 (모델 B)", "MNIST 1,000장 Golden (margin / mode / decision)", "1,000 / 1,000 일치"],
-    ["게이트레벨 (A, B, Reference)", "합성 넷리스트 + ASAP7 셀 모델 시뮬레이션", "RTL과 판정·모드·cycle 동일"],
+    ["게이트레벨 (A, B, Reference)", "합성 넷리스트 + ASAP7 셀 모델 시뮬레이션", "RTL과 판정, 모드, cycle 동일"],
     ["**주최 측 TB (Vivado 2023.1)**", "top_tb_1000, 테스트벤치 로직 무수정",
      "Reference %s / A %s / B %s" % (v["org_ref"], v["org_A"], v["org_B"])],
     ["**WM-811K (Vivado 2023.1)**", "chip 래퍼(4개 클래스) + tb_wm, 테스트 954장",
-     "Golden 판정·모드·Margin 954 / 954 일치"],
+     "Golden 판정, 모드, Margin 954 / 954 일치"],
 ], [3.8, 7.0, 6.2], hl_rows=(5, 6))
 table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
       ["설계", "정답 (순차 입력)", "정답률 (주최 TB)", "평균 cycle (주최 TB)", "평균 cycle (순차 입력)", "모드 분포 (순차)"], [
@@ -588,12 +588,12 @@ para(doc, "**주최 측 TB의 입력 경계.** 원본 TB는 $urandom_range(0,100
      "레퍼런스(원본 RTL + 원본 TB, Vivado 2024.1)에서 인덱스 1000이 3회 선택되었고, AdaPath_A 제출본의 Icarus 진단 실행에서도 "
      "2회 선택되었다. 전체 valid_out 1,001회 중 1회는 첫 이미지 전 입력이 미정인 상태(state = X)의 초기 출력으로 채점에서 "
      "제외되므로 실제 채점은 1,000회이며, Vivado 실행 로그에서 채점된 판정이 X인 경우는 없었다. 따라서 주최 측 TB 결과에는 "
-     "인덱스 1000 표본(1,000회 중 2~3회, 최대 0.3 %%p)의 영향이 섞일 수 있어, 정확도·cycle 비교의 주 근거는 입력 범위와 "
+     "인덱스 1000 표본(1,000회 중 2~3회, 최대 0.3 %%p)의 영향이 섞일 수 있어, 정확도 및 cycle 비교의 주 근거는 입력 범위와 "
      "출력 수를 확인한 순차 실행(970 / 1,000)으로 한정한다. 원본 TB 로직은 수정하지 않았으며, 진단 로그는 "
      "results_hs/pre_submit_checks/와 results_hs/vivado_reference_audit/에 보존하였다." % LBL, indent=True)
 para(doc, "**별도 수정 TB 재검증.** 원본 제출 TB와 RTL은 보존하고 top_tb_1000_corrected.v를 새로 작성하였다. "
-     "상태·입력을 명시적으로 초기화하고, 난수 인덱스를 0~999로 제한하였으며, 이미지마다 정확히 784개 픽셀만 "
-     "읽고 실제 valid_out 1,000개를 집계한 뒤 종료하도록 하였다. 제출 ZIP의 동일한 chip 래퍼·가중치를 사용하여 "
+     "상태 및 입력을 명시적으로 초기화하고, 난수 인덱스를 0~999로 제한하였으며, 이미지마다 정확히 784개 픽셀만 "
+     "읽고 실제 valid_out 1,000개를 집계한 뒤 종료하도록 하였다. 제출 ZIP의 동일한 chip 래퍼 및 가중치를 사용하여 "
      "0~999 순차 입력과 seed=2026의 복원 무작위 입력을 각각 1,000회 실행하였다.", indent=True)
 _tb_seq=TB_RUNS['sequential'];_tb_rnd=TB_RUNS['random_seed2026']
 _tb_rows=[]
@@ -602,10 +602,10 @@ for title,key in [('유효 출력 수','outputs'),('정답 수','correct')]:
 _tb_rows.append(['Easy / Medium / Hard']+[' / '.join(str(x['summary'][k]) for k in ['easy','medium','hard']) for x in [_tb_seq,_tb_rnd]])
 for title,key in [('범위 밖 읽기','invalid_reads'),('X 데이터 읽기','unknown_reads'),('X 출력','x_outputs'),('픽셀 읽기 수','reads')]:
     _tb_rows.append([title,str(_tb_seq['observer'][key]),str(_tb_rnd['observer'][key])])
-table(doc, "별도 수정 TB의 입력·출력 무결성 재검증 (모델 A)",
+table(doc, "별도 수정 TB의 입력 및 출력 무결성 재검증 (모델 A)",
       ['검사 항목','순차 1,000회','무작위 1,000회'], _tb_rows, [6.5,5.0,5.0], size=9)
-para(doc, "두 실행 모두 4,000 cycle 제한 내 출력되었다. 무작위 실행의 모든 판정·모드는 같은 이미지 인덱스의 순차 실행 결과와 1,000/1,000 일치하였다. "
-     "이는 수정한 검증 환경에서 입력 범위·출력 수·판정 재현성을 확인한 결과이며, 원본 주최 TB의 결함을 "
+para(doc, "두 실행 모두 4,000 cycle 제한 내 출력되었다. 무작위 실행의 모든 판정 및 모드는 같은 이미지 인덱스의 순차 실행 결과와 1,000/1,000 일치하였다. "
+     "이는 수정한 검증 환경에서 입력 범위, 출력 수, 판정 재현성을 확인한 결과이며, 원본 주최 TB의 결함을 "
      "수정했거나 기존 Vivado 로그를 재현했다는 뜻은 아니다. 두 입력 순서의 정확도 차이는 표본 구성 차이를 "
      "포함하므로 성능 개선으로 해석하지 않는다. 입력에는 고유 100장의 반복이 포함되어 독립 1,000장 평가도 아니다. "
      "원본 파일 해시, 수정 TB, 인덱스별 CSV와 실행 로그는 results_hs/corrected_tb/에 보존하였다.", indent=True)
@@ -626,15 +626,15 @@ para(doc, "위 시간축은 timescale 1ps/1ps 및 always #5 클럭에 따른 10 
 figure(doc, os.path.join(OUT, "fig_vivado_detail_easy_hard.png"),
        "Vivado 파형 (376~415 ns, 논리 시뮬레이션): 실행 순번 42~45번째(Easy)와 46번째(Hard) 이미지의 내부 동작 비교", 17.0)
 para(doc, "실행 순번 42~45번째 Easy 이미지는 Early Classifier가 끝난 직후 FSM이 FRONT(1)에서 바로 출력으로 넘어가므로, Feature Map Buffer "
-     "재생·Conv2 채널 enable·Full FC가 활성화되지 않는다. 46번째 이미지만 Score Margin이 57로 임계값 63보다 작아 Hard로 "
-     "판정되며 후단부가 동작한다. mode·margin 레지스터는 이미지마다 리셋되고 Easy 판정은 출력 직전 수 cycle 동안만 "
+     "재생, Conv2 채널 enable, Full FC가 활성화되지 않는다. 46번째 이미지만 Score Margin이 57로 임계값 63보다 작아 Hard로 "
+     "판정되며 후단부가 동작한다. mode 및 margin 레지스터는 이미지마다 리셋되고 Easy 판정은 출력 직전 수 cycle 동안만 "
      "유지되므로, 이 배율에서는 리셋값(Hard=2)이 주로 보인다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_vivado_detail_hard.png"),
        "Vivado 파형 확대 (399~408 ns, 논리 시뮬레이션): 46번째(Hard 판정) 이미지의 내부 처리 순서", 17.0)
 para(doc, "Hard 판정 시 내부 동작은 ① Early Classifier 완료 → ② Score Margin 57 산출 및 판정 유효 → ③ FSM BACK(3) 전환 → "
      "④ Feature Map Buffer 재생 시작 및 재생 데이터 유효 구간 → ⑤ Conv2 전 채널 enable(111)과 Full FC 동작 → ⑥ valid_out_6 "
      "출력과 누적 정답 수 증가(44 → 45) 순서로 진행된다. Hard 이미지 1장의 추가 처리 시간은 Easy 대비 171 cycle이다. "
-     "DECIDE·DONE처럼 1~2 cycle만 유지되는 짧은 상태는 이 배율에서 구분되지 않으므로, 상태 전이 전체의 검증은 RTL 회귀 "
+     "DECIDE 및 DONE처럼 1~2 cycle만 유지되는 짧은 상태는 이 배율에서 구분되지 않으므로, 상태 전이 전체의 검증은 RTL 회귀 "
      "검증(표 @t_verify@)에 근거한다.",
      indent=True)
 para(doc, "**런타임 임계값 스윕 (RTL 실측).** difficulty_decoder의 레지스터 임계값 모드(USE_REG_TH)를 최상위 포트로 연결하고, "
@@ -661,7 +661,7 @@ h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
 para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC 규칙: 입출력 지연 = 클럭 주기의 20 %)으로 합성하고 "
      "OpenROAD로 pre-layout STA를 수행하였다. 가중치는 모든 설계에서 입력 포트로 두었다. 입력 지연이 주기에 비례하므로, "
      "단일 주기의 WNS로 Fmax를 역산하지 않고 클럭 주기를 1.0~2.4 ns로 스윕하여 최악 slack이 0이 되는 주기(인접 두 점의 "
-     "선형 보간)를 추정하였다. 이 값은 보간 주기에서 직접 STA 통과를 확인한 값과 구분한다. 또한 추론 중 값이 바뀌지 않는 가중치 포트를 false path로 둔 조건(레지스터 간·"
+     "선형 보간)를 추정하였다. 이 값은 보간 주기에서 직접 STA 통과를 확인한 값과 구분한다. 또한 추론 중 값이 바뀌지 않는 가중치 포트를 false path로 둔 조건(레지스터 간, "
      "픽셀 입력 경로 기준)의 Fmax를 함께 제시한다.", indent=True)
 rows = []
 for key, name in (("refchip", "Reference"), ("baseline_A", "Baseline_A"), ("adapath_A", "**AdaPath_A**"),
@@ -670,7 +670,7 @@ for key, name in (("refchip", "Reference"), ("baseline_A", "Baseline_A"), ("adap
 table(doc, "합성 결과 (pre-layout, 클럭 주기 스윕)",
       ["설계", "Cell Area (µm²)", "Reference 대비", "슬랙 0 추정 주기 (ps)", "Fmax (MHz, SDC 규칙)", "Fmax (MHz, 가중치 정적)"],
       rows, [2.8, 2.8, 2.6, 2.6, 3.1, 3.1], hl_rows=(2,),
-      note="추정 주기·Fmax(SDC 규칙)는 입출력 지연 20 % 조건에서 최악 slack = 0인 교차점을 선형 보간한 값이다. 이 조건의 임계 경로는 세 설계 "
+      note="추정 주기 및 Fmax(SDC 규칙)는 입출력 지연 20 % 조건에서 최악 slack = 0인 교차점을 선형 보간한 값이다. 이 조건의 임계 경로는 세 설계 "
            "모두 가중치 입력 포트에서 시작한다. '가중치 정적'은 가중치 포트를 false path로 둔 결과이다.")
 sweep_evidence = []
 for key, name in [('refchip', 'Reference'), ('baseline_A', 'Baseline_A'), ('adapath_A', 'AdaPath_A')]:
@@ -679,15 +679,15 @@ for key, name in [('refchip', 'Reference'), ('baseline_A', 'Baseline_A'), ('adap
     fail = max((x for x in points if x[1] < 0), key=lambda x:x[0])
     passed = min((x for x in points if x[1] >= 0), key=lambda x:x[0])
     sweep_evidence.append([name, f'{fail[0]:.0f}', f'{fail[1]:+.2f}', f'{passed[0]:.0f}', f'{passed[1]:+.2f}', f'{1e6/passed[0]:.1f}'])
-table(doc, "STA 스윕의 실제 실패·통과점 (입출력 지연 20% 조건)",
+table(doc, "STA 스윕의 실제 실패 및 통과점 (입출력 지연 20% 조건)",
       ['설계','실패 주기 (ps)','실패 slack (ps)','통과 주기 (ps)','통과 slack (ps)','통과점 주파수 (MHz)'],
       sweep_evidence,[2.7,2.4,2.8,2.4,2.8,3.0],size=8.5,
       note="orfs/reports_extra/sweep_*.txt에서 직접 추출하였다. 통과점 주파수는 스윕한 점에서 확인한 값이며, "
            "위 표의 슬랙 0 보간 추정 Fmax와 구분한다. 실리콘 동작 주파수 또는 post-layout 결과가 아니다.")
 para(doc, "Top-2 Finder 개선 후 AdaPath_A의 Fmax는 판단 회로가 없는 Baseline_A와 두 조건 모두에서 거의 같다(SDC 규칙 %s vs %s MHz, "
      "가중치 정적 %s vs %s MHz). 따라서 측정한 조건에서는 판단 회로에 의한 뚜렷한 주파수 저하가 관측되지 않았다. Reference 대비 SDC 규칙 기준 %.1f %%, 가중치 "
-     "정적 기준 %.1f %% 낮은데, 이는 판단 회로가 아니라 본 팀 데이터패스(Conv2 가중치 입력 경로, FC·FSM 제어 경로)에서 "
-     "결정된다. 면적 증가는 Feature Map Buffer(5,184 bit), Early Classifier FC, 제어 회로에서 발생한다. 판단·제어 회로(Top-2, "
+     "정적 기준 %.1f %% 낮은데, 이는 판단 회로가 아니라 본 팀 데이터패스(Conv2 가중치 입력 경로, FC 및 FSM 제어 경로)에서 "
+     "결정된다. 면적 증가는 Feature Map Buffer(5,184 bit), Early Classifier FC, 제어 회로에서 발생한다. 판단 및 제어 회로(Top-2, "
      "Margin, Decoder, FSM) 단독 합성 면적은 %s µm²로, AdaPath_A 통합 합성 면적의 %.2f %%에 해당한다(단독 합성과 통합 "
      "합성의 최적화 차이가 있어 참고치)."
      % (f1(FMAX["adapath_A"]), f1(FMAX["baseline_A"]), f1(FMAX_S["adapath_A"]), f1(FMAX_S["baseline_A"]),
@@ -712,7 +712,7 @@ table(doc, "모드별 추론당 에너지 (게이트레벨 VCD 기반 추정, 10
     ["AdaPath_B 가중 평균 (확장 모델)", f1(E_B), chg(E_B, E_REF)],
 ], [7.4, 3.6, 4.0], hl_rows=(4,))
 figure(doc, os.path.join(OUT, "fig_final_compare.png"),
-       "정확도 동일(970/1,000) 조건에서 Reference 대비 처리 cycle·지연·에너지·MAC·면적 (Reference = 1.0)", 15.0)
+       "정확도 동일(970/1,000) 조건에서 Reference 대비 처리 cycle, 지연, 에너지, MAC, 면적 (Reference = 1.0)", 15.0)
 para(doc, "에너지 결과는 두 단계로 해석된다. 본 팀 데이터패스(Baseline_A)는 처리 cycle을 %.0f %% 줄였지만 Feature Map Buffer 등 "
      "레지스터가 늘어 추론당 에너지는 Reference보다 %.1f %% 많았다. 여기에 AdaPath 적응 경로가 같은 데이터패스 대비 에너지를 "
      "%.1f %% 줄여, 최종적으로 Reference 대비 %.1f %%의 에너지 감소를 얻었다. 두 감소율은 비교 분모가 다르므로 합산하지 "
@@ -729,9 +729,9 @@ E_A_CG = MODE["A"]["easy"] * E_EZ_CG + MODE["A"]["hard"] * E["A_hard"]
 para(doc, "에너지가 어디서 소모되는지 확인하기 위해 셀 단위 전력을 블록별로 합산하였다(그림 @f_block@). 합성 과정에서 이름이 유지되는 "
      "레지스터는 소속 블록으로, 이름이 없는 조합 논리는 하나의 항목으로 집계하였다. 세 가지가 확인된다. ① 연산 생략 효과는 "
      "조합 논리에서 뚜렷하다. Easy에서 조합 논리 에너지는 %.2f nJ로 Baseline_A(%.2f nJ)의 절반 이하이다. ② 반면 Easy에서도 "
-     "Conv2·Pool2·FC의 레지스터는 연산 없이 클럭만 공급받으며 **%.2f nJ(Easy 에너지의 %.0f %%)**를 소모한다. ③ Feature Map "
+     "Conv2, Pool2, FC의 레지스터는 연산 없이 클럭만 공급받으며 **%.2f nJ(Easy 에너지의 %.0f %%)**를 소모한다. ③ Feature Map "
      "Buffer(5,184 bit 레지스터)는 Easy에서 %.2f nJ(%.0f %%)로 가장 큰 단일 블록이다. 이 분석은 CTS 이전이라 클럭망 전력이 "
-     "포함되지 않았으며(Easy 런에서 순차 소자 비중 %.0f %%), 배치·배선 이후 다시 평가해야 한다."
+     "포함되지 않았으며(Easy 런에서 순차 소자 비중 %.0f %%), 배치와 배선 이후 다시 평가해야 한다."
      % (EZ["조합 논리 (블록 미분류)"], BS["조합 논리 (블록 미분류)"], IDLE, IDLE / E["A_easy"] * 100,
         EZ["Feature Map Buffer"], EZ["Feature Map Buffer"] / E["A_easy"] * 100, pw["A_easy_seq_pct"]), indent=True)
 figure(doc, os.path.join(OUT, "fig_block_energy.png"),
@@ -747,9 +747,9 @@ table(doc, "효율 지표", ["설계", "실행 MAC", "에너지 (nJ)", "실효 T
 ], [3.4, 3.2, 3.0, 3.2, 3.2], hl_rows=(2,),
     note="1 MAC = 2 operations. 실효 TOPS/W = 2 × 실행 MAC / 추론당 에너지. 등가 TOPS/W = 2 × Reference MAC(%s) / 추론당 "
          "에너지로, 같은 분류 작업을 완료하는 효율이다. 본 측정에서는 실행 MAC 감소율이 에너지 감소율보다 커서 AdaPath_A의 "
-         "실효 지표가 낮아졌으므로, 두 지표를 평균 에너지·정확도와 함께 제시한다." % f0(MAC["ref"]))
+         "실효 지표가 낮아졌으므로, 두 지표를 평균 에너지 및 정확도와 함께 제시한다." % f0(MAC["ref"]))
 para(doc, "모드별 에너지를 고정한 혼합 모델로 입력 분포에 따른 에너지 이득 조건을 분석하였다(그림 @f_breakeven@). Easy 비율을 p라 하면 "
-     "모델 A의 평균 에너지는 E_A(p) = %.2f − %.2f·p nJ이다. 이 모델에서 Reference 대비 에너지 이득은 Easy 비율이 약 "
+     "모델 A의 평균 에너지는 E_A(p) = %.2f − %.2f×p nJ이다. 이 모델에서 Reference 대비 에너지 이득은 Easy 비율이 약 "
      "**%.1f %%를 넘을 때** 발생하고, Baseline_A 대비 손익분기점은 약 %.1f %%이다. 반면 Baseline_A 대비 처리 cycle의 "
      "손익분기점은 약 %.1f %%이므로, Easy 비율 %.0f~%.0f %% 구간에서는 처리 cycle이 줄어도 에너지는 늘어날 수 있다. 즉 "
      "처리 cycle이나 MAC 감소만으로 에너지 이득을 보장할 수 없음을 정량적으로 보여준다. 이 분석은 소수 대표 입력에서 "
@@ -776,7 +776,7 @@ para(doc, "Medium 경로는 ① 후단부 연산이 크고 ② 입력 난이도 
      "다만 모델 A의 성과를 3경로 전체의 성과로 해석하지 않는다.", indent=True)
 
 para(doc, "Medium 경로의 하드웨어 동작을 추가 확인하기 위해 현재 RTL과 모델 B 가중치로 기존 "
-     "tb_adapath를 다시 실행하였다. Easy/Hard/Medium 각 3개 입력을 포함하는 9개 사례 모두 margin·mode·decision이 "
+     "tb_adapath를 다시 실행하였다. Easy/Hard/Medium 각 3개 입력을 포함하는 9개 사례 모두 margin, mode, decision이 "
      "정수 Golden과 일치하였다. Medium BACK 구간 총 513 cycle에서 ch_en=0x0F, fc_light_en=1, fc_full_en=0의 "
      "관찰 위반은 0회였다. 이는 대표 사례의 동작 검증이며 전체 입력 공간에 대한 형식 검증은 아니다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_medium_verified.png"),
@@ -784,10 +784,10 @@ figure(doc, os.path.join(OUT, "fig_medium_verified.png"),
 h2(doc, "3.9 자유주제: WM-811K 웨이퍼맵 결함 분류 적용")
 para(doc, "반도체 제조 공정의 웨이퍼맵 결함 패턴(WM-811K, 811,457장 중 라벨 172,950장)에서 정상(none), Center, Edge-Ring, "
      "Scratch 4개 클래스를 클래스당 같은 개수(가장 적은 Scratch 기준 약 1,190장)로 균형 추출하고, 웨이퍼 맵(웨이퍼 밖 / 정상 "
-     "die / 불량 die)을 28×28로 리사이즈한 뒤 8:2로 학습·테스트를 나누었다. 모델 B 구조(4개 클래스 출력)에 같은 AdaPath "
-     "기법을 적용하였으며, 데이터 준비·학습·정수화·RTL 생성은 MNIST와 동일한 코드로 수행하였다. 선정 동작점은 정확도 "
+     "die / 불량 die)을 28×28로 리사이즈한 뒤 8:2로 학습과 테스트를 나누었다. 모델 B 구조(4개 클래스 출력)에 같은 AdaPath "
+     "기법을 적용하였으며, 데이터 준비, 학습, 정수화, RTL 생성은 MNIST와 동일한 코드로 수행하였다. 선정 동작점은 정확도 "
      "0.31 %p 하락을 수용하고 연산량을 줄인 지점이다.", indent=True)
-table(doc, "WM-811K 적용 전·후 비교 (Baseline_WM = 항상 Hard)", ["항목", "Baseline_WM", "AdaPath_WM", "변화"], [
+table(doc, "WM-811K 적용 전후 비교 (Baseline_WM = 항상 Hard)", ["항목", "Baseline_WM", "AdaPath_WM", "변화"], [
     ["정확도 (테스트 %d장, float)" % WM["n_test"], "%.2f %%" % WM["acc_base"], "%.2f %%" % WM["acc_ada"],
      "%.2f %%p 하락" % (WM["acc_base"] - WM["acc_ada"])],
     ["모드 개수 (Easy / Medium / Hard)", "0 / 0 / %d" % WM["n_test"], WM["mode_str"], "-"],
@@ -802,7 +802,7 @@ table(doc, "WM-811K 적용 전·후 비교 (Baseline_WM = 항상 Hard)", ["항�
          "직접 전력 측정 결과와 구분한다.")
 para(doc, "**RTL 검증 (Vivado).** 자유주제 설계도 지정주제와 같은 chip 인터페이스 래퍼(클래스 수만 4로 설정)로 Vivado 프로젝트를 "
      "구성하고, 주최 측 TB와 같은 방식(이미지마다 리셋 후 1 px/cycle 스트리밍)으로 WM-811K 테스트 954장을 처리하였다(표 @t_wmrtl@). "
-     "판정·모드·Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고, 정확도는 774 / 954 = 81.13 %%(정수 Hard 경로 "
+     "판정, 모드, Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고, 정확도는 774 / 954 = 81.13 %%(정수 Hard 경로 "
      "단독 81.45 %%)였다. 모드는 Easy 404 / Medium 167 / Hard 383장으로, **3경로가 모두 하드웨어에서 실제로 사용**되었다(MNIST "
      "모델 A는 2경로). 정수 임계값(13 / 41) 기준이라 float 분석의 모드 비율(401 / 152 / 401)과 약간 다르며, 이 비율을 에너지 "
      "대리 추정에 적용해도 26.1 nJ로 거의 같다. 제출용 프로젝트(PPA_AdaPath_NPU_WM)는 다른 폴더로 옮겨 실행해도 같은 결과를 "
@@ -830,12 +830,12 @@ table(doc, "WM-811K 클래스별 경로 배분과 정확도 (기존 동작점, �
     ["Scratch", "228", "4.4 / 34.2 / 61.4", "63.6", "60.5", "−3.1"],
 ], [2.8, 1.4, 4.2, 2.8, 3.0, 2.2], hl_rows=(3,))
 figure(doc, os.path.join(OUT, "sh2_fig_wm_class_modes.png"),
-       "WM-811K 클래스별 경로 배분(Easy/Medium/Hard)과 Full·AdaPath recall", 16.0)
+       "WM-811K 클래스별 경로 배분(Easy/Medium/Hard)과 Full 및 AdaPath recall", 16.0)
 
 h2(doc, "3.10 입력 열화에 따른 적응적 연산 배분 (RTL 실측)")
 para(doc, "입력이 어려워질 때 AdaPath가 실제로 후단 연산을 더 많이 사용하는지 확인하기 위해, 주최 측 입력 1,000회에 실제 센서 "
      "환경을 모사한 열화(대비 감소 6단계, 3×3 블러 5단계, 가우시안 잡음 6단계, seed 고정)를 적용하고 모델 A의 AdaPath_A와 "
-     "같은 가중치의 항상-Hard 설계(Baseline_A)를 RTL로 각각 실행하였다(총 34회, 표 %(t_robust)s, 그림 %(f_rmodes)s·%(f_racc)s). 원본과 "
+     "같은 가중치의 항상-Hard 설계(Baseline_A)를 RTL로 각각 실행하였다(총 34회, 표 %(t_robust)s, 그림 %(f_rmodes)s 및 %(f_racc)s). 원본과 "
      "대비 0.3 조건의 기준값을 먼저 재현한 뒤 전체를 실행하였다." % LBL, indent=True)
 table(doc, "입력 열화 생성 조건", ["종류", "수준", "변환 및 처리"], [
     ["대비 축소", "1.0, 0.7, 0.5, 0.4, 0.3, 0.2", "픽셀값에 계수 c를 곱함"],
@@ -856,7 +856,7 @@ table(doc, "입력 열화 조건별 결과 (모델 A, RTL, TL = TH = 63, 주최 
       ["조건", "AdaPath\n정확도 (%)", "Baseline\n정확도 (%)", "차이\n(%p)", "Hard\n(%)", "AdaPath\n평균 cycle", "cycle\n감소 (%)"],
       robust_rows, [2.2, 2.5, 2.5, 1.5, 1.5, 3.0, 2.8], hl_rows=(0, 4, 10, 16), size=8.5,
       note="차이는 AdaPath−Baseline이다. Baseline_A는 모든 조건에서 985.00 cycle이며 감소율은 (985−C_AdaPath)/985×100이다. "
-           "모든 AdaPath 조건에서 Medium=0, Easy 비율은 100−Hard(%)이다. cycle 감소율은 MAC·전력·에너지 감소율이 아니다. "
+           "모든 AdaPath 조건에서 Medium=0, Easy 비율은 100−Hard(%)이다. cycle 감소율은 MAC, 전력, 에너지 감소율이 아니다. "
            "17조건×2설계에서 정상 출력과 모드 합은 모두 1,000개이며, 세 종류의 무열화 기준점은 중복 포함된다.")
 figure(doc, os.path.join(OUT, "hs_fig_robustness_modes.png"),
        "입력 열화 강도에 따른 AdaPath_A의 Hard 경로 비율(위)과 평균 처리 cycle(아래) (RTL 실측)", 16.5)
@@ -874,15 +874,15 @@ para(doc, "대비 0.3에서는 AdaPath_A와 Baseline_A의 정확도가 93.0%로 
      "반면 σ=100에서는 7.96%의 cycle 감소와 8.1%p의 정확도 손실이 함께 나타났다. 큰 Score Margin은 "
      "확률로 보정된 신뢰도가 아니므로 ‘Early Classifier가 확신을 갖고 틀리는 경우’가 가능하다. 다만 잡음 "
      "실험의 집계 CSV만으로 오류가 발생한 경로나 원인을 확정하지 않았다. 4.2절과 부록 C의 무열화 "
-     "소프트웨어 오류 사례는 별도 입력·수치 조건의 분석이며, 잡음 입력의 직접 원인 검증으로 대체할 수 없다.", indent=True)
+     "소프트웨어 오류 사례는 별도 입력 및 수치 조건의 분석이며, 잡음 입력의 직접 원인 검증으로 대체할 수 없다.", indent=True)
 h2(doc, "3.11 추가 RTL 실험의 재현성과 해석 범위")
-para(doc, "실험 1·2는 기존 RTL과 out/rtl_data_mnist_A/ 가중치를 고정하여 수행하였다. Python 3.12.14와 "
+para(doc, "실험 1과 2는 기존 RTL과 out/rtl_data_mnist_A/ 가중치를 고정하여 수행하였다. Python 3.12.14와 "
      "Icarus Verilog 12.0(devel)을 사용하였으며 기존 설계 .v 파일은 수정하지 않았다. 실험 1은 run_sweep.sh A와 "
-     "같은 테스트벤치·컴파일 인수·16개 임계값을 Windows 실행기로 구동하였고, 실험 2는 make_noisy_inputs.py의 "
+     "같은 테스트벤치, 컴파일 인수, 16개 임계값을 Windows 실행기로 구동하였고, 실험 2는 make_noisy_inputs.py의 "
      "변환과 같은 RTL 비교 조건을 사용하였다. 소스 기준은 5b9d9d2ce36e86ef7d3a3dfd46eac903435a209f이며, "
-     "입력·소스·가중치 해시와 실행별 로그는 results_hs/exp1_artifacts/ 및 results_hs/exp2_artifacts/에 보존하였다. "
+     "입력, 소스, 가중치 해시와 실행별 로그는 results_hs/exp1_artifacts/ 및 results_hs/exp2_artifacts/에 보존하였다. "
      "전체 결과 표는 rtl/sweep_A.csv와 rtl/robustness_A.csv에서 직접 생성하였다.", indent=True)
-para(doc, "원본 입력은 고유 100장의 10회 반복이다. 대비·블러는 결정적 변환이므로 반복을 독립 표본으로 "
+para(doc, "원본 입력은 고유 100장의 10회 반복이다. 대비 및 블러는 결정적 변환이므로 반복을 독립 표본으로 "
      "간주할 수 없다. 잡음은 반복마다 서로 다른 실현값을 가하지만 원본 이미지의 다양성을 늘리지는 않으며, "
      "단일 seed로 잡음 실현 간 변동성도 평가하지 못하였다. 따라서 이 RTL 결과에는 독립 1,000표본을 전제한 "
      "신뢰구간이나 유의성 검정을 적용하지 않았다. 이는 3.3절의 이미지 단위 소프트웨어 통계 검정과 구분한다.", indent=True)
@@ -911,29 +911,29 @@ bullet(doc, "**임계값 선정의 일반화:** 2-fold 교차 평가(3.3절)에�
 bullet(doc, "**높은 Score Margin의 오분류:** 모델 A에서 Easy로 판정된 9,400장 중 129장(전체의 1.29 %, Easy 내부 1.37 %)이 "
        "오분류되었고, 이 중 58장은 Full 경로였다면 정답이었다(주요 혼동: 7→2, 2→8). 높은 Margin이 정답을 보증하지 않으며, "
        "조기 종료의 정확도 비용이 이 58장에 해당한다(부록 C 사례 그림).")
-bullet(doc, "**강한 블러·잡음:** 강한 블러와 가우시안 잡음에서 AdaPath 정확도가 Baseline_A보다 최대 8.1 %p 낮았다(3.10절). 열화 "
+bullet(doc, "**강한 블러 및 잡음:** 강한 블러와 가우시안 잡음에서 AdaPath 정확도가 Baseline_A보다 최대 8.1 %p 낮았다(3.10절). 열화 "
        "입력을 포함한 학습(데이터 증강)이나 Early Classifier 보정이 필요하다.")
 bullet(doc, "**통계 해석:** AdaPath와 Full의 정확도 차이가 유의하지 않다는 결과(모델 A, WM-811K)는 동등성의 증명이 아니며, "
        "모델 B는 유의한 하락이 있었다(3.3절).")
-bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 배치·"
+bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 배치와 "
        "배선, 클럭망, 실제 입력 분포를 반영한 후속 검증이 필요하다. WM-811K 에너지는 대리 추정이다.")
 bullet(doc, "**클럭 게이팅:** Easy에서도 후단부 레지스터가 %.2f nJ를 소모한다(그림 @f_block@). 모드 신호로 후단부 클럭을 차단하는 "
        "클럭 게이팅(ICG 셀)을 적용하면, 오버헤드를 제외한 상한 추정으로 평균 에너지를 %.1f nJ(Reference 대비 %s)까지 줄일 수 "
        "있다." % (IDLE, E_A_CG, chg(E_A_CG, E_REF)))
 bullet(doc, "**Feature Map Buffer:** 5,184 bit 레지스터 버퍼가 면적과 Easy 에너지(%.0f %%)의 가장 큰 단일 항목이다. SRAM 매크로로 "
-       "바꾸거나, Early Classifier를 Full FC와 시분할 공유하면 면적·에너지 오버헤드를 줄일 수 있다."
+       "바꾸거나, Early Classifier를 Full FC와 시분할 공유하면 면적 및 에너지 오버헤드를 줄일 수 있다."
        % (EZ["Feature Map Buffer"] / E["A_easy"] * 100))
 bullet(doc, "**런타임 동작점 조정:** difficulty_decoder는 레지스터 임계값 모드(USE_REG_TH)를 지원하므로, 런타임에 정확도–연산량 "
-       "동작점을 조정하는 운용으로 확장할 수 있다(전압·주파수를 바꾸는 DVFS와는 구분).")
+       "동작점을 조정하는 운용으로 확장할 수 있다(전압 및 주파수를 바꾸는 DVFS와는 구분).")
 h2(doc, "4.3 기대효과")
-bullet(doc, "**엣지 AI 저전력화:** Early Classifier·특징 버퍼·판단 및 제어 회로를 추가하여 쉬운 입력의 후단 연산을 생략함으로써, "
+bullet(doc, "**엣지 AI 저전력화:** Early Classifier, 특징 버퍼, 판단 및 제어 회로를 추가하여 쉬운 입력의 후단 연산을 생략함으로써, "
        "배터리 기반 엣지 기기의 추론당 에너지와 지연을 함께 줄일 수 있다. 쉬운 입력의 비율이 손익분기점(약 %.0f %%)보다 "
        "높은 응용에서 효과가 크다." % (P_BE_REF * 100))
-bullet(doc, "**반도체 공정 검사 적용:** 웨이퍼맵 검사에서 Edge-Ring·Center처럼 명확한 패턴은 조기 종료하고 애매한 패턴만 정밀 "
+bullet(doc, "**반도체 공정 검사 적용:** 웨이퍼맵 검사에서 Edge-Ring, Center처럼 명확한 패턴은 조기 종료하고 애매한 패턴만 정밀 "
        "경로로 보내는 계층적 검사에 활용할 수 있다. 다만 Scratch recall 감소(3.9절)처럼 결함 누락 비용이 큰 클래스는 별도 "
        "recall 제약과 함께 운용해야 한다.")
 bullet(doc, "**설계 방법론:** 임계값 탐색 → 정수 Golden → 파라미터화 RTL → ORFS 합성 → 게이트레벨 VCD 전력까지 하나의 흐름으로 "
-       "연결하여, 다른 모델·데이터셋에도 같은 절차로 적용할 수 있음을 보였다.")
+       "연결하여, 다른 모델 및 데이터셋에도 같은 절차로 적용할 수 있음을 보였다.")
 
 h2(doc, "4.4 결론")
 para(doc, "본 과제는 고정 경로 가속기가 쉬운 입력에도 전체 연산을 수행하는 낭비를, 비교기와 감산기로 계산되는 Score Margin "
@@ -943,9 +943,9 @@ para(doc, "본 과제는 고정 경로 가속기가 쉬운 입력에도 전체 �
          chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF)), indent=True)
 para(doc, "동시에 본 과제는 실행 MAC의 감소가 곧 에너지 감소가 아님을 블록 단위로 보였다. Easy 경로에서도 후단부 레지스터와 "
      "추가된 Feature Map Buffer가 에너지를 소모하므로, 적응형 경로가 Reference보다 에너지에서 유리하려면 Easy 비율이 약 "
-     "%.0f %% 이상이어야 한다. 따라서 이 기법은 정상·명확한 패턴이 대부분인 공정 인라인 검사처럼 쉬운 입력의 비율이 높은 "
+     "%.0f %% 이상이어야 한다. 따라서 이 기법은 정상 및 명확한 패턴이 대부분인 공정 인라인 검사처럼 쉬운 입력의 비율이 높은 "
      "응용에 적합하며, 후단부 클럭 게이팅과 버퍼의 SRAM화가 다음 단계의 핵심 개선 항목이다. 본 결과는 pre-layout 추정과 "
-     "제한된 입력 분포에 기반하므로, 배치·배선 이후의 전력과 실제 입력 분포에서의 검증이 남은 과제이다."
+     "제한된 입력 분포에 기반하므로, 배치와 배선 이후의 전력과 실제 입력 분포에서의 검증이 남은 과제이다."
      % (P_BE_REF * 100), indent=True)
 
 h1(doc, "※ 참고문헌")
@@ -970,41 +970,41 @@ doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 h1(doc, "부록 A. 재현성")
 table(doc, "도구 및 실행 환경", ["항목", "버전 / 설정", "근거"], [
     ["Yosys (ABC 포함)", "0.68+ (git a5af9d690)", "합성 로그 배너"],
-    ["OpenROAD / OpenSTA", "26Q3-1305-gf552262465 (ORFS 6101364b2, 2026-08-18)", "STA·전력 리포트 배너"],
-    ["표준셀 라이브러리", "ASAP7 7.5-track RVT, TT corner (NLDM)", "STA·전력 Tcl의 Liberty 지정"],
+    ["OpenROAD / OpenSTA", "26Q3-1305-gf552262465 (ORFS 6101364b2, 2026-08-18)", "STA 및 전력 리포트 배너"],
+    ["표준셀 라이브러리", "ASAP7 7.5-track RVT, TT corner (NLDM)", "STA 및 전력 Tcl의 Liberty 지정"],
     ["Icarus Verilog", "12.0 (devel) s20150603-1539-g2693dd32b", "iverilog -V"],
     ["Vivado", "2023.1 (SW Build 3865809)", "Vivado 실행 로그"],
     ["Python / PyTorch", "3.13.2 / 2.10.0+cpu (학습 PC 환경)", "학습 PC에서 확인, 학습 당시 로그는 별도 보존하지 않음"],
     ["게이트레벨 시뮬레이션", "100 MHz(10 ns), 이미지마다 리셋 12 cycle, ASAP7 셀 모델(지연 0 기능 모델)", "glsim TB"],
 ], [3.6, 7.6, 5.8])
-table(doc, "주요 실행 단계와 데이터", ["단계", "명령 / 스크립트", "데이터·조건"], [
+table(doc, "주요 실행 단계와 데이터", ["단계", "명령 / 스크립트", "데이터 및 조건"], [
     ["학습", "python/train.py --arch A --n_class 10 --prefix mnist", "MNIST 학습 60,000장, 30 epoch, seed 미고정"],
     ["임계값 탐색", "python/analyze_margin.py --arch A --prefix mnist", "MNIST 테스트 10,000장 (동일셋 선정)"],
     ["정수화", "python/export_int8.py --arch A --prefix mnist --t_low 1.161 --t_high 1.161", "RTL 임계값 A 63/63, B 71/119, WM 13/41"],
     ["RTL 검증", "rtl/run_sim.sh, tb_batch1000.v, tb_official1000.v", "Golden 대조, 주최 측 입력 1,000회"],
-    ["합성·STA", "ORFS make synth, flow_scripts/sta_one.sh, sta_sweep.tcl", "동일 SDC 규칙, 주기 1.0~2.4 ns 스윕"],
+    ["합성 및 STA", "ORFS make synth, flow_scripts/sta_one.sh, sta_sweep.tcl", "동일 SDC 규칙, 주기 1.0~2.4 ns 스윕"],
     ["전력", "glsim/run_*.sh → flow_scripts/vcd_power_odb.tcl, blockpower.tcl", "VCD 런 구성: evidence/README.md"],
     ["Vivado 제출", "vivado/submit/make_submit.tcl", "top_tb_1000, 프로젝트 내부 상대 경로"],
-    ["추가 분석", "results_sh/v2/ (Python), results_hs/ (RTL 스윕·열화)", "분할 seed 2026–2030, 열화 seed 2026"],
-], [2.6, 8.2, 6.2], note="전체 스크립트·원시 결과·실행 로그는 팀 저장소(SafeGuard-EWHA/Pin_Pineapple_Applepen-PPA)에 보존하였다.")
+    ["추가 분석", "results_sh/v2/ (Python), results_hs/ (RTL 스윕 및 열화)", "분할 seed 2026–2030, 열화 seed 2026"],
+], [2.6, 8.2, 6.2], note="전체 스크립트, 원시 결과, 실행 로그는 팀 저장소(SafeGuard-EWHA/Pin_Pineapple_Applepen-PPA)에 보존하였다.")
 
 h1(doc, "부록 B. 관련 연구 비교")
-table(doc, "조기 종료·동적 추론 선행 연구와 본 설계의 비교", ["연구", "판단 지표", "경로 / 출구 수", "구현", "평가"], [
-    ["BranchyNet [1]", "softmax 엔트로피", "LeNet 2, AlexNet/ResNet 3", "CPU/GPU (전용 RTL 없음)", "MNIST/CIFAR-10 정확도·추론 시간"],
+table(doc, "조기 종료 및 동적 추론 선행 연구와 본 설계의 비교", ["연구", "판단 지표", "경로 / 출구 수", "구현", "평가"], [
+    ["BranchyNet [1]", "softmax 엔트로피", "LeNet 2, AlexNet/ResNet 3", "CPU/GPU (전용 RTL 없음)", "MNIST/CIFAR-10 정확도 및 추론 시간"],
     ["CascadeCNN [6]", "확률의 generalized Best-vs-Second-Best", "2 (저정밀 종료 / 고정밀 재계산)",
-     "FPGA CNN + ARM CPU (softmax·판단)", "ImageNet, FPGA 실측 처리량"],
+     "FPGA CNN + ARM CPU (softmax 및 판단)", "ImageNet, FPGA 실측 처리량"],
     ["Shallow-Deep Networks [7]", "최대 클래스 확률", "7 (내부 6 + 최종 1)", "소프트웨어 (전용 RTL 없음)",
      "CIFAR-10/100, Tiny ImageNet 정확도–FLOPs"],
-    ["**AdaPath-NPU (본 설계)**", "정수 로짓 Top-1 − Top-2", "A: 2, B: 3", "Verilog RTL, ASAP7 합성·STA",
+    ["**AdaPath-NPU (본 설계)**", "정수 로짓 Top-1 − Top-2", "A: 2, B: 3", "Verilog RTL, ASAP7 합성 및 STA",
      "MNIST/WM-811K, 게이트레벨 VCD 에너지"],
 ], [3.4, 3.6, 3.2, 3.6, 3.6], hl_rows=(3,),
-    note="플랫폼·모델 규모·평가셋이 달라 수치를 직접 순위화하지 않는다.")
+    note="플랫폼, 모델 규모, 평가셋이 달라 수치를 직접 순위화하지 않는다.")
 
 h1(doc, "부록 C. 추가 그림")
 figure(doc, os.path.join(OUT, "sh2_fig_wm_confusion.png"),
        "WM-811K 4개 클래스 혼동 행렬 (Full vs AdaPath, 칸마다 표본 수와 행 정규화 비율)", 15.0)
 figure(doc, os.path.join(OUT, "sh2_fig_error_examples.png"),
-       "모델 A 오류 사례: 위 = Easy 오답 중 Margin 상위 6개, 아래 = Hard 입력의 Margin 분위별 사례 (정답·Early/Full 예측·Margin 표기)",
+       "모델 A 오류 사례: 위 = Easy 오답 중 Margin 상위 6개, 아래 = Hard 입력의 Margin 분위별 사례 (정답, Early/Full 예측, Margin 표기)",
        16.0)
 
 doc.add_page_break()
@@ -1034,7 +1034,7 @@ table(doc, "측정 창과 추론당 에너지의 환산", ['런','창 길이 (µ
 ], [3.7,3.0,2.0,3.7,3.7],size=8.5,
     note="Reference 창은 evidence/gatelevel/sta_and_power_B_ref.txt의 VCD 종료 시각에서 확인하였다. A 창 길이는 "
          "보존된 런 에너지와 Total 전력으로 역산한 값이며 원본 A VCD 끝 시각의 독립 재확인은 아니다. 리셋 12 cycle/이미지 포함.")
-para(doc, "E_run[nJ] = P_avg[mW] × Δt[µs], E_avg = E_run/N이다. Reference는 a·b·c 총 12회의 "
+para(doc, "E_run[nJ] = P_avg[mW] × Δt[µs], E_avg = E_run/N이다. Reference는 a, b, c 총 12회의 "
      "에너지 평균 17.741147 nJ이다. A 혼합 런은 Hard 1회+Easy 3회이므로 Hard 에너지는 "
      "72.497065−3×15.782924 = 25.148294 nJ이며 혼합 런 평균 18.124266 nJ와 구분한다. "
      "96% Easy+4% Hard의 가중 평균은 약 16.16 nJ이다. 새 전력 측정이 아니라 보존 로그와 기존 에너지 결과의 대조이다.", indent=True)
