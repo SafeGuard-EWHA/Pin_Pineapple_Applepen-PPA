@@ -1,0 +1,21 @@
+{
+  "source_main": "9cf1fc29c6b5630fbfa79864998a2a8fd51e9fb3",
+  "pages": 42,
+  "figures": 26,
+  "tables": 33,
+  "changed_pages": [
+    26,
+    37
+  ],
+  "forbidden_tokens_absent": [
+    "@key@",
+    "%%",
+    "middle_dot"
+  ],
+  "emphasis_bold_underline": true,
+  "crlf_preserved": true,
+  "renderer": "Microsoft Word 16.0 COM, fields and TOC refreshed; packaged render_docx.py via Word PDF adapter",
+  "visual_review": "All-page overview and full-resolution pages26/37 inspected",
+  "per_image_experiment": "cancelled, excluded",
+  "scope": "3.7 added one paragraph; EMPH one entry; 4.2 updated expansion status"
+}
