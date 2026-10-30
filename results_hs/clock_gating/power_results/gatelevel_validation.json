@@ -1,0 +1,170 @@
+[
+  {
+    "variant": "ungated",
+    "window": "easy",
+    "indices": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy.vcd",
+      "+I0=1",
+      "+I1=2",
+      "+I2=3",
+      "+I3=4"
+    ],
+    "started_utc": "2026-10-29T21:43:27.747890+00:00",
+    "elapsed_seconds": 190.78336116399998,
+    "transactions": [
+      "img 1 : decision=1 (label 1) mode=0 margin=260 cycles=845",
+      "img 2 : decision=2 (label 2) mode=0 margin=255 cycles=845",
+      "img 3 : decision=3 (label 3) mode=0 margin=291 cycles=845",
+      "img 4 : decision=4 (label 4) mode=0 margin=394 cycles=845"
+    ],
+    "rtl_match": true
+  },
+  {
+    "variant": "ungated",
+    "window": "mixed",
+    "indices": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_mixed.vcd",
+      "+I0=5",
+      "+I1=6",
+      "+I2=7",
+      "+I3=8"
+    ],
+    "started_utc": "2026-10-29T21:48:56.116980+00:00",
+    "elapsed_seconds": 217.109737972,
+    "transactions": [
+      "img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016",
+      "img 6 : decision=6 (label 6) mode=0 margin=451 cycles=845",
+      "img 7 : decision=7 (label 7) mode=0 margin=130 cycles=845",
+      "img 8 : decision=8 (label 8) mode=0 margin=271 cycles=845"
+    ],
+    "rtl_match": true
+  },
+  {
+    "variant": "ungated",
+    "window": "hard",
+    "indices": [
+      5,
+      37,
+      51,
+      62
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_hard.vcd",
+      "+I0=5",
+      "+I1=37",
+      "+I2=51",
+      "+I3=62"
+    ],
+    "started_utc": "2026-10-29T21:55:06.041598+00:00",
+    "elapsed_seconds": 344.16838922599993,
+    "transactions": [
+      "img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016",
+      "img 37 : decision=7 (label 7) mode=2 margin=45 cycles=1016",
+      "img 51 : decision=2 (label 1) mode=2 margin=31 cycles=1016",
+      "img 62 : decision=1 (label 2) mode=2 margin=33 cycles=1016"
+    ],
+    "rtl_match": true
+  },
+  {
+    "variant": "gated",
+    "window": "easy",
+    "indices": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy.vcd",
+      "+I0=1",
+      "+I1=2",
+      "+I2=3",
+      "+I3=4"
+    ],
+    "started_utc": "2026-10-29T22:04:38.044948+00:00",
+    "elapsed_seconds": 189.56333158500001,
+    "transactions": [
+      "img 1 : decision=1 (label 1) mode=0 margin=260 cycles=845",
+      "img 2 : decision=2 (label 2) mode=0 margin=255 cycles=845",
+      "img 3 : decision=3 (label 3) mode=0 margin=291 cycles=845",
+      "img 4 : decision=4 (label 4) mode=0 margin=394 cycles=845"
+    ],
+    "rtl_match": true
+  },
+  {
+    "variant": "gated",
+    "window": "mixed",
+    "indices": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_mixed.vcd",
+      "+I0=5",
+      "+I1=6",
+      "+I2=7",
+      "+I3=8"
+    ],
+    "started_utc": "2026-10-29T22:09:13.451689+00:00",
+    "elapsed_seconds": 170.09713650599997,
+    "transactions": [
+      "img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016",
+      "img 6 : decision=6 (label 6) mode=0 margin=451 cycles=845",
+      "img 7 : decision=7 (label 7) mode=0 margin=130 cycles=845",
+      "img 8 : decision=8 (label 8) mode=0 margin=271 cycles=845"
+    ],
+    "rtl_match": true
+  },
+  {
+    "variant": "gated",
+    "window": "hard",
+    "indices": [
+      5,
+      37,
+      51,
+      62
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_hard.vcd",
+      "+I0=5",
+      "+I1=37",
+      "+I2=51",
+      "+I3=62"
+    ],
+    "started_utc": "2026-10-29T22:13:47.646584+00:00",
+    "elapsed_seconds": 260.73496540199994,
+    "transactions": [
+      "img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016",
+      "img 37 : decision=7 (label 7) mode=2 margin=45 cycles=1016",
+      "img 51 : decision=2 (label 1) mode=2 margin=31 cycles=1016",
+      "img 62 : decision=1 (label 2) mode=2 margin=33 cycles=1016"
+    ],
+    "rtl_match": true
+  }
+]

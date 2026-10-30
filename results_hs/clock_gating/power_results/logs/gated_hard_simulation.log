@@ -1,0 +1,7 @@
+VCD info: dumpfile gated_hard.vcd opened for output.
+img 5 : decision=5 (label 5) mode=2 margin=57 cycles=1016
+img 37 : decision=7 (label 7) mode=2 margin=45 cycles=1016
+img 51 : decision=2 (label 1) mode=2 margin=31 cycles=1016
+img 62 : decision=1 (label 2) mode=2 margin=33 cycles=1016
+==== gate-level: 2 / 4 correct, VCD -> gated_hard.vcd ====
+tb_gl_selected.v:137: $finish called at 41156000 (1ps)

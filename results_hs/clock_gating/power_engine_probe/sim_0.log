@@ -1,0 +1,2 @@
+VCD info: dumpfile probe.vcd opened for output.
+tb.v:13: $finish called at 1000000 (1ps)

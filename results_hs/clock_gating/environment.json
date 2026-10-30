@@ -1,0 +1,117 @@
+{
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "os_release": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "orfs_commit": {
+    "command": [
+      "git",
+      "-C",
+      "/root/ppa-tools/ORFS",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "output": "7bf5a814e47c54ec6c64692b464d398184d99891\n"
+  },
+  "yosys": {
+    "command": [
+      "yosys",
+      "-V"
+    ],
+    "returncode": 0,
+    "output": "Yosys 0.58 (git sha1 157aabb58, clang++ 18.1.3 -fPIC -O3)\n"
+  },
+  "openroad": {
+    "command": [
+      "openroad",
+      "-version"
+    ],
+    "returncode": 0,
+    "output": "26Q2-1164-g08f67ee5ec \n"
+  },
+  "iverilog": {
+    "command": [
+      "iverilog",
+      "-V"
+    ],
+    "returncode": 0,
+    "output": "Icarus Verilog version 12.0 (stable) ()\n\nCopyright (c) 2000-2021 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Preprocessor version 12.0 (stable) ()\n\nCopyright (c) 1999-2021 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Parser/Elaborator version 12.0 (stable) ()\n\nCopyright (c) 1998-2021 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n FLAGS DLL vvp.tgt\nvvp.tgt: Icarus Verilog VVP Code Generator 12.0 (stable) ()\n\nCopyright (c) 2001-2021 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n"
+  },
+  "memory": {
+    "command": [
+      "free",
+      "-h"
+    ],
+    "returncode": 0,
+    "output": "               total        used        free      shared  buff/cache   available\nMem:           9.7Gi       714Mi       8.4Gi       3.5Mi       806Mi       9.0Gi\nSwap:          8.0Gi          0B       8.0Gi\n"
+  },
+  "experiment_sources": {
+    "analyze_power.py": "e698b64aea9088c67b37557abd2952e6cab02fd5291c35cb0fbc3a3026f405ad",
+    "audit_input.py": "0d8f33f35817462e80bae654f49dc9b319ea80037c588497ab3d1b580c1f71cd",
+    "buffer_clocks.tcl": "46e0ff254737c85e61132a9b3bfbe1cbbc48e031524ce255a0a460e3fa978284",
+    "capture_environment.py": "d9c8fe88c891a69df439189a3bc75e91b3c1178e938757bd93fc754c9ce0e1ef",
+    "icg_asap7.v": "2c6f245a4a5e01face7ba88358105651208ff934182f8261c046c496c67d1d69",
+    "lockstep_A.v": "79710f2c9b8049d768f4d168843f939c53979014671be634b17b5ff596b8fb7c",
+    "lockstep_WM.v": "e9ba047dc7f83bb3e28fad483d66c5b80788d8345fc84a945df314c103a775c7",
+    "package_power.py": "8e5b575bfec62d38975b5cefd29d5744f0001c128afa97ebb77110c754cd5ef4",
+    "power_audit.tcl": "6baf9befe306d4a25985f95b60fde5587d5c986aea6bab98e80329463239bbe2",
+    "power_engine_probe.py": "05750b72a18d798eacdc080ad9eb6e85cb291db8e0d6bbde365bcf9ce20a1bfd",
+    "prepare_cell_models.py": "bb254e16e8afdd127f060cd70562e5af1346b0a6ab14ed5bc6b4669f05574298",
+    "prepare_power.py": "57860f95fc6426a64f5494d9dad1fc18cbe4bd778549d91ce33b7c468b0638de",
+    "prepare_rtl_check.py": "a724c1b46d09fd582488726b327557e71a3fa6aaa55765f5851aa37f2030f559",
+    "prepare_selected_tb.py": "044c9739dc2d1766bec85e51f4634866e30ec57df7f49dbf57ea6dddc3b714b1",
+    "run_gatelevel.py": "3d402ef05f06d1339bf03cc628d743b1070c5e31b32de394d686c5b266de9738",
+    "run_lockstep_A.tcl": "33f2d90dcb33203c3551474692286910eb702070704917695f6af2084d23ecd3",
+    "run_lockstep_WM.tcl": "50656f44996febb05c44597c2b7cc52729f34e0eb4720d0a9099b378bd99fc2d",
+    "run_power.py": "ed5aea121ab8291e988cb3024304c7b4f9b251ac494e7611cc11a94221798789",
+    "run_rtl_full.py": "f3f93cd65dab3899e39e3288cc53b41c4003f3b7be40a4ed728bb49d9b1a8df2",
+    "run_synthesis.py": "0cd90653003ba0aa5b6d013695728bcadc5d42cda01c8699ad56a329cf9c445d",
+    "summarize_vcd.py": "8a2e0b210719b3102798377e3302988e7ba126ca687648345913f5e01ba865f3",
+    "tb_cell_gate.v": "1eab782ea5074b741fa3f52091dc3bf215561a51006cabc37005155f1f28f978",
+    "tb_icg.v": "11e36059d42ed01e3cba7a44f75dccd3c862030e59a2d5b3b5e2813fed78a672",
+    "write_power_report.py": "bae5ad7abcae55b77f32471e27377fb2e7eabbbb9ab41cf41921eeb443d6ed6d"
+  },
+  "sha256": {
+    "/root/ppa-clockgate/dataA/conv1_bias.txt": "1ce6090bfc95d917077fa367d7287bd9a1561adafda65b7524dc8f6861f487fe",
+    "/root/ppa-clockgate/dataA/conv1_weight_1.txt": "ec0cb693a56c486e5317bf3be88bfd94a05c62629021ea83b069ec43381b9d2c",
+    "/root/ppa-clockgate/dataA/conv1_weight_2.txt": "7bae680eb940503c05cbacc9dc4547efe4082c4070c64eaee0360ed56ed0065f",
+    "/root/ppa-clockgate/dataA/conv1_weight_3.txt": "28329455b98caa51d049d0d9f5c7c8dbbfb44c55df797825ba55d12cac57181a",
+    "/root/ppa-clockgate/dataA/conv2_bias.txt": "d1db7cf7f4e8cf871ce44e0016b8dc0e3a4b5a419f4e7488c4ad237033d49146",
+    "/root/ppa-clockgate/dataA/conv2_weight_11.txt": "d944f2de8b05bab872f9ef4ead2f048bfad0a79dcda18062e1e5d902c105e5fc",
+    "/root/ppa-clockgate/dataA/conv2_weight_12.txt": "b69129df30138595e151c1934ad7396a1a11ed33c007de08c0631eb7e9913f47",
+    "/root/ppa-clockgate/dataA/conv2_weight_13.txt": "05f52f7a71b5454b7a9da6f4fc0e386f125c6cf72fd48987dbc3312cc1970329",
+    "/root/ppa-clockgate/dataA/conv2_weight_21.txt": "27a0a62c7f22fb85c29418cddc04471a26baa2781625cca2d8c03f84de2612d6",
+    "/root/ppa-clockgate/dataA/conv2_weight_22.txt": "84283e3109f0837fc36eb5fae117e2fe42b130bfa6ee7785bcf9bfe4ae5727ab",
+    "/root/ppa-clockgate/dataA/conv2_weight_23.txt": "5b9449857183162f2c67020f55d637bea53e1b3997212a5314ff26d02e0f301f",
+    "/root/ppa-clockgate/dataA/conv2_weight_31.txt": "e5c7bdb70b3fff1b13d867aee2d0b392153bcf47c238a59fe37b250ff7e99787",
+    "/root/ppa-clockgate/dataA/conv2_weight_32.txt": "f9f5c48474131598058f369d76b061a257a335ff45ba84bb4514414f70299d05",
+    "/root/ppa-clockgate/dataA/conv2_weight_33.txt": "7fa9535e051f087acff82101836fc14b014d0f39bbb5fefe32155d7eaba430f0",
+    "/root/ppa-clockgate/dataA/early_fc_bias.txt": "c16a4f7c46546f853526b59efa1097ddffc7e6682736cf7a173171cc2eee1b0e",
+    "/root/ppa-clockgate/dataA/early_fc_weight.txt": "f286a3a91029f2947321afe4c9fef2a367c7949c002124abb75dd4f9fa1fa444",
+    "/root/ppa-clockgate/dataA/fc_bias.txt": "a78f34645e8f8e7c96b3b46ea72b827f2a62a6535fa8b8a7428e111f54d8c016",
+    "/root/ppa-clockgate/dataA/fc_weight.txt": "01c651153a1d831648a7830b1141937fc7a4ba9a96d467d3929ac1eaf8a1fc04",
+    "/root/ppa-clockgate/dataA/golden_reference.txt": "4633bbe5c19aa63afb591ef9ecdf3be853ff29fc33df4a5b25b5e5168fe4070e",
+    "/root/ppa-clockgate/dataA/img_easy_0.txt": "01e990d3f675d83b9e666bbfa27ab34a6ba51d22a94d01e62dde857e7f3f6859",
+    "/root/ppa-clockgate/dataA/img_easy_1.txt": "3256ebc56e08f962c0aa42eb667643f90e059b8ce28dd650c07dfad98c1dae43",
+    "/root/ppa-clockgate/dataA/img_easy_2.txt": "af751474d0f4989b2d97ce41912ae19c3542a547af41c0a110bc417f066e4970",
+    "/root/ppa-clockgate/dataA/img_hard_73.txt": "e10f24f59471759b3b8c4ef74766f81e0c6dfca0c1af40b326a59bb411b947fb",
+    "/root/ppa-clockgate/dataA/img_hard_77.txt": "352705cc452ee96fa8e7df50ae8913084ca0f11f2184cba28bb3329bbd2ec28f",
+    "/root/ppa-clockgate/dataA/img_hard_78.txt": "0fb17ba13205078a7886eeba98448c30c3140103eff873d28af4efb697d30a92",
+    "/root/ppa-clockgate/dataA/light_fc_bias.txt": "ec511c80e5ad3309fc02b8b18d1169964f00e0925aba0a53555c1eb87944cf6f",
+    "/root/ppa-clockgate/dataA/light_fc_weight.txt": "aa0634414816cca62c987dec4c29541a4caa3d547f6e54bfdd10b57c247cf252",
+    "/root/ppa-clockgate/power_10ns.sdc": "572f7f706c7d1181189522f157787cba5a7b2beba40d95c017cf53d9bb0ac62a",
+    "/root/ppa-clockgate/ref_data/input_1000.txt": "cccf35e29a63989cd74b7c949a15bf87457700f82178e2afcc233495ef499cca",
+    "/root/ppa-clockgate/tb_gl_A.v": "4a0f93914498d71f1200c82e6dd4a24f651fd733a5318278fc50863b4726711f",
+    "/root/ppa-clockgate/tb_gl_selected.v": "e0776f3fc9a85cbb52ad6217bb2af469e29d1f71aa8f4ed0b70318b8b856a51c",
+    "/root/ppa-tools/ORFS/flow/designs/asap7/cg_a_gated/config.mk": "6f8dbafc9575e2346d1e75097be4bc9c265fa586bafaa27d9ec60cfcc32e0514",
+    "/root/ppa-tools/ORFS/flow/designs/asap7/cg_a_gated/constraint.sdc": "9225557067586d832ef2a9d122dae5134dcf37c97bb7645e5be5d742abd8bc7b",
+    "/root/ppa-tools/ORFS/flow/designs/asap7/cg_a_ungated/config.mk": "64febff7b6335736247ecfe8011e513bc2ea4ada434ccb2dd94c2ca782084f53",
+    "/root/ppa-tools/ORFS/flow/designs/asap7/cg_a_ungated/constraint.sdc": "9225557067586d832ef2a9d122dae5134dcf37c97bb7645e5be5d742abd8bc7b",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7_tech_1x_201209.lef": "7694bf4f8ef2f9745e4579f454788a0cf048e8605320f32d1d83ec540ed4ca41",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_R_1x_220121a.lef": "4eb73f825720d95eba4da455c7b2e7a28e444e88e9d8595d13492cf5eecfc0d1",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_AO_RVT_TT_nldm_211120.lib.gz": "fe9f1c18e88ab129d63ad82adc256f3a85c7e38e47dabbe0a96749b41087dea1",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_INVBUF_RVT_TT_nldm_220122.lib.gz": "8d6db2c2f83c3c162be54a5e102b2d379fcaaaef2db5f0b1d4152c395d01fea1",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_OA_RVT_TT_nldm_211120.lib.gz": "bbe6d904d58c7367de1ed7639e4eae386c65fa0a5af26ae62dc5e4e2ec52b08b",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SEQ_RVT_TT_nldm_220123.lib": "57a0b403485b99ebd676942af4673ac086b86c7c75fbdc3e5c0038501dd22ba3",
+    "/root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz": "073ac4b6b08f272b6953b0ad54d1d9743767a7d15a0e2964ed86cf44c3dbe00e"
+  }
+}

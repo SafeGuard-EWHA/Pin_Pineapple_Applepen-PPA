@@ -1,0 +1,308 @@
+[
+  {
+    "window": "easy",
+    "ungated": {
+      "total_mW": 2.616230864,
+      "duration_us": 34.316,
+      "energy_nJ_per_image": 22.444644582256,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001414342667,
+          "switching": 1.716389988e-06,
+          "leakage": 2.943457275e-06,
+          "total": 0.001419002539
+        },
+        "Combinational": {
+          "internal": 0.0001588708692,
+          "switching": 0.0001598030649,
+          "leakage": 4.218420509e-05,
+          "total": 0.0003608581319
+        },
+        "Clock": {
+          "internal": 0.0004262364528,
+          "switching": 0.000409759843,
+          "leakage": 2.914704851e-07,
+          "total": 0.0008362877415
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.001999541419,
+          "switching": 0.0005712608108,
+          "leakage": 4.542852548e-05,
+          "total": 0.002616230864
+        }
+      },
+      "category_sum_residual_percent": -0.0031515414459115654,
+      "annotated_pins": 1103316,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6233.1993149576965,
+      "hold_slack_ps": 37.77851657723444,
+      "vcd_sha256": "4b495b4bd3e66c956c15c9413528e72d9768f90cde2ba6122b959dc90dc0f379"
+    },
+    "gated": {
+      "total_mW": 1.9379537550000001,
+      "duration_us": 34.316,
+      "energy_nJ_per_image": 16.625705264145,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001001161523,
+          "switching": 1.869096991e-06,
+          "leakage": 3.014690265e-06,
+          "total": 0.001006045262
+        },
+        "Combinational": {
+          "internal": 0.0001583323028,
+          "switching": 0.0001581291144,
+          "leakage": 4.225509474e-05,
+          "total": 0.0003587165265
+        },
+        "Clock": {
+          "internal": 0.0002921403211,
+          "switching": 0.0002806377597,
+          "leakage": 3.789554057e-07,
+          "total": 0.0005731569836
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.001451699762,
+          "switching": 0.0004406092048,
+          "leakage": 4.564478877e-05,
+          "total": 0.001937953755
+        }
+      },
+      "category_sum_residual_percent": -0.0018051462740031887,
+      "annotated_pins": 1098421,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6224.181639426449,
+      "hold_slack_ps": 35.425426622714554,
+      "vcd_sha256": "f932b0af6b0385874adf12e360c146e50348b35e9fbf307ddce0a464eba18920"
+    },
+    "power_and_energy_reduction_percent": 25.92573607831269
+  },
+  {
+    "window": "mixed",
+    "ungated": {
+      "total_mW": 2.7589218229999997,
+      "duration_us": 36.025999999999996,
+      "energy_nJ_per_image": 24.848229398849497,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001469646115,
+          "switching": 2.088883775e-06,
+          "leakage": 2.868509e-06,
+          "total": 0.001474603429
+        },
+        "Combinational": {
+          "internal": 0.0002067269961,
+          "switching": 0.0001992041216,
+          "leakage": 4.203247227e-05,
+          "total": 0.0004479635973
+        },
+        "Clock": {
+          "internal": 0.0004262364528,
+          "switching": 0.000409759843,
+          "leakage": 2.914704851e-07,
+          "total": 0.0008362877415
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.002102686092,
+          "switching": 0.0006110371905,
+          "leakage": 4.51985652e-05,
+          "total": 0.002758921823
+        }
+      },
+      "category_sum_residual_percent": -0.002430485686144568,
+      "annotated_pins": 1103316,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6233.1993149576965,
+      "hold_slack_ps": 37.77851657723444,
+      "vcd_sha256": "e212b8317ef4647bc37fbc22af00722c81e1c03df259d21c89a9d0ee9425f451"
+    },
+    "gated": {
+      "total_mW": 2.064295346,
+      "duration_us": 36.025999999999996,
+      "energy_nJ_per_image": 18.592076033749002,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001027868944,
+          "switching": 2.23752113e-06,
+          "leakage": 2.926178922e-06,
+          "total": 0.001033032662
+        },
+        "Combinational": {
+          "internal": 0.0002061427222,
+          "switching": 0.0001974014594,
+          "leakage": 4.19676071e-05,
+          "total": 0.0004455117742
+        },
+        "Clock": {
+          "internal": 0.0002985411265,
+          "switching": 0.0002867752628,
+          "leakage": 3.707339999e-07,
+          "total": 0.0005856871139
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.001532640192,
+          "switching": 0.0004863926733,
+          "leakage": 4.526242265e-05,
+          "total": 0.002064295346
+        }
+      },
+      "category_sum_residual_percent": -0.00309044440388595,
+      "annotated_pins": 1098421,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6224.181639426449,
+      "hold_slack_ps": 35.425426622714554,
+      "vcd_sha256": "186502730e46c4f0f7246440b0bf1f5e6bf6cbab45cea3b80d4ea41dba6e703f"
+    },
+    "power_and_energy_reduction_percent": 25.177461398477597
+  },
+  {
+    "window": "hard",
+    "ungated": {
+      "total_mW": 2.9167479370000002,
+      "duration_us": 41.156,
+      "energy_nJ_per_image": 30.010419523792997,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001468644827,
+          "switching": 2.762571285e-06,
+          "leakage": 2.870891876e-06,
+          "total": 0.001474278281
+        },
+        "Combinational": {
+          "internal": 0.0002928712056,
+          "switching": 0.0002726234961,
+          "leakage": 4.060524225e-05,
+          "total": 0.0006060999585
+        },
+        "Clock": {
+          "internal": 0.0004262364528,
+          "switching": 0.000409759843,
+          "leakage": 2.914704851e-07,
+          "total": 0.0008362877415
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.002187842969,
+          "switching": 0.0006851342623,
+          "leakage": 4.377066216e-05,
+          "total": 0.002916747937
+        }
+      },
+      "category_sum_residual_percent": -0.002809841706252758,
+      "annotated_pins": 1103316,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6233.1993149576965,
+      "hold_slack_ps": 37.77851657723444,
+      "vcd_sha256": "e2f6b3100effb6f9044e29a471a09281e165d39606d21ee3c2ca63779186a1bf"
+    },
+    "gated": {
+      "total_mW": 2.311739605,
+      "duration_us": 41.156,
+      "energy_nJ_per_image": 23.785488795844998,
+      "power_W": {
+        "Sequential": {
+          "internal": 0.001085336786,
+          "switching": 2.851163117e-06,
+          "leakage": 2.923249667e-06,
+          "total": 0.001091111219
+        },
+        "Combinational": {
+          "internal": 0.000292475248,
+          "switching": 0.000270581455,
+          "leakage": 4.053940575e-05,
+          "total": 0.0006035960978
+        },
+        "Clock": {
+          "internal": 0.0003145510564,
+          "switching": 0.0003021276498,
+          "leakage": 3.519623988e-07,
+          "total": 0.000617030717
+        },
+        "Macro": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Pad": {
+          "internal": 0.0,
+          "switching": 0.0,
+          "leakage": 0.0,
+          "total": 0.0
+        },
+        "Total": {
+          "internal": 0.00169240369,
+          "switching": 0.0005755161983,
+          "leakage": 4.381955659e-05,
+          "total": 0.002311739605
+        }
+      },
+      "category_sum_residual_percent": -6.796613236659255e-05,
+      "annotated_pins": 1098421,
+      "unannotated_pins": 0,
+      "setup_slack_ps": 6224.181639426449,
+      "hold_slack_ps": 35.425426622714554,
+      "vcd_sha256": "2d3ae177123fc124bf7a04f564e574c842209d4d8705d6a98ac92037be822eb1"
+    },
+    "power_and_energy_reduction_percent": 20.74256483823134
+  }
+]

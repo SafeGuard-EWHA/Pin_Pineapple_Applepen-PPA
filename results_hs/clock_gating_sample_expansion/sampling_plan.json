@@ -1,0 +1,150 @@
+{
+  "seed": 20261030,
+  "sampling": "SRS without replacement within 96 unique Easy inputs; census of 4 unique Hard inputs",
+  "population_unique": 100,
+  "population_modes": {
+    "easy": 96,
+    "hard": 4
+  },
+  "easy_indices": [
+    73,
+    29,
+    75,
+    44,
+    55,
+    4,
+    70,
+    79,
+    34,
+    85,
+    35,
+    16,
+    45,
+    38,
+    95,
+    19,
+    84,
+    21,
+    11,
+    3,
+    86,
+    83,
+    46,
+    59,
+    99,
+    56,
+    43,
+    12,
+    8,
+    65,
+    87,
+    53,
+    67,
+    72,
+    76,
+    41
+  ],
+  "hard_indices": [
+    5,
+    37,
+    51,
+    62
+  ],
+  "hard_source": "Reused paired Hard run from commit 1a6d910; not new independent observations",
+  "input_sha256": "cccf35e29a63989cd74b7c949a15bf87457700f82178e2afcc233495ef499cca",
+  "new_windows": [
+    {
+      "batch": "easy_01",
+      "indices": [
+        73,
+        29,
+        75,
+        44
+      ]
+    },
+    {
+      "batch": "easy_02",
+      "indices": [
+        55,
+        4,
+        70,
+        79
+      ]
+    },
+    {
+      "batch": "easy_03",
+      "indices": [
+        34,
+        85,
+        35,
+        16
+      ]
+    },
+    {
+      "batch": "easy_04",
+      "indices": [
+        45,
+        38,
+        95,
+        19
+      ]
+    },
+    {
+      "batch": "easy_05",
+      "indices": [
+        84,
+        21,
+        11,
+        3
+      ]
+    },
+    {
+      "batch": "easy_06",
+      "indices": [
+        86,
+        83,
+        46,
+        59
+      ]
+    },
+    {
+      "batch": "easy_07",
+      "indices": [
+        99,
+        56,
+        43,
+        12
+      ]
+    },
+    {
+      "batch": "easy_08",
+      "indices": [
+        8,
+        65,
+        87,
+        53
+      ]
+    },
+    {
+      "batch": "easy_09",
+      "indices": [
+        67,
+        72,
+        76,
+        41
+      ]
+    }
+  ],
+  "sources_sha256": {
+    "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/power_audit.tcl": "6baf9befe306d4a25985f95b60fde5587d5c986aea6bab98e80329463239bbe2",
+    "/mnt/c/Users/\ucc44\ud76c\uacbd/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/summarize_vcd.py": "8a2e0b210719b3102798377e3302988e7ba126ca687648345913f5e01ba865f3",
+    "/root/ppa-clockgate-buffered/tb_gl_selected.v": "e0776f3fc9a85cbb52ad6217bb2af469e29d1f71aa8f4ed0b70318b8b856a51c",
+    "/root/ppa-clockgate-buffered/power_10ns.sdc": "572f7f706c7d1181189522f157787cba5a7b2beba40d95c017cf53d9bb0ac62a",
+    "/root/ppa-clockgate/buffered_v2/ungated.v": "95b3bed5556c5c90a7b546573368d544c88d4fee988a746e5616cd0b156e8e57",
+    "/root/ppa-clockgate/buffered_v2/gated.v": "f70dd9a961a2938723e4f871dfb72c6210e5f6799cd39109621f62c7a3f9b9fa",
+    "/root/ppa-clockgate/buffered_v2/ungated.odb": "54f77525deee9709a836ca8434eb97818d48f75ec029899e55b97d85d4a7e1ed",
+    "/root/ppa-clockgate/buffered_v2/gated.odb": "2cae46c6cc90ba4db46b3c9505899e8d3ecdec3018b3452974cdd1104779aa8d",
+    "/root/ppa-clockgate-buffered/ungated_gl.vvp": "b0e67b1f5448c17ba2ed2adb29f1c7c59f80a766f28fd4afbffe761079ba410e",
+    "/root/ppa-clockgate-buffered/gated_gl.vvp": "5fe879a172b03d4a28cf6b5adf1d4005643469f71214b3e2425d5d37921ff98a"
+  }
+}

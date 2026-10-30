@@ -1,0 +1,2 @@
+ICG_TEST PASS phase_errors=0 rises=5 falls=5
+C:/Users/ä���/Documents/Codex/2026-10-29/new-chat/work/submit_final/results_hs/clock_gating/tb_icg.v:31: $finish called at 120000 (1ps)

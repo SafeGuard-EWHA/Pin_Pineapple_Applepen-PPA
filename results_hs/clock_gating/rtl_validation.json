@@ -1,0 +1,24 @@
+{
+  "A": {
+    "checked": 1001,
+    "valid_mismatches": 0,
+    "output_mismatches": 0,
+    "easy": 960,
+    "med": 0,
+    "hard": 41,
+    "parent_edges": 856644,
+    "gated_edges": 10016,
+    "glitches": 0
+  },
+  "WM": {
+    "checked": 954,
+    "valid_mismatches": 0,
+    "output_mismatches": 0,
+    "easy": 404,
+    "med": 167,
+    "hard": 383,
+    "parent_edges": 895926,
+    "gated_edges": 96474,
+    "glitches": 0
+  }
+}
