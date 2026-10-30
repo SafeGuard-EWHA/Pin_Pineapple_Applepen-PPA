@@ -45,3 +45,6 @@ JSON의 Total과 텍스트 Total이 완전히 일치하는지 확인하고, 내�
 - [실행 재현 안내](REPRODUCE_POWER.md), [이전 RTL 검증 기록](RTL_HISTORY.md)
 
 원시 VCD와 ODB는 용량 때문에 Git에 넣지 않았다. 이 PC의 Ubuntu-24.04 `/root/ppa-clockgate-buffered/`(VCD), `/root/ppa-clockgate/buffered_v2/`(최종 ODB)에 보관하며 SHA-256을 공개하였다. 입력 파일은 원래의 배포·공유 경로에서 별도 준비해야 한다. GitHub만으로 원시 VCD를 바로 다운로드할 수 있는 구성은 아니며, 포함된 넷리스트와 명령으로 재생성할 수 있다.
+
+## 비교 기준
+본 결과의 분모는 게이팅 미적용 AdaPath이다. 기존 Reference 대비 28.7%를 대체하거나 검증하는 수치가 아니다. [보고서 반영 정정 문단](COMPARISON_CORRECTION.md)을 참조한다.
