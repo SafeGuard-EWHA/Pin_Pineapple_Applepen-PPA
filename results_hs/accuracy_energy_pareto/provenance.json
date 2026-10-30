@@ -1,0 +1,17 @@
+{
+  "model": "E(TH)=p_easy(TH)*mean_E_easy_at_TH63+p_hard(TH)*mean_E_hard_at_TH63",
+  "calibration_commit": "676aab3",
+  "units": "nJ/image, including per-window reset/start overhead",
+  "sources": {
+    "rtl\\sweep_A.csv": "bfdc57f836b84a552b494c622ea5914b5e0b7d215cf32da7b14058a7de43cdd3",
+    "results_hs\\clock_gating_sample_expansion\\power_results\\summary.json": "c0c6f31705d5e13653ce09107e8b86d6865fed5b766ef9e3df9dd591fdcd4924"
+  },
+  "rows": 32,
+  "pareto_thresholds_within_each_variant": [
+    0,
+    10,
+    20,
+    30
+  ],
+  "global_frontier": "gated TH=0,10,20,30 under the fixed mode-energy model only"
+}
