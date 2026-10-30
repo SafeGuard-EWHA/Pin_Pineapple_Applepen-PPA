@@ -1,0 +1,7 @@
+VCD info: dumpfile ungated_easy_07.vcd opened for output.
+img 99 : decision=9 (label 9) mode=0 margin=271 cycles=845
+img 56 : decision=6 (label 6) mode=0 margin=312 cycles=845
+img 43 : decision=3 (label 3) mode=0 margin=258 cycles=845
+img 12 : decision=2 (label 2) mode=0 margin=329 cycles=845
+==== gate-level: 4 / 4 correct, VCD -> ungated_easy_07.vcd ====
+tb_gl_selected.v:137: $finish called at 34316000 (1ps)

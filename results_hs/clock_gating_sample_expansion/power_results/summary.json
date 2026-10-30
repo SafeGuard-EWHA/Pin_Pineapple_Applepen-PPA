@@ -1,0 +1,175 @@
+{
+  "new_runs": 18,
+  "new_transactions": 72,
+  "unique_inputs_including_reused_hard": 40,
+  "hard_source_commit": "1a6d910",
+  "checks": [
+    {
+      "name": "ungated_easy_01",
+      "energy_nJ": 22.393889270823,
+      "power_mW": 2.610314637,
+      "group_residual_fraction": 2.9635546191821013e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_01",
+      "energy_nJ": 16.573074351679,
+      "power_mW": 1.931818901,
+      "group_residual_fraction": 1.5351697814245582e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_02",
+      "energy_nJ": 22.655733536746,
+      "power_mW": 2.640836174,
+      "group_residual_fraction": 2.978920115322534e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_02",
+      "energy_nJ": 16.83439128363,
+      "power_mW": 1.96227897,
+      "group_residual_fraction": 1.3541652540871902e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_03",
+      "energy_nJ": 22.386780333947,
+      "power_mW": 2.609485993,
+      "group_residual_fraction": 2.7246898504428953e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_03",
+      "energy_nJ": 16.56815162711,
+      "power_mW": 1.93124509,
+      "group_residual_fraction": 1.335231873651003e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_04",
+      "energy_nJ": 22.489233754597,
+      "power_mW": 2.621428343,
+      "group_residual_fraction": 3.075357761171502e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_04",
+      "energy_nJ": 16.668479746353,
+      "power_mW": 1.942939707,
+      "group_residual_fraction": 1.3046930848482577e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_05",
+      "energy_nJ": 22.331684563254,
+      "power_mW": 2.603063826,
+      "group_residual_fraction": 3.040021501186195e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_05",
+      "energy_nJ": 16.511863366838,
+      "power_mW": 1.924683922,
+      "group_residual_fraction": 1.0978166211334933e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_06",
+      "energy_nJ": 22.74524344262,
+      "power_mW": 2.65126978,
+      "group_residual_fraction": 2.9594687267170527e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_06",
+      "energy_nJ": 16.925277441263,
+      "power_mW": 1.972872997,
+      "group_residual_fraction": 1.0828269246162733e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_07",
+      "energy_nJ": 22.598083017064,
+      "power_mW": 2.634116216,
+      "group_residual_fraction": 3.203047742825938e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_07",
+      "energy_nJ": 16.776740763948,
+      "power_mW": 1.955559012,
+      "group_residual_fraction": 1.4853144201613078e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_08",
+      "energy_nJ": 22.584066878497,
+      "power_mW": 2.632482443,
+      "group_residual_fraction": 2.9684566447078105e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_08",
+      "energy_nJ": 16.763983018838,
+      "power_mW": 1.954071922,
+      "group_residual_fraction": 1.5385462357613265e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    },
+    {
+      "name": "ungated_easy_09",
+      "energy_nJ": 22.349867384857,
+      "power_mW": 2.605183283,
+      "group_residual_fraction": 3.068839744278368e-05,
+      "AUDIT_WNS": 6233.1993149576965,
+      "AUDIT_MIN_SLACK": 37.77851657723444
+    },
+    {
+      "name": "gated_easy_09",
+      "energy_nJ": 16.531219692693,
+      "power_mW": 1.926940167,
+      "group_residual_fraction": 1.2747204309016825e-05,
+      "AUDIT_WNS": 6224.181639426449,
+      "AUDIT_MIN_SLACK": 35.425426622714554
+    }
+  ],
+  "variants": {
+    "ungated": {
+      "easy_nJ": 22.503842464711667,
+      "easy_batch_sd_nJ": 0.14833066866842118,
+      "easy_batch_min_nJ": 22.331684563254,
+      "easy_batch_max_nJ": 22.74524344262,
+      "hard_nJ": 30.010419523793,
+      "weighted_nJ": 22.80410554707492,
+      "weighted_mW": 2.637105435977857
+    },
+    "gated": {
+      "easy_nJ": 16.683686810261335,
+      "easy_batch_sd_nJ": 0.14780420227078198,
+      "easy_batch_min_nJ": 16.511863366838,
+      "easy_batch_max_nJ": 16.925277441263,
+      "hard_nJ": 23.785488795845,
+      "weighted_nJ": 16.96775888968468,
+      "weighted_mW": 1.9621804114166899
+    }
+  },
+  "easy_reduction_percent": 25.86294168907791,
+  "hard_reduction_percent": 20.74256483823134,
+  "weighted_reduction_percent": 25.593403106042302
+}

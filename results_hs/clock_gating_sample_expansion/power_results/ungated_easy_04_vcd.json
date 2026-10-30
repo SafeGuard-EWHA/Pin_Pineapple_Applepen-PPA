@@ -1,0 +1,21 @@
+{
+  "file": "/root/ppa-clockgate-expansion40/ungated_easy_04.vcd",
+  "bytes": 974615328,
+  "sha256": "fa2498d380d76909311adec0e8f51d3c6260ae8b63b0dad193fc2f15534f871e",
+  "timescale": "1ps",
+  "first_timestamp": 0,
+  "last_timestamp": 34316000,
+  "duration_seconds": 3.4316e-05,
+  "clocks": [
+    {
+      "names": [
+        "tb_gatelevel.clk",
+        "tb_gatelevel.dut.clk"
+      ],
+      "rises_01": 3432,
+      "falls_10": 3431,
+      "unknown_events": 0,
+      "final_state": "1"
+    }
+  ]
+}

@@ -1,0 +1,1676 @@
+[
+  {
+    "variant": "ungated",
+    "batch": "easy_01",
+    "indices": [
+      73,
+      29,
+      75,
+      44
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_01.vcd",
+      "+I0=73",
+      "+I1=29",
+      "+I2=75",
+      "+I3=44"
+    ],
+    "started_utc": "2026-10-29T23:03:13.969942+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 73 : decision=3 (label 3) mode=0 margin=388 cycles=845",
+      "img 29 : decision=9 (label 9) mode=0 margin=209 cycles=845",
+      "img 75 : decision=5 (label 5) mode=0 margin=322 cycles=845",
+      "img 44 : decision=4 (label 4) mode=0 margin=476 cycles=845"
+    ],
+    "simulation_seconds": 299.827892404,
+    "power_seconds": 196.014570855,
+    "power": {
+      "Sequential": {
+        "internal": 0.001415031147,
+        "switching": 1.647444719e-06,
+        "leakage": 2.942576202e-06,
+        "total": 0.00141962117
+      },
+      "Combinational": {
+        "internal": 0.0001553906623,
+        "switching": 0.0001567387808,
+        "leakage": 4.219892435e-05,
+        "total": 0.0003543283674
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001996746054,
+        "switching": 0.0005681263283,
+        "leakage": 4.544225885e-05,
+        "total": 0.002610314637
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_01.vcd",
+      "bytes": 963729304,
+      "sha256": "9c06d2df525aa54ddd389fdcd01ba1da741dff7409ddb203fed182bc4c8a72e7",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_01",
+    "indices": [
+      73,
+      29,
+      75,
+      44
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_01.vcd",
+      "+I0=73",
+      "+I1=29",
+      "+I2=75",
+      "+I3=44"
+    ],
+    "started_utc": "2026-10-29T23:14:02.840449+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 73 : decision=3 (label 3) mode=0 margin=388 cycles=845",
+      "img 29 : decision=9 (label 9) mode=0 margin=209 cycles=845",
+      "img 75 : decision=5 (label 5) mode=0 margin=322 cycles=845",
+      "img 44 : decision=4 (label 4) mode=0 margin=476 cycles=845"
+    ],
+    "simulation_seconds": 216.325544767,
+    "power_seconds": 152.22329594400003,
+    "power": {
+      "Sequential": {
+        "internal": 0.00100184686,
+        "switching": 1.800289965e-06,
+        "leakage": 3.013808737e-06,
+        "total": 0.001006660867
+      },
+      "Combinational": {
+        "internal": 0.0001546953281,
+        "switching": 0.0001550073212,
+        "leakage": 4.226874444e-05,
+        "total": 0.0003519713937
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001448743977,
+        "switching": 0.0004374173877,
+        "leakage": 4.565745257e-05,
+        "total": 0.001931818901
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_01.vcd",
+      "bytes": 763561299,
+      "sha256": "ed78e6f1e4051240c2770999abeed9e2965ef8d4e236eab9d825c1bdf8a38c75",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_02",
+    "indices": [
+      55,
+      4,
+      70,
+      79
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_02.vcd",
+      "+I0=55",
+      "+I1=4",
+      "+I2=70",
+      "+I3=79"
+    ],
+    "started_utc": "2026-10-29T23:21:54.508692+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 55 : decision=5 (label 5) mode=0 margin=72 cycles=845",
+      "img 4 : decision=4 (label 4) mode=0 margin=394 cycles=845",
+      "img 70 : decision=0 (label 0) mode=0 margin=408 cycles=845",
+      "img 79 : decision=9 (label 9) mode=0 margin=317 cycles=845"
+    ],
+    "simulation_seconds": 241.38621228299985,
+    "power_seconds": 184.95942383800002,
+    "power": {
+      "Sequential": {
+        "internal": 0.001413221122,
+        "switching": 1.866619755e-06,
+        "leakage": 2.944412472e-06,
+        "total": 0.001418032101
+      },
+      "Combinational": {
+        "internal": 0.0001735048572,
+        "switching": 0.0001708704222,
+        "leakage": 4.206240919e-05,
+        "total": 0.0003864376631
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.00201305002,
+        "switching": 0.0005824787077,
+        "leakage": 4.5307439e-05,
+        "total": 0.002640836174
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_02.vcd",
+      "bytes": 991051872,
+      "sha256": "357b475ba2779983c622eddcaba919cfcf8cb6643eda588db08df12ef99e4041",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_02",
+    "indices": [
+      55,
+      4,
+      70,
+      79
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_02.vcd",
+      "+I0=55",
+      "+I1=4",
+      "+I2=70",
+      "+I3=79"
+    ],
+    "started_utc": "2026-10-29T23:30:47.514026+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 55 : decision=5 (label 5) mode=0 margin=72 cycles=845",
+      "img 4 : decision=4 (label 4) mode=0 margin=394 cycles=845",
+      "img 70 : decision=0 (label 0) mode=0 margin=408 cycles=845",
+      "img 79 : decision=9 (label 9) mode=0 margin=317 cycles=845"
+    ],
+    "simulation_seconds": 203.712373006,
+    "power_seconds": 154.95888909100017,
+    "power": {
+      "Sequential": {
+        "internal": 0.001000041259,
+        "switching": 2.030880523e-06,
+        "leakage": 3.015648417e-06,
+        "total": 0.001005087746
+      },
+      "Combinational": {
+        "internal": 0.0001727881317,
+        "switching": 0.0001690886274,
+        "leakage": 4.21309087e-05,
+        "total": 0.0003840076679
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001465026638,
+        "switching": 0.0004517308844,
+        "leakage": 4.552131213e-05,
+        "total": 0.00196227897
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_02.vcd",
+      "bytes": 790896813,
+      "sha256": "eb72ac604e7240d1f4d58521dab9002c34507d827e82ab8d2dbee3700d666475",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_03",
+    "indices": [
+      34,
+      85,
+      35,
+      16
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_03.vcd",
+      "+I0=34",
+      "+I1=85",
+      "+I2=35",
+      "+I3=16"
+    ],
+    "started_utc": "2026-10-29T23:38:21.017971+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 34 : decision=4 (label 4) mode=0 margin=431 cycles=845",
+      "img 85 : decision=5 (label 5) mode=0 margin=311 cycles=845",
+      "img 35 : decision=5 (label 5) mode=0 margin=234 cycles=845",
+      "img 16 : decision=6 (label 6) mode=0 margin=187 cycles=845"
+    ],
+    "simulation_seconds": 246.89088184399998,
+    "power_seconds": 109.44760401799977,
+    "power": {
+      "Sequential": {
+        "internal": 0.001415429753,
+        "switching": 1.692897854e-06,
+        "leakage": 2.942034598e-06,
+        "total": 0.001420064713
+      },
+      "Combinational": {
+        "internal": 0.0001540972007,
+        "switching": 0.0001567269355,
+        "leakage": 4.223829092e-05,
+        "total": 0.0003530624381
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001995844999,
+        "switching": 0.0005681602051,
+        "leakage": 4.548096331e-05,
+        "total": 0.002609485993
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_03.vcd",
+      "bytes": 962082222,
+      "sha256": "f2f35a1eda6c463b1c6e25a4b70187f94f54cd511b67270e1d6f6120b36cd1d7",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_03",
+    "indices": [
+      34,
+      85,
+      35,
+      16
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_03.vcd",
+      "+I0=34",
+      "+I1=85",
+      "+I2=35",
+      "+I3=16"
+    ],
+    "started_utc": "2026-10-29T23:46:10.870233+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 34 : decision=4 (label 4) mode=0 margin=431 cycles=845",
+      "img 85 : decision=5 (label 5) mode=0 margin=311 cycles=845",
+      "img 35 : decision=5 (label 5) mode=0 margin=234 cycles=845",
+      "img 16 : decision=6 (label 6) mode=0 margin=187 cycles=845"
+    ],
+    "simulation_seconds": 211.23572492699986,
+    "power_seconds": 100.18739480900012,
+    "power": {
+      "Sequential": {
+        "internal": 0.001002250938,
+        "switching": 1.853735057e-06,
+        "leakage": 3.013265996e-06,
+        "total": 0.001007117913
+      },
+      "Combinational": {
+        "internal": 0.0001535880438,
+        "switching": 0.0001550472371,
+        "leakage": 4.230911509e-05,
+        "total": 0.0003509444068
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001448037219,
+        "switching": 0.0004375106655,
+        "leakage": 4.569716111e-05,
+        "total": 0.00193124509
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_03.vcd",
+      "bytes": 762325020,
+      "sha256": "4c02f2cb023615b2c47bd7e6459d754b6f0eb5cfe2638dbb8afdb1b1f5e41ed4",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_04",
+    "indices": [
+      45,
+      38,
+      95,
+      19
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_04.vcd",
+      "+I0=45",
+      "+I1=38",
+      "+I2=95",
+      "+I3=19"
+    ],
+    "started_utc": "2026-10-29T23:53:08.946409+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 45 : decision=5 (label 5) mode=0 margin=227 cycles=845",
+      "img 38 : decision=8 (label 8) mode=0 margin=362 cycles=845",
+      "img 95 : decision=5 (label 5) mode=0 margin=133 cycles=845",
+      "img 19 : decision=9 (label 9) mode=0 margin=279 cycles=845"
+    ],
+    "simulation_seconds": 209.4923204509996,
+    "power_seconds": 105.51516981700024,
+    "power": {
+      "Sequential": {
+        "internal": 0.001413501916,
+        "switching": 1.75844275e-06,
+        "leakage": 2.943852223e-06,
+        "total": 0.001418204163
+      },
+      "Combinational": {
+        "internal": 0.0001623696007,
+        "switching": 0.0001623930439,
+        "leakage": 4.20931683e-05,
+        "total": 0.0003668558202
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.002002198249,
+        "switching": 0.000573892321,
+        "leakage": 4.533773244e-05,
+        "total": 0.002621428343
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_04.vcd",
+      "bytes": 974615328,
+      "sha256": "fa2498d380d76909311adec0e8f51d3c6260ae8b63b0dad193fc2f15534f871e",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_04",
+    "indices": [
+      45,
+      38,
+      95,
+      19
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_04.vcd",
+      "+I0=45",
+      "+I1=38",
+      "+I2=95",
+      "+I3=19"
+    ],
+    "started_utc": "2026-10-30T00:00:31.545573+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 45 : decision=5 (label 5) mode=0 margin=227 cycles=845",
+      "img 38 : decision=8 (label 8) mode=0 margin=362 cycles=845",
+      "img 95 : decision=5 (label 5) mode=0 margin=133 cycles=845",
+      "img 19 : decision=9 (label 9) mode=0 margin=279 cycles=845"
+    ],
+    "simulation_seconds": 215.6617568910001,
+    "power_seconds": 93.74425230299994,
+    "power": {
+      "Sequential": {
+        "internal": 0.001000329969,
+        "switching": 1.925975539e-06,
+        "leakage": 3.01508453e-06,
+        "total": 0.001005270984
+      },
+      "Combinational": {
+        "internal": 0.0001616898226,
+        "switching": 0.0001606347651,
+        "leakage": 4.216181696e-05,
+        "total": 0.00036448639
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001454216661,
+        "switching": 0.0004431712441,
+        "leakage": 4.555175474e-05,
+        "total": 0.001942939707
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_04.vcd",
+      "bytes": 774400668,
+      "sha256": "6f2d9a809fb27eafa30d250e0903f92f5f0470330d8636e40e7410baa1f1ac16",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_05",
+    "indices": [
+      84,
+      21,
+      11,
+      3
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_05.vcd",
+      "+I0=84",
+      "+I1=21",
+      "+I2=11",
+      "+I3=3"
+    ],
+    "started_utc": "2026-10-30T00:07:10.869348+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 84 : decision=4 (label 4) mode=0 margin=129 cycles=845",
+      "img 21 : decision=1 (label 1) mode=0 margin=280 cycles=845",
+      "img 11 : decision=1 (label 1) mode=0 margin=222 cycles=845",
+      "img 3 : decision=3 (label 3) mode=0 margin=291 cycles=845"
+    ],
+    "simulation_seconds": 171.89677364599993,
+    "power_seconds": 187.29080632800014,
+    "power": {
+      "Sequential": {
+        "internal": 0.001421085675,
+        "switching": 1.535840738e-06,
+        "leakage": 2.936175861e-06,
+        "total": 0.00142555777
+      },
+      "Combinational": {
+        "internal": 0.0001475831668,
+        "switching": 0.0001510891889,
+        "leakage": 4.246682147e-05,
+        "total": 0.0003411391808
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001994997729,
+        "switching": 0.0005623625475,
+        "leakage": 4.570342935e-05,
+        "total": 0.002603063826
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_05.vcd",
+      "bytes": 950647900,
+      "sha256": "7bf0936f992fa834506d83cf329461d7f5db71b508777e07d9d804d9044083df",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_05",
+    "indices": [
+      84,
+      21,
+      11,
+      3
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_05.vcd",
+      "+I0=84",
+      "+I1=21",
+      "+I2=11",
+      "+I3=3"
+    ],
+    "started_utc": "2026-10-30T00:14:56.394627+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 84 : decision=4 (label 4) mode=0 margin=129 cycles=845",
+      "img 21 : decision=1 (label 1) mode=0 margin=280 cycles=845",
+      "img 11 : decision=1 (label 1) mode=0 margin=222 cycles=845",
+      "img 3 : decision=3 (label 3) mode=0 margin=291 cycles=845"
+    ],
+    "simulation_seconds": 203.64602890600054,
+    "power_seconds": 91.27840465600002,
+    "power": {
+      "Sequential": {
+        "internal": 0.001007908606,
+        "switching": 1.679900834e-06,
+        "leakage": 3.007406576e-06,
+        "total": 0.001012595836
+      },
+      "Combinational": {
+        "internal": 0.0001469831186,
+        "switching": 0.0001493915333,
+        "leakage": 4.253531006e-05,
+        "total": 0.0003389099729
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001447087969,
+        "switching": 0.0004316786362,
+        "leakage": 4.591729157e-05,
+        "total": 0.001924683922
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_05.vcd",
+      "bytes": 750598890,
+      "sha256": "4328f5d98de38b474179a0ef5574ecb2c64e2812d91f1da59014acf4bbfc44a9",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_06",
+    "indices": [
+      86,
+      83,
+      46,
+      59
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_06.vcd",
+      "+I0=86",
+      "+I1=83",
+      "+I2=46",
+      "+I3=59"
+    ],
+    "started_utc": "2026-10-30T00:20:59.596693+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 86 : decision=6 (label 6) mode=0 margin=420 cycles=845",
+      "img 83 : decision=3 (label 3) mode=0 margin=293 cycles=845",
+      "img 46 : decision=6 (label 6) mode=0 margin=358 cycles=845",
+      "img 59 : decision=9 (label 9) mode=0 margin=138 cycles=845"
+    ],
+    "simulation_seconds": 205.6709435169996,
+    "power_seconds": 158.600949785,
+    "power": {
+      "Sequential": {
+        "internal": 0.001414963976,
+        "switching": 1.886776772e-06,
+        "leakage": 2.942956598e-06,
+        "total": 0.001419793698
+      },
+      "Combinational": {
+        "internal": 0.0001785229688,
+        "switching": 0.0001744466426,
+        "leakage": 4.214026558e-05,
+        "total": 0.000395109877
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.002019810723,
+        "switching": 0.0005860744277,
+        "leakage": 4.538449502e-05,
+        "total": 0.00265126978
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_06.vcd",
+      "bytes": 996699501,
+      "sha256": "9ebc8f9a8e96c608dd7455c4829e532aca9dff601194b055b8b1fb1c62027d07",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_06",
+    "indices": [
+      86,
+      83,
+      46,
+      59
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_06.vcd",
+      "+I0=86",
+      "+I1=83",
+      "+I2=46",
+      "+I3=59"
+    ],
+    "started_utc": "2026-10-30T00:28:53.346970+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 86 : decision=6 (label 6) mode=0 margin=420 cycles=845",
+      "img 83 : decision=3 (label 3) mode=0 margin=293 cycles=845",
+      "img 46 : decision=6 (label 6) mode=0 margin=358 cycles=845",
+      "img 59 : decision=9 (label 9) mode=0 margin=138 cycles=845"
+    ],
+    "simulation_seconds": 194.57677830099965,
+    "power_seconds": 198.9734407650003,
+    "power": {
+      "Sequential": {
+        "internal": 0.001001789467,
+        "switching": 2.05131596e-06,
+        "leakage": 3.014187541e-06,
+        "total": 0.001006855047
+      },
+      "Combinational": {
+        "internal": 0.0001779148442,
+        "switching": 0.0001727140916,
+        "leakage": 4.221067502e-05,
+        "total": 0.0003928396036
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001471896889,
+        "switching": 0.0004553757608,
+        "leakage": 4.56002781e-05,
+        "total": 0.001972872997
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_06.vcd",
+      "bytes": 796715033,
+      "sha256": "f82f0491d2473851df658246317ac425e018b30c3a2cddf57784da77ccb20f28",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_07",
+    "indices": [
+      99,
+      56,
+      43,
+      12
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_07.vcd",
+      "+I0=99",
+      "+I1=56",
+      "+I2=43",
+      "+I3=12"
+    ],
+    "started_utc": "2026-10-30T00:37:26.105796+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 99 : decision=9 (label 9) mode=0 margin=271 cycles=845",
+      "img 56 : decision=6 (label 6) mode=0 margin=312 cycles=845",
+      "img 43 : decision=3 (label 3) mode=0 margin=258 cycles=845",
+      "img 12 : decision=2 (label 2) mode=0 margin=329 cycles=845"
+    ],
+    "simulation_seconds": 286.0349855579998,
+    "power_seconds": 166.118247763,
+    "power": {
+      "Sequential": {
+        "internal": 0.001411823789,
+        "switching": 1.869401785e-06,
+        "leakage": 2.945940651e-06,
+        "total": 0.001416639076
+      },
+      "Combinational": {
+        "internal": 0.0001703845483,
+        "switching": 0.0001687133481,
+        "leakage": 4.200713011e-05,
+        "total": 0.0003811050265
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.002008537995,
+        "switching": 0.0005803245585,
+        "leakage": 4.525370969e-05,
+        "total": 0.002634116216
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_07.vcd",
+      "bytes": 987291275,
+      "sha256": "a1e2262277004fcef3b848e7cd0325b5769161e2bb640639b572315d67f7d19d",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_07",
+    "indices": [
+      99,
+      56,
+      43,
+      12
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_07.vcd",
+      "+I0=99",
+      "+I1=56",
+      "+I2=43",
+      "+I3=12"
+    ],
+    "started_utc": "2026-10-30T00:47:07.374822+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 99 : decision=9 (label 9) mode=0 margin=271 cycles=845",
+      "img 56 : decision=6 (label 6) mode=0 margin=312 cycles=845",
+      "img 43 : decision=3 (label 3) mode=0 margin=258 cycles=845",
+      "img 12 : decision=2 (label 2) mode=0 margin=329 cycles=845"
+    ],
+    "simulation_seconds": 183.96043782300058,
+    "power_seconds": 136.25963103699996,
+    "power": {
+      "Sequential": {
+        "internal": 0.0009986496298,
+        "switching": 2.047136604e-06,
+        "leakage": 3.017176823e-06,
+        "total": 0.001003713929
+      },
+      "Combinational": {
+        "internal": 0.0001696523686,
+        "switching": 0.0001669275807,
+        "leakage": 4.207908933e-05,
+        "total": 0.0003786590532
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001460502157,
+        "switching": 0.0004495856701,
+        "leakage": 4.547104254e-05,
+        "total": 0.001955559012
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_07.vcd",
+      "bytes": 786959441,
+      "sha256": "169d7eb91548893580c83d730d08db6d7e82d4c94e9a909c226c063326c2913d",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_08",
+    "indices": [
+      8,
+      65,
+      87,
+      53
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_08.vcd",
+      "+I0=8",
+      "+I1=65",
+      "+I2=87",
+      "+I3=53"
+    ],
+    "started_utc": "2026-10-30T02:32:35.466553+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 8 : decision=8 (label 8) mode=0 margin=271 cycles=845",
+      "img 65 : decision=5 (label 5) mode=0 margin=393 cycles=845",
+      "img 87 : decision=7 (label 7) mode=0 margin=212 cycles=845",
+      "img 53 : decision=3 (label 3) mode=0 margin=560 cycles=845"
+    ],
+    "simulation_seconds": 264.48484936600016,
+    "power_seconds": 128.81646556100077,
+    "power": {
+      "Sequential": {
+        "internal": 0.001413249876,
+        "switching": 1.844551775e-06,
+        "leakage": 2.944580501e-06,
+        "total": 0.001418039086
+      },
+      "Combinational": {
+        "internal": 0.000168681785,
+        "switching": 0.0001672561484,
+        "leakage": 4.213951252e-05,
+        "total": 0.0003780774714
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.002008255105,
+        "switching": 0.0005788424169,
+        "leakage": 4.538491339e-05,
+        "total": 0.002632482443
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_08.vcd",
+      "bytes": 983946756,
+      "sha256": "cf50704ae0b4b283a0c325854f10ee9df35a7480e781a00ead092f04fd6510fd",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_08",
+    "indices": [
+      8,
+      65,
+      87,
+      53
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_08.vcd",
+      "+I0=8",
+      "+I1=65",
+      "+I2=87",
+      "+I3=53"
+    ],
+    "started_utc": "2026-10-30T02:41:02.026458+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 8 : decision=8 (label 8) mode=0 margin=271 cycles=845",
+      "img 65 : decision=5 (label 5) mode=0 margin=393 cycles=845",
+      "img 87 : decision=7 (label 7) mode=0 margin=212 cycles=845",
+      "img 53 : decision=3 (label 3) mode=0 margin=560 cycles=845"
+    ],
+    "simulation_seconds": 201.3843058450002,
+    "power_seconds": 146.57182285399995,
+    "power": {
+      "Sequential": {
+        "internal": 0.001000072807,
+        "switching": 2.009474429e-06,
+        "leakage": 3.0158144e-06,
+        "total": 0.001005098107
+      },
+      "Combinational": {
+        "internal": 0.0001680760761,
+        "switching": 0.0001655002561,
+        "leakage": 4.2210424e-05,
+        "total": 0.0003757867671
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001460349769,
+        "switching": 0.0004481209617,
+        "leakage": 4.560119851e-05,
+        "total": 0.001954071922
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_08.vcd",
+      "bytes": 783675514,
+      "sha256": "dd466186d0fccb3726c76a41ce6bbc73ad546381601ac44cc7ffd8aa8878ae48",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "ungated",
+    "batch": "easy_09",
+    "indices": [
+      67,
+      72,
+      76,
+      41
+    ],
+    "command": [
+      "vvp",
+      "ungated_gl.vvp",
+      "+VCD=ungated_easy_09.vcd",
+      "+I0=67",
+      "+I1=72",
+      "+I2=76",
+      "+I3=41"
+    ],
+    "started_utc": "2026-10-30T02:48:59.871401+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 67 : decision=7 (label 7) mode=0 margin=308 cycles=845",
+      "img 72 : decision=2 (label 2) mode=0 margin=240 cycles=845",
+      "img 76 : decision=6 (label 6) mode=0 margin=531 cycles=845",
+      "img 41 : decision=1 (label 1) mode=0 margin=222 cycles=845"
+    ],
+    "simulation_seconds": 270.826007439,
+    "power_seconds": 174.92285557200103,
+    "power": {
+      "Sequential": {
+        "internal": 0.0014156627,
+        "switching": 1.625854679e-06,
+        "leakage": 2.94165784e-06,
+        "total": 0.001420230255
+      },
+      "Combinational": {
+        "internal": 0.0001520596124,
+        "switching": 0.0001542968093,
+        "leakage": 4.222891948e-05,
+        "total": 0.0003485853376
+      },
+      "Clock": {
+        "internal": 0.0004262364528,
+        "switching": 0.000409759843,
+        "leakage": 2.914704851e-07,
+        "total": 0.0008362877415
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.001994048944,
+        "switching": 0.0005656628055,
+        "leakage": 4.547155913e-05,
+        "total": 0.002605183283
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/ungated_easy_09.vcd",
+      "bytes": 959224916,
+      "sha256": "95a2ef262c69c696a700a594582af5fef0d0f90b9cbf3480c6c2b3324ca0093d",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  },
+  {
+    "variant": "gated",
+    "batch": "easy_09",
+    "indices": [
+      67,
+      72,
+      76,
+      41
+    ],
+    "command": [
+      "vvp",
+      "gated_gl.vvp",
+      "+VCD=gated_easy_09.vcd",
+      "+I0=67",
+      "+I1=72",
+      "+I2=76",
+      "+I3=41"
+    ],
+    "started_utc": "2026-10-30T02:58:25.751657+00:00",
+    "rtl_match": true,
+    "transactions": [
+      "img 67 : decision=7 (label 7) mode=0 margin=308 cycles=845",
+      "img 72 : decision=2 (label 2) mode=0 margin=240 cycles=845",
+      "img 76 : decision=6 (label 6) mode=0 margin=531 cycles=845",
+      "img 41 : decision=1 (label 1) mode=0 margin=222 cycles=845"
+    ],
+    "simulation_seconds": 221.77236572400034,
+    "power_seconds": 117.64942572600012,
+    "power": {
+      "Sequential": {
+        "internal": 0.00100249087,
+        "switching": 1.777484385e-06,
+        "leakage": 3.012888783e-06,
+        "total": 0.001007281244
+      },
+      "Combinational": {
+        "internal": 0.0001515446347,
+        "switching": 0.0001526377164,
+        "leakage": 4.229503247e-05,
+        "total": 0.0003464773763
+      },
+      "Clock": {
+        "internal": 0.0002921403211,
+        "switching": 0.0002806377597,
+        "leakage": 3.789554057e-07,
+        "total": 0.0005731569836
+      },
+      "Macro": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Pad": {
+        "internal": 0.0,
+        "switching": 0.0,
+        "leakage": 0.0,
+        "total": 0.0
+      },
+      "Total": {
+        "internal": 0.0014462322,
+        "switching": 0.0004350249073,
+        "leakage": 4.568304576e-05,
+        "total": 0.001926940167
+      }
+    },
+    "vcd": {
+      "file": "/root/ppa-clockgate-expansion40/gated_easy_09.vcd",
+      "bytes": 759370261,
+      "sha256": "0e00f941a7598c63a40779f9c1af7de6b6323ed43309c3bc47dfb1458366e070",
+      "timescale": "1ps",
+      "first_timestamp": 0,
+      "last_timestamp": 34316000,
+      "duration_seconds": 3.4316e-05,
+      "clocks": [
+        {
+          "names": [
+            "tb_gatelevel.clk",
+            "tb_gatelevel.dut.clk"
+          ],
+          "rises_01": 3432,
+          "falls_10": 3431,
+          "unknown_events": 0,
+          "final_state": "1"
+        },
+        {
+          "names": [
+            "tb_gatelevel.dut.\\u.G_LIGHT.u_fcl.clk",
+            "tb_gatelevel.dut.u.u_backend_icg.u_icg.GCLK"
+          ],
+          "rises_01": 56,
+          "falls_10": 55,
+          "unknown_events": 0,
+          "final_state": "1"
+        }
+      ]
+    }
+  }
+]

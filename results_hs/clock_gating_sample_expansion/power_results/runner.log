@@ -1,0 +1,73 @@
+SIM ungated_easy_01
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "9c06d2df525aa54ddd389fdcd01ba1da741dff7409ddb203fed182bc4c8a72e7"}
+POWER ungated_easy_01
+PASS ungated_easy_01 0.002610314637
+SIM gated_easy_01
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "ed78e6f1e4051240c2770999abeed9e2965ef8d4e236eab9d825c1bdf8a38c75"}
+POWER gated_easy_01
+PASS gated_easy_01 0.001931818901
+SIM ungated_easy_02
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "357b475ba2779983c622eddcaba919cfcf8cb6643eda588db08df12ef99e4041"}
+POWER ungated_easy_02
+PASS ungated_easy_02 0.002640836174
+SIM gated_easy_02
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "eb72ac604e7240d1f4d58521dab9002c34507d827e82ab8d2dbee3700d666475"}
+POWER gated_easy_02
+PASS gated_easy_02 0.00196227897
+SIM ungated_easy_03
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "f2f35a1eda6c463b1c6e25a4b70187f94f54cd511b67270e1d6f6120b36cd1d7"}
+POWER ungated_easy_03
+PASS ungated_easy_03 0.002609485993
+SIM gated_easy_03
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "4c02f2cb023615b2c47bd7e6459d754b6f0eb5cfe2638dbb8afdb1b1f5e41ed4"}
+POWER gated_easy_03
+PASS gated_easy_03 0.00193124509
+SIM ungated_easy_04
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "fa2498d380d76909311adec0e8f51d3c6260ae8b63b0dad193fc2f15534f871e"}
+POWER ungated_easy_04
+PASS ungated_easy_04 0.002621428343
+SIM gated_easy_04
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "6f2d9a809fb27eafa30d250e0903f92f5f0470330d8636e40e7410baa1f1ac16"}
+POWER gated_easy_04
+PASS gated_easy_04 0.001942939707
+SIM ungated_easy_05
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "7bf0936f992fa834506d83cf329461d7f5db71b508777e07d9d804d9044083df"}
+POWER ungated_easy_05
+PASS ungated_easy_05 0.002603063826
+SIM gated_easy_05
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "4328f5d98de38b474179a0ef5574ecb2c64e2812d91f1da59014acf4bbfc44a9"}
+POWER gated_easy_05
+PASS gated_easy_05 0.001924683922
+SIM ungated_easy_06
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "9ebc8f9a8e96c608dd7455c4829e532aca9dff601194b055b8b1fb1c62027d07"}
+POWER ungated_easy_06
+PASS ungated_easy_06 0.00265126978
+SIM gated_easy_06
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "f82f0491d2473851df658246317ac425e018b30c3a2cddf57784da77ccb20f28"}
+POWER gated_easy_06
+PASS gated_easy_06 0.001972872997
+SIM ungated_easy_07
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "a1e2262277004fcef3b848e7cd0325b5769161e2bb640639b572315d67f7d19d"}
+POWER ungated_easy_07
+PASS ungated_easy_07 0.002634116216
+SIM gated_easy_07
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "169d7eb91548893580c83d730d08db6d7e82d4c94e9a909c226c063326c2913d"}
+POWER gated_easy_07
+PASS gated_easy_07 0.001955559012
+SIM ungated_easy_08
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "cf50704ae0b4b283a0c325854f10ee9df35a7480e781a00ead092f04fd6510fd"}
+POWER ungated_easy_08
+PASS ungated_easy_08 0.002632482443
+SIM gated_easy_08
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "dd466186d0fccb3726c76a41ce6bbc73ad546381601ac44cc7ffd8aa8878ae48"}
+POWER gated_easy_08
+PASS gated_easy_08 0.001954071922
+SIM ungated_easy_09
+{"duration_seconds": 3.4316e-05, "clock_codes": 1, "sha256": "95a2ef262c69c696a700a594582af5fef0d0f90b9cbf3480c6c2b3324ca0093d"}
+POWER ungated_easy_09
+PASS ungated_easy_09 0.002605183283
+SIM gated_easy_09
+{"duration_seconds": 3.4316e-05, "clock_codes": 2, "sha256": "0e00f941a7598c63a40779f9c1af7de6b6323ed43309c3bc47dfb1458366e070"}
+POWER gated_easy_09
+PASS gated_easy_09 0.001926940167
+COMPLETE 18 new paired-window runs; merge with 2 existing Hard-window runs
