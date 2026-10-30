@@ -51,7 +51,7 @@ LBL = {
     "f_wmclass": FIGN["sh2_fig_wm_class_modes.png"], "f_rmodes": FIGN["hs_fig_robustness_modes.png"],
     "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"],
     "f_wmpaths": FIGN["fig_vivado_wm_paths.png"],
-    "t_control": _tn("제어 조건의 동적 검사"),
+    "t_icg": _tn("전용 ICG 적용 전후"), "t_pl": _tn("배치 및 전역 배선 후 비교"), "t_control": _tn("제어 조건의 동적 검사"),
     "t_wmppa": _tn("WM-811K 적용 전후 비교"),
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
@@ -120,6 +120,8 @@ EMPH = [
     "Easy에서도 Conv2, Pool2, FC의 레지스터는 연산 없이 클럭만 공급받으며",
     "Easy에서 5.24 nJ(33 %)로 가장 큰 단일 블록이다",
     "클럭 게이팅의 직접적인 대상이다",
+    "Top-2 Finder를 포함한 판단 회로는 임계 경로가 아니었다",
+    "Easy 4장 구간의 이미지당 에너지는 25.9 %, Easy 3장과 Hard 1장의 혼합 구간은 25.2 %, Hard 4장 구간은 20.7 % 줄었다",
     "처리 cycle이나 MAC 감소만으로 에너지 이득을 보장할 수 없음을 정량적으로 보여준다",
     "Medium이 없는 Early-Exit(2경로)와 AdaPath(3경로)를 임계값 전수 탐색으로 비교하였다",
     "2경로와 3경로 중 유리한 구성까지 선택하는 구조라는 점이 의미가 있다",
@@ -390,6 +392,13 @@ LAT = {  # ns / 추론, 각 설계의 pre-layout 추정 Fmax 기준
     "A": CYC_A / FMAX["adapath_A"] * 1e3,
 }
 
+# 배치 및 전역 배선 후 결과 (orfs/reports_postlayout, 2,000 ps 제약, 레지스터 간 임계 경로 -> 최소 주기 = 2,000 - slack)
+PL = {"refchip": {"area": 32330.1, "slack": 259.86, "skew": 40.37},
+      "adapath_A": {"area": 50614.2, "slack": 37.59, "skew": 55.13}}
+for _v in PL.values():
+    _v["fmax"] = 1e6 / (2000 - _v["slack"])
+PL_LAT = {"ref": CYC["ref"] / PL["refchip"]["fmax"] * 1e3, "A": CYC_A / PL["adapath_A"]["fmax"] * 1e3}
+
 # 손익분기 (모드별 에너지 고정 혼합 모델)
 P_BE_REF = (E["A_hard"] - E_REF) / (E["A_hard"] - E["A_easy"])
 P_BE_BASE = (E["A_hard"] - E_ABASE) / (E["A_hard"] - E["A_easy"])
@@ -472,10 +481,12 @@ para(doc, "본 과제는 입력마다 Early Classifier 점수의 Top-1과 Top-2 
      "주최 측 Reference와 같은 주 경로 신경망(모델 A)을 사용하여, 주최 입력 순차 1,000회 기준 정답 수를 970회로 유지하면서 "
      "평균 처리 cycle(%s)과 추정 Fmax 기준 추론 지연(%s)을 함께 줄였다. ASAP7 pre-layout 게이트레벨 VCD 기반 추론당 에너지는 "
      "%s이며, 면적은 Feature Map Buffer와 Early Classifier 추가로 %s이다. 중간 평가에서 지적된 Fmax 저하는 "
-     "Top-2 Finder를 토너먼트 트리로 바꾸어 해소하였으며, 블록별 에너지 분해로 MAC 감소가 그대로 에너지 감소로 이어지지 않는 "
+     "Top-2 Finder를 토너먼트 트리로 바꾸어 합성 직후 기준으로 해소하였다. 배치와 전역 배선까지 수행한 결과에서는 FSM enable "
+     "신호의 배선 지연으로 Fmax 차이가 다시 커졌지만, 추론 지연은 여전히 Reference보다 %.1f %% 짧았다. 또한 블록별 에너지 분해로 MAC 감소가 그대로 에너지 감소로 이어지지 않는 "
      "원인(후단부 레지스터의 유휴 소모)을 정량화하였다. 후단부 클럭 게이팅을 적용하면 추론당 에너지는 상한 추정으로 "
-     "Reference 대비 %s에 이른다." % (chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF),
-                              chg(A["adapath_A"], A["refchip"]), chg(_E_CG0, E_REF)), indent=True)
+     "Reference 대비 %s에 이르며, 전용 ICG 셀을 실제로 넣은 설계의 배치 전 평가에서도 선정 구간의 에너지가 게이팅 전보다 "
+     "20.7~25.9 %% 줄었다." % (chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF),
+                              chg(A["adapath_A"], A["refchip"]), -pct(PL_LAT["A"], PL_LAT["ref"]), chg(_E_CG0, E_REF)), indent=True)
 para(doc, "자유주제(WM-811K 웨이퍼맵 4-class)에서는 같은 기법을 3-경로 모델에 적용하여, 주최 측 chip 인터페이스를 유지한 RTL이 "
      "954장 전부에서 정수 Golden과 판정, 모드, Score Margin이 비트 단위로 일치함(954 / 954)을 Vivado로 확인하였고, Easy / Medium / "
      "Hard 세 경로가 모두 사용됨(404 / 167 / 383장)을 보였다. 아울러 2-fold 교차 평가, 정확도 차이의 통계 검정, 입력 열화 실험을 "
@@ -799,12 +810,12 @@ table(doc, "제어 조건의 동적 검사 (Vivado 2024.1, 검사 횟수 / 위�
           ["Easy 결정 후 valid까지 Conv2 비활성 (cycle)",
            f"{CONTROL['A']['easy_checks']:,} / {CONTROL['A']['easy_errors']}",
            f"{CONTROL['WM']['easy_checks']:,} / {CONTROL['WM']['easy_errors']}"],
-          ["Medium 후단 활성 중 채널 mask·Light/Full FC 선택 (cycle)", "0 / 해당 없음",
+          ["Medium 후단 활성 중 채널 mask, Light/Full FC 선택 (cycle)", "0 / 해당 없음",
            f"{CONTROL['WM']['medium_checks']:,} / {CONTROL['WM']['medium_errors']}"],
           ["start→valid 4,000 cycle 이내 응답 (완료 거래)",
            f"{CONTROL['A']['deadline_checks']:,} / {CONTROL['A']['deadline_errors']}",
            f"{CONTROL['WM']['deadline_checks']:,} / {CONTROL['WM']['deadline_errors']}"],
-          ["S_BACK·S_DONE에서 선택 모드와 Result MUX 일치 (cycle)",
+          ["S_BACK과 S_DONE에서 선택 모드와 Result MUX 일치 (cycle)",
            f"{CONTROL['A']['mux_checks']:,} / {CONTROL['A']['mux_errors']}",
            f"{CONTROL['WM']['mux_checks']:,} / {CONTROL['WM']['mux_errors']}"],
       ], [8.0, 3.5, 3.5], size=9,
@@ -875,6 +886,27 @@ para(doc, "Top-2 Finder 개선 후 AdaPath_A의 Fmax는 판단 회로가 없는 
      % (f1(FMAX["adapath_A"]), f1(FMAX["baseline_A"]), f1(FMAX_S["adapath_A"]), f1(FMAX_S["baseline_A"]),
         -pct(FMAX["adapath_A"], FMAX["refchip"]), -pct(FMAX_S["adapath_A"], FMAX_S["refchip"]),
         f1(rg["area_v2"]), region2_ratio), indent=True)
+para(doc, "**배치와 전역 배선 이후 결과:** 위 값은 합성 직후의 추정이므로, Reference와 AdaPath_A를 같은 SDC 규칙과 2 ns 클럭 "
+     "제약으로 ORFS 전체 흐름에 넣어 배치, 클럭 트리 합성(CTS), 전역 배선까지 수행하였다(표 %s). 상세 배선은 작업 PC의 "
+     "메모리 한도(10 GB)로 두 설계 모두 끝내지 못했으므로, 값은 전역 배선 기반 기생 성분과 실제 클럭 트리를 반영한 결과이다. "
+     "면적은 Reference보다 %.1f %% 커서 합성 직후(%.1f %%)와 거의 같았다. 반면 환산 Fmax는 Reference %s MHz, AdaPath_A %s MHz로 차이가 %.1f %%로 "
+     "커졌다. AdaPath_A의 임계 경로는 FSM 상태 레지스터에서 Conv2 MAC 레지스터들로 퍼지는 enable 신호로, 신호 하나가 많은 "
+     "레지스터를 구동하면서 배선 지연이 커진 것이다. Top-2 Finder를 포함한 판단 회로는 임계 경로가 아니었다. 이 Fmax로 환산한 "
+     "추론 지연은 Reference %s ns, AdaPath_A %s ns로 AdaPath_A가 여전히 %.1f %% 짧다. FSM enable 신호를 복제하거나 한 단 파이프라인하면 이 경로를 "
+     "줄일 수 있다(4.2절)."
+     % (LBL["t_pl"], pct(PL["adapath_A"]["area"], PL["refchip"]["area"]), pct(A["adapath_A"], A["refchip"]),
+        f1(PL["refchip"]["fmax"]), f1(PL["adapath_A"]["fmax"]), -pct(PL["adapath_A"]["fmax"], PL["refchip"]["fmax"]),
+        f0(PL_LAT["ref"]), f0(PL_LAT["A"]), -pct(PL_LAT["A"], PL_LAT["ref"])), indent=True)
+table(doc, "배치 및 전역 배선 후 비교 (ORFS, ASAP7, 2,000 ps 제약, 상세 배선 전)",
+      ["항목", "Reference", "AdaPath_A", "변화"], [
+    ["표준셀 면적 (µm²)", f0(PL["refchip"]["area"]), f0(PL["adapath_A"]["area"]), chg(PL["adapath_A"]["area"], PL["refchip"]["area"])],
+    ["2,000 ps에서 최악 setup slack (ps)", "+%.1f" % PL["refchip"]["slack"], "+%.1f" % PL["adapath_A"]["slack"], "-"],
+    ["클럭 skew (ps)", "%.1f" % PL["refchip"]["skew"], "%.1f" % PL["adapath_A"]["skew"], "-"],
+    ["환산 Fmax (MHz)", f1(PL["refchip"]["fmax"]), f1(PL["adapath_A"]["fmax"]), chg(PL["adapath_A"]["fmax"], PL["refchip"]["fmax"])],
+    ["추론 지연 @환산 Fmax (ns)", f0(PL_LAT["ref"]), f0(PL_LAT["A"]), chg(PL_LAT["A"], PL_LAT["ref"])],
+], [5.6, 3.3, 3.3, 3.6], hl_rows=(4,),
+    note="두 설계의 임계 경로가 모두 레지스터 간 경로이므로 최소 주기 = 2,000 ps − slack으로 환산하였다. 2 ns 목표로 최적화한 "
+         "배치 결과의 환산값이며, hold 위반은 없었다. 원시 리포트는 orfs/reports_postlayout/에 있다.")
 
 h2(doc, "3.7 게이트레벨 VCD 기반 전력 및 추론당 에너지")
 para(doc, "벡터 없는(vectorless) 전력 추정은 기본 또는 지정 활동률을 적용하므로 입력별 모드 활성 패턴을 충분히 반영하지 "
@@ -922,6 +954,24 @@ para(doc, "②의 유휴 에너지는 Easy 판정 시 후단부 레지스터의 
      "제거할 수 있다고 가정한 상한 추정에서 Easy 에너지는 %.1f nJ, 가중 평균은 %.1f nJ로 Reference 대비 %s한다. ICG 셀과 "
      "게이팅 제어의 오버헤드는 반영하지 않은 값이므로 실제 이득은 이보다 작으며, 구현과 재측정으로 확인해야 한다(4.2절)."
      % (E_EZ_CG, E_A_CG, chg(E_A_CG, E_REF)), indent=True)
+para(doc, "**전용 ICG 적용 후 배치 전 전력 평가:** 이 상한 추정을 실제 회로로 확인하기 위해, 모델 A의 후단 Conv2, Pooling, FC "
+     "레지스터에 ASAP7 전용 ICG 셀(ICGx1_ASAP7_75t_R)을 넣은 설계를 따로 합성하여 게이팅 전 설계와 비교하였다(표 %(t_icg)s). "
+     "두 설계 모두 같은 흐름, ASAP7 RVT TT, 100 MHz에서 합성 넷리스트에 같은 버퍼 셀과 최대 분기 수 4의 클럭 트리를 구성하여 "
+     "ICG와 버퍼의 부하 비용을 포함하였다. Easy 4장 구간의 이미지당 에너지는 25.9 %%, Easy 3장과 Hard 1장의 혼합 구간은 "
+     "25.2 %%, Hard 4장 구간은 20.7 %% 줄었다. Hard에서도 후단부가 매 cycle 동작하는 것은 아니므로 게이팅 효과가 나타난다. "
+     "ICG를 넣은 RTL은 1,000회 순차 입력에서 기존 설계와 판정, 모드, margin, cycle이 모두 같았고(970 / 1,000), 버퍼를 포함한 "
+     "최종 넷리스트의 24회 실행 출력도 기존 RTL과 일치하였다. 다만 이 비교는 배치와 배선의 기생 성분을 포함하지 않는 배치 전 "
+     "추정이고, 11개 고유 입력으로 구성한 세 구간의 결과이며, 별도 합성에 따른 조합 논리 매핑 차이도 포함한다. 같은 조건의 "
+     "Reference 재측정은 하지 않았으므로 이 감소율을 Reference 대비 개선율과 결합하지 않는다(results_hs/clock_gating/)." % LBL,
+     indent=True)
+table(doc, "전용 ICG 적용 전후의 구간별 배치 전 전력과 에너지 (AdaPath_A, ASAP7 RVT TT, 100 MHz)",
+      ["측정 구간 (4회 추론)", "게이팅 전 (mW)", "ICG 적용 (mW)", "게이팅 전 (nJ/장)", "ICG 적용 (nJ/장)", "감소율"], [
+    ["Easy 4장", "2.616", "1.938", "22.44", "16.63", "25.9 %"],
+    ["Easy 3장 + Hard 1장", "2.759", "2.064", "24.85", "18.59", "25.2 %"],
+    ["Hard 4장", "2.917", "2.312", "30.01", "23.79", "20.7 %"],
+], [4.0, 2.6, 2.6, 2.8, 2.8, 2.0],
+    note="두 설계 모두 같은 팬아웃 제한 버퍼 클럭 트리를 넣은 값이라, 버퍼가 없는 3.7절 앞부분의 블록별 에너지와 절대값이 다르다. "
+         "에너지는 VCD 구간 평균 전력 × 관측 시간 ÷ 4(reset과 start 포함)이다.")
 table(doc, "효율 지표", ["설계", "실행 MAC", "에너지 (nJ)", "실효 TOPS/W", "등가 TOPS/W"], [
     ["Reference", f0(MAC["ref"]), f1(E_REF), f2(topsw(MAC["ref"], E_REF)), f2(topsw(MAC["ref"], E_REF))],
     ["Baseline_A", f0(MAC["Abase"]), f1(E_ABASE), f2(topsw(MAC["Abase"], E_ABASE)), f2(topsw(MAC["ref"], E_ABASE))],
@@ -1126,11 +1176,15 @@ bullet(doc, "**강한 블러 및 잡음:** 강한 블러와 가우시안 잡음�
        "입력을 포함한 학습(데이터 증강)이나 Early Classifier 보정이 필요하다.")
 bullet(doc, "**통계 해석:** AdaPath와 Full의 정확도 차이가 유의하지 않다는 결과(모델 A, WM-811K)는 동등성의 증명이 아니며, "
        "모델 B는 유의한 하락이 있었다(3.3절).")
-bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 배치와 "
-       "배선, 클럭망, 실제 입력 분포를 반영한 후속 검증이 필요하다. WM-811K 에너지는 대리 추정이다.")
+bullet(doc, "**전력 추정:** 전력은 소수 대표 입력의 게이트레벨 VCD에 기반한 pre-layout 추정이며 실리콘 계측이 아니다. 면적과 "
+       "타이밍은 전역 배선까지 확인했으나(표 @t_pl@), 상세 배선 후의 기생 성분과 클럭망을 반영한 VCD 전력과 실제 입력 분포에서의 "
+       "검증이 필요하다. WM-811K 에너지는 대리 추정이다.")
+bullet(doc, "**배치 후 임계 경로:** 배치와 전역 배선 후 AdaPath_A의 임계 경로는 FSM 상태 레지스터에서 Conv2 MAC 레지스터로 "
+       "퍼지는 enable 신호였다. enable 레지스터를 복제하거나 한 단 파이프라인하면 Reference와의 Fmax 차이를 줄일 수 있다.")
 bullet(doc, "**클럭 게이팅:** Easy에서도 후단부 레지스터가 %.2f nJ를 소모한다(그림 @f_block@). 모드 신호로 후단부 클럭을 차단하는 "
        "클럭 게이팅(ICG 셀)을 적용하면, 오버헤드를 제외한 상한 추정으로 평균 에너지를 %.1f nJ(Reference 대비 %s)까지 줄일 수 "
-       "있다." % (IDLE, E_A_CG, chg(E_A_CG, E_REF)))
+       "있다. 전용 ICG를 실제로 넣은 설계의 배치 전 평가에서는 선정한 세 구간의 에너지가 20.7~25.9 %% 줄었으며(표 @t_icg@), "
+       "배치와 배선 이후의 재평가와 더 많은 입력에서의 확인이 남아 있다." % (IDLE, E_A_CG, chg(E_A_CG, E_REF)))
 bullet(doc, "**Feature Map Buffer:** 5,184 bit 레지스터 버퍼가 면적과 Easy 에너지(%.0f %%)의 가장 큰 단일 항목이다. SRAM 매크로로 "
        "바꾸거나, Early Classifier를 Full FC와 시분할 공유하면 면적 및 에너지 오버헤드를 줄일 수 있다."
        % (EZ["Feature Map Buffer"] / E["A_easy"] * 100))
@@ -1150,13 +1204,16 @@ h2(doc, "4.4 결론")
 para(doc, "본 과제는 고정 경로 가속기가 쉬운 입력에도 전체 연산을 수행하는 낭비를, 비교기와 감산기로 계산되는 Score Margin "
      "기반 경로 제어를 Early Classifier 및 특징 버퍼와 결합하여 줄일 수 있음을 RTL 설계부터 논리 합성, 게이트레벨 전력 분석까지 같은 흐름에서 확인하였다. 지정주제에서는 "
      "Reference와 같은 정확도(970 / 1,000)를 유지하면서 처리 cycle %s, 추론 지연 %s, 추론당 에너지 %s를 달성하였고, "
-     "Top-2 Finder 구조 개선 후 판단 회로가 없는 Baseline_A와 유사한 추정 Fmax를 얻었다(3.6절)." % (
-         chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF)), indent=True)
+     "Top-2 Finder 구조 개선 후 판단 회로가 없는 Baseline_A와 유사한 추정 Fmax를 얻었다(3.6절). 배치와 전역 배선 후에는 FSM "
+     "enable 신호의 배선 지연으로 Reference 대비 Fmax가 %.1f %% 낮았으나 추론 지연은 여전히 %.1f %% 짧았다." % (
+         chg(CYC_A, CYC["ref"]), chg(LAT["A"], LAT["ref"]), chg(E_A, E_REF),
+         -pct(PL["adapath_A"]["fmax"], PL["refchip"]["fmax"]), -pct(PL_LAT["A"], PL_LAT["ref"])), indent=True)
 para(doc, "동시에 본 과제는 실행 MAC의 감소가 곧 에너지 감소가 아님을 블록 단위로 보였다. Easy 경로에서도 후단부 레지스터와 "
      "추가된 Feature Map Buffer가 에너지를 소모하므로, 적응형 경로가 Reference보다 에너지에서 유리하려면 Easy 비율이 약 "
      "%.0f %% 이상이어야 한다. 이 손익분기점은 지정주제 모델 A의 모드별 에너지에 대한 결과이며, 자유주제 WM-811K에 그대로 적용할 수 없다. "
      "현재 WM 모델에서는 정상(none)의 83.3 %%가 Hard로 분류되었으므로 정상 입력이 많다는 이유만으로 큰 에너지 이득을 예상할 수 없다. "
-     "후단부 클럭 게이팅과 버퍼의 SRAM화가 다음 단계의 핵심 개선 항목이다. 본 결과는 pre-layout 추정과 "
+     "후단부 클럭 게이팅은 전용 ICG를 넣은 설계의 배치 전 평가에서 선정 구간 에너지를 20.7~25.9 %% 줄여 효과를 확인하였고, "
+     "이를 배치와 배선 이후까지 검증하는 것과 버퍼의 SRAM화가 다음 단계의 핵심 개선 항목이다. 본 결과는 pre-layout 추정과 "
      "제한된 입력 분포에 기반하므로, 배치와 배선 이후의 전력과 실제 입력 분포에서의 검증이 남은 과제이다."
      % (P_BE_REF * 100), indent=True)
 
