@@ -1,0 +1,16 @@
+{
+  "base_commit": "e1f73b9e43dfc88d5ae3f9725318b8ade718ec58",
+  "pages": 42,
+  "changed_pdf_text_pages": [
+    39
+  ],
+  "tool_versions_source": "results_hs/clock_gating/environment.json",
+  "checks": [
+    "CRLF preserved",
+    "No unresolved @key@, %% or middle dot",
+    "Other 41 PDF page texts unchanged",
+    "Word fields and TOC refreshed",
+    "42-page DOCX render completed; changed page39 visually inspected"
+  ],
+  "scope": "ICG tool environment paragraph and expansion README completion status; numerical results unchanged"
+}

@@ -1253,6 +1253,12 @@ table(doc, "도구 및 실행 환경", ["항목", "버전 / 설정", "근거"], 
     ["Python / PyTorch", "3.13.2 / 2.10.0+cpu (학습 PC 환경)", "학습 PC에서 확인, 학습 당시 로그는 별도 보존하지 않음"],
     ["게이트레벨 시뮬레이션", "100 MHz(10 ns), 이미지마다 리셋 12 cycle, ASAP7 셀 모델(지연 0 기능 모델)", "glsim TB"],
 ], [3.6, 7.6, 5.8])
+para(doc, "위 도구 표의 합성 및 전력 환경은 기존 Reference 비교 분석의 환경이다. "
+     "3.7절의 전용 ICG 적용 전후 비교 및 고유 입력 40개 확장 실험은 별도 환경인 "
+     "WSL2 Ubuntu 24.04.5 LTS, Yosys 0.58(git 157aabb58), OpenROAD 26Q2-1164-g08f67ee5ec, "
+     "ORFS 7bf5a814e47c54ec6c64692b464d398184d99891 및 Icarus Verilog 12.0 stable을 사용하였다. "
+     "게이팅 전후 설계는 이 환경에서 동일 조건으로 비교하였으며, 기존 Reference 분석과 도구 버전이 같다는 의미는 아니다. "
+     "버전 원문 및 파일 해시는 results_hs/clock_gating/environment.json에 보존하였다.", indent=True)
 table(doc, "주요 실행 단계와 데이터", ["단계", "명령 / 스크립트", "데이터 및 조건"], [
     ["학습", "python train.py --arch A --n_class 10 --prefix mnist", "python/에서 실행; MNIST 학습 60,000장, 30 epoch, seed 미고정"],
     ["임계값 탐색", "python analyze_margin.py --arch A --prefix mnist", "python/에서 실행; MNIST 테스트 10,000장 (동일셋 선정)"],
