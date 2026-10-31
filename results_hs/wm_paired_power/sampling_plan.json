@@ -1,0 +1,53 @@
+{
+  "source_commit": "57cf580",
+  "package_correction": "0374255",
+  "protocol": "same-input matched windows, zero-delay gate-level VCD, pre-layout OpenROAD power, 100MHz, original TB reset12cycles",
+  "groups": {
+    "easy": [
+      8,
+      10,
+      18,
+      22
+    ],
+    "med": [
+      2,
+      3,
+      5,
+      24
+    ],
+    "hard": [
+      0,
+      1,
+      4,
+      9
+    ]
+  },
+  "designs": [
+    "baseline_wm_npu",
+    "adapath_wm_npu"
+  ],
+  "control_baseline": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "mode_weights": {
+    "easy": 404,
+    "med": 167,
+    "hard": 383
+  },
+  "N_distribution": 954,
+  "selected_unique_inputs": 12,
+  "new_runs": 7,
+  "observations_per_run": 4,
+  "statistics": "3 paired window energies; selected balanced sample mean separate from 404:167:383 weighted estimate; no per-image SD from aggregate VCD power",
+  "limits": [
+    "pre-layout zero-delay, no wire RC/CTS",
+    "chosen first correct AdaPath samples per mode; not random sample",
+    "4 input samples per mode, no population confidence interval",
+    "same-input control removes comparison input mismatch, not sample selection bias",
+    "local OpenROAD 26Q2 differs from original26Q3; recompute both designs locally, do not splice old and new powers"
+  ],
+  "do_not_run": "A netlist 1000-run task cancelled by user"
+}

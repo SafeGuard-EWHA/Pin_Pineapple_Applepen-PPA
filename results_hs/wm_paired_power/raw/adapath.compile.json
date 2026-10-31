@@ -1,0 +1,21 @@
+{
+  "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+  "wall_seconds": 183.698192285,
+  "command": [
+    "iverilog",
+    "-g2012",
+    "-DDATA=\"/root/ppa-wm-paired12/weights/\"",
+    "-DWM_INPUT=\"/root/ppa-wm-paired12/data/wm_input_954.txt\"",
+    "-o",
+    "/root/ppa-wm-paired12/paired_run/adapath.vvp",
+    "/root/ppa-wm-paired12/paired_run/adapath_wm_net.v",
+    "/root/ppa-wm-paired12/std_cell_fn/asap7sc7p5t_AO_RVT_TT_201020.v",
+    "/root/ppa-wm-paired12/std_cell_fn/asap7sc7p5t_INVBUF_RVT_TT_201020.v",
+    "/root/ppa-wm-paired12/std_cell_fn/asap7sc7p5t_OA_RVT_TT_201020.v",
+    "/root/ppa-wm-paired12/std_cell_fn/asap7sc7p5t_SEQ_RVT_TT_220101.v",
+    "/root/ppa-wm-paired12/std_cell_fn/asap7sc7p5t_SIMPLE_RVT_TT_201020.v",
+    "/root/ppa-wm-paired12/std_cell_fn/empty.v",
+    "/root/ppa-wm-paired12/tb_gl_wm.v"
+  ],
+  "netlist_sha256": "d60b8bff30da8a457e12541db94aefa5ba0e35d5e70054487199b2f93d06830e"
+}

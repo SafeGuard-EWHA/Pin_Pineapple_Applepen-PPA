@@ -1,0 +1,76 @@
+OpenROAD 26Q2-1164-g08f67ee5ec 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13178, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13211, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13244, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13277, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13310, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13343, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 13376, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 14772, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 14805, timing group from output port.
+[WARNING STA-1212] /root/ppa-tools/ORFS/flow/platforms/asap7/lib/NLDM/asap7sc7p5t_SIMPLE_RVT_TT_nldm_211120.lib.gz line 14838, timing group from output port.
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7_tech_1x_201209.lef, created 30 layers, 9 vias
+[WARNING ODB-0217] duplicate VIARULE (Pad_M9) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M9_M8) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M8_M7) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M7_M6) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M6_M5) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M3_M2widePWR0p936) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M4_M3widePWR0p864) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M5_M4widePWR0p864) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M6_M5widePWR1p152) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M7_M6widePWR1p152) ignoring...
+[WARNING ODB-0217] duplicate VIARULE (M2_M1) ignoring...
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7_tech_1x_260907.lef
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_SRAM_1x_220121a.lef, created 212 library cells
+[INFO ODB-0394] Duplicate site asap7sc7p5t in asap7sc7p5t_28_L_1x_220121a already seen in asap7sc7p5t_28_SRAM_1x_220121a
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_L_1x_220121a.lef, created 212 library cells
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_DFFHQNV2X.lef, created 9 library cells
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx1_ASAP7_75t_L references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx1_ASAP7_75t_R references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx1_ASAP7_75t_SL references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx2_ASAP7_75t_L references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx2_ASAP7_75t_R references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx2_ASAP7_75t_SL references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx3_ASAP7_75t_L references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx3_ASAP7_75t_R references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx3_ASAP7_75t_SL references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx4_ASAP7_75t_L references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx4_ASAP7_75t_R references unknown site core
+[WARNING ODB-0176] error: undefined layer (LIG) referenced
+[WARNING ODB-0186] macro DFHV2Xx4_ASAP7_75t_SL references unknown site core
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_DFHV2X.lef, created 12 library cells
+[INFO ODB-0394] Duplicate site asap7sc7p5t_pg in asap7sc7p5t_DFFHQNH2V2X already seen in asap7sc7p5t_DFFHQNV2X
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_DFFHQNH2V2X.lef, created 9 library cells
+[INFO ODB-0394] Duplicate site asap7sc7p5t in asap7sc7p5t_28_R_1x_220121a already seen in asap7sc7p5t_28_SRAM_1x_220121a
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_R_1x_220121a.lef, created 212 library cells
+[INFO ODB-0394] Duplicate site asap7sc7p5t_pg in asap7sc7p5t_DFFHQNV4X already seen in asap7sc7p5t_DFFHQNV2X
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_DFFHQNV4X.lef, created 9 library cells
+[INFO ODB-0394] Duplicate site asap7sc7p5t in asap7sc7p5t_28_SL_1x_220121a already seen in asap7sc7p5t_28_SRAM_1x_220121a
+[INFO ODB-0227] LEF file: /root/ppa-tools/ORFS/flow/platforms/asap7/lef/asap7sc7p5t_28_SL_1x_220121a.lef, created 212 library cells
+Annotated 2182483 pin activities.
+Group                    Internal    Switching      Leakage        Total
+                            Power        Power        Power        Power (Watts)
+------------------------------------------------------------------------
+Sequential           1.446003e-03 4.324651e-06 2.810424e-06 1.453138e-03  49.9%
+Combinational        7.239693e-04 6.560430e-04 8.187826e-05 1.461891e-03  50.2%
+Clock                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Macro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Pad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+------------------------------------------------------------------------
+Total                2.170016e-03 6.603043e-04 8.469086e-05 2.915011e-03 100.0%
+                            74.4%        22.7%         2.9%

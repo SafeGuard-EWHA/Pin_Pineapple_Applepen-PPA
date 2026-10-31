@@ -1,0 +1,32 @@
+compile {'variant': 'baseline'}
+compile {'variant': 'adapath'}
+simulation {'tag': 'base_control', 'completed': 0, 'total': 7}
+power {'tag': 'base_control', 'completed': 0, 'total': 7, 'simulation_seconds': 1220.321588024}
+compress_vcd {'tag': 'base_control'}
+run_complete {'tag': 'base_control', 'completed': 1, 'total': 7, 'energy_nJ_per_image': 29.458160367999998}
+simulation {'tag': 'ada_easy', 'completed': 1, 'total': 7}
+power {'tag': 'ada_easy', 'completed': 1, 'total': 7, 'simulation_seconds': 315.7342693549997}
+compress_vcd {'tag': 'ada_easy'}
+run_complete {'tag': 'ada_easy', 'completed': 2, 'total': 7, 'energy_nJ_per_image': 20.403115747}
+pilot_complete {'completed': 2, 'total': 7}
+simulation {'tag': 'base_easy', 'completed': 2, 'total': 7}
+power {'tag': 'base_easy', 'completed': 2, 'total': 7, 'simulation_seconds': 1123.0966998039999}
+compress_vcd {'tag': 'base_easy'}
+run_complete {'tag': 'base_easy', 'completed': 3, 'total': 7, 'energy_nJ_per_image': 28.913994108999994}
+simulation {'tag': 'ada_med', 'completed': 3, 'total': 7}
+power {'tag': 'ada_med', 'completed': 3, 'total': 7, 'simulation_seconds': 655.5800614399996}
+compress_vcd {'tag': 'ada_med'}
+run_complete {'tag': 'ada_med', 'completed': 4, 'total': 7, 'energy_nJ_per_image': 29.134713787999996}
+simulation {'tag': 'base_med', 'completed': 4, 'total': 7}
+power {'tag': 'base_med', 'completed': 4, 'total': 7, 'simulation_seconds': 1014.6529166010005}
+compress_vcd {'tag': 'base_med'}
+run_complete {'tag': 'base_med', 'completed': 5, 'total': 7, 'energy_nJ_per_image': 28.962468261999998}
+simulation {'tag': 'ada_hard', 'completed': 5, 'total': 7}
+power {'tag': 'ada_hard', 'completed': 5, 'total': 7, 'simulation_seconds': 1149.5784955010004}
+compress_vcd {'tag': 'ada_hard'}
+run_complete {'tag': 'ada_hard', 'completed': 6, 'total': 7, 'energy_nJ_per_image': 32.677481529}
+simulation {'tag': 'base_hard', 'completed': 6, 'total': 7}
+power {'tag': 'base_hard', 'completed': 6, 'total': 7, 'simulation_seconds': 1001.9554511440001}
+compress_vcd {'tag': 'base_hard'}
+run_complete {'tag': 'base_hard', 'completed': 7, 'total': 7, 'energy_nJ_per_image': 28.577422600999995}
+complete {'completed': 7, 'total': 7}

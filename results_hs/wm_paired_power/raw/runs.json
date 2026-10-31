@@ -1,0 +1,401 @@
+[
+  {
+    "tag": "base_control",
+    "variant": "baseline",
+    "indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "transactions": [
+      [
+        0,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        1,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        2,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        3,
+        0,
+        2,
+        0,
+        979
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.969872,
+    "duration_us": 39.675999999999995,
+    "energy_nJ_per_image": 29.458160367999998,
+    "simulation_seconds": 1220.321588024,
+    "power_seconds": 389.1688136590001,
+    "vcd_bytes": 2017424055,
+    "vcd_sha256": "8289219166d1dc4bae15e72292fc0b471c2dffe841afba782242e640721aab7f",
+    "power_components_W": [
+      "2.199312e-03",
+      "6.857291e-04",
+      "8.483118e-05",
+      "2.969872e-03"
+    ],
+    "annotated_pin_activities": 2182483,
+    "vcd_gz_sha256": "2a918f8329658ad07de156aa6df6f0c878087023b9482ff27add7a634ee2fe38",
+    "vcd_gz_bytes": 1030206519
+  },
+  {
+    "tag": "ada_easy",
+    "variant": "adapath",
+    "indices": [
+      8,
+      10,
+      18,
+      22
+    ],
+    "transactions": [
+      [
+        8,
+        1,
+        0,
+        370,
+        839
+      ],
+      [
+        10,
+        2,
+        0,
+        48,
+        839
+      ],
+      [
+        18,
+        2,
+        0,
+        173,
+        839
+      ],
+      [
+        22,
+        2,
+        0,
+        60,
+        839
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.395013,
+    "duration_us": 34.076,
+    "energy_nJ_per_image": 20.403115747,
+    "simulation_seconds": 315.7342693549997,
+    "power_seconds": 237.088795786,
+    "vcd_bytes": 800739844,
+    "vcd_sha256": "741b19f2dc4ff7909c8eef1ca9e4a8bffae3b1544d2f58769863179e015cf6cd",
+    "power_components_W": [
+      "1.989922e-03",
+      "3.063616e-04",
+      "9.872906e-05",
+      "2.395013e-03"
+    ],
+    "annotated_pin_activities": 2745470,
+    "vcd_gz_sha256": "9fafb8260ce367b44c204b13d73529765bfd959245380fdce0480c6ca8d9fa1d",
+    "vcd_gz_bytes": 335955535
+  },
+  {
+    "tag": "base_easy",
+    "variant": "baseline",
+    "indices": [
+      8,
+      10,
+      18,
+      22
+    ],
+    "transactions": [
+      [
+        8,
+        1,
+        2,
+        0,
+        979
+      ],
+      [
+        10,
+        2,
+        2,
+        0,
+        979
+      ],
+      [
+        18,
+        2,
+        2,
+        0,
+        979
+      ],
+      [
+        22,
+        2,
+        2,
+        0,
+        979
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.915011,
+    "duration_us": 39.675999999999995,
+    "energy_nJ_per_image": 28.913994108999994,
+    "simulation_seconds": 1123.0966998039999,
+    "power_seconds": 346.1237687570001,
+    "vcd_bytes": 1963420927,
+    "vcd_sha256": "c3b0940925cfdb944c9c0ae703f97736a130823d6fa9dcb2ea66d0d86be67525",
+    "power_components_W": [
+      "2.170016e-03",
+      "6.603043e-04",
+      "8.469086e-05",
+      "2.915011e-03"
+    ],
+    "annotated_pin_activities": 2182483,
+    "vcd_gz_sha256": "a5a07bbcd2260462cd9cb364474cd485eb3b0a17d23f2adced5938cbf22b2713",
+    "vcd_gz_bytes": 1001536210
+  },
+  {
+    "tag": "ada_med",
+    "variant": "adapath",
+    "indices": [
+      2,
+      3,
+      5,
+      24
+    ],
+    "transactions": [
+      [
+        2,
+        0,
+        1,
+        16,
+        1004
+      ],
+      [
+        3,
+        3,
+        1,
+        28,
+        1004
+      ],
+      [
+        5,
+        3,
+        1,
+        13,
+        1004
+      ],
+      [
+        24,
+        1,
+        1,
+        18,
+        1004
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.865052,
+    "duration_us": 40.675999999999995,
+    "energy_nJ_per_image": 29.134713787999996,
+    "simulation_seconds": 655.5800614399996,
+    "power_seconds": 278.96436950000043,
+    "vcd_bytes": 1511654470,
+    "vcd_sha256": "a8ce76b23aabd18cc09313b20880621d7052918df0bf8a51a1fd347ba7a30864",
+    "power_components_W": [
+      "2.251935e-03",
+      "5.094687e-04",
+      "1.036485e-04",
+      "2.865052e-03"
+    ],
+    "annotated_pin_activities": 2745470,
+    "vcd_gz_sha256": "a79074ba687eaf7653b4e3d54e50f8a3f9596f8c166e6cf5c00f3da6919c5e75",
+    "vcd_gz_bytes": 718087296
+  },
+  {
+    "tag": "base_med",
+    "variant": "baseline",
+    "indices": [
+      2,
+      3,
+      5,
+      24
+    ],
+    "transactions": [
+      [
+        2,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        3,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        5,
+        3,
+        2,
+        0,
+        979
+      ],
+      [
+        24,
+        1,
+        2,
+        0,
+        979
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.9198980000000003,
+    "duration_us": 39.675999999999995,
+    "energy_nJ_per_image": 28.962468261999998,
+    "simulation_seconds": 1014.6529166010005,
+    "power_seconds": 330.3182641159992,
+    "vcd_bytes": 1969989163,
+    "vcd_sha256": "266ee8017f1b364bb3467182ecb504dd7283c1dc71225e2e78282fabdb33e2bc",
+    "power_components_W": [
+      "2.171532e-03",
+      "6.635601e-04",
+      "8.480578e-05",
+      "2.919898e-03"
+    ],
+    "annotated_pin_activities": 2182483,
+    "vcd_gz_sha256": "3f46418b58a4608fe56a6ffcb7d951ba2a71833209baf5d5af56b1eec519526e",
+    "vcd_gz_bytes": 1004630109
+  },
+  {
+    "tag": "ada_hard",
+    "variant": "adapath",
+    "indices": [
+      0,
+      1,
+      4,
+      9
+    ],
+    "transactions": [
+      [
+        0,
+        0,
+        2,
+        9,
+        1004
+      ],
+      [
+        1,
+        0,
+        2,
+        2,
+        1004
+      ],
+      [
+        4,
+        1,
+        2,
+        2,
+        1004
+      ],
+      [
+        9,
+        0,
+        2,
+        7,
+        1004
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 3.213441,
+    "duration_us": 40.675999999999995,
+    "energy_nJ_per_image": 32.677481529,
+    "simulation_seconds": 1149.5784955010004,
+    "power_seconds": 379.7973972790005,
+    "vcd_bytes": 2181732677,
+    "vcd_sha256": "dd81999325102e732457c1aa8b845979b1ea03b4c0173d65f6dc0999a80dd5da",
+    "power_components_W": [
+      "2.421275e-03",
+      "6.913433e-04",
+      "1.008226e-04",
+      "3.213441e-03"
+    ],
+    "annotated_pin_activities": 2745470,
+    "vcd_gz_sha256": "c7c2bbaf88688e2c10076f9edf0b7c920448c6809afd020bc15c380d792c3eff",
+    "vcd_gz_bytes": 1097397502
+  },
+  {
+    "tag": "base_hard",
+    "variant": "baseline",
+    "indices": [
+      0,
+      1,
+      4,
+      9
+    ],
+    "transactions": [
+      [
+        0,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        1,
+        0,
+        2,
+        0,
+        979
+      ],
+      [
+        4,
+        1,
+        2,
+        0,
+        979
+      ],
+      [
+        9,
+        0,
+        2,
+        0,
+        979
+      ]
+    ],
+    "input_fingerprint": "67e445914be084d1f6ac7e61daad94568f20023aab996852b6a33b36aeeab297f07797ebce494a91afc6b6cc54c10f1a3d3dabcec7fd81a2be42943f4a2acb3e",
+    "power_mW": 2.8810789999999997,
+    "duration_us": 39.675999999999995,
+    "energy_nJ_per_image": 28.577422600999995,
+    "simulation_seconds": 1001.9554511440001,
+    "power_seconds": 344.53180164900004,
+    "vcd_bytes": 1931079955,
+    "vcd_sha256": "783abeacb7638f1108a90177006ff0de14be90dad5bb29bff18d0337cc178bda",
+    "power_components_W": [
+      "2.150770e-03",
+      "6.452872e-04",
+      "8.502186e-05",
+      "2.881079e-03"
+    ],
+    "annotated_pin_activities": 2182483,
+    "vcd_gz_sha256": "0fc9a4291a63bce4d4498ad83a8c450d1d1eac70505d73b0f33766f066b077b3",
+    "vcd_gz_bytes": 983663999
+  }
+]

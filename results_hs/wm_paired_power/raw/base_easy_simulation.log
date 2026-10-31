@@ -1,0 +1,7 @@
+VCD info: dumpfile /root/ppa-wm-paired12/paired_run/base_easy.vcd opened for output.
+img 8 : decision=1 mode=2 margin=0 cycles=979
+img 10 : decision=2 mode=2 margin=0 cycles=979
+img 18 : decision=2 mode=2 margin=0 cycles=979
+img 22 : decision=2 mode=2 margin=0 cycles=979
+==== gate-level WM done, VCD -> /root/ppa-wm-paired12/paired_run/base_easy.vcd ====
+/root/ppa-wm-paired12/tb_gl_wm.v:143: $finish called at 39676000 (1ps)
