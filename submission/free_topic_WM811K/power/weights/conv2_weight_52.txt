@@ -1,0 +1,5 @@
+f5 f3 fc fd fa
+0e fc ff f2 ff
+09 f8 fe f0 01
+03 f9 fa 05 f9
+fb ef fb f9 04

@@ -995,11 +995,14 @@ table(doc, "전용 ICG 적용 전후의 구간별 배치 전 전력과 에너지
          "에너지는 VCD 구간 평균 전력 × 관측 시간 ÷ 4(reset과 start 포함)이다.")
 figure(doc, os.path.join(OUT, "hs_fig_icg_energy.png"),
        "전용 ICG 적용 전후의 구간별 추론당 에너지 (AdaPath_A, ASAP7 RVT TT, 100 MHz, 배치 전 VCD 기반 추정)", 13.0)
-para(doc, "같은 조건에서 고유 입력 40개로 평가 범위를 확장하였다. Easy 36장은 4장씩 9개 구간으로 구성하고, "
+expansion_p = para(doc, "같은 조건에서 고유 입력 40개로 평가 범위를 확장하였다. Easy 36장은 4장씩 9개 구간으로 구성하고, "
      "Hard는 기존과 같은 4장 1구간의 결과를 사용하였다. Easy 이미지당 에너지가 22.50 nJ에서 16.68 nJ로 평균 25.9 % 감소하였다. "
      "게이팅 전후 표준편차는 모두 약 0.15 nJ이며, 이는 9개 구간 평균의 표준편차(n = 9)로 개별 이미지의 편차가 아니다. "
      "모델 A에서 Hard 비율은 4 %이며, Hard는 여전히 4장 1구간으로 표본이 적다. 본 결과는 배치 전 활동도 기반 추정이며 "
      "Reference 대비 개선율과 결합하지 않는다.", indent=True)
+# Keep the expansion evidence clear of the footer and together on a fresh page.
+expansion_p.paragraph_format.page_break_before = True
+expansion_p.paragraph_format.keep_together = True
 para(doc, "**임계값별 정확도와 에너지의 계산 모델:** 임계값 선택에 따른 정확도와 에너지의 상충 관계를 살펴보기 위해, 3.5.6절 RTL "
      "스윕의 정답 수와 모드 비율에 위의 TH = 63 표본(Easy 36장, Hard 4장)에서 얻은 모드별 에너지를 가중한 모델을 만들었다"
      "(그림 @f_pareto@). 즉 E(TH) = p_Easy(TH) × E_Easy + p_Hard(TH) × E_Hard이며, ^^각 임계값의 전력을 직접 시뮬레이션한 값이 아니다^^. "

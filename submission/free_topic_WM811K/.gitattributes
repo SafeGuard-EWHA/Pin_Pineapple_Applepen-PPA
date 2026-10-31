@@ -2,3 +2,9 @@
 *.tcl text eol=lf
 *.mk text eol=lf
 *.sdc text eol=lf
+
+# Preserve exact bytes for the hashed power replay dependencies.
+power/std_cell_fn/*.v -text
+power/weights/*.txt -text
+power/data/*.txt -text
+power/constraint_10ns.sdc -text

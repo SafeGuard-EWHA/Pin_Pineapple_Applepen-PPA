@@ -1,22 +1,29 @@
-#!/bin/bash
-# WM-811K 게이트레벨 시뮬레이션 + VCD (Icarus Verilog). glsim/wm 폴더에서 실행.
-# NET_DIR: 넷리스트(.v)가 있는 폴더 (없으면 이 폴더의 .v.gz를 풀어서 사용), VCD도 여기에 저장
-cd "$(dirname "$0")"
-NET_DIR=${NET_DIR:-.}
-export PATH="/c/iverilog/bin:$PATH"
+#!/usr/bin/env bash
+# Replay the published windows. The original testbench and netlists are unchanged.
+set -euo pipefail
+HERE=$(cd "$(dirname "$0")" && pwd)
+cd "$HERE"
+NET_DIR=${NET_DIR:-$HERE/run}
+mkdir -p "$NET_DIR"
+NET_DIR=$(cd "$NET_DIR" && pwd)
+command -v iverilog >/dev/null
+command -v vvp >/dev/null
 for d in adapath_wm baseline_wm; do
-  [ -f $NET_DIR/${d}_net.v ] || gunzip -c ${d}_net.v.gz > $NET_DIR/${d}_net.v
+  gzip -dc "$HERE/${d}_net.v.gz" > "$NET_DIR/${d}_net.v"
 done
-echo "compile $(date +%T)"
-iverilog -g2012 -o $NET_DIR/gl_wm_ada.vvp  $NET_DIR/adapath_wm_net.v  std_cell_fn/*.v tb_gl_wm.v 2>&1 | grep -iv warning | head -5
-iverilog -g2012 -DTOP_BASELINE -o $NET_DIR/gl_wm_base.vvp $NET_DIR/baseline_wm_net.v std_cell_fn/*.v tb_gl_wm.v 2>&1 | grep -iv warning | head -5
-echo "compiled $(date +%T)"
-# 이미지 인덱스 (wm_expect.txt에서 정답이고 모드가 같은 앞쪽 4장): Easy 8,10,18,22 / Medium 2,3,5,24 / Hard 0,1,4,9
-run() { vvp $NET_DIR/$1 +I0=$3 +I1=$4 +I2=$5 +I3=$6 +VCD=$NET_DIR/$2.vcd > $NET_DIR/$2.log 2>&1; echo "done $2 $(date +%T)"; }
-run gl_wm_ada.vvp  wm_ada_easy 8 10 18 22 &
-run gl_wm_ada.vvp  wm_ada_med  2 3 5 24 &
-run gl_wm_ada.vvp  wm_ada_hard 0 1 4 9 &
-run gl_wm_base.vvp wm_base     0 1 2 3 &
-wait
-grep -h "img\|done" $NET_DIR/wm_*.log
-echo "ALL_SIM_DONE $(date +%T)"
+defs=("-DDATA=\"$HERE/weights/\"" "-DWM_INPUT=\"$HERE/data/wm_input_954.txt\"")
+iverilog -g2012 "${defs[@]}" -o "$NET_DIR/gl_wm_ada.vvp" "$NET_DIR/adapath_wm_net.v" "$HERE"/std_cell_fn/*.v "$HERE/tb_gl_wm.v" > "$NET_DIR/compile_ada.log" 2>&1
+iverilog -g2012 -DTOP_BASELINE "${defs[@]}" -o "$NET_DIR/gl_wm_base.vvp" "$NET_DIR/baseline_wm_net.v" "$HERE"/std_cell_fn/*.v "$HERE/tb_gl_wm.v" > "$NET_DIR/compile_base.log" 2>&1
+run() {
+  local exe=$1 tag=$2; shift 2
+  vvp "$NET_DIR/$exe" "+I0=$1" "+I1=$2" "+I2=$3" "+I3=$4" "+VCD=$NET_DIR/$tag.vcd" > "$NET_DIR/$tag.log" 2>&1
+  test "$(grep -c '^img ' "$NET_DIR/$tag.log")" = 4
+  if grep -Eiq 'ERROR|FATAL|cycles=4000|decision=[xz]' "$NET_DIR/$tag.log"; then cat "$NET_DIR/$tag.log" >&2; return 1; fi
+  grep -E '^img |gate-level WM done' "$NET_DIR/$tag.log"
+}
+# Serial execution avoids excessive RAM use; within-window ordering is unchanged.
+run gl_wm_ada.vvp wm_ada_easy 8 10 18 22
+run gl_wm_ada.vvp wm_ada_med 2 3 5 24
+run gl_wm_ada.vvp wm_ada_hard 0 1 4 9
+run gl_wm_base.vvp wm_base 0 1 2 3
+echo ALL_SIM_DONE

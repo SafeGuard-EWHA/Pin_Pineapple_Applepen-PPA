@@ -1,23 +1,19 @@
-#!/bin/bash
-# WSL(Ubuntu)에서 실행: 4개 VCD의 평균 전력을 OpenROAD로 계산한다.
-# 사용: VCD_DIR=/mnt/c/.../idec_glsim/wm bash power_wm.sh
+#!/usr/bin/env bash
+set -euo pipefail
+HERE=$(cd "$(dirname "$0")" && pwd)
 ORFS=${ORFS:-$HOME/OpenROAD-flow-scripts}
 export PATH="$ORFS/tools/install/OpenROAD/bin:$PATH"
-export PLATFORM_DIR=$ORFS/flow/platforms/asap7
-HERE=$(cd "$(dirname "$0")" && pwd)
-VCD_DIR=${VCD_DIR:-$HERE}
-SDC=$HERE/../../flow_scripts/constraint_10ns.sdc
-OUT=$HERE/power_results; mkdir -p $OUT
-pw() { # tag top netlist
-  NET=$VCD_DIR/$3 TOP=$2 SDC=$SDC VCD=$VCD_DIR/$1.vcd SCOPE=tb_gatelevel/dut \
-    openroad -exit $HERE/vcd_power_net.tcl 2>&1 | grep -v -E "STA-1212|ODB-0" > $OUT/power_$1.rpt
-  echo "$1: $(grep -E '^Total' $OUT/power_$1.rpt)  end=$(tail -c 3000 $VCD_DIR/$1.vcd | grep '^#' | tail -1)"
-}
-# 메모리를 고려해 두 개씩 실행
-pw wm_ada_easy adapath_wm_npu adapath_wm_net.v &
-pw wm_base     baseline_wm_npu baseline_wm_net.v &
-wait
-pw wm_ada_med  adapath_wm_npu adapath_wm_net.v &
-pw wm_ada_hard adapath_wm_npu adapath_wm_net.v &
-wait
+export PLATFORM_DIR=${PLATFORM_DIR:-$ORFS/flow/platforms/asap7}
+VCD_DIR=${VCD_DIR:-$HERE/run}
+OUT=${OUT:-$HERE/power_results}
+mkdir -p "$OUT"
+command -v openroad >/dev/null
+for tag in wm_ada_easy wm_ada_med wm_ada_hard wm_base; do
+  top=adapath_wm_npu; net=adapath_wm_net.v
+  if [[ $tag == wm_base ]]; then top=baseline_wm_npu; net=baseline_wm_net.v; fi
+  NET="$VCD_DIR/$net" TOP="$top" SDC="$HERE/constraint_10ns.sdc" VCD="$VCD_DIR/$tag.vcd" SCOPE=tb_gatelevel/dut \
+    openroad -exit "$HERE/vcd_power_net.tcl" > "$OUT/power_$tag.rpt" 2>&1
+  if grep -Eq 'Error|ERROR' "$OUT/power_$tag.rpt"; then cat "$OUT/power_$tag.rpt" >&2; exit 1; fi
+  grep '^Total' "$OUT/power_$tag.rpt"
+done
 echo POWER_DONE

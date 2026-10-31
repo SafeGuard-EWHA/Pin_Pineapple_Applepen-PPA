@@ -1,0 +1,29 @@
+{
+  "source_commit": "57cf580",
+  "pdf_pages": 43,
+  "docx_body_and_tables_unchanged": true,
+  "dependency_hashes_verified": 63,
+  "original_tb_unchanged": true,
+  "original_rtl_unchanged": true,
+  "shell_syntax": "bash -n passed on WSL",
+  "render": "43 pages inspected, changed pages 28-30 inspected at full size",
+  "simulation": "Not rerun as part of packaging correction; separate paired experiment follows",
+  "files": {
+    "report/결과보고서_PPA.pdf": {
+      "bytes": 3761718,
+      "sha256": "0b9d51d147d73f4a3a04b43c3b8ebd6f56e9b24c34d63b6a5696c08f052f5a37"
+    },
+    "report/결과보고서_PPA.docx": {
+      "bytes": 7616401,
+      "sha256": "5388c7e949bd2f631d9f2fd2d718709e5babde4f35a54a4e0323a0aa21539147"
+    },
+    "submission/PPA_final_submission.zip": {
+      "bytes": 23198176,
+      "sha256": "d4d56fafc7354a1200915670b61f5f3de6a2754452f54e9a701fee100b5a3dc7"
+    },
+    "submission/PPA_free_topic_WM811K.zip": {
+      "bytes": 19569689,
+      "sha256": "8a9884c42fe11b3e1dbd6930995da786a2a84f1437340cffd9971c1892a34ab7"
+    }
+  }
+}

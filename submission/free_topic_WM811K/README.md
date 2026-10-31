@@ -39,7 +39,7 @@
 
 - **면적:** ORFS 합성 후 Yosys `synth_stat`의 Chip area. 가중치는 지정주제 비교와 같이 입력 포트로 둔 NPU 코어 기준이다.
 - **Fmax:** `orfs/scripts/sta_sweep.tcl`로 1_synth.odb에 대해 클럭 주기를 1.0~2.4 ns로 바꾸며 STA를 수행하고, 최악 slack이 0이 되는 주기를 인접 두 점의 선형 보간으로 구하였다. 입출력 지연은 클럭 주기의 20 %로 지정주제와 같다.
-- **전력/에너지:** Baseline_WM과 AdaPath_WM의 ORFS 합성 넷리스트(보고서 면적과 같은 합성)를 ASAP7 셀 기능 모델로 100 MHz 게이트레벨 시뮬레이션(Icarus Verilog 12)하여 VCD를 얻고, OpenROAD `read_vcd` + `report_power`(ASAP7 RVT TT)로 평균 전력을 구하였다. 이미지당 에너지 = 평균 전력 × 관측 시간 ÷ 4 (이미지마다 리셋 12 cycle 포함, 지정주제와 같은 방법). AdaPath_WM은 Easy, Medium, Hard 각 4장 구간(테스트 인덱스 8/10/18/22, 2/3/5/24, 0/1/4/9)의 이미지당 에너지를 Vivado RTL 모드 비율(404 / 167 / 383)로 가중하였고, Baseline_WM은 인덱스 0~3의 4장 구간 평균이다. AdaPath_WM 12장의 게이트레벨 판정, 모드, Margin은 `wm_expect.txt`와 모두 일치하였다. 배치 전(클럭 트리, 배선 기생 성분 미포함) 추정이며, 표본은 모드별 4장이다. 실행 스크립트(run_wm.sh → power_wm.sh → energy_wm.py)와 결과는 `power/`에 있다. 이 스크립트는 팀 저장소의 `glsim/wm/` 폴더 구조(압축 넷리스트, 셀 기능 모델, 가중치와 입력 경로)를 기준으로 작성되었으며, `power/power_results/`의 리포트와 로그는 실제 실행 출력이다.
+- **전력/에너지:** Baseline_WM과 AdaPath_WM의 ORFS 합성 넷리스트(보고서 면적과 같은 합성)를 ASAP7 셀 기능 모델로 100 MHz 게이트레벨 시뮬레이션(Icarus Verilog 12)하여 VCD를 얻고, OpenROAD `read_vcd` + `report_power`(ASAP7 RVT TT)로 평균 전력을 구하였다. 이미지당 에너지 = 평균 전력 × 관측 시간 ÷ 4 (이미지마다 리셋 12 cycle 포함, 지정주제와 같은 방법). AdaPath_WM은 Easy, Medium, Hard 각 4장 구간(테스트 인덱스 8/10/18/22, 2/3/5/24, 0/1/4/9)의 이미지당 에너지를 Vivado RTL 모드 비율(404 / 167 / 383)로 가중하였고, Baseline_WM은 인덱스 0~3의 4장 구간 평균이다. AdaPath_WM 12장의 게이트레벨 판정, 모드, Margin은 `wm_expect.txt`와 모두 일치하였다. 배치 전(클럭 트리, 배선 기생 성분 미포함) 추정이며, 표본은 모드별 4장이다. 실행 스크립트(run_wm.sh → power_wm.sh → energy_wm.py)와 결과는 `power/`에 있다. 전력 재현에 필요한 압축 넷리스트, 표준셀 기능 모델, 가중치, 입력 및 SDC를 `power/`에 함께 포함하였다. 테스트벤치는 원본과 동일하며 실행 스크립트가 컴파일 옵션으로 데이터 경로만 지정한다. 포함 파일의 출처와 SHA-256은 `power/input_manifest.json`에 기록하였다.  `power/power_results/`의 리포트와 로그는 실제 실행 출력이다.
 - **기능:** Vivado 프로젝트(`vivado/PPA_AdaPath_NPU_WM.zip`)의 `tb_wm`으로 테스트 954장을 처리하여 정수 Golden과 판정, 모드, Score Margin 954 / 954 일치를 확인하였다.
 
 ## 4. 가중치 저장 방식
@@ -87,3 +87,18 @@ bash orfs/scripts/sta_wm.sh                  # 단일 STA(1,000 / 2,500 ps)와 �
 - 정리 내용: 스크립트의 작성자 PC 절대경로를 환경변수와 스크립트 기준 상대경로로 바꾸고, WM과 무관한 설계(지정주제 설계의 블록 전력, 다른 모델 합성)를 실행하던 부분과 기존 결과를 지우던 동작(`rm -rf`, `clean_synth`)을 제거하였다. 호출하는 Tcl(`sta_odb.tcl`, `sta_sweep.tcl`)은 원래 실행에 사용한 파일과 같다(줄바꿈 문자만 정리).
 - 확인한 것: ZIP 무결성, 스크립트가 호출하는 파일의 존재, bash 문법 검사(`bash -n`), 스크립트의 개인 경로 잔존 여부, RTL과 설정, Vivado 프로젝트의 정리 전후 SHA-256 동일성.
 - `reports/synth/*.txt` 앞부분의 `Found gzip magic in file /home/...` 줄은 원래 실행 환경의 도구 로그이며 실행에 쓰이지 않는다.
+
+## 8. WM 게이트레벨 전력 재현 (독립 패키지)
+
+패키지를 Linux/WSL의 짧은 영문 경로(예: `/tmp/ppa-wm`)에 풀고 실행한다. Icarus Verilog 12, Python 3, OpenROAD 및 ASAP7 RVT TT 플랫폼은 외부 설치가 필요하다. 원시 VCD는 수 GB이므로 여유 공간을 확보한다. 기존 결과를 보존하려면 패키지 사본에서 실행한다.
+
+```bash
+export ORFS=$HOME/OpenROAD-flow-scripts
+bash power/run_wm.sh
+bash power/power_wm.sh
+python3 power/energy_wm.py power/run
+```
+
+시뮬레이션은 메모리 부담을 줄이기 위해 네 구간을 순차 실행한다. `power/run/`에 컴파일 로그, 시뮬레이션 로그 및 VCD가 생성된다. 전력 스크립트는 원래 `power_results/`의 결과를 갱신하므로 원본 증거는 보존한 사본으로 비교한다. 소스 코드만 제공하는 것이 아니라 넷리스트 두 개와 셀 모델도 포함하여 저장소의 다른 폴더에 의존하지 않는다. 원본 TB와 기존 RTL은 수정하지 않았다.
+
+포함된 결과 수치는 57cf580의 기존 실행 결과이다. 패키지 경로 교정 자체가 새 전력 측정 완료를 뜻하지 않는다. 보고서의 기존 8.8%는 서로 다른 소수 입력 구성의 비교이며, 동일 입력 비교 결과와 구분한다.
