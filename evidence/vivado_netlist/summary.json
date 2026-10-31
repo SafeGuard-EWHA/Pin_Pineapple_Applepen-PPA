@@ -3,46 +3,46 @@
   {
    "key": "default",
    "seed": "기본",
-   "outputs": 196,
-   "decision_match": 196,
-   "cycle_match": 196,
-   "correct": 182,
+   "outputs": 265,
+   "decision_match": 265,
+   "cycle_match": 265,
+   "correct": 251,
    "mismatches": [],
    "final_accuracy_line": null,
-   "sim_end_ns": 1690
+   "sim_end_ns": 2280
   },
   {
    "key": "seed2",
    "seed": "2",
-   "outputs": 199,
-   "decision_match": 199,
-   "cycle_match": 199,
-   "correct": 192,
+   "outputs": 268,
+   "decision_match": 268,
+   "cycle_match": 268,
+   "correct": 260,
    "mismatches": [],
    "final_accuracy_line": null,
-   "sim_end_ns": 1700
+   "sim_end_ns": 2290
   },
   {
    "key": "seed3",
    "seed": "3",
-   "outputs": 197,
-   "decision_match": 197,
-   "cycle_match": 197,
-   "correct": 192,
+   "outputs": 267,
+   "decision_match": 267,
+   "cycle_match": 267,
+   "correct": 260,
    "mismatches": [],
    "final_accuracy_line": null,
-   "sim_end_ns": 1690
+   "sim_end_ns": 2290
   },
   {
    "key": "seed4",
    "seed": "4",
-   "outputs": 130,
-   "decision_match": 130,
-   "cycle_match": 130,
-   "correct": 126,
+   "outputs": 198,
+   "decision_match": 198,
+   "cycle_match": 198,
+   "correct": 192,
    "mismatches": [],
    "final_accuracy_line": null,
-   "sim_end_ns": 1120
+   "sim_end_ns": 1710
   },
   {
    "key": "seed5",
@@ -57,9 +57,9 @@
   }
  ],
  "rtl_ref": "results_hs/corrected_tb/sequential.csv",
- "total_outputs": 731,
- "total_decision_match": 731,
- "total_cycle_match": 731,
- "distinct_indices": 501,
+ "total_outputs": 1007,
+ "total_decision_match": 1007,
+ "total_cycle_match": 1007,
+ "distinct_indices": 612,
  "distinct_contents": 101
 }

@@ -876,7 +876,8 @@ para(doc, "넷리스트 시뮬레이션은 RTL보다 수백 배 느려 1,000장 
      "-sv_seed " + ", ".join(r["seed"] for r in NETSIM["runs"] if r["key"] != "default" and r["outputs"]) +
      "로 병렬 실행하였다. 출력 순서의 입력 이미지가 시드마다 다르므로, 각 출력을 같은 이미지 인덱스의 RTL 결과"
      "(results_hs/corrected_tb/sequential.csv)와 판정 및 처리 cycle로 대조하였다(표 @t_netsim@). ^^합계 %s개 채점 출력"
-     "에서 판정과 처리 cycle이 모두 RTL과 일치^^하였다. 출력에 포함된 입력 인덱스는 %s개이나, input_1000.txt는 고유 이미지 "
+     "에서 판정과 처리 cycle이 모두 RTL과 일치^^하였으며, 정답 수는 넷리스트와 RTL 모두 "
+     f"{sum(r['correct'] for r in NETSIM['runs']):,}개였다. 출력에 포함된 입력 인덱스는 %s개이나, input_1000.txt는 고유 이미지 "
      "100장이 반복된 파일이므로 픽셀 내용 기준으로는 %s종(X 치환 이미지 포함)이다. 이 결과는 부분 실행의 합계이며, 원본 TB 한 번의 "
      "1,000회 실행 완료를 뜻하지 않는다." % (f"{NETSIM['total_outputs']:,}", f"{NETSIM['distinct_indices']:,}",
                                     f"{NETSIM['distinct_contents']:,}"),
