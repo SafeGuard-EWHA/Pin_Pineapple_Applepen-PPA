@@ -1,0 +1,35 @@
+{
+  "review_base": "51e13a8f1c401ed156233c2356e7ed43e78833cb",
+  "main_base": "433736bd3dbd45aac67d1560b668cf95fda59908",
+  "new_simulations": false,
+  "pages": 43,
+  "figures": 32,
+  "tables": 32,
+  "all_existing_tables_and_images_preserved": true,
+  "arithmetic": {
+    "average_cycles": 851.8399999999999,
+    "average_energy_nJ": 16.15753840192,
+    "cycle_reduction_pct": 36.14392803598202,
+    "energy_reduction_pct": 8.926189813479557,
+    "latency_reduction_pct": 33.00094104242902,
+    "area_increase_pct": 55.393327662173355,
+    "energy_break_even_easy_pct": 79.0908092033288,
+    "icg_easy_reduction_pct": 25.86294168907791
+  },
+  "evidence_sha256": {
+    "report/results.json": "17929c0995f9e26f77be8830b0ad88b4b793a70fa7c2b1f1b0f8f408a6b30589",
+    "rtl/sweep_A.csv": "bfdc57f836b84a552b494c622ea5914b5e0b7d215cf32da7b14058a7de43cdd3",
+    "rtl/robustness_A.csv": "233019813b8074134e2fa8ff21b8a711d2a8880dc7ebb4eebea4b1975b0af173",
+    "results_sh/v2/03_statistics/statistics.csv": "baabeec99080ed13c045b4cf5419587696a0c715d3b6b181c85b9752d4034e75",
+    "results_sh/v2/01_independence/summary.csv": "f548bbb0e65d54a66c9ec7b0de2d4ef9bfd56d878ec3b7149e71d60ea6e3aec3",
+    "results_hs/clock_gating_sample_expansion/power_results/summary.json": "c0c6f31705d5e13653ce09107e8b86d6865fed5b766ef9e3df9dd591fdcd4924",
+    "results_hs/assertions/summary.json": "32acb77f06f299303d6279c7bd13ad370479d2e3050bf0b6ea4ca928007a5287",
+    "results_hs/assertions/WM_transactions.csv": "5f337cf4b33e7050fbc58ba9669607f788a78f44e817bc0cb26119513bcb66f6",
+    "evidence/vivado_netlist/summary.json": "cb8083628112882715eb2720c65d7a2ba6efff8ca8235cf8966f97cf5f55e837"
+  },
+  "artifacts_sha256": {
+    "report/make_final_report.py": "5fec4ffe47421952386e6480b4aa1e40331565dd01e734d2a25e7094440a09ea",
+    "report/결과보고서_PPA.docx": "e9f6f704b104d7ab1f01a102ee6b5512ab0a5a904893027ffbaf495c4f63f259",
+    "report/결과보고서_PPA.pdf": "8e6326990fc047c00b6d9d4baf655267bd3dd6fc9d3d5b3fab5dd27a00a04f4f"
+  }
+}

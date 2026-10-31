@@ -11,21 +11,28 @@ idx_all = set()
 for key, seed, fn in RUNS:
     txt = open(os.path.join(HERE, 'logs', fn), encoding='utf-8', errors='ignore').read()
     obs = [tuple(map(int, m.groups())) for m in re.finditer(r'OBS n=(\d+) idx=(\d+) dec=(\d+) t=(\d+)', txt)]
-    dm = cm = cor = 0; prev = 10175; bad = []
+    dm = cm = cor = checked = 0; prev = 10175; bad = []; excluded = []
     for n, idx, dec, t in obs:
         gd = 5 if idx == 1000 else int(seq[idx]['decision'])
         gc = None if idx == 1000 else int(seq[idx]['interface_cycles'])
         cyc = (t - 10 - prev) // 10 - 1; prev = t - 10
-        dm += dec == gd; cm += (gc is None or cyc == gc); cor += (idx % 10) == dec
+        dm += dec == gd; cor += (idx % 10) == dec
+        if gc is None:
+            excluded.append({"n": n, "image_index": idx, "observed_cycles": cyc, "reason": "No cycle reference for X/Z-filled input"})
+        else:
+            checked += 1
+            cm += cyc == gc
         if dec != gd or not (gc is None or cyc == gc): bad.append([n, idx, dec, gd, cyc, gc])
         idx_all.add(idx)
     fin = re.search(r'Accuracy :\s*(\d+)%', txt)
     out["runs"].append({"key": key, "seed": seed, "outputs": len(obs), "decision_match": dm, "cycle_match": cm,
-                        "correct": cor, "mismatches": bad, "final_accuracy_line": fin.group(0) if fin else None,
+                        "correct": cor, "cycle_checked": checked, "cycle_excluded": excluded, "mismatches": bad, "final_accuracy_line": fin.group(0) if fin else None,
                         "sim_end_ns": max([int(x) for x in re.findall(r'STEP k=\d+ t=(\d+) ns', txt)] or [0])})
 out["total_outputs"] = sum(r["outputs"] for r in out["runs"])
 out["total_decision_match"] = sum(r["decision_match"] for r in out["runs"])
 out["total_cycle_match"] = sum(r["cycle_match"] for r in out["runs"])
+out["total_cycle_checked"] = sum(r["cycle_checked"] for r in out["runs"])
+out["total_cycle_excluded"] = sum(len(r["cycle_excluded"]) for r in out["runs"])
 out["distinct_indices"] = len(idx_all)
 out["distinct_contents"] = len({grp[i] if i < 1000 else -1 for i in idx_all})
 json.dump(out, open(os.path.join(HERE, 'summary.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

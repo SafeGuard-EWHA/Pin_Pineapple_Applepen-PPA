@@ -1,0 +1,30 @@
+{
+  "base_commit": "6cf837b4d21ee530348caa53578b77d9a8b786d3",
+  "pages": 43,
+  "tables": 34,
+  "figures": 26,
+  "changed_tables": [
+    3,
+    11
+  ],
+  "table3_numeric_values_unchanged": true,
+  "other_tables_unchanged": true,
+  "all_embedded_media_unchanged": true,
+  "body_paragraph_count_before": 293,
+  "body_paragraph_count_after": 293,
+  "body_paragraph_replacement_groups": 4,
+  "protected_paths_unchanged": [
+    "rtl",
+    "vivado/submit",
+    "report/results.json",
+    "evidence/vivado_netlist"
+  ],
+  "unresolved_placeholders": 0,
+  "word_export_version": "16.0",
+  "visual_review": "All-page overview plus full-size edited pages reviewed; no new clipping or overlap detected",
+  "sha256": {
+    "report/make_final_report.py": "8ad3933cccf448b9a0b6c85aba1146c590df792d0a099fab7c7de593ea3fadba",
+    "report/결과보고서_PPA.docx": "4b2be5bf0b7969e6bbd5db12db0cd1ffc159d22d04b7a3a1c9f8b71f7efd5680",
+    "report/결과보고서_PPA.pdf": "73410729295e47750294e21436204bac7c0f0eb69a626560605fcf06f50bba2f"
+  }
+}
