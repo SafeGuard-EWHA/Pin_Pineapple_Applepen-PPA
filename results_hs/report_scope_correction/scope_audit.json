@@ -1,0 +1,71 @@
+{
+  "audit_type": "Existing-log and input-byte audit; no new simulation",
+  "base_commit": "6cf837b4d21ee530348caa53578b77d9a8b786d3",
+  "input_archive": "vivado\\submit\\PPA_AdaPath_NPU_A.zip",
+  "input_member": "PPA_AdaPath_NPU_A/data/input_1000.txt",
+  "input_member_sha256": "cccf35e29a63989cd74b7c949a15bf87457700f82178e2afcc233495ef499cca",
+  "input_pixels_sha256": "c772008c8ea4dcc947b005d406013fe983fce5be4efe4d00dbdecaefe9a7f8dd",
+  "input_images": 1000,
+  "input_unique_pixel_contents": 100,
+  "total_outputs": 250,
+  "distinct_indices": 228,
+  "distinct_pixel_contents": 95,
+  "decision_match": 250,
+  "cycle_match": 250,
+  "correct": 237,
+  "all_outputs_within_input_range": true,
+  "runs": [
+    {
+      "run": "default",
+      "outputs": 110,
+      "decision_match": 110,
+      "cycle_match": 110,
+      "correct": 102,
+      "full_1000_completed": false
+    },
+    {
+      "run": "seed2",
+      "outputs": 70,
+      "decision_match": 70,
+      "cycle_match": 70,
+      "correct": 67,
+      "full_1000_completed": false
+    },
+    {
+      "run": "seed3",
+      "outputs": 66,
+      "decision_match": 66,
+      "cycle_match": 66,
+      "correct": 64,
+      "full_1000_completed": false
+    },
+    {
+      "run": "seed4",
+      "outputs": 2,
+      "decision_match": 2,
+      "cycle_match": 2,
+      "correct": 2,
+      "full_1000_completed": false
+    },
+    {
+      "run": "seed5",
+      "outputs": 2,
+      "decision_match": 2,
+      "cycle_match": 2,
+      "correct": 2,
+      "full_1000_completed": false
+    }
+  ],
+  "sample_interpretation": "Repeated contents and output transactions are not independent image samples",
+  "xfill_condition": "Any X or Z in TB data_in causes the entire DUT input byte to be forced to 0; TB source unchanged",
+  "cycle_method": "10 ps clock; OBS time minus 10 ps is valid time; subtract one reset cycle between valid times; initial unscored valid time 10175 ps",
+  "sha256": {
+    "evidence\\vivado_netlist\\logs\\net_seed_default.log": "f8e7ae6ed52fcd573b6ecd6127f48ad64817b024e1fef28bad196c6760e749e7",
+    "evidence\\vivado_netlist\\logs\\net_seed2.log": "5684a90b77891e437a996caa9f14fc9fac4c38b8dc3552f2d883502b555945a4",
+    "evidence\\vivado_netlist\\logs\\net_seed3.log": "d9c6388708a2a90d1c652e0107c31e3d6a00009c2a28cfb37c82128a5f488a89",
+    "evidence\\vivado_netlist\\logs\\net_seed4.log": "67280f54228d985f76dd9542dfe3da25e048c6a4aa459763e701ba999698a1f8",
+    "evidence\\vivado_netlist\\logs\\net_seed5.log": "6840bb774eb25a06491bfc2d640ab016bef6f6c0fa2df142aa9ba566cdf7b1a2",
+    "results_hs\\corrected_tb\\sequential.csv": "02b09093563a207f367f523a06e56a539cc0c418c04b0c777742e99590bc3596",
+    "evidence\\vivado_netlist\\summary.json": "686f1f1087272e6484c313212ff63e1539e8f246589e97ca8df108e160b16c1c"
+  }
+}
