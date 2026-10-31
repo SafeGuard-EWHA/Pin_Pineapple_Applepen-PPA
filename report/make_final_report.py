@@ -90,7 +90,7 @@ EMPH = [
     "연산량(MAC) 감소가 아니라 게이트레벨 스위칭 기반의 추론당 에너지로 평가한다",
     # 3.1 ~ 3.4
     "Easy 입력은 Early 점수로 결과를 출력하므로 Conv2와 Light/Full FC의 추론 연산을 생략한다",
-    "판정이 미정(X)인 경우에도 안전하게 Hard로 진행하도록",
+    "RTL 시뮬레이션에서는 X 비교의 if/else 처리에 따라 Hard로 진행할 수 있으나",
     "출력 레지스터는 1단 그대로이므로 처리 cycle은 변하지 않는다",
     "Score Margin은 비선형 연산 없이 유리한 정확도–연산량 절충을 보인 지표로 해석한다",
     "'Full 경로 대비 정확도 손실 0.5 %p 이내에서 평균 MAC 최소'인 동작점을 선택하였다",
@@ -551,11 +551,11 @@ table(doc, "설계 목표 및 결과 (지정주제: Reference 대비 AdaPath_A)"
     ["자유주제 (WM-811K)", "적용 전후 PPA 개선",
      "MAC %s, 정확도 %.2f %%p 하락, 에너지 %s (대리 추정)" % (
          chg(WM["mac_ada"], WM["mac_base"]), WM["acc_base"] - WM["acc_ada"], chg(E_WM, E_WM_BASE)),
-     "추정 기준 달성"],
+     "부분 확인"],
 ], [3.3, 3.6, 7.6, 2.0], hl_rows=(1, 2, 3))
 para(doc, "면적은 처리 cycle을 줄이기 위한 병렬 데이터패스와 적응형 경로의 추가로 Reference보다 증가한다. 증가분의 대부분은 "
      "병렬 연산기에서 발생하며 판단 회로 자체는 전체의 1 % 미만이다(3.6절). 면적 투자가 지연과 에너지 이득으로 전환되는 "
-     "정도를 3.6~3.7절과 4장에서 정량적으로 분석한다.", indent=True)
+     "정도를 3.6~3.7절과 4장에서 정량적으로 분석한다. WM 자체의 전력 평가는 미완료이며, 에너지 감소율은 대리 추정이다.", indent=True)
 
 # =================================================================== 3
 h1(doc, "3. 설계 및 시뮬레이션")
@@ -581,8 +581,8 @@ table(doc, "모드별 활성 경로와 연산량 (MNIST, 10개 클래스)", ["�
 
 h2(doc, "3.2 Score Margin 기반 난이도 판단과 Top-2 Finder 개선")
 para(doc, "Score Margin m = s(Top-1) − s(Top-2)는 분류기가 1순위를 얼마나 확신하는지를 나타낸다. m ≥ T_high이면 Easy, "
-     "T_low ≤ m < T_high이면 Medium, m < T_low이면 Hard로 판정한다. 판정이 미정(X)인 경우에도 안전하게 Hard로 진행하도록 "
-     "FSM과 디코더를 if/else 우선순위 구조로 작성하였다.", indent=True)
+     "T_low ≤ m < T_high이면 Medium, m < T_low이면 Hard로 판정한다. RTL 시뮬레이션에서는 X 비교의 if/else 처리에 따라 Hard로 진행할 수 있으나, "
+     "합성 넷리스트의 X 전파 차단이나 실제 회로의 안전 동작을 보증하지 않는다.", indent=True)
 figure(doc, os.path.join(OUT, "fig_plan_flow.png"), "난이도 판단 및 모드 결정 흐름", 12.0)
 para(doc, "10개 점수의 Top-2를 구하는 기존 회로는 Top-1 탐색(Pass 1, 9단)과 해당 위치를 제외한 Top-2 탐색(Pass 2, 9단)을 직렬로 "
      "연결하여 최대 18개의 비교 단계가 형성되었고, 이 경로가 설계 전체의 임계 경로가 되었다. 이를 ^^이진 토너먼트 트리^^로 "
@@ -709,9 +709,9 @@ table(doc, "기능 검증 결과", ["검증 단계", "방법", "결과"], [
      "Reference %s / A %s / B %s" % (v["org_ref"], v["org_A"], v["org_B"])],
     ["**WM-811K (Vivado 2023.1)**", "chip 래퍼(4개 클래스) + tb_wm, 테스트 954장",
      "Golden 판정, 모드, Margin 954 / 954 일치"],
-    ["**합성 넷리스트 (Vivado 2023.1)**", "ORFS 넷리스트 + 주최 측 ASAP7 셀 Verilog + top_tb_1000",
-     "RTL과 판정 및 cycle %s / %s 일치" % (f"{min(NETSIM['total_decision_match'], NETSIM['total_cycle_match']):,}",
-                                          f"{NETSIM['total_outputs']:,}")],
+    ["**합성 넷리스트 (Vivado 2023.1)**", "ORFS 넷리스트 + ASAP7 셀 + 원본 TB + xfill, 5개 시드 부분 실행",
+     "판정 %s/%s, cycle %s/%s 일치" % (f"{NETSIM['total_decision_match']:,}", f"{NETSIM['total_outputs']:,}",
+                                          f"{NETSIM['total_cycle_match']:,}", f"{NETSIM['total_cycle_checked']:,}")],
 ], [3.8, 7.0, 6.2], hl_rows=(5, 6, 7))
 table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
       ["설계", "정답 (순차 입력)", "정답률 (주최 TB)", "평균 cycle (주최 TB)", "평균 cycle (순차 입력)", "모드 분포 (순차)"], [
@@ -812,7 +812,7 @@ para(doc, "설명회 Sample Flow의 기능 검증 단계에 따라, 제출 chip(
 para(doc, "원본 TB는 첫 valid_out 전까지 state가 X이므로 첫 비채점 이미지의 픽셀을 X로 입력하고, 인덱스 1000이 선택될 때도 "
      "X 픽셀을 읽는다(3.5.1절). RTL에서는 X가 있어도 제어가 진행되지만, 넷리스트에서는 X가 Score Margin과 모드 판정을 거쳐 "
      "FSM 상태 레지스터까지 전파되어 ^^valid_out이 1이 되지 않고 시뮬레이션이 시작 직후 정지^^하였다. 입력에 따라 경로를 바꾸는 "
-     "제어가 게이트레벨 시뮬레이션의 X 전파에 노출된 결과이며, 실제 회로에서는 X 대신 임의의 값이 입력된다. 따라서 TB "
+     "제어가 게이트레벨 시뮬레이션의 X 전파에 노출된 결과이며, 실제 회로의 정상 동작 또는 고장을 단정하지 않는다. 따라서 TB "
      "파일은 수정하지 않고, ^^TB가 내보내는 입력 바이트에 X 또는 Z가 포함된 경우에만 DUT 입력을 0으로 바꾸는 시뮬레이션 전용 모듈^^을 추가하였다. 이 모듈은 "
      "각 채점 출력의 이미지 인덱스와 판정도 기록하며 DUT의 다른 입력은 구동하지 않는다. 같은 모듈을 적용한 RTL 실행은 기존 "
      "Vivado 로그와 1,000개 채점 출력 시각이 모두 같았고, 판정은 인덱스 1000 이미지(879번째, 원래도 오답) 1건만 10에서 5로 "
@@ -820,28 +820,28 @@ para(doc, "원본 TB는 첫 valid_out 전까지 state가 X이므로 첫 비채�
 para(doc, "넷리스트 시뮬레이션은 RTL보다 수백 배 느려 1,000장 실행에 수 시간이 걸리므로, 기본 시드 실행과 함께 같은 TB를 xsim의 "
      "-sv_seed " + ", ".join(r["seed"] for r in NETSIM["runs"] if r["key"] != "default" and r["outputs"]) +
      "로 병렬 실행하였다. 출력 순서의 입력 이미지가 시드마다 다르므로, 각 출력을 같은 이미지 인덱스의 RTL 결과"
-     "와 판정 및 처리 cycle로 대조하였다(표 @t_netsim@). ^^합계 %s개 채점 출력"
-     "에서 판정과 처리 cycle이 모두 RTL과 일치^^하였으며, 정답 수는 넷리스트와 RTL 모두 "
+     "와 대조하였다(표 @t_netsim@). ^^합계 %s개 채점 출력의 판정이 RTL과 일치^^하였다. "
+     f"처리 cycle은 기준값이 있는 {NETSIM['total_cycle_checked']:,}개 출력에서 모두 일치하였으며, 인덱스 1000의 치환 출력 1건은 제외하였다. 정답 수는 넷리스트와 RTL 모두 "
      f"{sum(r['correct'] for r in NETSIM['runs']):,}개였다. 출력에 포함된 입력 인덱스는 %s개이나, input_1000.txt는 고유 이미지 "
      "100장이 반복된 파일이므로 픽셀 내용 기준으로는 %s종(X 치환 이미지 포함)이다. " % (f"{NETSIM['total_outputs']:,}", f"{NETSIM['distinct_indices']:,}",
                                     f"{NETSIM['distinct_contents']:,}"),
      indent=True)
 table(doc, "합성 넷리스트의 Vivado 기능 검증 결과 (Vivado 2023.1, 같은 이미지 인덱스의 RTL 결과와 대조)",
-      ["실행", "채점 출력 수", "판정 일치", "처리 cycle 일치", "정답 수 (넷리스트 = RTL)"],
+      ["실행", "채점 출력 수", "판정 일치", "cycle 일치/대조", "정답 수 (넷리스트 = RTL)"],
       [["기본 시드" if r["key"] == "default" else "-sv_seed " + r["seed"], f"{r['outputs']:,}", f"{r['decision_match']:,}",
-        f"{r['cycle_match']:,}", f"{r['correct']:,}"] for r in NETSIM["runs"] if r["outputs"]] +
+        f"{r['cycle_match']:,}/{r['cycle_checked']:,}", f"{r['correct']:,}"] for r in NETSIM["runs"] if r["outputs"]] +
       [["**합계**", f"**{NETSIM['total_outputs']:,}**", f"**{NETSIM['total_decision_match']:,}**",
-        f"**{NETSIM['total_cycle_match']:,}**", f"{sum(r['correct'] for r in NETSIM['runs']):,}"]],
+        f"**{NETSIM['total_cycle_match']:,}/{NETSIM['total_cycle_checked']:,}**", f"{sum(r['correct'] for r in NETSIM['runs']):,}"]],
       [3.4, 3.0, 3.0, 3.2, 4.4], size=9,
       note=("기본 시드는 원본 TB 1,000장 실행 전체를 완료하였다(%s)." % _nd["final_accuracy_line"]) if _nd["final_accuracy_line"] else
-           ("기본 시드 실행은 %s번째 이미지(시뮬레이션 %s ns)까지 수행하였다."
+           ("기본 시드는 %s회 출력(시뮬레이션 %s ns)까지 확인하였다. 5개 시드의 부분 실행 합계이며, 원본 TB 한 번의 1,000회 실행 완료는 아니다."
             % (f"{_nd['outputs']:,}", f"{_nd['sim_end_ns']:,}")))
 figure(doc, os.path.join(OUT, "fig_vivado_netlist.png"),
        "Vivado 2023.1 시뮬레이터에서 합성 넷리스트(1_synth.v + 주최 측 ASAP7 셀 Verilog)로 원본 top_tb_1000을 실행한 화면. "
-       "위는 처음 45 ns의 파형, 아래 Tcl 콘솔은 TB의 채점 출력과 전체 실행의 RTL 대조 집계이다.", 17.0)
+       "위는 처음 45 ns의 파형, 아래 콘솔의 집계는 교정 전 값이다(cycle 대조 1건 제외, 표 %(t_netsim)s)." % LBL, 17.0)
 para(doc, "그림은 같은 넷리스트 스냅샷을 GUI 모드로 다시 실행하여 캡처한 것이다. 첫 비채점 이미지 구간의 data_in은 X로 표시되며(0~10 ns), "
      "그 뒤 이미지마다 rst_n 펄스와 valid_out이 반복되고 cnt와 accuracy가 함께 증가한다. 콘솔의 OBS 줄은 시뮬레이션 전용 모듈이 "
-     "기록한 이미지 인덱스와 판정이고, 마지막 줄은 전체 실행의 RTL 대조 집계이다.", indent=True)
+     "기록한 이미지 인덱스와 판정이고, 마지막 줄은 교정 전 집계이다. 인덱스 1000은 cycle 기준값 없이 일치로 집계되었으므로 표 @t_netsim@에서 제외하였다.", indent=True)
 para(doc, "처리 cycle은 연속한 채점 출력 사이 간격에서 리셋 1 cycle을 뺀 값으로, RTL 결과의 처리 cycle과 같은 정의이다.", indent=True)
 
 h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
@@ -1218,7 +1218,7 @@ para(doc, "지정주제(MNIST, 모델 A)에서는 주최 측 Reference와 같은
 para(doc, "같은 RTL을 파라미터만 바꾸어 확장 모델 B(MNIST, 주최 TB 정답 999 / 1,000)와 자유주제 웨이퍼맵 결함 분류(WM-811K, "
      "4개 클래스)에 적용하였다. WM-811K에서는 Medium 경로가 실제로 선택되어 3경로 제어가 동작함을 확인하였고, Vivado에서 정확도 "
      "81.13 %(774 / 954)와 정수 Golden 대비 판정, 모드, Score Margin 954 / 954 일치를 얻었다. 기능 검증은 단위 회로, 1,000장 회귀, "
-     "주최 측 테스트벤치, 제출 패키지의 독립 PC 재현, 합성 넷리스트의 Vivado 시뮬레이션(1,007개 출력이 RTL과 판정 및 cycle 일치)까지 "
+     "주최 측 테스트벤치, 제출 패키지의 독립 PC 재현, 합성 넷리스트의 Vivado 시뮬레이션(5개 시드 부분 실행, 판정 1,007회 일치, cycle 1,006/1,006 일치)까지 "
      "단계별로 수행하였다.", indent=True)
 para(doc, "또한 본 과제는 ^^연산량(MAC) 감소가 곧 에너지 감소로 이어지지 않는다^^는 점을 블록 단위로 보이고, 적응형 경로가 에너지에서 "
      "유리해지는 Easy 비율(약 %.0f %%)을 손익분기점으로 제시하였다. 이는 적응형 추론 하드웨어를 설계할 때 경로 생략과 함께 유휴 "

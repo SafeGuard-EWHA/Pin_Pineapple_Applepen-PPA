@@ -5,8 +5,17 @@
    "seed": "기본",
    "outputs": 265,
    "decision_match": 265,
-   "cycle_match": 265,
+   "cycle_match": 264,
    "correct": 251,
+   "cycle_checked": 264,
+   "cycle_excluded": [
+    {
+     "n": 123,
+     "image_index": 1000,
+     "observed_cycles": 1018,
+     "reason": "No cycle reference for X/Z-filled input"
+    }
+   ],
    "mismatches": [],
    "final_accuracy_line": null,
    "sim_end_ns": 2280
@@ -18,6 +27,8 @@
    "decision_match": 268,
    "cycle_match": 268,
    "correct": 260,
+   "cycle_checked": 268,
+   "cycle_excluded": [],
    "mismatches": [],
    "final_accuracy_line": null,
    "sim_end_ns": 2290
@@ -29,6 +40,8 @@
    "decision_match": 267,
    "cycle_match": 267,
    "correct": 260,
+   "cycle_checked": 267,
+   "cycle_excluded": [],
    "mismatches": [],
    "final_accuracy_line": null,
    "sim_end_ns": 2290
@@ -40,6 +53,8 @@
    "decision_match": 198,
    "cycle_match": 198,
    "correct": 192,
+   "cycle_checked": 198,
+   "cycle_excluded": [],
    "mismatches": [],
    "final_accuracy_line": null,
    "sim_end_ns": 1710
@@ -51,6 +66,8 @@
    "decision_match": 9,
    "cycle_match": 9,
    "correct": 9,
+   "cycle_checked": 9,
+   "cycle_excluded": [],
    "mismatches": [],
    "final_accuracy_line": null,
    "sim_end_ns": 90
@@ -59,7 +76,9 @@
  "rtl_ref": "results_hs/corrected_tb/sequential.csv",
  "total_outputs": 1007,
  "total_decision_match": 1007,
- "total_cycle_match": 1007,
+ "total_cycle_match": 1006,
+ "total_cycle_checked": 1006,
+ "total_cycle_excluded": 1,
  "distinct_indices": 612,
  "distinct_contents": 101
 }
