@@ -31,3 +31,479 @@ run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.30
 STEP k=2 t=20 ns cnt=1 acc=1 wall=99s
 2nd input image : original value = 0, decision = 0 at 27145 ps ==> Success
 OBS n=2 idx=690 dec=0 t=27145
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:00 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=3 t=30 ns cnt=2 acc=2 wall=158s
+3rd input image : original value = 4, decision = 4 at 35625 ps ==> Success
+OBS n=3 idx=424 dec=4 t=35625
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:04 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=4 t=40 ns cnt=3 acc=3 wall=223s
+4th input image : original value = 7, decision = 7 at 44105 ps ==> Success
+OBS n=4 idx=497 dec=7 t=44105
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:01:00 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=5 t=50 ns cnt=4 acc=4 wall=283s
+5th input image : original value = 9, decision = 9 at 52585 ps ==> Success
+OBS n=5 idx=929 dec=9 t=52585
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=6 t=60 ns cnt=5 acc=5 wall=346s
+6th input image : original value = 9, decision = 9 at 61065 ps ==> Success
+OBS n=6 idx=899 dec=9 t=61065
+7th input image : original value = 8, decision = 8 at 69545 ps ==> Success
+OBS n=7 idx=328 dec=8 t=69545
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=7 t=70 ns cnt=7 acc=7 wall=396s
+8th input image : original value = 3, decision = 3 at 78025 ps ==> Success
+OBS n=8 idx=763 dec=3 t=78025
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=8 t=80 ns cnt=8 acc=8 wall=448s
+9th input image : original value = 8, decision = 8 at 86505 ps ==> Success
+OBS n=9 idx=278 dec=8 t=86505
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:53 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=9 t=90 ns cnt=9 acc=9 wall=500s
+10th input image : original value = 2, decision = 2 at 94985 ps ==> Success
+OBS n=10 idx=752 dec=2 t=94985
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:59 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=10 t=100 ns cnt=10 acc=10 wall=559s
+11st input image : original value = 1, decision = 1 at 103465 ps ==> Success
+OBS n=11 idx=641 dec=1 t=103465
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=11 t=110 ns cnt=11 acc=11 wall=620s
+12nd input image : original value = 6, decision = 6 at 111945 ps ==> Success
+OBS n=12 idx=206 dec=6 t=111945
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:03 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=12 t=120 ns cnt=13 acc=12 wall=684s
+13rd input image : original value = 0, decision = 0 at 120425 ps ==> Success
+OBS n=13 idx=30 dec=0 t=120425
+14th input image : original value = 9, decision = 9 at 128905 ps ==> Success
+OBS n=14 idx=39 dec=9 t=128905
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:02 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=13 t=130 ns cnt=14 acc=14 wall=745s
+15th input image : original value = 0, decision = 0 at 137385 ps ==> Success
+OBS n=15 idx=40 dec=0 t=137385
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:59 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=14 t=140 ns cnt=15 acc=15 wall=804s
+16th input image : original value = 0, decision = 0 at 145865 ps ==> Success
+OBS n=16 idx=380 dec=0 t=145865
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:01:03 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=15 t=150 ns cnt=16 acc=16 wall=868s
+17th input image : original value = 1, decision = 1 at 154345 ps ==> Success
+OBS n=17 idx=171 dec=1 t=154345
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:59 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=16 t=160 ns cnt=17 acc=17 wall=926s
+18th input image : original value = 1, decision = 1 at 162825 ps ==> Success
+OBS n=18 idx=61 dec=1 t=162825
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:04 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=17 t=170 ns cnt=18 acc=18 wall=990s
+19th input image : original value = 6, decision = 6 at 171305 ps ==> Success
+OBS n=19 idx=586 dec=6 t=171305
+20th input image : original value = 2, decision = 2 at 179785 ps ==> Success
+OBS n=20 idx=892 dec=2 t=179785
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=18 t=180 ns cnt=20 acc=20 wall=1040s
+21st input image : original value = 0, decision = 0 at 188265 ps ==> Success
+OBS n=21 idx=410 dec=0 t=188265
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=19 t=190 ns cnt=21 acc=21 wall=1090s
+22nd input image : original value = 6, decision = 6 at 196745 ps ==> Success
+OBS n=22 idx=626 dec=6 t=196745
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=20 t=200 ns cnt=22 acc=22 wall=1139s
+23rd input image : original value = 1, decision = 1 at 205225 ps ==> Success
+OBS n=23 idx=271 dec=1 t=205225
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:15 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=21 t=210 ns cnt=23 acc=23 wall=1214s
+24th input image : original value = 1, decision = 1 at 213705 ps ==> Success
+OBS n=24 idx=581 dec=1 t=213705
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:21 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=22 t=220 ns cnt=24 acc=24 wall=1295s
+25th input image : original value = 7, decision = 7 at 222185 ps ==> Success
+OBS n=25 idx=377 dec=7 t=222185
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=23 t=230 ns cnt=25 acc=25 wall=1343s
+26th input image : original value = 8, decision = 8 at 230665 ps ==> Success
+OBS n=26 idx=548 dec=8 t=230665
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=24 t=240 ns cnt=27 acc=26 wall=1393s
+27th input image : original value = 2, decision = 1 at 240855 ps ==> Fail
+OBS n=27 idx=162 dec=1 t=240855
+28th input image : original value = 7, decision = 7 at 249335 ps ==> Success
+OBS n=28 idx=477 dec=7 t=249335
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:57 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=25 t=250 ns cnt=28 acc=27 wall=1450s
+29th input image : original value = 4, decision = 4 at 257815 ps ==> Success
+OBS n=29 idx=554 dec=4 t=257815
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:46 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=26 t=260 ns cnt=29 acc=28 wall=1497s
+30th input image : original value = 5, decision = 5 at 268005 ps ==> Success
+OBS n=30 idx=505 dec=5 t=268005
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:57 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=27 t=270 ns cnt=30 acc=29 wall=1554s
+31st input image : original value = 8, decision = 8 at 276485 ps ==> Success
+OBS n=31 idx=438 dec=8 t=276485
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=28 t=280 ns cnt=31 acc=30 wall=1605s
+32nd input image : original value = 2, decision = 7 at 284965 ps ==> Fail
+OBS n=32 idx=622 dec=7 t=284965
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=29 t=290 ns cnt=32 acc=30 wall=1656s
+33rd input image : original value = 2, decision = 2 at 293445 ps ==> Success
+OBS n=33 idx=52 dec=2 t=293445
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=30 t=300 ns cnt=33 acc=31 wall=1706s
+34th input image : original value = 2, decision = 2 at 301925 ps ==> Success
+OBS n=34 idx=982 dec=2 t=301925
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=31 t=310 ns cnt=35 acc=32 wall=1754s
+35th input image : original value = 9, decision = 9 at 310405 ps ==> Success
+OBS n=35 idx=479 dec=9 t=310405
+36th input image : original value = 7, decision = 7 at 318885 ps ==> Success
+OBS n=36 idx=987 dec=7 t=318885
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:46 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=32 t=320 ns cnt=36 acc=34 wall=1800s
+37th input image : original value = 6, decision = 6 at 327365 ps ==> Success
+OBS n=37 idx=486 dec=6 t=327365
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=33 t=330 ns cnt=37 acc=35 wall=1849s
+38th input image : original value = 8, decision = 8 at 335845 ps ==> Success
+OBS n=38 idx=298 dec=8 t=335845
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=34 t=340 ns cnt=38 acc=36 wall=1901s
+39th input image : original value = 9, decision = 9 at 344325 ps ==> Success
+OBS n=39 idx=989 dec=9 t=344325
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=35 t=350 ns cnt=39 acc=37 wall=1948s
+40th input image : original value = 9, decision = 9 at 352805 ps ==> Success
+OBS n=40 idx=919 dec=9 t=352805
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=36 t=360 ns cnt=40 acc=38 wall=2000s
+41st input image : original value = 0, decision = 0 at 361285 ps ==> Success
+OBS n=41 idx=350 dec=0 t=361285
+42nd input image : original value = 9, decision = 9 at 369765 ps ==> Success
+OBS n=42 idx=539 dec=9 t=369765
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=37 t=370 ns cnt=42 acc=40 wall=2049s
+43rd input image : original value = 5, decision = 5 at 378245 ps ==> Success
+OBS n=43 idx=285 dec=5 t=378245
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:45 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=38 t=380 ns cnt=43 acc=41 wall=2094s
+44th input image : original value = 6, decision = 6 at 386725 ps ==> Success
+OBS n=44 idx=216 dec=6 t=386725
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=39 t=390 ns cnt=44 acc=42 wall=2142s
+45th input image : original value = 7, decision = 7 at 395205 ps ==> Success
+OBS n=45 idx=217 dec=7 t=395205
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=40 t=400 ns cnt=45 acc=43 wall=2190s
+46th input image : original value = 5, decision = 5 at 403685 ps ==> Success
+OBS n=46 idx=345 dec=5 t=403685
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=41 t=410 ns cnt=46 acc=44 wall=2239s
+47th input image : original value = 5, decision = 5 at 412165 ps ==> Success
+OBS n=47 idx=515 dec=5 t=412165
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=42 t=420 ns cnt=47 acc=45 wall=2288s
+48th input image : original value = 7, decision = 7 at 420645 ps ==> Success
+OBS n=48 idx=877 dec=7 t=420645
+49th input image : original value = 4, decision = 4 at 429125 ps ==> Success
+OBS n=49 idx=884 dec=4 t=429125
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:47 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=43 t=430 ns cnt=49 acc=47 wall=2335s
+50th input image : original value = 0, decision = 0 at 437605 ps ==> Success
+OBS n=50 idx=800 dec=0 t=437605
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=44 t=440 ns cnt=50 acc=48 wall=2385s
+51st input image : original value = 3, decision = 3 at 446085 ps ==> Success
+OBS n=51 idx=473 dec=3 t=446085
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=45 t=450 ns cnt=51 acc=49 wall=2436s
+52nd input image : original value = 0, decision = 0 at 454565 ps ==> Success
+OBS n=52 idx=410 dec=0 t=454565
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:53 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=46 t=460 ns cnt=52 acc=50 wall=2489s
+53rd input image : original value = 4, decision = 4 at 463045 ps ==> Success
+OBS n=53 idx=144 dec=4 t=463045
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=47 t=470 ns cnt=53 acc=51 wall=2540s
+54th input image : original value = 8, decision = 8 at 471525 ps ==> Success
+OBS n=54 idx=988 dec=8 t=471525
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:27 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=48 t=480 ns cnt=55 acc=52 wall=2687s
+55th input image : original value = 7, decision = 7 at 480005 ps ==> Success
+OBS n=55 idx=357 dec=7 t=480005
+56th input image : original value = 8, decision = 8 at 488485 ps ==> Success
+OBS n=56 idx=718 dec=8 t=488485
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:46 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=49 t=490 ns cnt=56 acc=54 wall=2794s
+57th input image : original value = 7, decision = 7 at 496965 ps ==> Success
+OBS n=57 idx=477 dec=7 t=496965
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:43 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=50 t=500 ns cnt=57 acc=55 wall=2957s
+58th input image : original value = 0, decision = 0 at 505445 ps ==> Success
+OBS n=58 idx=830 dec=0 t=505445
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:02:27 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=51 t=510 ns cnt=58 acc=56 wall=3104s
+59th input image : original value = 8, decision = 8 at 513925 ps ==> Success
+OBS n=59 idx=818 dec=8 t=513925
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:23 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=52 t=520 ns cnt=59 acc=57 wall=3247s
+60th input image : original value = 3, decision = 3 at 522405 ps ==> Success
+OBS n=60 idx=693 dec=3 t=522405
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:28 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=53 t=530 ns cnt=60 acc=58 wall=3395s
+61st input image : original value = 7, decision = 7 at 530885 ps ==> Success
+OBS n=61 idx=817 dec=7 t=530885
+62nd input image : original value = 5, decision = 5 at 539365 ps ==> Success
+OBS n=62 idx=865 dec=5 t=539365
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=54 t=540 ns cnt=62 acc=60 wall=3506s
+63rd input image : original value = 0, decision = 0 at 547845 ps ==> Success
+OBS n=63 idx=410 dec=0 t=547845
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:36 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=55 t=550 ns cnt=63 acc=61 wall=3662s
+64th input image : original value = 3, decision = 3 at 556325 ps ==> Success
+OBS n=64 idx=293 dec=3 t=556325
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:44 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=56 t=560 ns cnt=64 acc=62 wall=3765s
+65th input image : original value = 4, decision = 4 at 564805 ps ==> Success
+OBS n=65 idx=694 dec=4 t=564805
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:02:39 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=57 t=570 ns cnt=65 acc=63 wall=3924s
+66th input image : original value = 9, decision = 9 at 573285 ps ==> Success
+OBS n=66 idx=299 dec=9 t=573285
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:01 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=58 t=580 ns cnt=66 acc=64 wall=4045s
+67th input image : original value = 6, decision = 6 at 581765 ps ==> Success
+OBS n=67 idx=986 dec=6 t=581765
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:54 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=59 t=590 ns cnt=68 acc=65 wall=4219s
+68th input image : original value = 0, decision = 0 at 590245 ps ==> Success
+OBS n=68 idx=510 dec=0 t=590245
+69th input image : original value = 3, decision = 3 at 598725 ps ==> Success
+OBS n=69 idx=163 dec=3 t=598725
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:02:29 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=60 t=600 ns cnt=69 acc=67 wall=4368s
+70th input image : original value = 7, decision = 7 at 607205 ps ==> Success
+OBS n=70 idx=467 dec=7 t=607205
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:37 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=61 t=610 ns cnt=70 acc=68 wall=4464s
+71st input image : original value = 5, decision = 5 at 615685 ps ==> Success
+OBS n=71 idx=875 dec=5 t=615685
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:12 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=62 t=620 ns cnt=71 acc=69 wall=4536s
+72nd input image : original value = 8, decision = 8 at 624165 ps ==> Success
+OBS n=72 idx=548 dec=8 t=624165
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=63 t=630 ns cnt=72 acc=70 wall=4587s
+73rd input image : original value = 5, decision = 5 at 632645 ps ==> Success
+OBS n=73 idx=75 dec=5 t=632645
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:55 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=64 t=640 ns cnt=73 acc=71 wall=4642s
+74th input image : original value = 0, decision = 0 at 641125 ps ==> Success
+OBS n=74 idx=860 dec=0 t=641125
+75th input image : original value = 8, decision = 8 at 649605 ps ==> Success
+OBS n=75 idx=438 dec=8 t=649605
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:53 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=65 t=650 ns cnt=75 acc=73 wall=4695s
+76th input image : original value = 9, decision = 9 at 658085 ps ==> Success
+OBS n=76 idx=619 dec=9 t=658085
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=66 t=660 ns cnt=76 acc=74 wall=4744s
+77th input image : original value = 6, decision = 6 at 666565 ps ==> Success
+OBS n=77 idx=16 dec=6 t=666565
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=67 t=670 ns cnt=77 acc=75 wall=4794s
+78th input image : original value = 2, decision = 2 at 675045 ps ==> Success
+OBS n=78 idx=312 dec=2 t=675045
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=68 t=680 ns cnt=78 acc=76 wall=4846s
+79th input image : original value = 7, decision = 7 at 683525 ps ==> Success
+OBS n=79 idx=857 dec=7 t=683525
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=69 t=690 ns cnt=79 acc=77 wall=4898s
+80th input image : original value = 2, decision = 2 at 692005 ps ==> Success
+OBS n=80 idx=782 dec=2 t=692005
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=70 t=700 ns cnt=81 acc=78 wall=4946s
+81st input image : original value = 3, decision = 3 at 700485 ps ==> Success
+OBS n=81 idx=243 dec=3 t=700485
+82nd input image : original value = 6, decision = 6 at 708965 ps ==> Success
+OBS n=82 idx=366 dec=6 t=708965
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=71 t=710 ns cnt=82 acc=80 wall=4994s
+83rd input image : original value = 2, decision = 2 at 717445 ps ==> Success
+OBS n=83 idx=472 dec=2 t=717445
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=72 t=720 ns cnt=83 acc=81 wall=5042s
+84th input image : original value = 9, decision = 9 at 725925 ps ==> Success
+OBS n=84 idx=259 dec=9 t=725925
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=73 t=730 ns cnt=84 acc=82 wall=5093s
+85th input image : original value = 8, decision = 8 at 734405 ps ==> Success
+OBS n=85 idx=678 dec=8 t=734405
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=74 t=740 ns cnt=85 acc=83 wall=5142s
+86th input image : original value = 8, decision = 8 at 742885 ps ==> Success
+OBS n=86 idx=18 dec=8 t=742885
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=75 t=750 ns cnt=86 acc=84 wall=5192s
+87th input image : original value = 2, decision = 2 at 751365 ps ==> Success
+OBS n=87 idx=112 dec=2 t=751365
+88th input image : original value = 1, decision = 1 at 759845 ps ==> Success
+OBS n=88 idx=921 dec=1 t=759845
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:45 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=76 t=760 ns cnt=88 acc=86 wall=5237s
+89th input image : original value = 4, decision = 4 at 768325 ps ==> Success
+OBS n=89 idx=384 dec=4 t=768325
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:46 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=77 t=770 ns cnt=89 acc=87 wall=5283s
+90th input image : original value = 4, decision = 4 at 776805 ps ==> Success
+OBS n=90 idx=894 dec=4 t=776805
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=78 t=780 ns cnt=90 acc=88 wall=5332s
+91st input image : original value = 1, decision = 2 at 786995 ps ==> Fail
+OBS n=91 idx=251 dec=2 t=786995
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:05 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=79 t=790 ns cnt=91 acc=88 wall=5397s
+92nd input image : original value = 3, decision = 3 at 795475 ps ==> Success
+OBS n=92 idx=753 dec=3 t=795475
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=80 t=800 ns cnt=92 acc=89 wall=5448s
+93rd input image : original value = 2, decision = 2 at 803955 ps ==> Success
+OBS n=93 idx=602 dec=2 t=803955
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=81 t=810 ns cnt=93 acc=90 wall=5499s
+94th input image : original value = 3, decision = 3 at 812435 ps ==> Success
+OBS n=94 idx=673 dec=3 t=812435
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:53 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=82 t=820 ns cnt=94 acc=91 wall=5552s
+95th input image : original value = 3, decision = 3 at 820915 ps ==> Success
+OBS n=95 idx=53 dec=3 t=820915
+96th input image : original value = 7, decision = 7 at 829395 ps ==> Success
+OBS n=96 idx=677 dec=7 t=829395
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=83 t=830 ns cnt=96 acc=93 wall=5602s
+97th input image : original value = 7, decision = 7 at 839585 ps ==> Success
+OBS n=97 idx=637 dec=7 t=839585
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:02 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=84 t=840 ns cnt=97 acc=94 wall=5664s
+98th input image : original value = 4, decision = 4 at 848065 ps ==> Success
+OBS n=98 idx=304 dec=4 t=848065
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=85 t=850 ns cnt=98 acc=95 wall=5713s
+99th input image : original value = 0, decision = 0 at 856545 ps ==> Success
+OBS n=99 idx=500 dec=0 t=856545
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:52 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=86 t=860 ns cnt=99 acc=96 wall=5764s
+100th input image : original value = 8, decision = 8 at 865025 ps ==> Success
+OBS n=100 idx=238 dec=8 t=865025
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=87 t=870 ns cnt=100 acc=97 wall=5814s
+101st input image : original value = 7, decision = 7 at 873505 ps ==> Success
+OBS n=101 idx=667 dec=7 t=873505
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=88 t=880 ns cnt=101 acc=98 wall=5864s
+102nd input image : original value = 3, decision = 3 at 881985 ps ==> Success
+OBS n=102 idx=553 dec=3 t=881985
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=89 t=890 ns cnt=103 acc=99 wall=5914s
+103rd input image : original value = 5, decision = 5 at 890465 ps ==> Success
+OBS n=103 idx=295 dec=5 t=890465
+104th input image : original value = 3, decision = 3 at 898945 ps ==> Success
+OBS n=104 idx=303 dec=3 t=898945
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=90 t=900 ns cnt=104 acc=101 wall=5963s
+105th input image : original value = 8, decision = 8 at 907425 ps ==> Success
+OBS n=105 idx=548 dec=8 t=907425
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=91 t=910 ns cnt=105 acc=102 wall=6012s
+106th input image : original value = 5, decision = 5 at 915905 ps ==> Success
+OBS n=106 idx=795 dec=5 t=915905
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=92 t=920 ns cnt=106 acc=103 wall=6062s
+107th input image : original value = 3, decision = 3 at 924385 ps ==> Success
+OBS n=107 idx=923 dec=3 t=924385
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=93 t=930 ns cnt=107 acc=104 wall=6113s
+108th input image : original value = 5, decision = 5 at 932865 ps ==> Success
+OBS n=108 idx=595 dec=5 t=932865
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=94 t=940 ns cnt=108 acc=105 wall=6162s
+109th input image : original value = 9, decision = 9 at 941345 ps ==> Success
+OBS n=109 idx=419 dec=9 t=941345
+110th input image : original value = 8, decision = 8 at 949825 ps ==> Success
+OBS n=110 idx=598 dec=8 t=949825
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=95 t=950 ns cnt=110 acc=107 wall=6213s
+111st input image : original value = 9, decision = 9 at 958305 ps ==> Success
+OBS n=111 idx=279 dec=9 t=958305
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:47 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=96 t=960 ns cnt=111 acc=108 wall=6260s
+112nd input image : original value = 7, decision = 7 at 966785 ps ==> Success
+OBS n=112 idx=967 dec=7 t=966785
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:47 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=97 t=970 ns cnt=112 acc=109 wall=6307s
+113rd input image : original value = 3, decision = 3 at 975265 ps ==> Success
+OBS n=113 idx=83 dec=3 t=975265
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=98 t=980 ns cnt=113 acc=110 wall=6357s
+114th input image : original value = 2, decision = 2 at 983745 ps ==> Success
+OBS n=114 idx=272 dec=2 t=983745
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=99 t=990 ns cnt=114 acc=111 wall=6407s
+115th input image : original value = 2, decision = 2 at 992225 ps ==> Success
+OBS n=115 idx=942 dec=2 t=992225
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:48 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=100 t=1 us cnt=115 acc=112 wall=6456s
+116th input image : original value = 2, decision = 2 at 1000705 ps ==> Success
+OBS n=116 idx=502 dec=2 t=1000705
+117th input image : original value = 0, decision = 0 at 1009185 ps ==> Success
+OBS n=117 idx=870 dec=0 t=1009185
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:50 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=101 t=1010 ns cnt=117 acc=114 wall=6506s
+118th input image : original value = 1, decision = 1 at 1017665 ps ==> Success
+OBS n=118 idx=601 dec=1 t=1017665
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:46 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=102 t=1020 ns cnt=118 acc=115 wall=6552s
+119th input image : original value = 9, decision = 9 at 1026145 ps ==> Success
+OBS n=119 idx=849 dec=9 t=1026145
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=103 t=1030 ns cnt=119 acc=116 wall=6601s
+120th input image : original value = 3, decision = 3 at 1034625 ps ==> Success
+OBS n=120 idx=333 dec=3 t=1034625
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=104 t=1040 ns cnt=120 acc=117 wall=6652s
+121st input image : original value = 3, decision = 3 at 1043105 ps ==> Success
+OBS n=121 idx=873 dec=3 t=1043105
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:53 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=105 t=1050 ns cnt=121 acc=118 wall=6704s
+122nd input image : original value = 0, decision = 0 at 1051585 ps ==> Success
+OBS n=122 idx=480 dec=0 t=1051585
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=106 t=1060 ns cnt=123 acc=119 wall=6754s
+123rd input image : original value = 5, decision = 5 at 1060065 ps ==> Success
+OBS n=123 idx=525 dec=5 t=1060065
+124th input image : original value = 3, decision = 3 at 1068545 ps ==> Success
+OBS n=124 idx=433 dec=3 t=1068545
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=107 t=1070 ns cnt=124 acc=121 wall=6802s
+125th input image : original value = 2, decision = 2 at 1077025 ps ==> Success
+OBS n=125 idx=152 dec=2 t=1077025
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:49 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=108 t=1080 ns cnt=125 acc=122 wall=6852s
+126th input image : original value = 4, decision = 4 at 1085505 ps ==> Success
+OBS n=126 idx=754 dec=4 t=1085505
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=109 t=1090 ns cnt=126 acc=123 wall=6902s
+127th input image : original value = 6, decision = 6 at 1093985 ps ==> Success
+OBS n=127 idx=456 dec=6 t=1093985
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:51 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=110 t=1100 ns cnt=127 acc=124 wall=6953s
+128th input image : original value = 4, decision = 4 at 1102465 ps ==> Success
+OBS n=128 idx=24 dec=4 t=1102465
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:47 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=111 t=1110 ns cnt=128 acc=125 wall=7000s
+129th input image : original value = 5, decision = 5 at 1112655 ps ==> Success
+OBS n=129 idx=305 dec=5 t=1112655
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:58 . Memory (MB): peak = 1338.305 ; gain = 0.000
+STEP k=112 t=1120 ns cnt=129 acc=126 wall=7059s
+130th input image : original value = 2, decision = 1 at 1122845 ps ==> Fail
+OBS n=130 idx=362 dec=1 t=1122845

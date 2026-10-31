@@ -6,6 +6,7 @@ seq = {int(r['image_index']): r for r in csv.DictReader(open(os.path.join(HERE, 
 RUNS = [("default", "기본", "net_seed_default.log"), ("seed2", "2", "net_seed2.log"), ("seed3", "3", "net_seed3.log"),
         ("seed4", "4", "net_seed4.log"), ("seed5", "5", "net_seed5.log")]
 out = {"runs": [], "rtl_ref": "results_hs/corrected_tb/sequential.csv"}
+grp = json.load(open(os.path.join(HERE, 'content_group.json'), encoding='utf-8'))['group']
 idx_all = set()
 for key, seed, fn in RUNS:
     txt = open(os.path.join(HERE, 'logs', fn), encoding='utf-8', errors='ignore').read()
@@ -26,5 +27,6 @@ out["total_outputs"] = sum(r["outputs"] for r in out["runs"])
 out["total_decision_match"] = sum(r["decision_match"] for r in out["runs"])
 out["total_cycle_match"] = sum(r["cycle_match"] for r in out["runs"])
 out["distinct_indices"] = len(idx_all)
+out["distinct_contents"] = len({grp[i] if i < 1000 else -1 for i in idx_all})
 json.dump(out, open(os.path.join(HERE, 'summary.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in out.items() if k != "runs"}, ensure_ascii=False), [(r["key"], r["outputs"], r["decision_match"], r["cycle_match"]) for r in out["runs"]])
