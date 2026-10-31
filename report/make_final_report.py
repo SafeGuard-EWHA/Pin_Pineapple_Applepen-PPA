@@ -892,6 +892,12 @@ table(doc, "합성 넷리스트의 Vivado 기능 검증 결과 (Vivado 2023.1, �
       note=("기본 시드는 원본 TB 1,000장 실행 전체를 완료하였다(%s)." % _nd["final_accuracy_line"]) if _nd["final_accuracy_line"] else
            ("기본 시드 실행은 보고서 작성 시점까지 %s번째 이미지(시뮬레이션 %s ns)까지 진행되었다. 같은 스크립트로 1,000장 전체를 재현할 수 있다."
             % (f"{_nd['outputs']:,}", f"{_nd['sim_end_ns']:,}")))
+figure(doc, os.path.join(OUT, "fig_vivado_netlist.png"),
+       "Vivado 2023.1 시뮬레이터에서 합성 넷리스트(1_synth.v + 주최 측 ASAP7 셀 Verilog)로 원본 top_tb_1000을 실행한 화면. "
+       "위는 처음 45 ns의 파형, 아래 Tcl 콘솔은 TB의 채점 출력과 전체 실행의 RTL 대조 집계이다.", 17.0)
+para(doc, "그림은 같은 넷리스트 스냅샷을 GUI 모드로 다시 실행하여 캡처한 것이다. 첫 비채점 이미지 구간의 data_in은 X로 표시되며(0~10 ns), "
+     "그 뒤 이미지마다 rst_n 펄스와 valid_out이 반복되고 cnt와 accuracy가 함께 증가한다. 콘솔의 OBS 줄은 시뮬레이션 전용 모듈이 "
+     "기록한 이미지 인덱스와 판정이며, 마지막 줄은 evidence/vivado_netlist/summary.json의 집계를 Tcl로 읽어 출력한 것이다.", indent=True)
 para(doc, "처리 cycle은 연속한 채점 출력 사이 간격에서 리셋 1 cycle을 뺀 값으로, RTL CSV의 interface_cycles와 같은 정의이다. "
      "넷리스트 시뮬레이션 로그, 시뮬레이션 전용 모듈, 실행 스크립트와 대조 결과는 evidence/vivado_netlist/에 보존하였다.", indent=True)
 
