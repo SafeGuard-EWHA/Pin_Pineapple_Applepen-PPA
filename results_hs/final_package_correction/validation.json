@@ -18,12 +18,13 @@
       "sha256": "5388c7e949bd2f631d9f2fd2d718709e5babde4f35a54a4e0323a0aa21539147"
     },
     "submission/PPA_final_submission.zip": {
-      "bytes": 23198176,
-      "sha256": "d4d56fafc7354a1200915670b61f5f3de6a2754452f54e9a701fee100b5a3dc7"
+      "bytes": 23198283,
+      "sha256": "27168de60870923cef879315fd616798dc0eda485944ffe236b7aa4936ffa226"
     },
     "submission/PPA_free_topic_WM811K.zip": {
-      "bytes": 19569689,
-      "sha256": "8a9884c42fe11b3e1dbd6930995da786a2a84f1437340cffd9971c1892a34ab7"
+      "bytes": 19569789,
+      "sha256": "317887702ae5c016dd730eb332683ab0a5a8d2d4d272d121af582d2099d4bec0"
     }
-  }
+  },
+  "git_dependency_hashes_verified": 63
 }
