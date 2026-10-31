@@ -24,6 +24,8 @@ WM_OBS_AVG_CYC = sum(int(r['cycles']) for r in WM_TRANSACTIONS) / len(WM_TRANSAC
 SWEEP, ROBUST, LEVELS = load_results(os.path.dirname(HERE))
 TB_CHECK = json.load(open(os.path.join(HERE, '..', 'results_hs', 'corrected_tb', 'validation.json'), encoding='utf-8'))
 TB_RUNS = {r['case']: r for r in TB_CHECK['runs']}
+NETSIM = json.load(open(os.path.join(HERE, '..', 'evidence', 'vivado_netlist', 'summary.json'), encoding='utf-8'))
+NETRUN = {r['key']: r for r in NETSIM['runs']}
 assert TB_CHECK['protected_hashes_unchanged'] and TB_CHECK['random_vs_sequential_same_index_matches'] == 1000
 for _run in TB_RUNS.values():
     assert _run['observer'] == {'outputs':1000,'x_outputs':0,'invalid_reads':0,'unknown_reads':0,'reads':784000}
@@ -51,7 +53,7 @@ LBL = {
     "f_wmclass": FIGN["sh2_fig_wm_class_modes.png"], "f_rmodes": FIGN["hs_fig_robustness_modes.png"],
     "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"],
     "f_wmpaths": FIGN["fig_vivado_wm_paths.png"],
-    "t_icg": _tn("전용 ICG 적용 전후"), "t_pl": _tn("배치 및 전역 배선 후 비교"), "t_control": _tn("제어 조건의 동적 검사"),
+    "t_icg": _tn("전용 ICG 적용 전후"), "t_pl": _tn("배치 및 전역 배선 후 비교"), "t_control": _tn("제어 조건의 동적 검사"), "t_netsim": _tn("합성 넷리스트의 Vivado 기능 검증"),
     "t_wmppa": _tn("WM-811K 적용 전후 비교"),
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
@@ -721,7 +723,10 @@ table(doc, "기능 검증 결과", ["검증 단계", "방법", "결과"], [
      "Reference %s / A %s / B %s" % (v["org_ref"], v["org_A"], v["org_B"])],
     ["**WM-811K (Vivado 2023.1)**", "chip 래퍼(4개 클래스) + tb_wm, 테스트 954장",
      "Golden 판정, 모드, Margin 954 / 954 일치"],
-], [3.8, 7.0, 6.2], hl_rows=(5, 6))
+    ["**합성 넷리스트 (Vivado 2023.1)**", "ORFS 넷리스트 + 주최 측 ASAP7 셀 Verilog + top_tb_1000",
+     "RTL과 판정 및 cycle %s / %s 일치" % (f"{min(NETSIM['total_decision_match'], NETSIM['total_cycle_match']):,}",
+                                          f"{NETSIM['total_outputs']:,}")],
+], [3.8, 7.0, 6.2], hl_rows=(5, 6, 7))
 table(doc, "주최 측 입력(input_1000.txt) 기준 정확도와 처리 cycle",
       ["설계", "정답 (순차 입력)", "정답률 (주최 TB)", "평균 cycle (주최 TB)", "평균 cycle (순차 입력)", "모드 분포 (순차)"], [
     ["Reference", "970 / 1,000", "%.1f %%" % ACC["ref_org"], f0(CYC["ref_org"]), f0(CYC["ref"]), "-"],
@@ -850,6 +855,38 @@ para(doc, "Hard 비율을 p_H라 하면 평균 cycle은 C = 845(1−p_H) + 1016p
      "우세하다고 결론짓지 않았다. TL=TH이므로 Medium 경로의 기여도 검증하지 않는다.", indent=True)
 figure(doc, os.path.join(OUT, "hs_fig_sweep_A.png"),
        "모델 A 런타임 임계값 스윕 (RTL 실측, 주최 측 입력 1,000회): 정확도–평균 처리 cycle", 14.0)
+h3(doc, "3.5.7 합성 넷리스트의 Vivado 기능 검증")
+_nd = NETRUN["default"]
+_nok = min(NETSIM["total_decision_match"], NETSIM["total_cycle_match"])
+para(doc, "설명회 Sample Flow의 기능 검증 단계에 따라, 제출 chip(AdaPath_A, 가중치 상수)을 ORFS로 합성한 넷리스트와 주최 측 "
+     "ASAP7 표준셀 Verilog를 원본 top_tb_1000과 함께 Vivado 2023.1 시뮬레이터에서 실행하고 RTL 결과와 비교하였다. "
+     "셀 모델은 지연이 0인 기능 모델이므로 이 실행은 타이밍이 아닌 기능 일치를 확인한다.", indent=True)
+para(doc, "원본 TB는 첫 valid_out 전까지 state가 X이므로 첫 비채점 이미지의 픽셀을 X로 입력하고, 인덱스 1000이 선택될 때도 "
+     "X 픽셀을 읽는다(3.5.1절). RTL에서는 X가 있어도 제어가 진행되지만, 넷리스트에서는 X가 Score Margin과 모드 판정을 거쳐 "
+     "FSM 상태 레지스터까지 전파되어 ^^valid_out이 1이 되지 않고 시뮬레이션이 시작 직후 정지^^하였다. 입력에 따라 경로를 바꾸는 "
+     "제어가 게이트레벨 시뮬레이션의 X 전파에 그대로 노출된 결과이며, 실제 회로에서는 X 대신 임의의 값이 입력된다. 따라서 TB "
+     "파일은 수정하지 않고, ^^TB가 X 픽셀을 내보내는 경우에만 DUT 입력을 0으로 바꾸는 시뮬레이션 전용 모듈^^을 추가하였다. 이 모듈은 "
+     "각 채점 출력의 이미지 인덱스와 판정도 기록하며 DUT의 다른 입력은 구동하지 않는다. 같은 모듈을 적용한 RTL 실행은 기존 "
+     "Vivado 로그와 1,000개 채점 출력 시각이 모두 같았고, 판정은 인덱스 1000 이미지(879번째, 원래도 오답) 1건만 10에서 5로 "
+     "바뀌어 정답 수 966은 변하지 않았다.", indent=True)
+para(doc, "넷리스트 시뮬레이션은 RTL보다 수백 배 느려 1,000장 실행에 수 시간이 걸리므로, 기본 시드 실행과 함께 같은 TB를 xsim의 "
+     "-sv_seed " + ", ".join(r["seed"] for r in NETSIM["runs"] if r["key"] != "default" and r["outputs"]) +
+     "로 병렬 실행하였다. 출력 순서의 입력 이미지가 시드마다 다르므로, 각 출력을 같은 이미지 인덱스의 RTL 결과"
+     "(results_hs/corrected_tb/sequential.csv)와 판정 및 처리 cycle로 대조하였다(표 @t_netsim@). ^^합계 %s개 채점 출력"
+     "(고유 이미지 %s장)에서 판정과 처리 cycle이 모두 RTL과 일치^^하였다." % (f"{NETSIM['total_outputs']:,}", f"{NETSIM['distinct_indices']:,}"),
+     indent=True)
+table(doc, "합성 넷리스트의 Vivado 기능 검증 결과 (Vivado 2023.1, 같은 이미지 인덱스의 RTL 결과와 대조)",
+      ["실행", "채점 출력 수", "판정 일치", "처리 cycle 일치", "정답 수 (넷리스트 = RTL)"],
+      [["기본 시드" if r["key"] == "default" else "-sv_seed " + r["seed"], f"{r['outputs']:,}", f"{r['decision_match']:,}",
+        f"{r['cycle_match']:,}", f"{r['correct']:,}"] for r in NETSIM["runs"] if r["outputs"]] +
+      [["**합계**", f"**{NETSIM['total_outputs']:,}**", f"**{NETSIM['total_decision_match']:,}**",
+        f"**{NETSIM['total_cycle_match']:,}**", f"{sum(r['correct'] for r in NETSIM['runs']):,}"]],
+      [3.4, 3.0, 3.0, 3.2, 4.4], size=9,
+      note=("기본 시드는 원본 TB 1,000장 실행 전체를 완료하였다(%s)." % _nd["final_accuracy_line"]) if _nd["final_accuracy_line"] else
+           ("기본 시드 실행은 보고서 작성 시점까지 %s번째 이미지(시뮬레이션 %s ns)까지 진행되었다. 같은 스크립트로 1,000장 전체를 재현할 수 있다."
+            % (f"{_nd['outputs']:,}", f"{_nd['sim_end_ns']:,}")))
+para(doc, "처리 cycle은 연속한 채점 출력 사이 간격에서 리셋 1 cycle을 뺀 값으로, RTL CSV의 interface_cycles와 같은 정의이다. "
+     "넷리스트 시뮬레이션 로그, 시뮬레이션 전용 모듈, 실행 스크립트와 대조 결과는 evidence/vivado_netlist/에 보존하였다.", indent=True)
 
 h2(doc, "3.6 논리 합성 및 타이밍 (OpenROAD-flow-scripts, ASAP7)")
 para(doc, "모든 설계를 동일한 흐름(Yosys + ABC area 스크립트, 동일 SDC 규칙: 입출력 지연 = 클럭 주기의 20 %)으로 합성하고 "

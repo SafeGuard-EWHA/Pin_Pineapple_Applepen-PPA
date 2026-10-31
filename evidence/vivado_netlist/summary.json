@@ -1,0 +1,64 @@
+{
+ "runs": [
+  {
+   "key": "default",
+   "seed": "기본",
+   "outputs": 110,
+   "decision_match": 110,
+   "cycle_match": 110,
+   "correct": 102,
+   "mismatches": [],
+   "final_accuracy_line": null,
+   "sim_end_ns": 960
+  },
+  {
+   "key": "seed2",
+   "seed": "2",
+   "outputs": 70,
+   "decision_match": 70,
+   "cycle_match": 70,
+   "correct": 67,
+   "mismatches": [],
+   "final_accuracy_line": null,
+   "sim_end_ns": 610
+  },
+  {
+   "key": "seed3",
+   "seed": "3",
+   "outputs": 66,
+   "decision_match": 66,
+   "cycle_match": 66,
+   "correct": 64,
+   "mismatches": [],
+   "final_accuracy_line": null,
+   "sim_end_ns": 570
+  },
+  {
+   "key": "seed4",
+   "seed": "4",
+   "outputs": 2,
+   "decision_match": 2,
+   "cycle_match": 2,
+   "correct": 2,
+   "mismatches": [],
+   "final_accuracy_line": null,
+   "sim_end_ns": 20
+  },
+  {
+   "key": "seed5",
+   "seed": "5",
+   "outputs": 2,
+   "decision_match": 2,
+   "cycle_match": 2,
+   "correct": 2,
+   "mismatches": [],
+   "final_accuracy_line": null,
+   "sim_end_ns": 20
+  }
+ ],
+ "rtl_ref": "results_hs/corrected_tb/sequential.csv",
+ "total_outputs": 250,
+ "total_decision_match": 250,
+ "total_cycle_match": 250,
+ "distinct_indices": 228
+}
