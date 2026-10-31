@@ -114,7 +114,6 @@ EMPH = [
     "Easy 4장 구간의 이미지당 에너지는 25.9 %, Easy 3장과 Hard 1장의 혼합 구간은 25.2 %, Hard 4장 구간은 20.7 % 줄었다",
     "처리 cycle이나 MAC 감소만으로 에너지 이득을 보장할 수 없음을 정량적으로 보여준다",
     "Medium이 없는 Early-Exit(2경로)와 AdaPath(3경로)를 임계값 전수 탐색으로 비교하였다",
-    "Medium을 사용하지 않는 동작점도 선택할 수 있었다",
     "9개 사례 모두 margin, mode, decision이 정수 Golden과 일치하였다",
     # 3.9 ~ 3.11
     "모델 B 구조(4개 클래스 출력)에 같은 AdaPath 기법을 적용하였으며",
@@ -833,7 +832,7 @@ table(doc, "합성 넷리스트의 Vivado 기능 검증 결과 (Vivado 2023.1, �
         f"**{NETSIM['total_cycle_match']:,}**", f"{sum(r['correct'] for r in NETSIM['runs']):,}"]],
       [3.4, 3.0, 3.0, 3.2, 4.4], size=9,
       note=("기본 시드는 원본 TB 1,000장 실행 전체를 완료하였다(%s)." % _nd["final_accuracy_line"]) if _nd["final_accuracy_line"] else
-           ("기본 시드 실행은 보고서 작성 시점까지 %s번째 이미지(시뮬레이션 %s ns)까지 진행되었다. 같은 스크립트로 1,000장 전체를 재현할 수 있다."
+           ("기본 시드 실행은 %s번째 이미지(시뮬레이션 %s ns)까지 수행하였다."
             % (f"{_nd['outputs']:,}", f"{_nd['sim_end_ns']:,}")))
 figure(doc, os.path.join(OUT, "fig_vivado_netlist.png"),
        "Vivado 2023.1 시뮬레이터에서 합성 넷리스트(1_synth.v + 주최 측 ASAP7 셀 Verilog)로 원본 top_tb_1000을 실행한 화면. "
@@ -1015,9 +1014,8 @@ table(doc, "Early-Exit 대비 AdaPath(Medium 추가)의 이득", ["조건", "MNI
 figure(doc, os.path.join(OUT, "fig_iso_accuracy_mnist.png"), "Pareto front 비교: Early-Exit vs AdaPath (MNIST, 모델 B)", 13.0)
 figure(doc, os.path.join(OUT, "fig_iso_accuracy_wm811k.png"), "Pareto front 비교: Early-Exit vs AdaPath (WM-811K)", 13.0)
 para(doc, "평가한 조건에서 Medium 경로의 추가 MAC 절감은 MNIST 모델 B에서 0~2.2 %, WM에서 2~3 %였으며, Baseline 정확도 "
-     "근처에서는 이득이 작거나 없었다. 임계값 탐색은 "
-     "평가한 정확도 제약과 MAC 기준에서 Medium을 사용하지 않는 동작점도 선택할 수 있었다. 이는 면적과 실제 에너지까지 포함하여 "
-     "최적 하드웨어 구성을 선택했다는 의미는 아니다. 또한 모델 A의 성과를 3경로 전체의 성과로 해석하지 않는다.", indent=True)
+     "근처에서는 이득이 작았다. ^^Medium은 공격적으로 연산을 줄이는 동작점에서 효과가 크며^^, 임계값 탐색은 Medium이 "
+     "불리한 경우 이를 사용하지 않는 동작점(모델 A)도 선택할 수 있다.", indent=True)
 
 para(doc, "Medium 경로의 하드웨어 동작을 추가 확인하기 위해 현재 RTL과 모델 B 가중치로 기존 "
      "tb_adapath를 다시 실행하였다. Easy/Hard/Medium 각 3개 입력을 포함하는 9개 사례 모두 margin, mode, decision이 "
