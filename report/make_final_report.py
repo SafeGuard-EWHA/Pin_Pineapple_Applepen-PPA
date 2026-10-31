@@ -51,7 +51,7 @@ LBL = {
     "f_twofold": FIGN["sh2_fig_twofold.png"], "f_wrapper": FIGN["fig_wrapper.png"], "f_sweep": FIGN["hs_fig_sweep_A.png"],
     "f_block": FIGN["fig_block_energy.png"], "f_breakeven": FIGN["fig_energy_breakeven.png"],
     "f_wmclass": FIGN["sh2_fig_wm_class_modes.png"], "f_rmodes": FIGN["hs_fig_robustness_modes.png"],
-    "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"],
+    "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"], "f_pareto": FIGN["hs_fig_pareto.png"],
     "f_wmpaths": FIGN["fig_vivado_wm_paths.png"],
     "t_icg": _tn("전용 ICG 적용 전후"), "t_pl": _tn("배치 및 전역 배선 후 비교"), "t_control": _tn("제어 조건의 동적 검사"), "t_netsim": _tn("합성 넷리스트의 Vivado 기능 검증"),
     "t_wmppa": _tn("WM-811K 적용 전후 비교"),
@@ -326,6 +326,7 @@ def figure(doc, path, text, width=15.0):
         'hs_fig_robustness_acc.png': 'out/fig_robustness_acc.png',
         'sh2_fig_accuracy_ci.png': 'results_sh/v2/03_statistics/fig_accuracy_ci.png',
         'hs_fig_icg_energy.png': 'results_hs/clock_gating/power_results/energy_comparison.png',
+        'hs_fig_pareto.png': 'results_hs/accuracy_energy_pareto/accuracy_energy_pareto.png',
     }
     if os.path.basename(path) in sources:
         path = os.path.join(HERE, '..', sources[os.path.basename(path)])
@@ -1037,6 +1038,18 @@ para(doc, "같은 조건에서 고유 입력 40개로 평가 범위를 확장하
      "게이팅 전후 표준편차는 모두 약 0.15 nJ이며, 이는 9개 구간 평균의 표준편차(n = 9)로 개별 이미지의 편차가 아니다. "
      "모델 A에서 Hard 비율은 4 %이며, Hard는 여전히 4장 1구간으로 표본이 적다. 본 결과는 배치 전 활동도 기반 추정이며 "
      "Reference 대비 개선율과 결합하지 않는다(results_hs/clock_gating_sample_expansion/).", indent=True)
+para(doc, "**임계값별 정확도와 에너지의 계산 모델:** 임계값 선택에 따른 정확도와 에너지의 상충 관계를 살펴보기 위해, 3.5.6절 RTL "
+     "스윕의 정답 수와 모드 비율에 위의 TH = 63 표본(Easy 36장, Hard 4장)에서 얻은 모드별 에너지를 가중한 모델을 만들었다"
+     "(그림 @f_pareto@). 즉 E(TH) = p_Easy(TH) × E_Easy + p_Hard(TH) × E_Hard이며, ^^각 임계값의 전력을 직접 시뮬레이션한 값이 아니다^^. "
+     "이 모델에서 TH = 0, 10, 20, 30은 정답 980개와 게이팅 적용 추정 에너지 16.68 nJ/장으로 같은 비지배점에 위치하였고, 선정 "
+     "동작점 TH = 63은 정답 970개와 16.97 nJ/장이었다. 따라서 본 평가 입력과 고정 모드 에너지 모델에서는 TH = 63을 최적 임계값으로 "
+     "해석할 수 없다. 다만 임계값이 바뀌면 각 모드에 속하는 입력 구성도 바뀌므로(예: TH = 400의 Hard 730장을 TH = 63의 Hard 4장 "
+     "평균으로 대표) 이 가정은 직접 검증되지 않았고, 같은 평가 입력으로 사후 선정한 결과는 독립 검증이 아니다. 입력도 고유 100장의 "
+     "반복이다. 이 때문에 별도 검증 집합과 임계값별 활동도 분석 없이 설계 동작점을 변경하지 않았다"
+     "(results_hs/accuracy_energy_pareto/).", indent=True)
+figure(doc, os.path.join(OUT, "hs_fig_pareto.png"),
+       "모델 A의 임계값별 정확도와 추정 에너지 (정확도는 1,000회 입력의 RTL 스윕, 에너지는 TH = 63의 모드별 VCD 기반 추정에 모드 비율을 가중한 계산값). "
+       "별표는 선정값 TH = 63, TH = 0, 10, 20, 30은 서로 겹치는 비지배점이다.", 15.0)
 table(doc, "효율 지표", ["설계", "실행 MAC", "에너지 (nJ)", "실효 TOPS/W", "등가 TOPS/W"], [
     ["Reference", f0(MAC["ref"]), f1(E_REF), f2(topsw(MAC["ref"], E_REF)), f2(topsw(MAC["ref"], E_REF))],
     ["Baseline_A", f0(MAC["Abase"]), f1(E_ABASE), f2(topsw(MAC["Abase"], E_ABASE)), f2(topsw(MAC["ref"], E_ABASE))],
