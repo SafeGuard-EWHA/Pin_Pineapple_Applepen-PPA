@@ -1,0 +1,45 @@
+{
+  "base_commit": "4a517b3",
+  "pages": 43,
+  "tables": 32,
+  "figures": 32,
+  "all_tables_and_image_bytes_preserved": true,
+  "paragraph_count_preserved": true,
+  "changed_paragraphs": [
+    {
+      "paragraph": 148,
+      "before": "3.5.6 런타임 임계값 스윕 (RTL 실측)",
+      "after": "3.5.6 실험용 RTL의 임계값 스윕"
+    },
+    {
+      "paragraph": 149,
+      "before": "difficulty_decoder의 레지스터 임계값 모드(USE_REG_TH)를 최상위 포트로 연결하고, 주최 측 입력 1,000회에 대해 TL = TH를 0~400으로 바꿔 가며 16개 동작점을 RTL로 측정하였다(그림 16). TH = 63에서 기존 결과(정답 970, 평균 851.84 cycle, Easy/Hard 960/40)가 재현되었다. TH를 높이면 Hard 수가 0(TH = 0)에서 730(TH = 400)까지 늘고 평균 cycle은 845.0에서 969.8로 증가하여, 칩을 다시 합성하지 않고 런타임에 정확도–연산 시간 동작점을 바꿀 수 있음을 확인하였다. 이 입력 집합에서는 TH = 0, 10, 20, 30(전부 Easy)이 정답 980개로 가장 높았으나, MNIST 테스트셋 10,000장에서는 Early 경로 단독 정확도(96.21 %)가 Full 경로(97.53 %)보다 낮다. 즉 최적 임계값은 입력 분포에 따라 달라지며, 레지스터 임계값으로 이를 칩 재설계 없이 맞출 수 있다.",
+      "after": "실험용 RTL에서 difficulty_decoder의 임계값 입력 모드(USE_REG_TH=1)를 최상위 포트로 연결하고, 주최 측 입력 1,000회에 대해 TL = TH를 0~400으로 바꿔 가며 16개 동작점을 RTL로 측정하였다(그림 16). TH = 63에서 기존 결과(정답 970, 평균 851.84 cycle, Easy/Hard 960/40)가 재현되었다. TH를 높이면 Hard 수가 0(TH = 0)에서 730(TH = 400)까지 늘고 평균 cycle은 845.0에서 969.8로 증가하였다. 이 구성에서 임계값 변화에 따른 정확도와 처리 cycle을 확인하였다. 이 입력 집합에서는 TH = 0, 10, 20, 30(전부 Easy)이 정답 980개로 가장 높았으나, MNIST 테스트셋 10,000장에서는 Early 경로 단독 정확도(96.21 %)가 Full 경로(97.53 %)보다 낮다. 최적 임계값은 입력 분포에 따라 달라진다. 임계값 가변 기능은 실험용 RTL에 해당하며, 제출용 모델 A는 TL=TH=63의 고정 임계값을 사용한다."
+    },
+    {
+      "paragraph": 152,
+      "before": "[그림 16] 모델 A 런타임 임계값 스윕 (RTL 실측, 주최 측 입력 1,000회): 정확도–평균 처리 cycle",
+      "after": "[그림 16] 모델 A 임계값 스윕 (실험용 RTL, 주최 측 입력 1,000회): 정확도–평균 처리 cycle"
+    },
+    {
+      "paragraph": 252,
+      "before": "TH=63은 MNIST 테스트셋 10,000장에서 Full 대비 정확도 손실 0.5 %p 이내로 연산을 최소화하도록 선정한 동작점이다. 주최 입력에서는 더 낮은 임계값(TH=0~30)도 정답 980개와 평균 845.00 cycle을 보였으며, 임계값은 레지스터로 런타임에 바꿀 수 있으므로(3.5.6절) 응용의 입력 분포에 맞춰 동작점을 조정할 수 있다.",
+      "after": "TH=63은 MNIST 테스트셋 10,000장에서 Full 대비 정확도 손실 0.5 %p 이내로 연산을 최소화하도록 선정한 동작점이다. 주최 입력에서는 더 낮은 임계값(TH=0~30)도 정답 980개와 평균 845.00 cycle을 보였다. 임계값 가변 기능은 실험용 RTL에서 확인하였으며(3.5.6절), 제출용 모델 A는 TL=TH=63으로 고정되어 런타임 변경 인터페이스를 제공하지 않는다."
+    }
+  ],
+  "changed_pdf_text_pages": [
+    21,
+    22,
+    38
+  ],
+  "source_CRLF_preserved": true,
+  "new_simulations": false,
+  "artifacts_sha256": {
+    "report/make_final_report.py": "091b9766e962921caff7b86c002502573131fb4881d4b19104ac4b01cbbce07d",
+    "report/결과보고서_PPA.docx": "578bf9286ba91cdad185660254fc611a12d31f23535c8de96ccc094fca913314",
+    "report/결과보고서_PPA.pdf": "3b483fa1cc9d2f0217f601fcb66e803f6d5a05cee1f205a99f9e65046f66c2db"
+  },
+  "protected_paths_unchanged": true,
+  "render_method": "Microsoft Word 16.0 export with field and TOC refresh, Poppler page rendering; bundled render_docx.py unavailable because LibreOffice is not installed",
+  "visual_review": "43-page overview and detailed pages 21, 22, 38 inspected"
+}

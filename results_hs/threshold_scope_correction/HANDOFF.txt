@@ -1,0 +1,25 @@
+임계값 가변 기능의 검증 범위 교정
+
+수정 기준: exp-hyunseo-final 4a517b3 (main 60fec58 포함).
+수정 위치: 21쪽 3.5.6절 제목과 본문, 22쪽 그림 16 캡션, 38쪽 4.1절 마지막 문단.
+
+실험용 RTL은 USE_REG_TH=1 및 임계값 입력 포트를 이용하여 스윕하였다. 제출용 A Vivado ZIP은 thresholds.vh의 TL=TH=63을 사용하고 외부 임계값 변경 인터페이스가 없다. 재합성 없이 제출 칩의 임계값을 바꿀 수 있다는 오해를 피하도록 둘을 구분하였다.
+
+핵심 문장:
+임계값 가변 기능은 실험용 RTL에 해당하며, 제출용 모델 A는 TL=TH=63의 고정 임계값을 사용한다.
+제출용 모델 A는 TL=TH=63으로 고정되어 런타임 변경 인터페이스를 제공하지 않는다.
+
+근거:
+- rtl/tb_threshold_sweep.v: USE_REG_TH(1), th_low_i 및 th_high_i 연결.
+- vivado/submit/PPA_AdaPath_NPU_A.zip 내부 src/chip_adapath.v 및 src/adapath_top.v: 제출 chip에 가변 임계값 포트 없음, 디코더 임계값 입력은 0에 연결되고 상수 모드 사용.
+- 같은 ZIP 내부 src/thresholds.vh: T_LOW = T_HIGH = 63.
+
+검수:
+- Word와 PDF 재생성, Word 16.0에서 목차 및 필드 갱신.
+- 43쪽 유지. PDF 텍스트 변경 페이지는 21, 22, 38쪽뿐.
+- 기존 표 32개 내용 및 그림 32개 이미지 바이트 전부 보존.
+- RTL, 제출 ZIP, results.json 변경 없음. 새 시뮬레이션 없음.
+- 변경된 문단 4개, CRLF 보존. 전체 페이지 개요 및 변경 페이지 상세 화면 확인.
+
+서현 인수인계:
+WM 전력 반영 작업과 병행할 경우 최신 보고서를 이 PDF/DOCX로 통째로 덮어쓰지 않는다. 원문 make_final_report.py의 이 교정만 최신 편집본에 반영한 뒤 최종 DOCX/PDF와 제출 ZIP을 다시 생성한다. 이 커밋에는 WM 전력 신규 결과가 포함되지 않는다. main 병합과 최종 제출 ZIP 갱신은 최종 편집자가 진행한다.
