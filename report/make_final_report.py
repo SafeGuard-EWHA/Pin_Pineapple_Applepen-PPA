@@ -324,6 +324,8 @@ def figure(doc, path, text, width=15.0):
         'hs_fig_sweep_A.png': 'out/fig_sweep_A.png',
         'hs_fig_robustness_modes.png': 'out/fig_robustness_modes.png',
         'hs_fig_robustness_acc.png': 'out/fig_robustness_acc.png',
+        'sh2_fig_accuracy_ci.png': 'results_sh/v2/03_statistics/fig_accuracy_ci.png',
+        'hs_fig_icg_energy.png': 'results_hs/clock_gating/power_results/energy_comparison.png',
     }
     if os.path.basename(path) in sources:
         path = os.path.join(HERE, '..', sources[os.path.basename(path)])
@@ -662,6 +664,8 @@ para(doc, "모델 A는 Conv2가 3채널뿐이어서 1채널 Light 경로의 정�
      "동작점(T_low = T_high)을 평가한 후보 중에서 선택하였고, 그 결과 모델 A는 Easy/Hard 두 경로로 동작한다. 반면 후단부가 큰 모델 B와 "
      "WM-811K에서는 Medium이 선택된다(3.8절)." % sw["A_light"], indent=True)
 figure(doc, os.path.join(OUT, "archA", "fig_margin_hist_mnist.png"), "모델 A의 Score Margin 분포와 선정 임계값", 12.0)
+figure(doc, os.path.join(OUT, "archA", "fig_tradeoff_mnist.png"),
+       "모델 A의 임계값 조합별 정확도와 평균 MAC (MNIST 테스트셋, Python float). 점은 탐색한 (T_low, T_high) 조합, 별은 항상 Hard인 Baseline이다.", 14.0)
 h3(doc, "3.3.1 임계값 선정과 평가의 분리 (2-fold 교차 평가)")
 para(doc, "임계값 선정과 평가에 같은 데이터를 쓰는 문제를 줄이기 위해, 고정 "
      "가중치 모델에 대해 테스트셋을 무작위로 반분하여 한쪽에서 동작점을 선정하고 다른 쪽에서 평가하는 2-fold 교차 평가를 "
@@ -699,6 +703,8 @@ table(doc, "기존 동작점의 AdaPath vs Full 통계 비교 (같은 체크포�
     ["WM-811K", "954", "81.24 % (78.64–83.59)", "81.55 % (78.97–83.88)", "19 / 16", "0.736 (1.0)"],
 ], [2.0, 1.6, 4.0, 4.0, 1.8, 3.2],
     note="b = Full만 정답, c = AdaPath만 정답. 양측 exact 검정, 세 비교에 Holm 보정.")
+figure(doc, os.path.join(OUT, "sh2_fig_accuracy_ci.png"),
+       "기존 동작점에서 같은 이미지 쌍의 Full과 AdaPath 정확도 (Wilson 95 % 구간, 패널별 y축 범위가 다름)", 15.0)
 
 h2(doc, "3.4 RTL 설계와 주최 측 인터페이스 호환")
 para(doc, "RTL은 채널 수 및 클래스 수를 파라미터화한 단일 소스(adapath_top.v)로 작성하였다. VARIANT(0: Baseline, 1: Early-Exit, "
@@ -1024,6 +1030,8 @@ table(doc, "전용 ICG 적용 전후의 구간별 배치 전 전력과 에너지
 ], [4.0, 2.6, 2.6, 2.8, 2.8, 2.0],
     note="두 설계 모두 같은 팬아웃 제한 버퍼 클럭 트리를 넣은 값이라, 버퍼가 없는 3.7절 앞부분의 블록별 에너지와 절대값이 다르다. "
          "에너지는 VCD 구간 평균 전력 × 관측 시간 ÷ 4(reset과 start 포함)이다.")
+figure(doc, os.path.join(OUT, "hs_fig_icg_energy.png"),
+       "전용 ICG 적용 전후의 구간별 추론당 에너지 (AdaPath_A, ASAP7 RVT TT, 100 MHz, 배치 전 VCD 기반 추정)", 13.0)
 para(doc, "같은 조건에서 고유 입력 40개로 평가 범위를 확장하였다. Easy 36장은 4장씩 9개 구간으로 구성하고, "
      "Hard는 기존과 같은 4장 1구간의 결과를 사용하였다. Easy 이미지당 에너지가 22.50 nJ에서 16.68 nJ로 평균 25.9 % 감소하였다. "
      "게이팅 전후 표준편차는 모두 약 0.15 nJ이며, 이는 9개 구간 평균의 표준편차(n = 9)로 개별 이미지의 편차가 아니다. "
@@ -1058,6 +1066,7 @@ table(doc, "Early-Exit 대비 AdaPath(Medium 추가)의 이득", ["조건", "MNI
     ["Baseline 정확도 근처", "차이 없음", "거의 차이 없음"],
     ["모델 A (Conv2 3채널)", "Medium 미선택 (2경로로 수렴)", "-"],
 ], [6.0, 5.5, 5.5])
+figure(doc, os.path.join(OUT, "fig_iso_accuracy_mnist.png"), "Pareto front 비교: Early-Exit vs AdaPath (MNIST, 모델 B)", 13.0)
 figure(doc, os.path.join(OUT, "fig_iso_accuracy_wm811k.png"), "Pareto front 비교: Early-Exit vs AdaPath (WM-811K)", 13.0)
 para(doc, "평가한 조건에서 Medium 경로의 추가 MAC 절감은 MNIST 모델 B에서 0~2.2 %, WM에서 2~3 %였으며, Baseline 정확도 "
      "근처에서는 이득이 작거나 없었다. 임계값 탐색은 "
