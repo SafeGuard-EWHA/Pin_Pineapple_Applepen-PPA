@@ -1,0 +1,130 @@
+OpenROAD 26Q3-1305-gf552262465 
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[WARNING ORD-2056] The following 9 liberty cell(s) do not have LEF masters and will be marked as dont-use:
+  DFFHQNV4Xx1_ASAP7_75t_R
+  DFFHQNV4Xx2_ASAP7_75t_R
+  DFFHQNV4Xx3_ASAP7_75t_R
+  DFFHQNV2Xx1_ASAP7_75t_R
+  DFFHQNV2Xx2_ASAP7_75t_R
+  DFFHQNV2Xx3_ASAP7_75t_R
+  DFFHQNH2V2Xx1_ASAP7_75t_R
+  DFFHQNH2V2Xx2_ASAP7_75t_R
+  DFFHQNH2V2Xx3_ASAP7_75t_R
+[WARNING STA-0366] port 'data_in*' not found.
+[WARNING STA-0366] port 'scores_flat*' not found.
+[WARNING STA-0366] port 'front_done' not found.
+[WARNING STA-0366] port 'back_done' not found.
+[WARNING STA-0366] port 'valid_in' not found.
+[WARNING STA-0503] report_checks -group_count is deprecated. Use -group_path_count instead.
+Startpoint: w_fcf[2024] (input port clocked by clk)
+Endpoint: u.u_fcf.u_mac.out[1]$_SDFFE_PN0P_
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+ Delay   Time   Description
+-------------------------------------------------------
+   0.0    0.0   clock clk (rise edge)
+   0.0    0.0   clock network delay (ideal)
+ 200.0  200.0 v input external delay
+   0.0  200.0 v w_fcf[2024] (in)
+  28.6  228.6 v _1208006_/Y (OR2x4_ASAP7_75t_R)
+  16.1  244.7 ^ _1208009_/Y (NAND3x1_ASAP7_75t_R)
+  28.3  273.0 v _1208311_/Y (NAND2x1_ASAP7_75t_R)
+  29.8  302.8 ^ _1208435_/Y (NAND2x1_ASAP7_75t_R)
+  40.4  343.2 v _1208437_/Y (NOR2x1_ASAP7_75t_R)
+  27.6  370.8 ^ _1208483_/Y (OAI21x1_ASAP7_75t_R)
+  20.1  390.8 v _1208490_/Y (AOI21x1_ASAP7_75t_R)
+  15.3  406.1 ^ _1208520_/Y (NOR2x1_ASAP7_75t_R)
+  16.6  422.7 v _1208521_/Y (NAND2x1_ASAP7_75t_R)
+  40.0  462.7 ^ _1208533_/Y (AOI21x1_ASAP7_75t_R)
+  29.0  491.8 v _1208534_/Y (INVx1_ASAP7_75t_R)
+  37.7  529.5 ^ _1208549_/Y (NAND3x1_ASAP7_75t_R)
+  19.5  549.0 v _1249943_/Y (OAI21x1_ASAP7_75t_R)
+  37.4  586.4 ^ _1249946_/Y (NAND2x1_ASAP7_75t_R)
+  27.0  613.4 v _1249947_/Y (INVx2_ASAP7_75t_R)
+  26.5  639.9 v _1249954_/Y (AO21x1_ASAP7_75t_R)
+  30.5  670.4 v _1249955_/Y (BUFx2_ASAP7_75t_R)
+  15.5  685.9 ^ _1249956_/Y (INVx4_ASAP7_75t_R)
+  17.4  703.3 v _1249957_/Y (OAI21x1_ASAP7_75t_R)
+  24.8  728.1 v _1249975_/Y (AO21x1_ASAP7_75t_R)
+  26.0  754.1 v _1249976_/Y (BUFx3_ASAP7_75t_R)
+  13.7  767.8 ^ _1249977_/Y (INVx4_ASAP7_75t_R)
+  17.0  784.8 v _1249985_/Y (AOI21x1_ASAP7_75t_R)
+  33.9  818.7 ^ _1249986_/Y (AOI21x1_ASAP7_75t_R)
+  23.6  842.3 v _1251706_/Y (INVx2_ASAP7_75t_R)
+  24.2  866.5 ^ _1251711_/Y (AOI21x1_ASAP7_75t_R)
+  21.9  888.4 v _1251712_/Y (OAI21x1_ASAP7_75t_R)
+  15.4  903.8 ^ _1251713_/Y (INVx2_ASAP7_75t_R)
+  16.0  919.7 v _1251821_/Y (OAI21x1_ASAP7_75t_R)
+  28.2  947.9 v _1251834_/Y (AO21x1_ASAP7_75t_R)
+  23.2  971.1 v _1251835_/Y (BUFx4f_ASAP7_75t_R)
+  16.7  987.8 ^ _1251836_/Y (INVx2_ASAP7_75t_R)
+  19.5 1007.4 v _1251845_/Y (AOI21x1_ASAP7_75t_R)
+  41.0 1048.4 ^ _1251846_/Y (AOI21x1_ASAP7_75t_R)
+  21.7 1070.1 v _1251851_/Y (INVx3_ASAP7_75t_R)
+  15.3 1085.4 ^ _1251852_/Y (OAI21x1_ASAP7_75t_R)
+  26.8 1112.2 v _1251861_/Y (AOI21x1_ASAP7_75t_R)
+  29.1 1141.3 ^ _1251862_/Y (NOR2x2_ASAP7_75t_R)
+  15.7 1157.0 v _1251863_/Y (INVx4_ASAP7_75t_R)
+  23.2 1180.2 ^ _1251864_/Y (AOI21x1_ASAP7_75t_R)
+  33.1 1213.3 v _1251879_/Y (OAI21x1_ASAP7_75t_R)
+  20.3 1233.6 ^ _1251880_/Y (INVx4_ASAP7_75t_R)
+  19.5 1253.1 v _1251889_/Y (AOI21x1_ASAP7_75t_R)
+  38.3 1291.4 ^ _1251890_/Y (AOI21x1_ASAP7_75t_R)
+  15.5 1306.8 v _1251899_/Y (INVx4_ASAP7_75t_R)
+  23.4 1330.2 ^ _1251900_/Y (AOI21x1_ASAP7_75t_R)
+  22.9 1353.1 v _1253745_/Y (OAI21x1_ASAP7_75t_R)
+  27.1 1380.2 ^ _1253748_/Y (AOI21x1_ASAP7_75t_R)
+  14.7 1394.9 v _1253752_/Y (OAI21x1_ASAP7_75t_R)
+  26.1 1421.0 ^ _1255262_/Y (AOI21x1_ASAP7_75t_R)
+  21.0 1442.0 v _1255267_/Y (NOR2x2_ASAP7_75t_R)
+  25.4 1467.4 v _1260632_/Y (AND2x2_ASAP7_75t_R)
+  10.1 1477.5 ^ _1260633_/Y (OAI21x1_ASAP7_75t_R)
+  16.4 1493.9 v _1260635_/Y (AOI21x1_ASAP7_75t_R)
+  19.7 1513.6 ^ _1260638_/Y (OAI21x1_ASAP7_75t_R)
+  12.7 1526.3 v _1260640_/Y (AOI21x1_ASAP7_75t_R)
+  17.4 1543.8 ^ _1260644_/Y (AOI21x1_ASAP7_75t_R)
+  16.6 1560.4 v _1260646_/Y (OAI21x1_ASAP7_75t_R)
+  18.9 1579.4 ^ _1260650_/Y (NAND3x1_ASAP7_75t_R)
+  17.9 1597.2 v _1260651_/Y (AOI21x1_ASAP7_75t_R)
+  21.4 1618.6 ^ _1260653_/Y (AOI21x1_ASAP7_75t_R)
+  24.5 1643.1 v _1260655_/Y (NOR3x1_ASAP7_75t_R)
+  21.2 1664.3 ^ _1260660_/Y (AOI21x1_ASAP7_75t_R)
+  32.0 1696.3 v _1260689_/Y (XOR2x2_ASAP7_75t_R)
+  11.8 1708.1 ^ _1260697_/Y (INVx1_ASAP7_75t_R)
+  11.9 1719.9 v _1260707_/Y (NAND3x1_ASAP7_75t_R)
+  23.0 1742.9 ^ _1260713_/Y (OAI21x1_ASAP7_75t_R)
+  29.0 1771.9 ^ _1260714_/Y (BUFx6f_ASAP7_75t_R)
+  11.0 1783.0 v _1260761_/Y (NAND2x1_ASAP7_75t_R)
+  11.6 1794.6 ^ _1260763_/Y (AOI21x1_ASAP7_75t_R)
+   0.0 1794.6 ^ u.u_fcf.u_mac.out[1]$_SDFFE_PN0P_/D (DFFHQNx1_ASAP7_75t_R)
+       1794.6   data arrival time
+
+1000.0 1000.0   clock clk (rise edge)
+   0.0 1000.0   clock network delay (ideal)
+   0.0 1000.0   clock reconvergence pessimism
+       1000.0 ^ u.u_fcf.u_mac.out[1]$_SDFFE_PN0P_/CLK (DFFHQNx1_ASAP7_75t_R)
+ -20.6  979.4   library setup time
+        979.4   data required time
+-------------------------------------------------------
+        979.4   data required time
+       -1794.6   data arrival time
+-------------------------------------------------------
+       -815.2   slack (VIOLATED)
+
+
+wns -815.182147266748   tns -156958.3935766659
+Group                    Internal    Switching      Leakage        Total
+                            Power        Power        Power        Power (Watts)
+------------------------------------------------------------------------
+Sequential           1.802245e-02 1.373928e-06 3.188084e-06 1.802702e-02  92.5%
+Combinational        8.357813e-04 5.428154e-04 9.027664e-05 1.468873e-03   7.5%
+Clock                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Macro                0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+Pad                  0.000000e+00 0.000000e+00 0.000000e+00 0.000000e+00   0.0%
+------------------------------------------------------------------------
+Total                1.885817e-02 5.441882e-04 9.345821e-05 1.949582e-02 100.0%
+                            96.7%         2.8%         0.5%
