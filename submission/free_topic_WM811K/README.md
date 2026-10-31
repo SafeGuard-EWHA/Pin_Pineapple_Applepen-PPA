@@ -14,7 +14,9 @@
 | Cell Area (µm²) | 75,765 | 92,892 | +22.6 % | Yosys 합성 통계 (`reports/synth/*_synth_stat.txt`) |
 | 추정 Fmax (MHz) | 484.5 | 495.3 | +2.2 % | OpenROAD STA 클럭 주기 스윕, slack = 0 보간 (`reports/sta/sweep_*_wm.txt`) |
 | 평균 MAC / 이미지 | 82,112 | 62,848 | −23.5 % | 테스트 954장의 모드별 MAC 가중 평균 (Python) |
-| 추론당 에너지 (nJ) | 33.4 | 26.2 | −21.7 % | **대리 추정** (3절 참고). WM 자체 전력 평가는 미완료 |
+| 평균 전력 (mW, 100 MHz) | 2.970 | Easy 2.395 / Medium 2.865 / Hard 3.213 | - | ASAP7 게이트레벨 VCD + OpenROAD `report_power` (`power/power_results/`) |
+| **추론당 에너지 (nJ)** | **29.46** | **26.86** | **−8.8 %** | WM 넷리스트 게이트레벨 VCD 기반 추정 (3절) |
+| (참고) 이전 대리 추정 에너지 (nJ) | 33.4 | 26.2 | −21.7 % | 모델 B 모드별 에너지에 WM 모드 비율 가중 |
 | 정확도 (954장) | 81.55 % (float) | 81.24 % (float), RTL 774 / 954 = 81.13 % | −0.31 %p | Python float / Vivado RTL |
 | 모드 (Easy / Medium / Hard) | 0 / 0 / 954 | RTL 404 / 167 / 383 | - | Vivado RTL |
 
@@ -37,7 +39,7 @@
 
 - **면적:** ORFS 합성 후 Yosys `synth_stat`의 Chip area. 가중치는 지정주제 비교와 같이 입력 포트로 둔 NPU 코어 기준이다.
 - **Fmax:** `orfs/scripts/sta_sweep.tcl`로 1_synth.odb에 대해 클럭 주기를 1.0~2.4 ns로 바꾸며 STA를 수행하고, 최악 slack이 0이 되는 주기를 인접 두 점의 선형 보간으로 구하였다. 입출력 지연은 클럭 주기의 20 %로 지정주제와 같다.
-- **전력/에너지 (대리 추정):** WM 넷리스트 자체의 게이트레벨 전력 평가는 완료하지 못하였다. 표의 에너지는 같은 구조의 10-class 확장 모델(AdaPath_B)에서 ASAP7 게이트레벨 VCD로 얻은 모드별(Easy / Medium / Hard) 추론당 에너지에 WM 테스트셋의 모드 비율을 가중한 값이며, Baseline_WM 값은 AdaPath_B의 Hard 에너지이다. 따라서 WM에서 직접 검증한 전력 감소율이 아니다. `reports/sta/*_sta.rpt`에 있는 전력값은 고정 활동도 가정의 정적 추정이므로 에너지 개선 근거로 쓰지 않는다.
+- **전력/에너지:** Baseline_WM과 AdaPath_WM의 ORFS 합성 넷리스트(보고서 면적과 같은 합성)를 ASAP7 셀 기능 모델로 100 MHz 게이트레벨 시뮬레이션(Icarus Verilog 12)하여 VCD를 얻고, OpenROAD `read_vcd` + `report_power`(ASAP7 RVT TT)로 평균 전력을 구하였다. 이미지당 에너지 = 평균 전력 × 관측 시간 ÷ 4 (이미지마다 리셋 12 cycle 포함, 지정주제와 같은 방법). AdaPath_WM은 Easy, Medium, Hard 각 4장 구간(테스트 인덱스 8/10/18/22, 2/3/5/24, 0/1/4/9)의 이미지당 에너지를 Vivado RTL 모드 비율(404 / 167 / 383)로 가중하였고, Baseline_WM은 인덱스 0~3의 4장 구간 평균이다. AdaPath_WM 12장의 게이트레벨 판정, 모드, Margin은 `wm_expect.txt`와 모두 일치하였다. 배치 전(클럭 트리, 배선 기생 성분 미포함) 추정이며, 표본은 모드별 4장이다. 실행 스크립트(run_wm.sh → power_wm.sh → energy_wm.py)와 결과는 `power/`에 있다. 이 스크립트는 팀 저장소의 `glsim/wm/` 폴더 구조(압축 넷리스트, 셀 기능 모델, 가중치와 입력 경로)를 기준으로 작성되었으며, `power/power_results/`의 리포트와 로그는 실제 실행 출력이다.
 - **기능:** Vivado 프로젝트(`vivado/PPA_AdaPath_NPU_WM.zip`)의 `tb_wm`으로 테스트 954장을 처리하여 정수 Golden과 판정, 모드, Score Margin 954 / 954 일치를 확인하였다.
 
 ## 4. 가중치 저장 방식
@@ -81,7 +83,7 @@ bash orfs/scripts/sta_wm.sh                  # 단일 STA(1,000 / 2,500 ps)와 �
 
 ## 7. 검증 범위 (이번 정리)
 
-- 이번 정리에서는 합성, STA, 시뮬레이션, 전력 분석을 **다시 실행하지 않았다.** `reports/`의 수치는 원래 실행에서 나온 도구 출력이다.
+- 패키지 정리 과정에서는 합성과 STA를 다시 실행하지 않았다. WM 게이트레벨 전력은 10/31에 새로 측정하였다(`power/`). `reports/`의 수치는 원래 실행에서 나온 도구 출력이다.
 - 정리 내용: 스크립트의 작성자 PC 절대경로를 환경변수와 스크립트 기준 상대경로로 바꾸고, WM과 무관한 설계(지정주제 설계의 블록 전력, 다른 모델 합성)를 실행하던 부분과 기존 결과를 지우던 동작(`rm -rf`, `clean_synth`)을 제거하였다. 호출하는 Tcl(`sta_odb.tcl`, `sta_sweep.tcl`)은 원래 실행에 사용한 파일과 같다(줄바꿈 문자만 정리).
 - 확인한 것: ZIP 무결성, 스크립트가 호출하는 파일의 존재, bash 문법 검사(`bash -n`), 스크립트의 개인 경로 잔존 여부, RTL과 설정, Vivado 프로젝트의 정리 전후 SHA-256 동일성.
 - `reports/synth/*.txt` 앞부분의 `Found gzip magic in file /home/...` 줄은 원래 실행 환경의 도구 로그이며 실행에 쓰이지 않는다.

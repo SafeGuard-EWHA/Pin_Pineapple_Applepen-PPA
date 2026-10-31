@@ -13,9 +13,11 @@ pw() { # tag top netlist
     openroad -exit $HERE/vcd_power_net.tcl 2>&1 | grep -v -E "STA-1212|ODB-0" > $OUT/power_$1.rpt
   echo "$1: $(grep -E '^Total' $OUT/power_$1.rpt)  end=$(tail -c 3000 $VCD_DIR/$1.vcd | grep '^#' | tail -1)"
 }
+# 메모리를 고려해 두 개씩 실행
 pw wm_ada_easy adapath_wm_npu adapath_wm_net.v &
+pw wm_base     baseline_wm_npu baseline_wm_net.v &
+wait
 pw wm_ada_med  adapath_wm_npu adapath_wm_net.v &
 pw wm_ada_hard adapath_wm_npu adapath_wm_net.v &
-pw wm_base     baseline_wm_npu baseline_wm_net.v &
 wait
 echo POWER_DONE

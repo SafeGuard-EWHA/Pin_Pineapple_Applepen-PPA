@@ -1,0 +1,7 @@
+VCD info: dumpfile C:/Users/yhe44/idec_glsim/wm/wm_ada_med.vcd opened for output.
+img 2 : decision=0 mode=1 margin=16 cycles=1004
+img 3 : decision=3 mode=1 margin=28 cycles=1004
+img 5 : decision=3 mode=1 margin=13 cycles=1004
+img 24 : decision=1 mode=1 margin=18 cycles=1004
+==== gate-level WM done, VCD -> C:/Users/yhe44/idec_glsim/wm/wm_ada_med.vcd ====
+tb_gl_wm.v:143: $finish called at 40676000 (1ps)

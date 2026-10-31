@@ -5,7 +5,12 @@
 현재 WM의 Area와 Fmax는 직접 측정값이지만, **Power(에너지)는 모델 B의 모드별 에너지를 WM 모드 비율로 가중한 대리 추정**이다.
 이를 WM 넷리스트의 게이트레벨 VCD 전력(지정주제와 같은 방법)으로 바꾸는 것이 남은 작업이다.
 
-## 현재 상태 (19:40 기준)
+## 완료 (21:45)
+- 측정 완료: Baseline_WM 29.46 nJ → AdaPath_WM 26.86 nJ (−8.8 %), 평균 전력 Baseline 2.970 mW, AdaPath Easy 2.395 / Medium 2.865 / Hard 3.213 mW (100 MHz).
+- AdaPath_WM 12장의 게이트레벨 판정, 모드, Margin은 `wm_expect.txt`와 모두 일치.
+- 보고서(3.9절 표, 2장 목표 표, 요약 핵심 결과, 결론), 자유주제 패키지 README와 `power/`, `submission/PPA_final_submission.zip` 반영 완료.
+
+## 이전 상태 (19:40 기준)
 - 윤홍은 노트북에서 아래 1단계 시뮬레이션 4개가 실행 중이다(`C:\Users\yhe44\idec_glsim\wm`). 끝나면 Claude가 2~4단계를 진행하고 main에 올린다.
 - 노트북 결과가 안 올라오면 아래 절차를 각자 PC에서 그대로 실행하면 된다. 필요한 파일은 모두 `glsim/wm/`에 있다.
 

@@ -73,7 +73,7 @@ module tb_gatelevel;
 
     // ---- 픽셀 스트림 ----
     reg [7:0] pixels [0:954*784-1];
-    integer   idx [0:3];  reg [1:0] lab [0:953]; reg [7:0] exp_rows [0:4*954-1];
+    integer   idx [0:3];  integer i0, i1, i2, i3;
     integer   base;
     reg [9:0] img_idx;
     always @(posedge clk) begin
@@ -88,10 +88,11 @@ module tb_gatelevel;
     reg [8*96-1:0] path;
 
     initial begin
-        if (!$value$plusargs("I0=%d", idx[0])) idx[0] = 0;
-        if (!$value$plusargs("I1=%d", idx[1])) idx[1] = 1;
-        if (!$value$plusargs("I2=%d", idx[2])) idx[2] = 2;
-        if (!$value$plusargs("I3=%d", idx[3])) idx[3] = 3;
+        if (!$value$plusargs("I0=%d", i0)) i0 = 0;
+        if (!$value$plusargs("I1=%d", i1)) i1 = 1;
+        if (!$value$plusargs("I2=%d", i2)) i2 = 2;
+        if (!$value$plusargs("I3=%d", i3)) i3 = 3;
+        idx[0] = i0; idx[1] = i1; idx[2] = i2; idx[3] = i3;
         start_img = 0;
         if (!$value$plusargs("VCD=%s", vcdname)) vcdname = "gl.vcd";
         $dumpfile(vcdname);

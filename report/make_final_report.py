@@ -123,7 +123,6 @@ EMPH = [
     "9개 사례 모두 margin, mode, decision이 정수 Golden과 일치하였다",
     # 3.9 ~ 3.11
     "모델 B 구조(4개 클래스 출력)에 같은 AdaPath 기법을 적용하였으며",
-    "4개 클래스 설계의 직접 전력 측정 결과와 구분한다",
     "판정, 모드, Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고",
     "계산 배분은 패턴의 물리적 복잡성보다 현재 전단 분류기의 구분 능력을 따르며",
     "recall이 Full 63.6 %에서 AdaPath 60.5 %로 3.1 %p 낮아졌다",
@@ -392,6 +391,9 @@ P_BE_CYC = (CYC["hard"] - CYC["base"]) / (CYC["hard"] - CYC["easy"])
 WM = R["wm"]
 E_WM_BASE = E["B_hard"]
 E_WM = avg({"easy": E["B_easy"], "med": E["B_med"], "hard": E["B_hard"]}, WM["mode"])
+# WM-811K 넷리스트 자체의 게이트레벨 VCD 에너지 (glsim/wm, 100 MHz, 모드별 4장, Vivado RTL 모드 비율 404/167/383 가중)
+WMP = json.load(open(os.path.join(HERE, "..", "glsim", "wm", "power_results", "energy_wm.json"), encoding="utf-8"))
+E_WM_D = WMP["summary"]["E_AdaPath_WM_nJ"]; E_WM_BASE_D = WMP["summary"]["E_Baseline_WM_nJ"]
 rg = R["region2"]
 region2_ratio = rg["area_v2"] / A["adapath_A"] * 100
 
@@ -526,7 +528,7 @@ para(doc, "본 과제의 기여는 다음 세 가지이다. 첫째, Score Margin
 # =================================================================== 2
 para(doc, "**핵심 결과:** 지정주제에서 Reference와 같은 970 / 1,000 정답을 유지하면서 ^^평균 처리 cycle 36.1 %, 추론 지연 33.0 %, "
      "추론당 에너지 8.9 %를 줄였다^^(배치 전 추정, 면적 55.4 % 증가). 별도 ICG 적용 전후 비교에서는 구간별 에너지가 20.7~25.9 % 줄었고, "
-     "같은 기법을 자유주제 WM-811K에 적용하여 3경로 제어를 확인하였다. 두 에너지 감소율은 비교 기준이 달라 합산하지 않는다.", indent=True)
+     "같은 기법을 자유주제 WM-811K에 적용하여 3경로 제어를 확인하고 WM 넷리스트의 추론당 에너지를 8.8 % 줄였다. 두 에너지 감소율은 비교 기준이 달라 합산하지 않는다.", indent=True)
 h1(doc, "2. 설계 목표")
 para(doc, "지정주제의 전제 조건(정확도 유지)에서 PPA 개선을 목표로 하되, 다음 세 가지를 평가 원칙으로 정하였다. ① 연산량"
      "(MAC) 감소가 아니라 게이트레벨 스위칭 기반의 추론당 에너지로 평가한다. ② 판단 회로가 동작 주파수를 낮추지 않아야 "
@@ -549,13 +551,13 @@ table(doc, "설계 목표 및 결과 (지정주제: Reference 대비 AdaPath_A)"
      "%s µm² (AdaPath_A의 %.2f %%, 단독 합성 기준 참고치)" % (f1(rg["area_v2"]), region2_ratio), "달성"],
     ["입출력 인터페이스", "Reference와 동일", "동일 포트 래퍼, 주최 측 TB 로직 무수정 실행", "달성"],
     ["자유주제 (WM-811K)", "적용 전후 PPA 개선",
-     "MAC %s, 정확도 %.2f %%p 하락, 에너지 %s (대리 추정)" % (
-         chg(WM["mac_ada"], WM["mac_base"]), WM["acc_base"] - WM["acc_ada"], chg(E_WM, E_WM_BASE)),
-     "부분 확인"],
+     "MAC %s, 정확도 %.2f %%p 하락, 에너지 %s (WM 게이트레벨 VCD 기반 추정)" % (
+         chg(WM["mac_ada"], WM["mac_base"]), WM["acc_base"] - WM["acc_ada"], chg(E_WM_D, E_WM_BASE_D)),
+     "달성" if E_WM_D < E_WM_BASE_D else "에너지 미달"],
 ], [3.3, 3.6, 7.6, 2.0], hl_rows=(1, 2, 3))
 para(doc, "면적은 처리 cycle을 줄이기 위한 병렬 데이터패스와 적응형 경로의 추가로 Reference보다 증가한다. 증가분의 대부분은 "
      "병렬 연산기에서 발생하며 판단 회로 자체는 전체의 1 % 미만이다(3.6절). 면적 투자가 지연과 에너지 이득으로 전환되는 "
-     "정도를 3.6~3.7절과 4장에서 정량적으로 분석한다. WM 자체의 전력 평가는 미완료이며, 에너지 감소율은 대리 추정이다.", indent=True)
+     "정도를 3.6~3.7절과 4장에서 정량적으로 분석한다. WM 에너지는 WM 넷리스트의 게이트레벨 VCD 기반 추정이다(3.9절).", indent=True)
 
 # =================================================================== 3
 h1(doc, "3. 설계 및 시뮬레이션")
@@ -1064,19 +1066,21 @@ table(doc, "WM-811K 적용 전후 비교 (Baseline_WM = 항상 Hard)", ["항목"
     ["Cell Area (µm²)", f0(A["baseline_wm"]), f0(A["adapath_wm"]), chg(A["adapath_wm"], A["baseline_wm"])],
     ["추정 Fmax (MHz)", f1(FMAX["baseline_wm"]), f1(FMAX["adapath_wm"]), "-"],
     ["평균 cycle (10-class cycle 가정)", f0(CYC["base"]), f0(WM["cyc_ada"]), chg(WM["cyc_ada"], CYC["base"])],
-    ["추론당 에너지 (nJ, 대리 추정)", f1(E_WM_BASE), f1(E_WM), chg(E_WM, E_WM_BASE)],
+    ["**추론당 에너지 (nJ, WM 게이트레벨 VCD)**", f1(E_WM_BASE_D), "**%s**" % f1(E_WM_D), chg(E_WM_D, E_WM_BASE_D)],
+    ["(참고) 모델 B 에너지 기반 대리 추정 (nJ)", f1(E_WM_BASE), f1(E_WM), chg(E_WM, E_WM_BASE)],
 ], [5.0, 3.4, 4.6, 3.0], hl_rows=(6,),
     note="cycle 행은 10-class MNIST의 Baseline 985, Easy 845, 후단 1,016 cycle을 WM float 모드 비율로 가중한 기존 계산값이며, "
-         "4-class WM RTL의 실측 cycle이 아니다. WM 에너지는 10개 클래스 AdaPath_B의 모드별 VCD 기반 에너지에 WM-811K 모드 비율을 가중한 대리 추정이다. "
-         "Baseline_WM 값으로 AdaPath_B Hard 에너지를 사용하였으나 Baseline_WM에는 Early 경로가 없으므로, 4개 클래스 설계의 "
-         "직접 전력 측정 결과와 구분한다.")
+         "4-class WM RTL의 실측 cycle이 아니다. WM 에너지는 Baseline_WM과 AdaPath_WM 합성 넷리스트를 ASAP7 셀 모델로 100 MHz 게이트레벨 시뮬레이션하여 얻은 VCD로 "
+         "OpenROAD report_power를 수행한 배치 전 추정이다. AdaPath_WM은 Easy, Medium, Hard 각 4장 구간의 이미지당 에너지를 Vivado RTL "
+         "모드 비율(404 / 167 / 383)로 가중하였고, Baseline_WM은 4장 구간의 평균이다(이미지마다 리셋 12 cycle 포함). 참고 행은 이전의 "
+         "모델 B 기반 대리 추정이다.")
 h3(doc, "3.9.1 RTL 검증 (Vivado)")
 para(doc, "자유주제 설계도 지정주제와 같은 chip 인터페이스 래퍼(클래스 수만 4로 설정)로 Vivado 프로젝트를 "
      "구성하고, 주최 측 TB와 같은 방식(이미지마다 리셋 후 1 px/cycle 스트리밍)으로 WM-811K 테스트 954장을 처리하였다(표 @t_wmrtl@). "
      "판정, 모드, Score Margin이 정수 Golden과 954장 모두 비트 단위로 일치하였고, 정확도는 774 / 954 = 81.13 %% (정수 Hard 경로 "
      "단독 81.45 %%)였다. 모드는 Easy 404 / Medium 167 / Hard 383장으로, ^^3경로가 모두 하드웨어에서 실제로 사용^^되었다(MNIST "
-     "모델 A는 2경로). 정수 임계값(13 / 41) 기준이라 float 분석의 모드 비율(401 / 152 / 401)과 약간 다르며, 이 비율을 에너지 "
-     "대리 추정에 적용해도 26.1 nJ로 거의 같다. 제출용 프로젝트(PPA_AdaPath_NPU_WM)는 다른 폴더로 옮겨 실행해도 같은 결과를 "
+     "모델 A는 2경로). 정수 임계값(13 / 41) 기준이라 float 분석의 모드 비율(401 / 152 / 401)과 약간 다르며, 이 RTL 모드 비율을 "
+     "WM 게이트레벨 에너지 가중에 사용하였다. 제출용 프로젝트(PPA_AdaPath_NPU_WM)는 다른 폴더로 옮겨 실행해도 같은 결과를 "
      "얻었다." % LBL, indent=True)
 table(doc, "WM-811K RTL 검증 결과 (Vivado 2023.1, 정수 연산, 테스트 954장)", ["클래스", "n", "AdaPath RTL recall", "정수 Hard 경로 recall"], [
     ["none (정상)", "245", "179 (73.1 %)", "182 (74.3 %)"],
@@ -1220,7 +1224,7 @@ para(doc, "지정주제(MNIST, 모델 A)에서는 주최 측 Reference와 같은
          -pct(PL_LAT["A"], PL_LAT["ref"])), indent=True)
 para(doc, "같은 RTL을 파라미터만 바꾸어 확장 모델 B(MNIST, 주최 TB 정답 999 / 1,000)와 자유주제 웨이퍼맵 결함 분류(WM-811K, "
      "4개 클래스)에 적용하였다. WM-811K에서는 Medium 경로가 실제로 선택되어 3경로 제어가 동작함을 확인하였고, Vivado에서 정확도 "
-     "81.13 %(774 / 954)와 정수 Golden 대비 판정, 모드, Score Margin 954 / 954 일치를 얻었다. 기능 검증은 단위 회로, 1,000장 회귀, "
+     "81.13 %(774 / 954)와 정수 Golden 대비 판정, 모드, Score Margin 954 / 954 일치를 얻었다. WM 넷리스트의 게이트레벨 전력 분석에서 추론당 에너지는 Baseline_WM 대비 8.8 % 줄었다. 기능 검증은 단위 회로, 1,000장 회귀, "
      "주최 측 테스트벤치, 제출 패키지의 독립 PC 재현, 합성 넷리스트의 Vivado 시뮬레이션(5개 시드 부분 실행, 판정 1,007회 일치, cycle 1,006/1,006 일치)까지 "
      "단계별로 수행하였다.", indent=True)
 para(doc, "또한 본 과제는 ^^연산량(MAC) 감소가 곧 에너지 감소로 이어지지 않는다^^는 점을 블록 단위로 보이고, 적응형 경로가 에너지에서 "
