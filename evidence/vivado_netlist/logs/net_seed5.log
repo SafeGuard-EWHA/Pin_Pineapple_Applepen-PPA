@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# xsim v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sat Oct 31 12:56:22 2026
+# Process ID: 16016
+# Current directory: C:/Users/yhe44/idec_vivado/netlist/xfill_run/s5
+# Command line: xsim.exe -log net.log -mode tcl -source {xsim.dir/netfill/xsim_script.tcl}
+# Log file: C:/Users/yhe44/idec_vivado/netlist/xfill_run/s5/net.log
+# Journal file: C:/Users/yhe44/idec_vivado/netlist/xfill_run/s5\xsim.jou
+# Running On: hong, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 16671 MB
+#-----------------------------------------------------------
+source xsim.dir/netfill/xsim_script.tcl
+# xsim {netfill} -autoloadwcfg -tclbatch {trace.tcl} -sv_seed 5
+Time resolution is 1 ps
+source trace.tcl
+## set tb /top_tb_1000
+## set t0 [clock seconds]
+## for {set k 1} {$k <= 860} {incr k} {
+##   run 10 ns
+##   puts "STEP k=$k t=[current_time] cnt=[get_value -radix unsigned $tb/cnt] acc=[get_value -radix unsigned $tb/accuracy] wall=[expr {[clock seconds]-$t0}]s"
+##   flush stdout
+##   if {[file exists stop.flag]} break
+## }
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:46 . Memory (MB): peak = 1338.254 ; gain = 0.000
+STEP k=1 t=10 ns cnt=0 acc=0 wall=46s
+1st input image : original value = 6, decision = 6 at 18665 ps ==> Success
+OBS n=1 idx=296 dec=6 t=18665
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:54 . Memory (MB): peak = 1338.254 ; gain = 0.000
+STEP k=2 t=20 ns cnt=1 acc=1 wall=100s
+2nd input image : original value = 2, decision = 2 at 27145 ps ==> Success
+OBS n=2 idx=842 dec=2 t=27145

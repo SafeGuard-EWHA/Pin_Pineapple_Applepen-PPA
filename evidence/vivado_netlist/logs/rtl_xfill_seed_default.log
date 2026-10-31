@@ -1,0 +1,2905 @@
+#-----------------------------------------------------------
+# xsim v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sat Oct 31 00:53:02 2026
+# Process ID: 27736
+# Current directory: C:/Users/yhe44/AppData/Local/Temp/claude/C--Users-yhe44-OneDrive----IDEC-----------/6d138761-2b93-4e6f-9ffd-1767ee64f5a6/scratchpad/r1000
+# Command line: xsim.exe -log rtl_xfill.log -mode tcl -source {xsim.dir/rfill/xsim_script.tcl}
+# Log file: C:/Users/yhe44/AppData/Local/Temp/claude/C--Users-yhe44-OneDrive----IDEC-----------/6d138761-2b93-4e6f-9ffd-1767ee64f5a6/scratchpad/r1000/rtl_xfill.log
+# Journal file: C:/Users/yhe44/AppData/Local/Temp/claude/C--Users-yhe44-OneDrive----IDEC-----------/6d138761-2b93-4e6f-9ffd-1767ee64f5a6/scratchpad/r1000\xsim.jou
+# Running On: hong, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 16671 MB
+#-----------------------------------------------------------
+source xsim.dir/rfill/xsim_script.tcl
+# xsim {rfill} -autoloadwcfg -tclbatch {trace.tcl}
+Time resolution is 1 ps
+source trace.tcl
+## set tb /top_tb_1000
+## add_condition -name vo -notrace "$tb/valid_out_6 == 1" {puts "VO t=[current_time] cnt=[get_value -radix unsigned /top_tb_1000/cnt] dec=[get_value -radix unsigned /top_tb_1000/decision] acc=[get_value -radix unsigned /top_tb_1000/accuracy]"}
+## set t0 [clock seconds]
+## for {set k 1} {$k <= 860} {incr k} {
+##   run 10 ns
+##   set c [get_value -radix unsigned $tb/cnt]
+##   puts "STEP k=$k t=[current_time] cnt=$c acc=[get_value -radix unsigned $tb/accuracy] wall=[expr {[clock seconds]-$t0}]s"
+##   flush stdout
+## }
+STEP k=1 t=10 ns cnt=0 acc=0 wall=0s
+VO t=10175 ps cnt=0 dec=5 acc=0
+VO t=18655 ps cnt=1 dec=9 acc=0
+1st input image : original value = 9, decision = 9 at 18665 ps ==> Success
+STEP k=2 t=20 ns cnt=1 acc=1 wall=0s
+VO t=27135 ps cnt=2 dec=5 acc=1
+2nd input image : original value = 5, decision = 5 at 27145 ps ==> Success
+STEP k=3 t=30 ns cnt=2 acc=2 wall=0s
+VO t=35615 ps cnt=3 dec=4 acc=2
+3rd input image : original value = 4, decision = 4 at 35625 ps ==> Success
+STEP k=4 t=40 ns cnt=3 acc=3 wall=1s
+VO t=44095 ps cnt=4 dec=9 acc=3
+4th input image : original value = 9, decision = 9 at 44105 ps ==> Success
+STEP k=5 t=50 ns cnt=4 acc=4 wall=1s
+VO t=52575 ps cnt=5 dec=2 acc=4
+5th input image : original value = 2, decision = 2 at 52585 ps ==> Success
+STEP k=6 t=60 ns cnt=5 acc=5 wall=1s
+VO t=61055 ps cnt=6 dec=7 acc=5
+6th input image : original value = 7, decision = 7 at 61065 ps ==> Success
+VO t=69535 ps cnt=7 dec=8 acc=6
+7th input image : original value = 8, decision = 8 at 69545 ps ==> Success
+STEP k=7 t=70 ns cnt=7 acc=7 wall=1s
+VO t=78015 ps cnt=8 dec=2 acc=7
+8th input image : original value = 2, decision = 2 at 78025 ps ==> Success
+STEP k=8 t=80 ns cnt=8 acc=8 wall=1s
+VO t=86495 ps cnt=9 dec=7 acc=8
+9th input image : original value = 2, decision = 7 at 86505 ps ==> Fail
+STEP k=9 t=90 ns cnt=9 acc=8 wall=1s
+VO t=94975 ps cnt=10 dec=1 acc=8
+10th input image : original value = 1, decision = 1 at 94985 ps ==> Success
+STEP k=10 t=100 ns cnt=10 acc=9 wall=1s
+VO t=103455 ps cnt=11 dec=0 acc=9
+11st input image : original value = 0, decision = 0 at 103465 ps ==> Success
+STEP k=11 t=110 ns cnt=11 acc=10 wall=1s
+VO t=111935 ps cnt=12 dec=4 acc=10
+12nd input image : original value = 4, decision = 4 at 111945 ps ==> Success
+STEP k=12 t=120 ns cnt=13 acc=11 wall=1s
+VO t=120415 ps cnt=13 dec=8 acc=11
+13rd input image : original value = 8, decision = 8 at 120425 ps ==> Success
+VO t=128895 ps cnt=14 dec=8 acc=12
+14th input image : original value = 8, decision = 8 at 128905 ps ==> Success
+STEP k=13 t=130 ns cnt=14 acc=13 wall=1s
+VO t=137375 ps cnt=15 dec=5 acc=13
+15th input image : original value = 5, decision = 5 at 137385 ps ==> Success
+STEP k=14 t=140 ns cnt=15 acc=14 wall=1s
+VO t=145855 ps cnt=16 dec=0 acc=14
+16th input image : original value = 0, decision = 0 at 145865 ps ==> Success
+STEP k=15 t=150 ns cnt=16 acc=15 wall=1s
+VO t=154335 ps cnt=17 dec=9 acc=15
+17th input image : original value = 9, decision = 9 at 154345 ps ==> Success
+STEP k=16 t=160 ns cnt=17 acc=16 wall=1s
+VO t=162815 ps cnt=18 dec=5 acc=16
+18th input image : original value = 5, decision = 5 at 162825 ps ==> Success
+STEP k=17 t=170 ns cnt=18 acc=17 wall=1s
+VO t=171295 ps cnt=19 dec=4 acc=17
+19th input image : original value = 4, decision = 4 at 171305 ps ==> Success
+VO t=179775 ps cnt=20 dec=7 acc=18
+20th input image : original value = 7, decision = 7 at 179785 ps ==> Success
+STEP k=18 t=180 ns cnt=20 acc=19 wall=2s
+VO t=188255 ps cnt=21 dec=2 acc=19
+21st input image : original value = 2, decision = 2 at 188265 ps ==> Success
+STEP k=19 t=190 ns cnt=21 acc=20 wall=2s
+VO t=196735 ps cnt=22 dec=0 acc=20
+22nd input image : original value = 0, decision = 0 at 196745 ps ==> Success
+STEP k=20 t=200 ns cnt=22 acc=21 wall=2s
+VO t=205215 ps cnt=23 dec=6 acc=21
+23rd input image : original value = 6, decision = 6 at 205225 ps ==> Success
+STEP k=21 t=210 ns cnt=23 acc=22 wall=2s
+VO t=213695 ps cnt=24 dec=1 acc=22
+24th input image : original value = 1, decision = 1 at 213705 ps ==> Success
+STEP k=22 t=220 ns cnt=24 acc=23 wall=2s
+VO t=222175 ps cnt=25 dec=6 acc=23
+25th input image : original value = 6, decision = 6 at 222185 ps ==> Success
+STEP k=23 t=230 ns cnt=25 acc=24 wall=2s
+VO t=230655 ps cnt=26 dec=0 acc=24
+26th input image : original value = 0, decision = 0 at 230665 ps ==> Success
+VO t=239135 ps cnt=27 dec=7 acc=25
+27th input image : original value = 7, decision = 7 at 239145 ps ==> Success
+STEP k=24 t=240 ns cnt=27 acc=26 wall=2s
+VO t=247615 ps cnt=28 dec=8 acc=26
+28th input image : original value = 8, decision = 8 at 247625 ps ==> Success
+STEP k=25 t=250 ns cnt=28 acc=27 wall=2s
+VO t=256095 ps cnt=29 dec=1 acc=27
+29th input image : original value = 1, decision = 1 at 256105 ps ==> Success
+STEP k=26 t=260 ns cnt=29 acc=28 wall=2s
+VO t=264575 ps cnt=30 dec=4 acc=28
+30th input image : original value = 4, decision = 4 at 264585 ps ==> Success
+STEP k=27 t=270 ns cnt=30 acc=29 wall=2s
+VO t=273055 ps cnt=31 dec=0 acc=29
+31st input image : original value = 0, decision = 0 at 273065 ps ==> Success
+STEP k=28 t=280 ns cnt=31 acc=30 wall=2s
+VO t=281535 ps cnt=32 dec=7 acc=30
+32nd input image : original value = 7, decision = 7 at 281545 ps ==> Success
+STEP k=29 t=290 ns cnt=33 acc=31 wall=2s
+VO t=290015 ps cnt=33 dec=4 acc=31
+33rd input image : original value = 4, decision = 4 at 290025 ps ==> Success
+VO t=298495 ps cnt=34 dec=7 acc=32
+34th input image : original value = 7, decision = 7 at 298505 ps ==> Success
+STEP k=30 t=300 ns cnt=34 acc=33 wall=2s
+VO t=306975 ps cnt=35 dec=4 acc=33
+35th input image : original value = 4, decision = 4 at 306985 ps ==> Success
+STEP k=31 t=310 ns cnt=35 acc=34 wall=2s
+VO t=315455 ps cnt=36 dec=6 acc=34
+36th input image : original value = 6, decision = 6 at 315465 ps ==> Success
+STEP k=32 t=320 ns cnt=36 acc=35 wall=2s
+VO t=323935 ps cnt=37 dec=1 acc=35
+37th input image : original value = 1, decision = 1 at 323945 ps ==> Success
+STEP k=33 t=330 ns cnt=37 acc=36 wall=3s
+VO t=332415 ps cnt=38 dec=4 acc=36
+38th input image : original value = 4, decision = 4 at 332425 ps ==> Success
+STEP k=34 t=340 ns cnt=38 acc=37 wall=3s
+VO t=340895 ps cnt=39 dec=2 acc=37
+39th input image : original value = 2, decision = 2 at 340905 ps ==> Success
+VO t=349375 ps cnt=40 dec=6 acc=38
+40th input image : original value = 6, decision = 6 at 349385 ps ==> Success
+STEP k=35 t=350 ns cnt=40 acc=39 wall=3s
+VO t=357855 ps cnt=41 dec=2 acc=39
+41st input image : original value = 2, decision = 2 at 357865 ps ==> Success
+STEP k=36 t=360 ns cnt=41 acc=40 wall=3s
+VO t=366335 ps cnt=42 dec=8 acc=40
+42nd input image : original value = 8, decision = 8 at 366345 ps ==> Success
+STEP k=37 t=370 ns cnt=42 acc=41 wall=3s
+VO t=374815 ps cnt=43 dec=2 acc=41
+43rd input image : original value = 2, decision = 2 at 374825 ps ==> Success
+STEP k=38 t=380 ns cnt=43 acc=42 wall=3s
+VO t=383295 ps cnt=44 dec=3 acc=42
+44th input image : original value = 3, decision = 3 at 383305 ps ==> Success
+STEP k=39 t=390 ns cnt=44 acc=43 wall=3s
+VO t=391775 ps cnt=45 dec=2 acc=43
+45th input image : original value = 2, decision = 2 at 391785 ps ==> Success
+STEP k=40 t=400 ns cnt=46 acc=44 wall=3s
+VO t=401965 ps cnt=46 dec=5 acc=44
+46th input image : original value = 5, decision = 5 at 401975 ps ==> Success
+STEP k=41 t=410 ns cnt=47 acc=45 wall=3s
+VO t=410445 ps cnt=47 dec=9 acc=45
+47th input image : original value = 9, decision = 9 at 410455 ps ==> Success
+VO t=418925 ps cnt=48 dec=4 acc=46
+48th input image : original value = 4, decision = 4 at 418935 ps ==> Success
+STEP k=42 t=420 ns cnt=48 acc=47 wall=3s
+VO t=427405 ps cnt=49 dec=3 acc=47
+49th input image : original value = 3, decision = 3 at 427415 ps ==> Success
+STEP k=43 t=430 ns cnt=49 acc=48 wall=3s
+VO t=437595 ps cnt=50 dec=1 acc=48
+50th input image : original value = 2, decision = 1 at 437605 ps ==> Fail
+STEP k=44 t=440 ns cnt=50 acc=48 wall=3s
+VO t=446075 ps cnt=51 dec=8 acc=48
+51st input image : original value = 8, decision = 8 at 446085 ps ==> Success
+STEP k=45 t=450 ns cnt=51 acc=49 wall=3s
+VO t=454555 ps cnt=52 dec=4 acc=49
+52nd input image : original value = 4, decision = 4 at 454565 ps ==> Success
+STEP k=46 t=460 ns cnt=52 acc=50 wall=4s
+VO t=463035 ps cnt=53 dec=7 acc=50
+53rd input image : original value = 7, decision = 7 at 463045 ps ==> Success
+STEP k=47 t=470 ns cnt=53 acc=51 wall=4s
+VO t=471515 ps cnt=54 dec=7 acc=51
+54th input image : original value = 7, decision = 7 at 471525 ps ==> Success
+VO t=479995 ps cnt=55 dec=9 acc=52
+STEP k=48 t=480 ns cnt=55 acc=52 wall=4s
+55th input image : original value = 9, decision = 9 at 480005 ps ==> Success
+VO t=488475 ps cnt=56 dec=9 acc=53
+56th input image : original value = 9, decision = 9 at 488485 ps ==> Success
+STEP k=49 t=490 ns cnt=56 acc=54 wall=4s
+VO t=496955 ps cnt=57 dec=9 acc=54
+57th input image : original value = 9, decision = 9 at 496965 ps ==> Success
+STEP k=50 t=500 ns cnt=57 acc=55 wall=4s
+VO t=505435 ps cnt=58 dec=7 acc=55
+58th input image : original value = 7, decision = 7 at 505445 ps ==> Success
+STEP k=51 t=510 ns cnt=58 acc=56 wall=4s
+VO t=513915 ps cnt=59 dec=3 acc=56
+59th input image : original value = 3, decision = 3 at 513925 ps ==> Success
+STEP k=52 t=520 ns cnt=59 acc=57 wall=4s
+VO t=522395 ps cnt=60 dec=6 acc=57
+60th input image : original value = 6, decision = 6 at 522405 ps ==> Success
+STEP k=53 t=530 ns cnt=60 acc=58 wall=4s
+VO t=530875 ps cnt=61 dec=4 acc=58
+61st input image : original value = 4, decision = 4 at 530885 ps ==> Success
+VO t=539355 ps cnt=62 dec=2 acc=59
+62nd input image : original value = 2, decision = 2 at 539365 ps ==> Success
+STEP k=54 t=540 ns cnt=62 acc=60 wall=4s
+VO t=547835 ps cnt=63 dec=4 acc=60
+63rd input image : original value = 4, decision = 4 at 547845 ps ==> Success
+STEP k=55 t=550 ns cnt=63 acc=61 wall=4s
+VO t=556315 ps cnt=64 dec=4 acc=61
+64th input image : original value = 4, decision = 4 at 556325 ps ==> Success
+STEP k=56 t=560 ns cnt=64 acc=62 wall=4s
+VO t=564795 ps cnt=65 dec=9 acc=62
+65th input image : original value = 9, decision = 9 at 564805 ps ==> Success
+STEP k=57 t=570 ns cnt=65 acc=63 wall=4s
+VO t=573275 ps cnt=66 dec=8 acc=63
+66th input image : original value = 8, decision = 8 at 573285 ps ==> Success
+STEP k=58 t=580 ns cnt=66 acc=64 wall=4s
+VO t=581755 ps cnt=67 dec=9 acc=64
+67th input image : original value = 9, decision = 9 at 581765 ps ==> Success
+STEP k=59 t=590 ns cnt=68 acc=65 wall=5s
+VO t=590235 ps cnt=68 dec=4 acc=65
+68th input image : original value = 4, decision = 4 at 590245 ps ==> Success
+VO t=598715 ps cnt=69 dec=0 acc=66
+69th input image : original value = 0, decision = 0 at 598725 ps ==> Success
+STEP k=60 t=600 ns cnt=69 acc=67 wall=5s
+VO t=607195 ps cnt=70 dec=5 acc=67
+70th input image : original value = 5, decision = 5 at 607205 ps ==> Success
+STEP k=61 t=610 ns cnt=70 acc=68 wall=5s
+VO t=615675 ps cnt=71 dec=8 acc=68
+71st input image : original value = 8, decision = 8 at 615685 ps ==> Success
+STEP k=62 t=620 ns cnt=71 acc=69 wall=5s
+VO t=624155 ps cnt=72 dec=0 acc=69
+72nd input image : original value = 0, decision = 0 at 624165 ps ==> Success
+STEP k=63 t=630 ns cnt=72 acc=70 wall=5s
+VO t=632635 ps cnt=73 dec=3 acc=70
+73rd input image : original value = 3, decision = 3 at 632645 ps ==> Success
+STEP k=64 t=640 ns cnt=73 acc=71 wall=5s
+VO t=641115 ps cnt=74 dec=7 acc=71
+74th input image : original value = 7, decision = 7 at 641125 ps ==> Success
+VO t=649595 ps cnt=75 dec=4 acc=72
+75th input image : original value = 4, decision = 4 at 649605 ps ==> Success
+STEP k=65 t=650 ns cnt=75 acc=73 wall=5s
+VO t=658075 ps cnt=76 dec=3 acc=73
+76th input image : original value = 3, decision = 3 at 658085 ps ==> Success
+STEP k=66 t=660 ns cnt=76 acc=74 wall=5s
+VO t=666555 ps cnt=77 dec=2 acc=74
+77th input image : original value = 2, decision = 2 at 666565 ps ==> Success
+STEP k=67 t=670 ns cnt=77 acc=75 wall=5s
+VO t=675035 ps cnt=78 dec=1 acc=75
+78th input image : original value = 1, decision = 1 at 675045 ps ==> Success
+STEP k=68 t=680 ns cnt=78 acc=76 wall=5s
+VO t=683515 ps cnt=79 dec=3 acc=76
+79th input image : original value = 3, decision = 3 at 683525 ps ==> Success
+STEP k=69 t=690 ns cnt=79 acc=77 wall=5s
+VO t=691995 ps cnt=80 dec=5 acc=77
+80th input image : original value = 5, decision = 5 at 692005 ps ==> Success
+STEP k=70 t=700 ns cnt=81 acc=78 wall=5s
+VO t=700475 ps cnt=81 dec=7 acc=78
+81st input image : original value = 7, decision = 7 at 700485 ps ==> Success
+VO t=708955 ps cnt=82 dec=6 acc=79
+82nd input image : original value = 6, decision = 6 at 708965 ps ==> Success
+STEP k=71 t=710 ns cnt=82 acc=80 wall=5s
+VO t=717435 ps cnt=83 dec=9 acc=80
+83rd input image : original value = 9, decision = 9 at 717445 ps ==> Success
+STEP k=72 t=720 ns cnt=83 acc=81 wall=5s
+VO t=725915 ps cnt=84 dec=0 acc=81
+84th input image : original value = 0, decision = 0 at 725925 ps ==> Success
+STEP k=73 t=730 ns cnt=84 acc=82 wall=6s
+VO t=736105 ps cnt=85 dec=7 acc=82
+85th input image : original value = 7, decision = 7 at 736115 ps ==> Success
+STEP k=74 t=740 ns cnt=85 acc=83 wall=6s
+VO t=744585 ps cnt=86 dec=1 acc=83
+86th input image : original value = 1, decision = 1 at 744595 ps ==> Success
+STEP k=75 t=750 ns cnt=86 acc=84 wall=6s
+VO t=753065 ps cnt=87 dec=5 acc=84
+87th input image : original value = 5, decision = 5 at 753075 ps ==> Success
+STEP k=76 t=760 ns cnt=87 acc=85 wall=6s
+VO t=761545 ps cnt=88 dec=5 acc=85
+88th input image : original value = 5, decision = 5 at 761555 ps ==> Success
+STEP k=77 t=770 ns cnt=89 acc=86 wall=6s
+VO t=770025 ps cnt=89 dec=8 acc=86
+89th input image : original value = 8, decision = 8 at 770035 ps ==> Success
+VO t=778505 ps cnt=90 dec=3 acc=87
+90th input image : original value = 3, decision = 3 at 778515 ps ==> Success
+STEP k=78 t=780 ns cnt=90 acc=88 wall=6s
+VO t=786985 ps cnt=91 dec=5 acc=88
+91st input image : original value = 5, decision = 5 at 786995 ps ==> Success
+STEP k=79 t=790 ns cnt=91 acc=89 wall=6s
+VO t=795465 ps cnt=92 dec=5 acc=89
+92nd input image : original value = 5, decision = 5 at 795475 ps ==> Success
+STEP k=80 t=800 ns cnt=92 acc=90 wall=6s
+VO t=803945 ps cnt=93 dec=6 acc=90
+93rd input image : original value = 6, decision = 6 at 803955 ps ==> Success
+STEP k=81 t=810 ns cnt=93 acc=91 wall=6s
+VO t=812425 ps cnt=94 dec=9 acc=91
+94th input image : original value = 9, decision = 9 at 812435 ps ==> Success
+STEP k=82 t=820 ns cnt=94 acc=92 wall=6s
+VO t=820905 ps cnt=95 dec=0 acc=92
+95th input image : original value = 0, decision = 0 at 820915 ps ==> Success
+VO t=829385 ps cnt=96 dec=4 acc=93
+96th input image : original value = 4, decision = 4 at 829395 ps ==> Success
+STEP k=83 t=830 ns cnt=96 acc=94 wall=6s
+VO t=837865 ps cnt=97 dec=4 acc=94
+97th input image : original value = 4, decision = 4 at 837875 ps ==> Success
+STEP k=84 t=840 ns cnt=97 acc=95 wall=6s
+VO t=846345 ps cnt=98 dec=4 acc=95
+98th input image : original value = 4, decision = 4 at 846355 ps ==> Success
+STEP k=85 t=850 ns cnt=98 acc=96 wall=6s
+VO t=854825 ps cnt=99 dec=9 acc=96
+99th input image : original value = 9, decision = 9 at 854835 ps ==> Success
+STEP k=86 t=860 ns cnt=99 acc=97 wall=7s
+VO t=863305 ps cnt=100 dec=0 acc=97
+100th input image : original value = 0, decision = 0 at 863315 ps ==> Success
+STEP k=87 t=870 ns cnt=100 acc=98 wall=7s
+VO t=873495 ps cnt=101 dec=5 acc=98
+101st input image : original value = 5, decision = 5 at 873505 ps ==> Success
+STEP k=88 t=880 ns cnt=101 acc=99 wall=7s
+VO t=881975 ps cnt=102 dec=9 acc=99
+102nd input image : original value = 9, decision = 9 at 881985 ps ==> Success
+STEP k=89 t=890 ns cnt=103 acc=100 wall=7s
+VO t=890455 ps cnt=103 dec=4 acc=100
+103rd input image : original value = 4, decision = 4 at 890465 ps ==> Success
+VO t=898935 ps cnt=104 dec=9 acc=101
+104th input image : original value = 9, decision = 9 at 898945 ps ==> Success
+STEP k=90 t=900 ns cnt=104 acc=102 wall=7s
+VO t=907415 ps cnt=105 dec=3 acc=102
+105th input image : original value = 3, decision = 3 at 907425 ps ==> Success
+STEP k=91 t=910 ns cnt=105 acc=103 wall=7s
+VO t=915895 ps cnt=106 dec=2 acc=103
+106th input image : original value = 2, decision = 2 at 915905 ps ==> Success
+STEP k=92 t=920 ns cnt=106 acc=104 wall=7s
+VO t=924375 ps cnt=107 dec=8 acc=104
+107th input image : original value = 8, decision = 8 at 924385 ps ==> Success
+STEP k=93 t=930 ns cnt=107 acc=105 wall=7s
+VO t=932855 ps cnt=108 dec=8 acc=105
+108th input image : original value = 8, decision = 8 at 932865 ps ==> Success
+STEP k=94 t=940 ns cnt=108 acc=106 wall=7s
+VO t=941335 ps cnt=109 dec=1 acc=106
+109th input image : original value = 1, decision = 1 at 941345 ps ==> Success
+VO t=949815 ps cnt=110 dec=1 acc=107
+110th input image : original value = 1, decision = 1 at 949825 ps ==> Success
+STEP k=95 t=950 ns cnt=110 acc=108 wall=7s
+VO t=958295 ps cnt=111 dec=7 acc=108
+111st input image : original value = 7, decision = 7 at 958305 ps ==> Success
+STEP k=96 t=960 ns cnt=111 acc=109 wall=7s
+VO t=966775 ps cnt=112 dec=6 acc=109
+112nd input image : original value = 6, decision = 6 at 966785 ps ==> Success
+STEP k=97 t=970 ns cnt=112 acc=110 wall=7s
+VO t=975255 ps cnt=113 dec=3 acc=110
+113rd input image : original value = 3, decision = 3 at 975265 ps ==> Success
+STEP k=98 t=980 ns cnt=113 acc=111 wall=7s
+VO t=983735 ps cnt=114 dec=5 acc=111
+114th input image : original value = 5, decision = 5 at 983745 ps ==> Success
+STEP k=99 t=990 ns cnt=114 acc=112 wall=7s
+VO t=992215 ps cnt=115 dec=4 acc=112
+115th input image : original value = 4, decision = 4 at 992225 ps ==> Success
+STEP k=100 t=1 us cnt=115 acc=113 wall=8s
+VO t=1000695 ps cnt=116 dec=5 acc=113
+116th input image : original value = 5, decision = 5 at 1000705 ps ==> Success
+VO t=1009175 ps cnt=117 dec=6 acc=114
+117th input image : original value = 6, decision = 6 at 1009185 ps ==> Success
+STEP k=101 t=1010 ns cnt=117 acc=115 wall=8s
+VO t=1017655 ps cnt=118 dec=1 acc=115
+118th input image : original value = 1, decision = 1 at 1017665 ps ==> Success
+STEP k=102 t=1020 ns cnt=118 acc=116 wall=8s
+VO t=1026135 ps cnt=119 dec=0 acc=116
+119th input image : original value = 0, decision = 0 at 1026145 ps ==> Success
+STEP k=103 t=1030 ns cnt=119 acc=117 wall=8s
+VO t=1034615 ps cnt=120 dec=9 acc=117
+120th input image : original value = 9, decision = 9 at 1034625 ps ==> Success
+STEP k=104 t=1040 ns cnt=120 acc=118 wall=8s
+VO t=1043095 ps cnt=121 dec=6 acc=118
+121st input image : original value = 6, decision = 6 at 1043105 ps ==> Success
+STEP k=105 t=1050 ns cnt=121 acc=119 wall=8s
+VO t=1051575 ps cnt=122 dec=3 acc=119
+122nd input image : original value = 3, decision = 3 at 1051585 ps ==> Success
+STEP k=106 t=1060 ns cnt=123 acc=120 wall=8s
+VO t=1060055 ps cnt=123 dec=4 acc=120
+123rd input image : original value = 4, decision = 4 at 1060065 ps ==> Success
+VO t=1068535 ps cnt=124 dec=3 acc=121
+124th input image : original value = 3, decision = 3 at 1068545 ps ==> Success
+STEP k=107 t=1070 ns cnt=124 acc=122 wall=8s
+VO t=1077015 ps cnt=125 dec=5 acc=122
+125th input image : original value = 5, decision = 5 at 1077025 ps ==> Success
+STEP k=108 t=1080 ns cnt=125 acc=123 wall=8s
+VO t=1085495 ps cnt=126 dec=4 acc=123
+126th input image : original value = 4, decision = 4 at 1085505 ps ==> Success
+STEP k=109 t=1090 ns cnt=126 acc=124 wall=8s
+VO t=1093975 ps cnt=127 dec=7 acc=124
+127th input image : original value = 2, decision = 7 at 1093985 ps ==> Fail
+STEP k=110 t=1100 ns cnt=127 acc=124 wall=8s
+VO t=1102455 ps cnt=128 dec=1 acc=124
+128th input image : original value = 1, decision = 1 at 1102465 ps ==> Success
+STEP k=111 t=1110 ns cnt=128 acc=125 wall=8s
+VO t=1110935 ps cnt=129 dec=7 acc=125
+129th input image : original value = 7, decision = 7 at 1110945 ps ==> Success
+VO t=1119415 ps cnt=130 dec=6 acc=126
+130th input image : original value = 6, decision = 6 at 1119425 ps ==> Success
+STEP k=112 t=1120 ns cnt=130 acc=127 wall=8s
+VO t=1127895 ps cnt=131 dec=4 acc=127
+131st input image : original value = 4, decision = 4 at 1127905 ps ==> Success
+STEP k=113 t=1130 ns cnt=131 acc=128 wall=8s
+VO t=1136375 ps cnt=132 dec=3 acc=128
+132nd input image : original value = 3, decision = 3 at 1136385 ps ==> Success
+STEP k=114 t=1140 ns cnt=132 acc=129 wall=8s
+VO t=1144855 ps cnt=133 dec=0 acc=129
+133rd input image : original value = 0, decision = 0 at 1144865 ps ==> Success
+STEP k=115 t=1150 ns cnt=133 acc=130 wall=9s
+VO t=1153335 ps cnt=134 dec=6 acc=130
+134th input image : original value = 6, decision = 6 at 1153345 ps ==> Success
+STEP k=116 t=1160 ns cnt=134 acc=131 wall=9s
+VO t=1161815 ps cnt=135 dec=4 acc=131
+135th input image : original value = 4, decision = 4 at 1161825 ps ==> Success
+STEP k=117 t=1170 ns cnt=136 acc=132 wall=9s
+VO t=1170295 ps cnt=136 dec=7 acc=132
+136th input image : original value = 7, decision = 7 at 1170305 ps ==> Success
+VO t=1178775 ps cnt=137 dec=2 acc=133
+137th input image : original value = 2, decision = 2 at 1178785 ps ==> Success
+STEP k=118 t=1180 ns cnt=137 acc=134 wall=9s
+VO t=1187255 ps cnt=138 dec=9 acc=134
+138th input image : original value = 9, decision = 9 at 1187265 ps ==> Success
+STEP k=119 t=1190 ns cnt=138 acc=135 wall=9s
+VO t=1195735 ps cnt=139 dec=0 acc=135
+139th input image : original value = 0, decision = 0 at 1195745 ps ==> Success
+STEP k=120 t=1200 ns cnt=139 acc=136 wall=9s
+VO t=1204215 ps cnt=140 dec=1 acc=136
+140th input image : original value = 1, decision = 1 at 1204225 ps ==> Success
+STEP k=121 t=1210 ns cnt=140 acc=137 wall=9s
+VO t=1212695 ps cnt=141 dec=4 acc=137
+141st input image : original value = 4, decision = 4 at 1212705 ps ==> Success
+STEP k=122 t=1220 ns cnt=141 acc=138 wall=9s
+VO t=1221175 ps cnt=142 dec=5 acc=138
+142nd input image : original value = 5, decision = 5 at 1221185 ps ==> Success
+VO t=1229655 ps cnt=143 dec=9 acc=139
+143rd input image : original value = 9, decision = 9 at 1229665 ps ==> Success
+STEP k=123 t=1230 ns cnt=143 acc=140 wall=9s
+VO t=1238135 ps cnt=144 dec=6 acc=140
+144th input image : original value = 6, decision = 6 at 1238145 ps ==> Success
+STEP k=124 t=1240 ns cnt=144 acc=141 wall=9s
+VO t=1246615 ps cnt=145 dec=3 acc=141
+145th input image : original value = 3, decision = 3 at 1246625 ps ==> Success
+STEP k=125 t=1250 ns cnt=145 acc=142 wall=9s
+VO t=1255095 ps cnt=146 dec=9 acc=142
+146th input image : original value = 9, decision = 9 at 1255105 ps ==> Success
+STEP k=126 t=1260 ns cnt=146 acc=143 wall=9s
+VO t=1263575 ps cnt=147 dec=7 acc=143
+147th input image : original value = 7, decision = 7 at 1263585 ps ==> Success
+STEP k=127 t=1270 ns cnt=147 acc=144 wall=9s
+VO t=1272055 ps cnt=148 dec=7 acc=144
+148th input image : original value = 7, decision = 7 at 1272065 ps ==> Success
+STEP k=128 t=1280 ns cnt=149 acc=145 wall=9s
+VO t=1280535 ps cnt=149 dec=4 acc=145
+149th input image : original value = 4, decision = 4 at 1280545 ps ==> Success
+VO t=1289015 ps cnt=150 dec=6 acc=146
+150th input image : original value = 6, decision = 6 at 1289025 ps ==> Success
+STEP k=129 t=1290 ns cnt=150 acc=147 wall=10s
+VO t=1297495 ps cnt=151 dec=3 acc=147
+151st input image : original value = 3, decision = 3 at 1297505 ps ==> Success
+STEP k=130 t=1300 ns cnt=151 acc=148 wall=10s
+VO t=1305975 ps cnt=152 dec=8 acc=148
+152nd input image : original value = 8, decision = 8 at 1305985 ps ==> Success
+STEP k=131 t=1310 ns cnt=152 acc=149 wall=10s
+VO t=1314455 ps cnt=153 dec=5 acc=149
+153rd input image : original value = 5, decision = 5 at 1314465 ps ==> Success
+STEP k=132 t=1320 ns cnt=153 acc=150 wall=10s
+VO t=1322935 ps cnt=154 dec=0 acc=150
+154th input image : original value = 0, decision = 0 at 1322945 ps ==> Success
+STEP k=133 t=1330 ns cnt=154 acc=151 wall=10s
+VO t=1331415 ps cnt=155 dec=4 acc=151
+155th input image : original value = 4, decision = 4 at 1331425 ps ==> Success
+VO t=1339895 ps cnt=156 dec=0 acc=152
+156th input image : original value = 0, decision = 0 at 1339905 ps ==> Success
+STEP k=134 t=1340 ns cnt=156 acc=153 wall=10s
+VO t=1348375 ps cnt=157 dec=7 acc=153
+157th input image : original value = 7, decision = 7 at 1348385 ps ==> Success
+STEP k=135 t=1350 ns cnt=157 acc=154 wall=10s
+VO t=1356855 ps cnt=158 dec=8 acc=154
+158th input image : original value = 8, decision = 8 at 1356865 ps ==> Success
+STEP k=136 t=1360 ns cnt=158 acc=155 wall=10s
+VO t=1365335 ps cnt=159 dec=8 acc=155
+159th input image : original value = 8, decision = 8 at 1365345 ps ==> Success
+STEP k=137 t=1370 ns cnt=159 acc=156 wall=10s
+VO t=1373815 ps cnt=160 dec=2 acc=156
+160th input image : original value = 2, decision = 2 at 1373825 ps ==> Success
+STEP k=138 t=1380 ns cnt=160 acc=157 wall=10s
+VO t=1382295 ps cnt=161 dec=8 acc=157
+161st input image : original value = 8, decision = 8 at 1382305 ps ==> Success
+STEP k=139 t=1390 ns cnt=161 acc=158 wall=10s
+VO t=1390775 ps cnt=162 dec=2 acc=158
+162nd input image : original value = 2, decision = 2 at 1390785 ps ==> Success
+VO t=1399255 ps cnt=163 dec=2 acc=159
+163rd input image : original value = 2, decision = 2 at 1399265 ps ==> Success
+STEP k=140 t=1400 ns cnt=163 acc=160 wall=10s
+VO t=1407735 ps cnt=164 dec=5 acc=160
+164th input image : original value = 5, decision = 5 at 1407745 ps ==> Success
+STEP k=141 t=1410 ns cnt=164 acc=161 wall=10s
+VO t=1416215 ps cnt=165 dec=0 acc=161
+165th input image : original value = 0, decision = 0 at 1416225 ps ==> Success
+STEP k=142 t=1420 ns cnt=165 acc=162 wall=10s
+VO t=1424695 ps cnt=166 dec=9 acc=162
+166th input image : original value = 9, decision = 9 at 1424705 ps ==> Success
+STEP k=143 t=1430 ns cnt=166 acc=163 wall=11s
+VO t=1433175 ps cnt=167 dec=8 acc=163
+167th input image : original value = 8, decision = 8 at 1433185 ps ==> Success
+STEP k=144 t=1440 ns cnt=167 acc=164 wall=11s
+VO t=1441655 ps cnt=168 dec=9 acc=164
+168th input image : original value = 9, decision = 9 at 1441665 ps ==> Success
+STEP k=145 t=1450 ns cnt=169 acc=165 wall=11s
+VO t=1450135 ps cnt=169 dec=2 acc=165
+169th input image : original value = 2, decision = 2 at 1450145 ps ==> Success
+VO t=1458615 ps cnt=170 dec=9 acc=166
+170th input image : original value = 9, decision = 9 at 1458625 ps ==> Success
+STEP k=146 t=1460 ns cnt=170 acc=167 wall=11s
+VO t=1467095 ps cnt=171 dec=3 acc=167
+171st input image : original value = 3, decision = 3 at 1467105 ps ==> Success
+STEP k=147 t=1470 ns cnt=171 acc=168 wall=11s
+VO t=1475575 ps cnt=172 dec=2 acc=168
+172nd input image : original value = 2, decision = 2 at 1475585 ps ==> Success
+STEP k=148 t=1480 ns cnt=172 acc=169 wall=11s
+VO t=1484055 ps cnt=173 dec=9 acc=169
+173rd input image : original value = 9, decision = 9 at 1484065 ps ==> Success
+STEP k=149 t=1490 ns cnt=173 acc=170 wall=11s
+VO t=1492535 ps cnt=174 dec=1 acc=170
+174th input image : original value = 1, decision = 1 at 1492545 ps ==> Success
+STEP k=150 t=1500 ns cnt=174 acc=171 wall=11s
+VO t=1501015 ps cnt=175 dec=0 acc=171
+175th input image : original value = 0, decision = 0 at 1501025 ps ==> Success
+VO t=1509495 ps cnt=176 dec=1 acc=172
+176th input image : original value = 1, decision = 1 at 1509505 ps ==> Success
+STEP k=151 t=1510 ns cnt=176 acc=173 wall=11s
+VO t=1517975 ps cnt=177 dec=1 acc=173
+177th input image : original value = 1, decision = 1 at 1517985 ps ==> Success
+STEP k=152 t=1520 ns cnt=177 acc=174 wall=11s
+VO t=1526455 ps cnt=178 dec=4 acc=174
+178th input image : original value = 4, decision = 4 at 1526465 ps ==> Success
+STEP k=153 t=1530 ns cnt=178 acc=175 wall=11s
+VO t=1534935 ps cnt=179 dec=3 acc=175
+179th input image : original value = 3, decision = 3 at 1534945 ps ==> Success
+STEP k=154 t=1540 ns cnt=179 acc=176 wall=11s
+VO t=1543415 ps cnt=180 dec=1 acc=176
+180th input image : original value = 1, decision = 1 at 1543425 ps ==> Success
+STEP k=155 t=1550 ns cnt=180 acc=177 wall=11s
+VO t=1551895 ps cnt=181 dec=5 acc=177
+181st input image : original value = 5, decision = 5 at 1551905 ps ==> Success
+STEP k=156 t=1560 ns cnt=182 acc=178 wall=11s
+VO t=1560375 ps cnt=182 dec=4 acc=178
+182nd input image : original value = 4, decision = 4 at 1560385 ps ==> Success
+VO t=1568855 ps cnt=183 dec=7 acc=179
+183rd input image : original value = 2, decision = 7 at 1568865 ps ==> Fail
+STEP k=157 t=1570 ns cnt=183 acc=179 wall=11s
+VO t=1577335 ps cnt=184 dec=6 acc=179
+184th input image : original value = 6, decision = 6 at 1577345 ps ==> Success
+STEP k=158 t=1580 ns cnt=184 acc=180 wall=12s
+VO t=1585815 ps cnt=185 dec=9 acc=180
+185th input image : original value = 9, decision = 9 at 1585825 ps ==> Success
+STEP k=159 t=1590 ns cnt=185 acc=181 wall=12s
+VO t=1594295 ps cnt=186 dec=5 acc=181
+186th input image : original value = 5, decision = 5 at 1594305 ps ==> Success
+STEP k=160 t=1600 ns cnt=186 acc=182 wall=12s
+VO t=1602775 ps cnt=187 dec=6 acc=182
+187th input image : original value = 6, decision = 6 at 1602785 ps ==> Success
+STEP k=161 t=1610 ns cnt=187 acc=183 wall=12s
+VO t=1611255 ps cnt=188 dec=4 acc=183
+188th input image : original value = 4, decision = 4 at 1611265 ps ==> Success
+VO t=1619735 ps cnt=189 dec=9 acc=184
+189th input image : original value = 9, decision = 9 at 1619745 ps ==> Success
+STEP k=162 t=1620 ns cnt=189 acc=185 wall=12s
+VO t=1628215 ps cnt=190 dec=9 acc=185
+190th input image : original value = 9, decision = 9 at 1628225 ps ==> Success
+STEP k=163 t=1630 ns cnt=190 acc=186 wall=12s
+VO t=1636695 ps cnt=191 dec=1 acc=186
+191st input image : original value = 1, decision = 1 at 1636705 ps ==> Success
+STEP k=164 t=1640 ns cnt=191 acc=187 wall=12s
+VO t=1645175 ps cnt=192 dec=8 acc=187
+192nd input image : original value = 8, decision = 8 at 1645185 ps ==> Success
+STEP k=165 t=1650 ns cnt=192 acc=188 wall=12s
+VO t=1653655 ps cnt=193 dec=5 acc=188
+193rd input image : original value = 5, decision = 5 at 1653665 ps ==> Success
+STEP k=166 t=1660 ns cnt=193 acc=189 wall=12s
+VO t=1662135 ps cnt=194 dec=8 acc=189
+194th input image : original value = 8, decision = 8 at 1662145 ps ==> Success
+STEP k=167 t=1670 ns cnt=194 acc=190 wall=12s
+VO t=1670615 ps cnt=195 dec=3 acc=190
+195th input image : original value = 3, decision = 3 at 1670625 ps ==> Success
+VO t=1679095 ps cnt=196 dec=4 acc=191
+196th input image : original value = 4, decision = 4 at 1679105 ps ==> Success
+STEP k=168 t=1680 ns cnt=196 acc=192 wall=12s
+VO t=1687575 ps cnt=197 dec=7 acc=192
+197th input image : original value = 7, decision = 7 at 1687585 ps ==> Success
+STEP k=169 t=1690 ns cnt=197 acc=193 wall=12s
+VO t=1696055 ps cnt=198 dec=4 acc=193
+198th input image : original value = 4, decision = 4 at 1696065 ps ==> Success
+STEP k=170 t=1700 ns cnt=198 acc=194 wall=12s
+VO t=1704535 ps cnt=199 dec=3 acc=194
+199th input image : original value = 3, decision = 3 at 1704545 ps ==> Success
+STEP k=171 t=1710 ns cnt=199 acc=195 wall=13s
+VO t=1713015 ps cnt=200 dec=1 acc=195
+200th input image : original value = 1, decision = 1 at 1713025 ps ==> Success
+STEP k=172 t=1720 ns cnt=200 acc=196 wall=13s
+VO t=1721495 ps cnt=201 dec=1 acc=196
+201st input image : original value = 1, decision = 1 at 1721505 ps ==> Success
+VO t=1729975 ps cnt=202 dec=5 acc=197
+202nd input image : original value = 5, decision = 5 at 1729985 ps ==> Success
+STEP k=173 t=1730 ns cnt=202 acc=198 wall=13s
+VO t=1738455 ps cnt=203 dec=5 acc=198
+203rd input image : original value = 5, decision = 5 at 1738465 ps ==> Success
+STEP k=174 t=1740 ns cnt=203 acc=199 wall=13s
+VO t=1746935 ps cnt=204 dec=8 acc=199
+204th input image : original value = 8, decision = 8 at 1746945 ps ==> Success
+STEP k=175 t=1750 ns cnt=204 acc=200 wall=13s
+VO t=1755415 ps cnt=205 dec=0 acc=200
+205th input image : original value = 0, decision = 0 at 1755425 ps ==> Success
+STEP k=176 t=1760 ns cnt=205 acc=201 wall=13s
+VO t=1763895 ps cnt=206 dec=8 acc=201
+206th input image : original value = 8, decision = 8 at 1763905 ps ==> Success
+STEP k=177 t=1770 ns cnt=206 acc=202 wall=13s
+VO t=1772375 ps cnt=207 dec=0 acc=202
+207th input image : original value = 0, decision = 0 at 1772385 ps ==> Success
+STEP k=178 t=1780 ns cnt=207 acc=203 wall=13s
+VO t=1780855 ps cnt=208 dec=0 acc=203
+208th input image : original value = 0, decision = 0 at 1780865 ps ==> Success
+VO t=1789335 ps cnt=209 dec=3 acc=204
+209th input image : original value = 3, decision = 3 at 1789345 ps ==> Success
+STEP k=179 t=1790 ns cnt=209 acc=205 wall=13s
+VO t=1797815 ps cnt=210 dec=6 acc=205
+210th input image : original value = 6, decision = 6 at 1797825 ps ==> Success
+STEP k=180 t=1800 ns cnt=210 acc=206 wall=13s
+VO t=1806295 ps cnt=211 dec=0 acc=206
+211st input image : original value = 0, decision = 0 at 1806305 ps ==> Success
+STEP k=181 t=1810 ns cnt=211 acc=207 wall=13s
+VO t=1814775 ps cnt=212 dec=2 acc=207
+212nd input image : original value = 2, decision = 2 at 1814785 ps ==> Success
+STEP k=182 t=1820 ns cnt=212 acc=208 wall=13s
+VO t=1823255 ps cnt=213 dec=4 acc=208
+213rd input image : original value = 4, decision = 4 at 1823265 ps ==> Success
+STEP k=183 t=1830 ns cnt=213 acc=209 wall=13s
+VO t=1831735 ps cnt=214 dec=9 acc=209
+214th input image : original value = 9, decision = 9 at 1831745 ps ==> Success
+STEP k=184 t=1840 ns cnt=215 acc=210 wall=14s
+VO t=1840215 ps cnt=215 dec=4 acc=210
+215th input image : original value = 4, decision = 4 at 1840225 ps ==> Success
+VO t=1848695 ps cnt=216 dec=9 acc=211
+216th input image : original value = 9, decision = 9 at 1848705 ps ==> Success
+STEP k=185 t=1850 ns cnt=216 acc=212 wall=14s
+VO t=1857175 ps cnt=217 dec=5 acc=212
+217th input image : original value = 5, decision = 5 at 1857185 ps ==> Success
+STEP k=186 t=1860 ns cnt=217 acc=213 wall=14s
+VO t=1865655 ps cnt=218 dec=3 acc=213
+218th input image : original value = 3, decision = 3 at 1865665 ps ==> Success
+STEP k=187 t=1870 ns cnt=218 acc=214 wall=14s
+VO t=1874135 ps cnt=219 dec=1 acc=214
+219th input image : original value = 1, decision = 1 at 1874145 ps ==> Success
+STEP k=188 t=1880 ns cnt=219 acc=215 wall=14s
+VO t=1882615 ps cnt=220 dec=0 acc=215
+220th input image : original value = 0, decision = 0 at 1882625 ps ==> Success
+STEP k=189 t=1890 ns cnt=220 acc=216 wall=14s
+VO t=1891095 ps cnt=221 dec=3 acc=216
+221st input image : original value = 3, decision = 3 at 1891105 ps ==> Success
+VO t=1899575 ps cnt=222 dec=5 acc=217
+222nd input image : original value = 5, decision = 5 at 1899585 ps ==> Success
+STEP k=190 t=1900 ns cnt=222 acc=218 wall=14s
+VO t=1908055 ps cnt=223 dec=9 acc=218
+223rd input image : original value = 9, decision = 9 at 1908065 ps ==> Success
+STEP k=191 t=1910 ns cnt=223 acc=219 wall=14s
+VO t=1916535 ps cnt=224 dec=9 acc=219
+224th input image : original value = 9, decision = 9 at 1916545 ps ==> Success
+STEP k=192 t=1920 ns cnt=224 acc=220 wall=14s
+VO t=1925015 ps cnt=225 dec=8 acc=220
+225th input image : original value = 8, decision = 8 at 1925025 ps ==> Success
+STEP k=193 t=1930 ns cnt=225 acc=221 wall=14s
+VO t=1933495 ps cnt=226 dec=9 acc=221
+226th input image : original value = 9, decision = 9 at 1933505 ps ==> Success
+STEP k=194 t=1940 ns cnt=226 acc=222 wall=14s
+VO t=1941975 ps cnt=227 dec=9 acc=222
+227th input image : original value = 9, decision = 9 at 1941985 ps ==> Success
+STEP k=195 t=1950 ns cnt=228 acc=223 wall=14s
+VO t=1950455 ps cnt=228 dec=2 acc=223
+228th input image : original value = 2, decision = 2 at 1950465 ps ==> Success
+VO t=1958935 ps cnt=229 dec=5 acc=224
+229th input image : original value = 5, decision = 5 at 1958945 ps ==> Success
+STEP k=196 t=1960 ns cnt=229 acc=225 wall=14s
+VO t=1969125 ps cnt=230 dec=7 acc=225
+230th input image : original value = 7, decision = 7 at 1969135 ps ==> Success
+STEP k=197 t=1970 ns cnt=230 acc=226 wall=14s
+VO t=1977605 ps cnt=231 dec=1 acc=226
+231st input image : original value = 1, decision = 1 at 1977615 ps ==> Success
+STEP k=198 t=1980 ns cnt=231 acc=227 wall=15s
+VO t=1986085 ps cnt=232 dec=3 acc=227
+232nd input image : original value = 3, decision = 3 at 1986095 ps ==> Success
+STEP k=199 t=1990 ns cnt=232 acc=228 wall=15s
+VO t=1994565 ps cnt=233 dec=6 acc=228
+233rd input image : original value = 6, decision = 6 at 1994575 ps ==> Success
+STEP k=200 t=2 us cnt=233 acc=229 wall=15s
+VO t=2003045 ps cnt=234 dec=0 acc=229
+234th input image : original value = 0, decision = 0 at 2003055 ps ==> Success
+STEP k=201 t=2010 ns cnt=234 acc=230 wall=15s
+VO t=2011525 ps cnt=235 dec=4 acc=230
+235th input image : original value = 4, decision = 4 at 2011535 ps ==> Success
+STEP k=202 t=2020 ns cnt=236 acc=231 wall=15s
+VO t=2020005 ps cnt=236 dec=0 acc=231
+236th input image : original value = 0, decision = 0 at 2020015 ps ==> Success
+VO t=2028485 ps cnt=237 dec=6 acc=232
+237th input image : original value = 6, decision = 6 at 2028495 ps ==> Success
+STEP k=203 t=2030 ns cnt=237 acc=233 wall=15s
+VO t=2036965 ps cnt=238 dec=5 acc=233
+238th input image : original value = 5, decision = 5 at 2036975 ps ==> Success
+STEP k=204 t=2040 ns cnt=238 acc=234 wall=15s
+VO t=2045445 ps cnt=239 dec=5 acc=234
+239th input image : original value = 5, decision = 5 at 2045455 ps ==> Success
+STEP k=205 t=2050 ns cnt=239 acc=235 wall=15s
+VO t=2053925 ps cnt=240 dec=7 acc=235
+240th input image : original value = 2, decision = 7 at 2053935 ps ==> Fail
+STEP k=206 t=2060 ns cnt=240 acc=235 wall=15s
+VO t=2062405 ps cnt=241 dec=4 acc=235
+241st input image : original value = 4, decision = 4 at 2062415 ps ==> Success
+STEP k=207 t=2070 ns cnt=241 acc=236 wall=15s
+VO t=2070885 ps cnt=242 dec=9 acc=236
+242nd input image : original value = 9, decision = 9 at 2070895 ps ==> Success
+VO t=2079365 ps cnt=243 dec=3 acc=237
+243rd input image : original value = 3, decision = 3 at 2079375 ps ==> Success
+STEP k=208 t=2080 ns cnt=243 acc=238 wall=15s
+VO t=2087845 ps cnt=244 dec=0 acc=238
+244th input image : original value = 0, decision = 0 at 2087855 ps ==> Success
+STEP k=209 t=2090 ns cnt=244 acc=239 wall=15s
+VO t=2096325 ps cnt=245 dec=4 acc=239
+245th input image : original value = 4, decision = 4 at 2096335 ps ==> Success
+STEP k=210 t=2100 ns cnt=245 acc=240 wall=15s
+VO t=2104805 ps cnt=246 dec=8 acc=240
+246th input image : original value = 8, decision = 8 at 2104815 ps ==> Success
+STEP k=211 t=2110 ns cnt=246 acc=241 wall=16s
+VO t=2113285 ps cnt=247 dec=3 acc=241
+247th input image : original value = 3, decision = 3 at 2113295 ps ==> Success
+STEP k=212 t=2120 ns cnt=247 acc=242 wall=16s
+VO t=2121765 ps cnt=248 dec=8 acc=242
+248th input image : original value = 8, decision = 8 at 2121775 ps ==> Success
+STEP k=213 t=2130 ns cnt=249 acc=243 wall=16s
+VO t=2130245 ps cnt=249 dec=6 acc=243
+249th input image : original value = 6, decision = 6 at 2130255 ps ==> Success
+VO t=2138725 ps cnt=250 dec=7 acc=244
+250th input image : original value = 7, decision = 7 at 2138735 ps ==> Success
+STEP k=214 t=2140 ns cnt=250 acc=245 wall=16s
+VO t=2147205 ps cnt=251 dec=9 acc=245
+251st input image : original value = 9, decision = 9 at 2147215 ps ==> Success
+STEP k=215 t=2150 ns cnt=251 acc=246 wall=16s
+VO t=2155685 ps cnt=252 dec=1 acc=246
+252nd input image : original value = 1, decision = 1 at 2155695 ps ==> Success
+STEP k=216 t=2160 ns cnt=252 acc=247 wall=16s
+VO t=2164165 ps cnt=253 dec=4 acc=247
+253rd input image : original value = 4, decision = 4 at 2164175 ps ==> Success
+STEP k=217 t=2170 ns cnt=253 acc=248 wall=16s
+VO t=2172645 ps cnt=254 dec=2 acc=248
+254th input image : original value = 2, decision = 2 at 2172655 ps ==> Success
+STEP k=218 t=2180 ns cnt=254 acc=249 wall=16s
+VO t=2181125 ps cnt=255 dec=0 acc=249
+255th input image : original value = 0, decision = 0 at 2181135 ps ==> Success
+VO t=2189605 ps cnt=256 dec=0 acc=250
+256th input image : original value = 0, decision = 0 at 2189615 ps ==> Success
+STEP k=219 t=2190 ns cnt=256 acc=251 wall=16s
+VO t=2198085 ps cnt=257 dec=9 acc=251
+257th input image : original value = 9, decision = 9 at 2198095 ps ==> Success
+STEP k=220 t=2200 ns cnt=257 acc=252 wall=16s
+VO t=2206565 ps cnt=258 dec=0 acc=252
+258th input image : original value = 0, decision = 0 at 2206575 ps ==> Success
+STEP k=221 t=2210 ns cnt=258 acc=253 wall=16s
+VO t=2215045 ps cnt=259 dec=3 acc=253
+259th input image : original value = 3, decision = 3 at 2215055 ps ==> Success
+STEP k=222 t=2220 ns cnt=259 acc=254 wall=16s
+VO t=2223525 ps cnt=260 dec=3 acc=254
+260th input image : original value = 3, decision = 3 at 2223535 ps ==> Success
+STEP k=223 t=2230 ns cnt=260 acc=255 wall=16s
+VO t=2232005 ps cnt=261 dec=2 acc=255
+261st input image : original value = 2, decision = 2 at 2232015 ps ==> Success
+STEP k=224 t=2240 ns cnt=262 acc=256 wall=16s
+VO t=2240485 ps cnt=262 dec=2 acc=256
+262nd input image : original value = 2, decision = 2 at 2240495 ps ==> Success
+VO t=2248965 ps cnt=263 dec=3 acc=257
+263rd input image : original value = 3, decision = 3 at 2248975 ps ==> Success
+STEP k=225 t=2250 ns cnt=263 acc=258 wall=17s
+VO t=2257445 ps cnt=264 dec=0 acc=258
+264th input image : original value = 0, decision = 0 at 2257455 ps ==> Success
+STEP k=226 t=2260 ns cnt=264 acc=259 wall=17s
+VO t=2265925 ps cnt=265 dec=2 acc=259
+265th input image : original value = 2, decision = 2 at 2265935 ps ==> Success
+STEP k=227 t=2270 ns cnt=265 acc=260 wall=17s
+VO t=2274405 ps cnt=266 dec=5 acc=260
+266th input image : original value = 5, decision = 5 at 2274415 ps ==> Success
+STEP k=228 t=2280 ns cnt=266 acc=261 wall=17s
+VO t=2282885 ps cnt=267 dec=4 acc=261
+267th input image : original value = 4, decision = 4 at 2282895 ps ==> Success
+STEP k=229 t=2290 ns cnt=267 acc=262 wall=17s
+VO t=2291365 ps cnt=268 dec=4 acc=262
+268th input image : original value = 4, decision = 4 at 2291375 ps ==> Success
+VO t=2299845 ps cnt=269 dec=8 acc=263
+269th input image : original value = 8, decision = 8 at 2299855 ps ==> Success
+STEP k=230 t=2300 ns cnt=269 acc=264 wall=17s
+STEP k=231 t=2310 ns cnt=270 acc=264 wall=17s
+VO t=2310035 ps cnt=270 dec=7 acc=264
+270th input image : original value = 7, decision = 7 at 2310045 ps ==> Success
+VO t=2318515 ps cnt=271 dec=4 acc=265
+271st input image : original value = 4, decision = 4 at 2318525 ps ==> Success
+STEP k=232 t=2320 ns cnt=271 acc=266 wall=17s
+VO t=2326995 ps cnt=272 dec=9 acc=266
+272nd input image : original value = 9, decision = 9 at 2327005 ps ==> Success
+STEP k=233 t=2330 ns cnt=272 acc=267 wall=17s
+VO t=2335475 ps cnt=273 dec=4 acc=267
+273rd input image : original value = 4, decision = 4 at 2335485 ps ==> Success
+STEP k=234 t=2340 ns cnt=273 acc=268 wall=17s
+VO t=2343955 ps cnt=274 dec=7 acc=268
+274th input image : original value = 7, decision = 7 at 2343965 ps ==> Success
+STEP k=235 t=2350 ns cnt=274 acc=269 wall=17s
+VO t=2352435 ps cnt=275 dec=2 acc=269
+275th input image : original value = 2, decision = 2 at 2352445 ps ==> Success
+STEP k=236 t=2360 ns cnt=275 acc=270 wall=17s
+VO t=2360915 ps cnt=276 dec=1 acc=270
+276th input image : original value = 1, decision = 1 at 2360925 ps ==> Success
+VO t=2369395 ps cnt=277 dec=4 acc=271
+277th input image : original value = 4, decision = 4 at 2369405 ps ==> Success
+STEP k=237 t=2370 ns cnt=277 acc=272 wall=17s
+VO t=2377875 ps cnt=278 dec=6 acc=272
+278th input image : original value = 6, decision = 6 at 2377885 ps ==> Success
+STEP k=238 t=2380 ns cnt=278 acc=273 wall=17s
+VO t=2386355 ps cnt=279 dec=1 acc=273
+279th input image : original value = 1, decision = 1 at 2386365 ps ==> Success
+STEP k=239 t=2390 ns cnt=279 acc=274 wall=18s
+VO t=2394835 ps cnt=280 dec=7 acc=274
+280th input image : original value = 7, decision = 7 at 2394845 ps ==> Success
+STEP k=240 t=2400 ns cnt=280 acc=275 wall=18s
+VO t=2403315 ps cnt=281 dec=3 acc=275
+281st input image : original value = 3, decision = 3 at 2403325 ps ==> Success
+STEP k=241 t=2410 ns cnt=281 acc=276 wall=18s
+VO t=2411795 ps cnt=282 dec=3 acc=276
+282nd input image : original value = 3, decision = 3 at 2411805 ps ==> Success
+STEP k=242 t=2420 ns cnt=283 acc=277 wall=18s
+VO t=2420275 ps cnt=283 dec=9 acc=277
+283rd input image : original value = 9, decision = 9 at 2420285 ps ==> Success
+VO t=2428755 ps cnt=284 dec=8 acc=278
+284th input image : original value = 8, decision = 8 at 2428765 ps ==> Success
+STEP k=243 t=2430 ns cnt=284 acc=279 wall=18s
+VO t=2437235 ps cnt=285 dec=0 acc=279
+285th input image : original value = 0, decision = 0 at 2437245 ps ==> Success
+STEP k=244 t=2440 ns cnt=285 acc=280 wall=18s
+VO t=2445715 ps cnt=286 dec=0 acc=280
+286th input image : original value = 0, decision = 0 at 2445725 ps ==> Success
+STEP k=245 t=2450 ns cnt=286 acc=281 wall=18s
+VO t=2454195 ps cnt=287 dec=5 acc=281
+287th input image : original value = 5, decision = 5 at 2454205 ps ==> Success
+STEP k=246 t=2460 ns cnt=287 acc=282 wall=18s
+VO t=2462675 ps cnt=288 dec=2 acc=282
+288th input image : original value = 2, decision = 2 at 2462685 ps ==> Success
+STEP k=247 t=2470 ns cnt=288 acc=283 wall=18s
+VO t=2471155 ps cnt=289 dec=7 acc=283
+289th input image : original value = 2, decision = 7 at 2471165 ps ==> Fail
+VO t=2479635 ps cnt=290 dec=4 acc=283
+290th input image : original value = 4, decision = 4 at 2479645 ps ==> Success
+STEP k=248 t=2480 ns cnt=290 acc=284 wall=18s
+VO t=2488115 ps cnt=291 dec=0 acc=284
+291st input image : original value = 0, decision = 0 at 2488125 ps ==> Success
+STEP k=249 t=2490 ns cnt=291 acc=285 wall=18s
+VO t=2496595 ps cnt=292 dec=1 acc=285
+292nd input image : original value = 1, decision = 1 at 2496605 ps ==> Success
+STEP k=250 t=2500 ns cnt=292 acc=286 wall=18s
+VO t=2505075 ps cnt=293 dec=3 acc=286
+293rd input image : original value = 3, decision = 3 at 2505085 ps ==> Success
+STEP k=251 t=2510 ns cnt=293 acc=287 wall=18s
+VO t=2513555 ps cnt=294 dec=6 acc=287
+294th input image : original value = 6, decision = 6 at 2513565 ps ==> Success
+STEP k=252 t=2520 ns cnt=294 acc=288 wall=19s
+VO t=2522035 ps cnt=295 dec=5 acc=288
+295th input image : original value = 5, decision = 5 at 2522045 ps ==> Success
+STEP k=253 t=2530 ns cnt=296 acc=289 wall=19s
+VO t=2532225 ps cnt=296 dec=7 acc=289
+296th input image : original value = 7, decision = 7 at 2532235 ps ==> Success
+STEP k=254 t=2540 ns cnt=296 acc=290 wall=19s
+VO t=2540705 ps cnt=297 dec=0 acc=290
+297th input image : original value = 0, decision = 0 at 2540715 ps ==> Success
+VO t=2549185 ps cnt=298 dec=4 acc=291
+298th input image : original value = 4, decision = 4 at 2549195 ps ==> Success
+STEP k=255 t=2550 ns cnt=298 acc=292 wall=19s
+VO t=2557665 ps cnt=299 dec=8 acc=292
+299th input image : original value = 8, decision = 8 at 2557675 ps ==> Success
+STEP k=256 t=2560 ns cnt=299 acc=293 wall=19s
+VO t=2566145 ps cnt=300 dec=4 acc=293
+300th input image : original value = 4, decision = 4 at 2566155 ps ==> Success
+STEP k=257 t=2570 ns cnt=300 acc=294 wall=19s
+VO t=2574625 ps cnt=301 dec=0 acc=294
+301st input image : original value = 0, decision = 0 at 2574635 ps ==> Success
+STEP k=258 t=2580 ns cnt=301 acc=295 wall=19s
+VO t=2583105 ps cnt=302 dec=7 acc=295
+302nd input image : original value = 2, decision = 7 at 2583115 ps ==> Fail
+STEP k=259 t=2590 ns cnt=302 acc=295 wall=19s
+VO t=2591585 ps cnt=303 dec=1 acc=295
+303rd input image : original value = 1, decision = 1 at 2591595 ps ==> Success
+STEP k=260 t=2600 ns cnt=304 acc=296 wall=19s
+VO t=2600065 ps cnt=304 dec=0 acc=296
+304th input image : original value = 0, decision = 0 at 2600075 ps ==> Success
+VO t=2608545 ps cnt=305 dec=7 acc=297
+305th input image : original value = 7, decision = 7 at 2608555 ps ==> Success
+STEP k=261 t=2610 ns cnt=305 acc=298 wall=19s
+VO t=2617025 ps cnt=306 dec=8 acc=298
+306th input image : original value = 8, decision = 8 at 2617035 ps ==> Success
+STEP k=262 t=2620 ns cnt=306 acc=299 wall=19s
+VO t=2625505 ps cnt=307 dec=4 acc=299
+307th input image : original value = 4, decision = 4 at 2625515 ps ==> Success
+STEP k=263 t=2630 ns cnt=307 acc=300 wall=19s
+VO t=2633985 ps cnt=308 dec=7 acc=300
+308th input image : original value = 7, decision = 7 at 2633995 ps ==> Success
+STEP k=264 t=2640 ns cnt=308 acc=301 wall=19s
+VO t=2642465 ps cnt=309 dec=2 acc=301
+309th input image : original value = 2, decision = 2 at 2642475 ps ==> Success
+STEP k=265 t=2650 ns cnt=309 acc=302 wall=19s
+VO t=2650945 ps cnt=310 dec=5 acc=302
+310th input image : original value = 5, decision = 5 at 2650955 ps ==> Success
+VO t=2659425 ps cnt=311 dec=7 acc=303
+311st input image : original value = 7, decision = 7 at 2659435 ps ==> Success
+STEP k=266 t=2660 ns cnt=311 acc=304 wall=20s
+VO t=2667905 ps cnt=312 dec=8 acc=304
+312nd input image : original value = 8, decision = 8 at 2667915 ps ==> Success
+STEP k=267 t=2670 ns cnt=312 acc=305 wall=20s
+VO t=2676385 ps cnt=313 dec=2 acc=305
+313rd input image : original value = 2, decision = 2 at 2676395 ps ==> Success
+STEP k=268 t=2680 ns cnt=313 acc=306 wall=20s
+VO t=2686575 ps cnt=314 dec=2 acc=306
+314th input image : original value = 1, decision = 2 at 2686585 ps ==> Fail
+STEP k=269 t=2690 ns cnt=314 acc=306 wall=20s
+VO t=2695055 ps cnt=315 dec=5 acc=306
+315th input image : original value = 5, decision = 5 at 2695065 ps ==> Success
+STEP k=270 t=2700 ns cnt=315 acc=307 wall=20s
+VO t=2703535 ps cnt=316 dec=3 acc=307
+316th input image : original value = 3, decision = 3 at 2703545 ps ==> Success
+STEP k=271 t=2710 ns cnt=316 acc=308 wall=20s
+VO t=2712015 ps cnt=317 dec=5 acc=308
+317th input image : original value = 5, decision = 5 at 2712025 ps ==> Success
+STEP k=272 t=2720 ns cnt=318 acc=309 wall=20s
+VO t=2720495 ps cnt=318 dec=3 acc=309
+318th input image : original value = 3, decision = 3 at 2720505 ps ==> Success
+VO t=2728975 ps cnt=319 dec=7 acc=310
+319th input image : original value = 2, decision = 7 at 2728985 ps ==> Fail
+STEP k=273 t=2730 ns cnt=319 acc=310 wall=20s
+VO t=2737455 ps cnt=320 dec=8 acc=310
+320th input image : original value = 8, decision = 8 at 2737465 ps ==> Success
+STEP k=274 t=2740 ns cnt=320 acc=311 wall=20s
+VO t=2745935 ps cnt=321 dec=4 acc=311
+321st input image : original value = 4, decision = 4 at 2745945 ps ==> Success
+STEP k=275 t=2750 ns cnt=321 acc=312 wall=20s
+VO t=2754415 ps cnt=322 dec=9 acc=312
+322nd input image : original value = 9, decision = 9 at 2754425 ps ==> Success
+STEP k=276 t=2760 ns cnt=322 acc=313 wall=20s
+VO t=2762895 ps cnt=323 dec=2 acc=313
+323rd input image : original value = 2, decision = 2 at 2762905 ps ==> Success
+STEP k=277 t=2770 ns cnt=323 acc=314 wall=20s
+VO t=2771375 ps cnt=324 dec=0 acc=314
+324th input image : original value = 0, decision = 0 at 2771385 ps ==> Success
+VO t=2779855 ps cnt=325 dec=2 acc=315
+325th input image : original value = 2, decision = 2 at 2779865 ps ==> Success
+STEP k=278 t=2780 ns cnt=325 acc=316 wall=20s
+VO t=2788335 ps cnt=326 dec=5 acc=316
+326th input image : original value = 5, decision = 5 at 2788345 ps ==> Success
+STEP k=279 t=2790 ns cnt=326 acc=317 wall=20s
+VO t=2796815 ps cnt=327 dec=8 acc=317
+327th input image : original value = 8, decision = 8 at 2796825 ps ==> Success
+STEP k=280 t=2800 ns cnt=327 acc=318 wall=21s
+VO t=2805295 ps cnt=328 dec=5 acc=318
+328th input image : original value = 5, decision = 5 at 2805305 ps ==> Success
+STEP k=281 t=2810 ns cnt=328 acc=319 wall=21s
+VO t=2813775 ps cnt=329 dec=3 acc=319
+329th input image : original value = 3, decision = 3 at 2813785 ps ==> Success
+STEP k=282 t=2820 ns cnt=329 acc=320 wall=21s
+VO t=2822255 ps cnt=330 dec=0 acc=320
+330th input image : original value = 0, decision = 0 at 2822265 ps ==> Success
+STEP k=283 t=2830 ns cnt=330 acc=321 wall=21s
+VO t=2830735 ps cnt=331 dec=5 acc=321
+331st input image : original value = 5, decision = 5 at 2830745 ps ==> Success
+VO t=2839215 ps cnt=332 dec=4 acc=322
+332nd input image : original value = 4, decision = 4 at 2839225 ps ==> Success
+STEP k=284 t=2840 ns cnt=332 acc=323 wall=21s
+VO t=2847695 ps cnt=333 dec=4 acc=323
+333rd input image : original value = 4, decision = 4 at 2847705 ps ==> Success
+STEP k=285 t=2850 ns cnt=333 acc=324 wall=21s
+VO t=2856175 ps cnt=334 dec=3 acc=324
+334th input image : original value = 3, decision = 3 at 2856185 ps ==> Success
+STEP k=286 t=2860 ns cnt=334 acc=325 wall=21s
+VO t=2864655 ps cnt=335 dec=9 acc=325
+335th input image : original value = 9, decision = 9 at 2864665 ps ==> Success
+STEP k=287 t=2870 ns cnt=335 acc=326 wall=21s
+VO t=2873135 ps cnt=336 dec=7 acc=326
+336th input image : original value = 7, decision = 7 at 2873145 ps ==> Success
+STEP k=288 t=2880 ns cnt=336 acc=327 wall=21s
+VO t=2881615 ps cnt=337 dec=4 acc=327
+337th input image : original value = 4, decision = 4 at 2881625 ps ==> Success
+STEP k=289 t=2890 ns cnt=338 acc=328 wall=21s
+VO t=2890095 ps cnt=338 dec=5 acc=328
+338th input image : original value = 5, decision = 5 at 2890105 ps ==> Success
+VO t=2898575 ps cnt=339 dec=1 acc=329
+339th input image : original value = 1, decision = 1 at 2898585 ps ==> Success
+STEP k=290 t=2900 ns cnt=339 acc=330 wall=21s
+VO t=2907055 ps cnt=340 dec=7 acc=330
+340th input image : original value = 7, decision = 7 at 2907065 ps ==> Success
+STEP k=291 t=2910 ns cnt=340 acc=331 wall=21s
+VO t=2915535 ps cnt=341 dec=8 acc=331
+341st input image : original value = 8, decision = 8 at 2915545 ps ==> Success
+STEP k=292 t=2920 ns cnt=341 acc=332 wall=21s
+VO t=2924015 ps cnt=342 dec=1 acc=332
+342nd input image : original value = 1, decision = 1 at 2924025 ps ==> Success
+STEP k=293 t=2930 ns cnt=342 acc=333 wall=21s
+VO t=2932495 ps cnt=343 dec=6 acc=333
+343rd input image : original value = 6, decision = 6 at 2932505 ps ==> Success
+STEP k=294 t=2940 ns cnt=343 acc=334 wall=22s
+VO t=2940975 ps cnt=344 dec=1 acc=334
+344th input image : original value = 1, decision = 1 at 2940985 ps ==> Success
+VO t=2949455 ps cnt=345 dec=7 acc=335
+345th input image : original value = 7, decision = 7 at 2949465 ps ==> Success
+STEP k=295 t=2950 ns cnt=345 acc=336 wall=22s
+VO t=2957935 ps cnt=346 dec=6 acc=336
+346th input image : original value = 6, decision = 6 at 2957945 ps ==> Success
+STEP k=296 t=2960 ns cnt=346 acc=337 wall=22s
+VO t=2966415 ps cnt=347 dec=9 acc=337
+347th input image : original value = 9, decision = 9 at 2966425 ps ==> Success
+STEP k=297 t=2970 ns cnt=347 acc=338 wall=22s
+VO t=2974895 ps cnt=348 dec=4 acc=338
+348th input image : original value = 4, decision = 4 at 2974905 ps ==> Success
+STEP k=298 t=2980 ns cnt=348 acc=339 wall=22s
+VO t=2983375 ps cnt=349 dec=8 acc=339
+349th input image : original value = 8, decision = 8 at 2983385 ps ==> Success
+STEP k=299 t=2990 ns cnt=349 acc=340 wall=22s
+VO t=2991855 ps cnt=350 dec=4 acc=340
+350th input image : original value = 4, decision = 4 at 2991865 ps ==> Success
+STEP k=300 t=3 us cnt=351 acc=341 wall=22s
+VO t=3000335 ps cnt=351 dec=7 acc=341
+351st input image : original value = 7, decision = 7 at 3000345 ps ==> Success
+VO t=3008815 ps cnt=352 dec=4 acc=342
+352nd input image : original value = 4, decision = 4 at 3008825 ps ==> Success
+STEP k=301 t=3010 ns cnt=352 acc=343 wall=22s
+VO t=3017295 ps cnt=353 dec=0 acc=343
+353rd input image : original value = 0, decision = 0 at 3017305 ps ==> Success
+STEP k=302 t=3020 ns cnt=353 acc=344 wall=22s
+VO t=3025775 ps cnt=354 dec=6 acc=344
+354th input image : original value = 6, decision = 6 at 3025785 ps ==> Success
+STEP k=303 t=3030 ns cnt=354 acc=345 wall=22s
+VO t=3034255 ps cnt=355 dec=0 acc=345
+355th input image : original value = 0, decision = 0 at 3034265 ps ==> Success
+STEP k=304 t=3040 ns cnt=355 acc=346 wall=22s
+VO t=3042735 ps cnt=356 dec=9 acc=346
+356th input image : original value = 9, decision = 9 at 3042745 ps ==> Success
+STEP k=305 t=3050 ns cnt=356 acc=347 wall=22s
+VO t=3051215 ps cnt=357 dec=0 acc=347
+357th input image : original value = 0, decision = 0 at 3051225 ps ==> Success
+VO t=3059695 ps cnt=358 dec=7 acc=348
+358th input image : original value = 7, decision = 7 at 3059705 ps ==> Success
+STEP k=306 t=3060 ns cnt=358 acc=349 wall=22s
+VO t=3068175 ps cnt=359 dec=4 acc=349
+359th input image : original value = 4, decision = 4 at 3068185 ps ==> Success
+STEP k=307 t=3070 ns cnt=359 acc=350 wall=22s
+VO t=3076655 ps cnt=360 dec=1 acc=350
+360th input image : original value = 1, decision = 1 at 3076665 ps ==> Success
+STEP k=308 t=3080 ns cnt=360 acc=351 wall=23s
+VO t=3085135 ps cnt=361 dec=7 acc=351
+361st input image : original value = 2, decision = 7 at 3085145 ps ==> Fail
+STEP k=309 t=3090 ns cnt=361 acc=351 wall=23s
+VO t=3093615 ps cnt=362 dec=4 acc=351
+362nd input image : original value = 4, decision = 4 at 3093625 ps ==> Success
+STEP k=310 t=3100 ns cnt=362 acc=352 wall=23s
+VO t=3102095 ps cnt=363 dec=0 acc=352
+363rd input image : original value = 0, decision = 0 at 3102105 ps ==> Success
+STEP k=311 t=3110 ns cnt=364 acc=353 wall=23s
+VO t=3110575 ps cnt=364 dec=3 acc=353
+364th input image : original value = 3, decision = 3 at 3110585 ps ==> Success
+VO t=3119055 ps cnt=365 dec=0 acc=354
+365th input image : original value = 0, decision = 0 at 3119065 ps ==> Success
+STEP k=312 t=3120 ns cnt=365 acc=355 wall=23s
+VO t=3127535 ps cnt=366 dec=5 acc=355
+366th input image : original value = 5, decision = 5 at 3127545 ps ==> Success
+STEP k=313 t=3130 ns cnt=366 acc=356 wall=23s
+VO t=3136015 ps cnt=367 dec=3 acc=356
+367th input image : original value = 3, decision = 3 at 3136025 ps ==> Success
+STEP k=314 t=3140 ns cnt=367 acc=357 wall=23s
+VO t=3144495 ps cnt=368 dec=2 acc=357
+368th input image : original value = 2, decision = 2 at 3144505 ps ==> Success
+STEP k=315 t=3150 ns cnt=368 acc=358 wall=23s
+VO t=3152975 ps cnt=369 dec=8 acc=358
+369th input image : original value = 8, decision = 8 at 3152985 ps ==> Success
+STEP k=316 t=3160 ns cnt=369 acc=359 wall=23s
+VO t=3161455 ps cnt=370 dec=4 acc=359
+370th input image : original value = 4, decision = 4 at 3161465 ps ==> Success
+VO t=3169935 ps cnt=371 dec=4 acc=360
+371st input image : original value = 4, decision = 4 at 3169945 ps ==> Success
+STEP k=317 t=3170 ns cnt=371 acc=361 wall=23s
+VO t=3178415 ps cnt=372 dec=9 acc=361
+372nd input image : original value = 9, decision = 9 at 3178425 ps ==> Success
+STEP k=318 t=3180 ns cnt=372 acc=362 wall=23s
+VO t=3186895 ps cnt=373 dec=8 acc=362
+373rd input image : original value = 8, decision = 8 at 3186905 ps ==> Success
+STEP k=319 t=3190 ns cnt=373 acc=363 wall=23s
+VO t=3195375 ps cnt=374 dec=8 acc=363
+374th input image : original value = 8, decision = 8 at 3195385 ps ==> Success
+STEP k=320 t=3200 ns cnt=374 acc=364 wall=23s
+VO t=3203855 ps cnt=375 dec=1 acc=364
+375th input image : original value = 1, decision = 1 at 3203865 ps ==> Success
+STEP k=321 t=3210 ns cnt=375 acc=365 wall=23s
+VO t=3212335 ps cnt=376 dec=6 acc=365
+376th input image : original value = 6, decision = 6 at 3212345 ps ==> Success
+STEP k=322 t=3220 ns cnt=376 acc=366 wall=24s
+VO t=3220815 ps cnt=377 dec=2 acc=366
+377th input image : original value = 2, decision = 2 at 3220825 ps ==> Success
+VO t=3229295 ps cnt=378 dec=6 acc=367
+378th input image : original value = 6, decision = 6 at 3229305 ps ==> Success
+STEP k=323 t=3230 ns cnt=378 acc=368 wall=24s
+VO t=3237775 ps cnt=379 dec=5 acc=368
+379th input image : original value = 5, decision = 5 at 3237785 ps ==> Success
+STEP k=324 t=3240 ns cnt=379 acc=369 wall=24s
+VO t=3246255 ps cnt=380 dec=9 acc=369
+380th input image : original value = 9, decision = 9 at 3246265 ps ==> Success
+STEP k=325 t=3250 ns cnt=380 acc=370 wall=24s
+VO t=3254735 ps cnt=381 dec=4 acc=370
+381st input image : original value = 4, decision = 4 at 3254745 ps ==> Success
+STEP k=326 t=3260 ns cnt=381 acc=371 wall=24s
+VO t=3263215 ps cnt=382 dec=7 acc=371
+382nd input image : original value = 7, decision = 7 at 3263225 ps ==> Success
+STEP k=327 t=3270 ns cnt=382 acc=372 wall=24s
+VO t=3271695 ps cnt=383 dec=5 acc=372
+383rd input image : original value = 5, decision = 5 at 3271705 ps ==> Success
+STEP k=328 t=3280 ns cnt=384 acc=373 wall=24s
+VO t=3280175 ps cnt=384 dec=5 acc=373
+384th input image : original value = 5, decision = 5 at 3280185 ps ==> Success
+VO t=3288655 ps cnt=385 dec=3 acc=374
+385th input image : original value = 3, decision = 3 at 3288665 ps ==> Success
+STEP k=329 t=3290 ns cnt=385 acc=375 wall=24s
+VO t=3297135 ps cnt=386 dec=1 acc=375
+386th input image : original value = 1, decision = 1 at 3297145 ps ==> Success
+STEP k=330 t=3300 ns cnt=386 acc=376 wall=24s
+VO t=3305615 ps cnt=387 dec=5 acc=376
+387th input image : original value = 5, decision = 5 at 3305625 ps ==> Success
+STEP k=331 t=3310 ns cnt=387 acc=377 wall=24s
+VO t=3314095 ps cnt=388 dec=7 acc=377
+388th input image : original value = 7, decision = 7 at 3314105 ps ==> Success
+STEP k=332 t=3320 ns cnt=388 acc=378 wall=24s
+VO t=3322575 ps cnt=389 dec=8 acc=378
+389th input image : original value = 8, decision = 8 at 3322585 ps ==> Success
+STEP k=333 t=3330 ns cnt=389 acc=379 wall=24s
+VO t=3331055 ps cnt=390 dec=0 acc=379
+390th input image : original value = 0, decision = 0 at 3331065 ps ==> Success
+VO t=3339535 ps cnt=391 dec=2 acc=380
+391st input image : original value = 2, decision = 2 at 3339545 ps ==> Success
+STEP k=334 t=3340 ns cnt=391 acc=381 wall=24s
+VO t=3348015 ps cnt=392 dec=1 acc=381
+392nd input image : original value = 1, decision = 1 at 3348025 ps ==> Success
+STEP k=335 t=3350 ns cnt=392 acc=382 wall=25s
+VO t=3356495 ps cnt=393 dec=1 acc=382
+393rd input image : original value = 1, decision = 1 at 3356505 ps ==> Success
+STEP k=336 t=3360 ns cnt=393 acc=383 wall=25s
+VO t=3364975 ps cnt=394 dec=7 acc=383
+394th input image : original value = 7, decision = 7 at 3364985 ps ==> Success
+STEP k=337 t=3370 ns cnt=394 acc=384 wall=25s
+VO t=3373455 ps cnt=395 dec=7 acc=384
+395th input image : original value = 7, decision = 7 at 3373465 ps ==> Success
+STEP k=338 t=3380 ns cnt=395 acc=385 wall=25s
+VO t=3381935 ps cnt=396 dec=9 acc=385
+396th input image : original value = 9, decision = 9 at 3381945 ps ==> Success
+STEP k=339 t=3390 ns cnt=397 acc=386 wall=25s
+VO t=3390415 ps cnt=397 dec=7 acc=386
+397th input image : original value = 7, decision = 7 at 3390425 ps ==> Success
+VO t=3398895 ps cnt=398 dec=9 acc=387
+398th input image : original value = 9, decision = 9 at 3398905 ps ==> Success
+STEP k=340 t=3400 ns cnt=398 acc=388 wall=25s
+VO t=3407375 ps cnt=399 dec=0 acc=388
+399th input image : original value = 0, decision = 0 at 3407385 ps ==> Success
+STEP k=341 t=3410 ns cnt=399 acc=389 wall=25s
+VO t=3415855 ps cnt=400 dec=0 acc=389
+400th input image : original value = 0, decision = 0 at 3415865 ps ==> Success
+STEP k=342 t=3420 ns cnt=400 acc=390 wall=25s
+VO t=3424335 ps cnt=401 dec=6 acc=390
+401st input image : original value = 6, decision = 6 at 3424345 ps ==> Success
+STEP k=343 t=3430 ns cnt=401 acc=391 wall=25s
+VO t=3434525 ps cnt=402 dec=7 acc=391
+402nd input image : original value = 7, decision = 7 at 3434535 ps ==> Success
+STEP k=344 t=3440 ns cnt=402 acc=392 wall=25s
+VO t=3443005 ps cnt=403 dec=9 acc=392
+403rd input image : original value = 9, decision = 9 at 3443015 ps ==> Success
+STEP k=345 t=3450 ns cnt=403 acc=393 wall=25s
+VO t=3451485 ps cnt=404 dec=3 acc=393
+404th input image : original value = 3, decision = 3 at 3451495 ps ==> Success
+VO t=3459965 ps cnt=405 dec=5 acc=394
+405th input image : original value = 5, decision = 5 at 3459975 ps ==> Success
+STEP k=346 t=3460 ns cnt=405 acc=395 wall=25s
+VO t=3468445 ps cnt=406 dec=9 acc=395
+406th input image : original value = 9, decision = 9 at 3468455 ps ==> Success
+STEP k=347 t=3470 ns cnt=406 acc=396 wall=25s
+VO t=3476925 ps cnt=407 dec=2 acc=396
+407th input image : original value = 2, decision = 2 at 3476935 ps ==> Success
+STEP k=348 t=3480 ns cnt=407 acc=397 wall=25s
+VO t=3487115 ps cnt=408 dec=2 acc=397
+408th input image : original value = 1, decision = 2 at 3487125 ps ==> Fail
+STEP k=349 t=3490 ns cnt=408 acc=397 wall=25s
+VO t=3495595 ps cnt=409 dec=6 acc=397
+409th input image : original value = 6, decision = 6 at 3495605 ps ==> Success
+STEP k=350 t=3500 ns cnt=409 acc=398 wall=26s
+VO t=3504075 ps cnt=410 dec=2 acc=398
+410th input image : original value = 2, decision = 2 at 3504085 ps ==> Success
+STEP k=351 t=3510 ns cnt=410 acc=399 wall=26s
+VO t=3514265 ps cnt=411 dec=5 acc=399
+411st input image : original value = 5, decision = 5 at 3514275 ps ==> Success
+STEP k=352 t=3520 ns cnt=411 acc=400 wall=26s
+VO t=3522745 ps cnt=412 dec=3 acc=400
+412nd input image : original value = 3, decision = 3 at 3522755 ps ==> Success
+STEP k=353 t=3530 ns cnt=412 acc=401 wall=26s
+VO t=3532935 ps cnt=413 dec=1 acc=401
+413rd input image : original value = 2, decision = 1 at 3532945 ps ==> Fail
+STEP k=354 t=3540 ns cnt=413 acc=401 wall=26s
+VO t=3541415 ps cnt=414 dec=7 acc=401
+414th input image : original value = 7, decision = 7 at 3541425 ps ==> Success
+VO t=3549895 ps cnt=415 dec=4 acc=402
+415th input image : original value = 4, decision = 4 at 3549905 ps ==> Success
+STEP k=355 t=3550 ns cnt=415 acc=403 wall=26s
+VO t=3558375 ps cnt=416 dec=8 acc=403
+416th input image : original value = 8, decision = 8 at 3558385 ps ==> Success
+STEP k=356 t=3560 ns cnt=416 acc=404 wall=26s
+VO t=3566855 ps cnt=417 dec=9 acc=404
+417th input image : original value = 9, decision = 9 at 3566865 ps ==> Success
+STEP k=357 t=3570 ns cnt=417 acc=405 wall=26s
+VO t=3575335 ps cnt=418 dec=9 acc=405
+418th input image : original value = 9, decision = 9 at 3575345 ps ==> Success
+STEP k=358 t=3580 ns cnt=418 acc=406 wall=26s
+VO t=3583815 ps cnt=419 dec=1 acc=406
+419th input image : original value = 1, decision = 1 at 3583825 ps ==> Success
+STEP k=359 t=3590 ns cnt=419 acc=407 wall=26s
+VO t=3592295 ps cnt=420 dec=1 acc=407
+420th input image : original value = 1, decision = 1 at 3592305 ps ==> Success
+STEP k=360 t=3600 ns cnt=420 acc=408 wall=26s
+VO t=3600775 ps cnt=421 dec=7 acc=408
+421st input image : original value = 7, decision = 7 at 3600785 ps ==> Success
+STEP k=361 t=3610 ns cnt=422 acc=409 wall=26s
+VO t=3610965 ps cnt=422 dec=5 acc=409
+422nd input image : original value = 5, decision = 5 at 3610975 ps ==> Success
+VO t=3619445 ps cnt=423 dec=0 acc=410
+423rd input image : original value = 0, decision = 0 at 3619455 ps ==> Success
+STEP k=362 t=3620 ns cnt=423 acc=411 wall=26s
+VO t=3627925 ps cnt=424 dec=6 acc=411
+424th input image : original value = 6, decision = 6 at 3627935 ps ==> Success
+STEP k=363 t=3630 ns cnt=424 acc=412 wall=26s
+VO t=3636405 ps cnt=425 dec=4 acc=412
+425th input image : original value = 4, decision = 4 at 3636415 ps ==> Success
+STEP k=364 t=3640 ns cnt=425 acc=413 wall=27s
+VO t=3644885 ps cnt=426 dec=0 acc=413
+426th input image : original value = 0, decision = 0 at 3644895 ps ==> Success
+STEP k=365 t=3650 ns cnt=426 acc=414 wall=27s
+VO t=3653365 ps cnt=427 dec=8 acc=414
+427th input image : original value = 8, decision = 8 at 3653375 ps ==> Success
+STEP k=366 t=3660 ns cnt=427 acc=415 wall=27s
+VO t=3661845 ps cnt=428 dec=1 acc=415
+428th input image : original value = 1, decision = 1 at 3661855 ps ==> Success
+STEP k=367 t=3670 ns cnt=429 acc=416 wall=27s
+VO t=3670325 ps cnt=429 dec=5 acc=416
+429th input image : original value = 5, decision = 5 at 3670335 ps ==> Success
+VO t=3678805 ps cnt=430 dec=8 acc=417
+430th input image : original value = 8, decision = 8 at 3678815 ps ==> Success
+STEP k=368 t=3680 ns cnt=430 acc=418 wall=27s
+VO t=3687285 ps cnt=431 dec=9 acc=418
+431st input image : original value = 9, decision = 9 at 3687295 ps ==> Success
+STEP k=369 t=3690 ns cnt=431 acc=419 wall=27s
+VO t=3695765 ps cnt=432 dec=1 acc=419
+432nd input image : original value = 1, decision = 1 at 3695775 ps ==> Success
+STEP k=370 t=3700 ns cnt=432 acc=420 wall=27s
+VO t=3704245 ps cnt=433 dec=8 acc=420
+433rd input image : original value = 8, decision = 8 at 3704255 ps ==> Success
+STEP k=371 t=3710 ns cnt=433 acc=421 wall=27s
+VO t=3712725 ps cnt=434 dec=6 acc=421
+434th input image : original value = 6, decision = 6 at 3712735 ps ==> Success
+STEP k=372 t=3720 ns cnt=434 acc=422 wall=27s
+VO t=3721205 ps cnt=435 dec=2 acc=422
+435th input image : original value = 2, decision = 2 at 3721215 ps ==> Success
+VO t=3729685 ps cnt=436 dec=4 acc=423
+436th input image : original value = 4, decision = 4 at 3729695 ps ==> Success
+STEP k=373 t=3730 ns cnt=436 acc=424 wall=27s
+VO t=3738165 ps cnt=437 dec=4 acc=424
+437th input image : original value = 4, decision = 4 at 3738175 ps ==> Success
+STEP k=374 t=3740 ns cnt=437 acc=425 wall=27s
+VO t=3746645 ps cnt=438 dec=0 acc=425
+438th input image : original value = 0, decision = 0 at 3746655 ps ==> Success
+STEP k=375 t=3750 ns cnt=438 acc=426 wall=27s
+VO t=3755125 ps cnt=439 dec=5 acc=426
+439th input image : original value = 5, decision = 5 at 3755135 ps ==> Success
+STEP k=376 t=3760 ns cnt=439 acc=427 wall=27s
+VO t=3763605 ps cnt=440 dec=1 acc=427
+440th input image : original value = 1, decision = 1 at 3763615 ps ==> Success
+STEP k=377 t=3770 ns cnt=440 acc=428 wall=27s
+VO t=3772085 ps cnt=441 dec=6 acc=428
+441st input image : original value = 6, decision = 6 at 3772095 ps ==> Success
+STEP k=378 t=3780 ns cnt=442 acc=429 wall=28s
+VO t=3780565 ps cnt=442 dec=6 acc=429
+442nd input image : original value = 6, decision = 6 at 3780575 ps ==> Success
+VO t=3789045 ps cnt=443 dec=6 acc=430
+443rd input image : original value = 6, decision = 6 at 3789055 ps ==> Success
+STEP k=379 t=3790 ns cnt=443 acc=431 wall=28s
+VO t=3797525 ps cnt=444 dec=0 acc=431
+444th input image : original value = 0, decision = 0 at 3797535 ps ==> Success
+STEP k=380 t=3800 ns cnt=444 acc=432 wall=28s
+VO t=3806005 ps cnt=445 dec=8 acc=432
+445th input image : original value = 8, decision = 8 at 3806015 ps ==> Success
+STEP k=381 t=3810 ns cnt=445 acc=433 wall=28s
+VO t=3814485 ps cnt=446 dec=0 acc=433
+446th input image : original value = 0, decision = 0 at 3814495 ps ==> Success
+STEP k=382 t=3820 ns cnt=446 acc=434 wall=28s
+VO t=3822965 ps cnt=447 dec=2 acc=434
+447th input image : original value = 2, decision = 2 at 3822975 ps ==> Success
+STEP k=383 t=3830 ns cnt=447 acc=435 wall=28s
+VO t=3831445 ps cnt=448 dec=3 acc=435
+448th input image : original value = 3, decision = 3 at 3831455 ps ==> Success
+VO t=3839925 ps cnt=449 dec=8 acc=436
+449th input image : original value = 8, decision = 8 at 3839935 ps ==> Success
+STEP k=384 t=3840 ns cnt=449 acc=437 wall=28s
+VO t=3848405 ps cnt=450 dec=7 acc=437
+450th input image : original value = 7, decision = 7 at 3848415 ps ==> Success
+STEP k=385 t=3850 ns cnt=450 acc=438 wall=28s
+VO t=3856885 ps cnt=451 dec=4 acc=438
+451st input image : original value = 4, decision = 4 at 3856895 ps ==> Success
+STEP k=386 t=3860 ns cnt=451 acc=439 wall=28s
+VO t=3865365 ps cnt=452 dec=5 acc=439
+452nd input image : original value = 5, decision = 5 at 3865375 ps ==> Success
+STEP k=387 t=3870 ns cnt=452 acc=440 wall=28s
+VO t=3873845 ps cnt=453 dec=9 acc=440
+453rd input image : original value = 9, decision = 9 at 3873855 ps ==> Success
+STEP k=388 t=3880 ns cnt=453 acc=441 wall=28s
+VO t=3882325 ps cnt=454 dec=6 acc=441
+454th input image : original value = 6, decision = 6 at 3882335 ps ==> Success
+STEP k=389 t=3890 ns cnt=454 acc=442 wall=28s
+VO t=3890805 ps cnt=455 dec=8 acc=442
+455th input image : original value = 8, decision = 8 at 3890815 ps ==> Success
+VO t=3899285 ps cnt=456 dec=7 acc=443
+456th input image : original value = 7, decision = 7 at 3899295 ps ==> Success
+STEP k=390 t=3900 ns cnt=456 acc=444 wall=28s
+VO t=3907765 ps cnt=457 dec=3 acc=444
+457th input image : original value = 3, decision = 3 at 3907775 ps ==> Success
+STEP k=391 t=3910 ns cnt=457 acc=445 wall=28s
+VO t=3916245 ps cnt=458 dec=1 acc=445
+458th input image : original value = 1, decision = 1 at 3916255 ps ==> Success
+STEP k=392 t=3920 ns cnt=458 acc=446 wall=29s
+VO t=3924725 ps cnt=459 dec=1 acc=446
+459th input image : original value = 1, decision = 1 at 3924735 ps ==> Success
+STEP k=393 t=3930 ns cnt=459 acc=447 wall=29s
+VO t=3933205 ps cnt=460 dec=2 acc=447
+460th input image : original value = 2, decision = 2 at 3933215 ps ==> Success
+STEP k=394 t=3940 ns cnt=460 acc=448 wall=29s
+VO t=3941685 ps cnt=461 dec=7 acc=448
+461st input image : original value = 7, decision = 7 at 3941695 ps ==> Success
+STEP k=395 t=3950 ns cnt=462 acc=449 wall=29s
+VO t=3950165 ps cnt=462 dec=9 acc=449
+462nd input image : original value = 9, decision = 9 at 3950175 ps ==> Success
+VO t=3958645 ps cnt=463 dec=8 acc=450
+463rd input image : original value = 8, decision = 8 at 3958655 ps ==> Success
+STEP k=396 t=3960 ns cnt=463 acc=451 wall=29s
+VO t=3967125 ps cnt=464 dec=1 acc=451
+464th input image : original value = 1, decision = 1 at 3967135 ps ==> Success
+STEP k=397 t=3970 ns cnt=464 acc=452 wall=29s
+VO t=3975605 ps cnt=465 dec=1 acc=452
+465th input image : original value = 1, decision = 1 at 3975615 ps ==> Success
+STEP k=398 t=3980 ns cnt=465 acc=453 wall=29s
+VO t=3984085 ps cnt=466 dec=9 acc=453
+466th input image : original value = 9, decision = 9 at 3984095 ps ==> Success
+STEP k=399 t=3990 ns cnt=466 acc=454 wall=29s
+VO t=3992565 ps cnt=467 dec=2 acc=454
+467th input image : original value = 2, decision = 2 at 3992575 ps ==> Success
+STEP k=400 t=4 us cnt=467 acc=455 wall=29s
+VO t=4001045 ps cnt=468 dec=8 acc=455
+468th input image : original value = 8, decision = 8 at 4001055 ps ==> Success
+VO t=4009525 ps cnt=469 dec=8 acc=456
+469th input image : original value = 8, decision = 8 at 4009535 ps ==> Success
+STEP k=401 t=4010 ns cnt=469 acc=457 wall=29s
+VO t=4018005 ps cnt=470 dec=1 acc=457
+470th input image : original value = 1, decision = 1 at 4018015 ps ==> Success
+STEP k=402 t=4020 ns cnt=470 acc=458 wall=29s
+VO t=4026485 ps cnt=471 dec=9 acc=458
+471st input image : original value = 9, decision = 9 at 4026495 ps ==> Success
+STEP k=403 t=4030 ns cnt=471 acc=459 wall=29s
+VO t=4034965 ps cnt=472 dec=0 acc=459
+472nd input image : original value = 0, decision = 0 at 4034975 ps ==> Success
+STEP k=404 t=4040 ns cnt=472 acc=460 wall=29s
+VO t=4043445 ps cnt=473 dec=0 acc=460
+473rd input image : original value = 0, decision = 0 at 4043455 ps ==> Success
+STEP k=405 t=4050 ns cnt=473 acc=461 wall=29s
+VO t=4051925 ps cnt=474 dec=3 acc=461
+474th input image : original value = 3, decision = 3 at 4051935 ps ==> Success
+STEP k=406 t=4060 ns cnt=475 acc=462 wall=29s
+VO t=4060405 ps cnt=475 dec=8 acc=462
+475th input image : original value = 8, decision = 8 at 4060415 ps ==> Success
+VO t=4068885 ps cnt=476 dec=8 acc=463
+476th input image : original value = 8, decision = 8 at 4068895 ps ==> Success
+STEP k=407 t=4070 ns cnt=476 acc=464 wall=30s
+VO t=4077365 ps cnt=477 dec=4 acc=464
+477th input image : original value = 4, decision = 4 at 4077375 ps ==> Success
+STEP k=408 t=4080 ns cnt=477 acc=465 wall=30s
+VO t=4085845 ps cnt=478 dec=9 acc=465
+478th input image : original value = 9, decision = 9 at 4085855 ps ==> Success
+STEP k=409 t=4090 ns cnt=478 acc=466 wall=30s
+VO t=4094325 ps cnt=479 dec=8 acc=466
+479th input image : original value = 8, decision = 8 at 4094335 ps ==> Success
+STEP k=410 t=4100 ns cnt=479 acc=467 wall=30s
+VO t=4102805 ps cnt=480 dec=3 acc=467
+480th input image : original value = 3, decision = 3 at 4102815 ps ==> Success
+STEP k=411 t=4110 ns cnt=480 acc=468 wall=30s
+VO t=4111285 ps cnt=481 dec=1 acc=468
+481st input image : original value = 1, decision = 1 at 4111295 ps ==> Success
+VO t=4119765 ps cnt=482 dec=8 acc=469
+482nd input image : original value = 8, decision = 8 at 4119775 ps ==> Success
+STEP k=412 t=4120 ns cnt=482 acc=470 wall=30s
+VO t=4128245 ps cnt=483 dec=2 acc=470
+483rd input image : original value = 2, decision = 2 at 4128255 ps ==> Success
+STEP k=413 t=4130 ns cnt=483 acc=471 wall=30s
+VO t=4136725 ps cnt=484 dec=4 acc=471
+484th input image : original value = 4, decision = 4 at 4136735 ps ==> Success
+STEP k=414 t=4140 ns cnt=484 acc=472 wall=30s
+VO t=4145205 ps cnt=485 dec=6 acc=472
+485th input image : original value = 6, decision = 6 at 4145215 ps ==> Success
+STEP k=415 t=4150 ns cnt=485 acc=473 wall=30s
+VO t=4153685 ps cnt=486 dec=0 acc=473
+486th input image : original value = 0, decision = 0 at 4153695 ps ==> Success
+STEP k=416 t=4160 ns cnt=486 acc=474 wall=30s
+VO t=4162165 ps cnt=487 dec=8 acc=474
+487th input image : original value = 8, decision = 8 at 4162175 ps ==> Success
+STEP k=417 t=4170 ns cnt=487 acc=475 wall=30s
+VO t=4170645 ps cnt=488 dec=7 acc=475
+488th input image : original value = 7, decision = 7 at 4170655 ps ==> Success
+VO t=4179125 ps cnt=489 dec=7 acc=476
+489th input image : original value = 7, decision = 7 at 4179135 ps ==> Success
+STEP k=418 t=4180 ns cnt=489 acc=477 wall=30s
+VO t=4187605 ps cnt=490 dec=0 acc=477
+490th input image : original value = 0, decision = 0 at 4187615 ps ==> Success
+STEP k=419 t=4190 ns cnt=490 acc=478 wall=30s
+VO t=4196085 ps cnt=491 dec=1 acc=478
+491st input image : original value = 1, decision = 1 at 4196095 ps ==> Success
+STEP k=420 t=4200 ns cnt=491 acc=479 wall=31s
+VO t=4204565 ps cnt=492 dec=3 acc=479
+492nd input image : original value = 3, decision = 3 at 4204575 ps ==> Success
+STEP k=421 t=4210 ns cnt=492 acc=480 wall=31s
+VO t=4213045 ps cnt=493 dec=2 acc=480
+493rd input image : original value = 2, decision = 2 at 4213055 ps ==> Success
+STEP k=422 t=4220 ns cnt=493 acc=481 wall=31s
+VO t=4221525 ps cnt=494 dec=9 acc=481
+494th input image : original value = 9, decision = 9 at 4221535 ps ==> Success
+STEP k=423 t=4230 ns cnt=495 acc=482 wall=31s
+VO t=4230005 ps cnt=495 dec=9 acc=482
+495th input image : original value = 9, decision = 9 at 4230015 ps ==> Success
+VO t=4238485 ps cnt=496 dec=9 acc=483
+496th input image : original value = 9, decision = 9 at 4238495 ps ==> Success
+STEP k=424 t=4240 ns cnt=496 acc=484 wall=31s
+VO t=4246965 ps cnt=497 dec=0 acc=484
+497th input image : original value = 0, decision = 0 at 4246975 ps ==> Success
+STEP k=425 t=4250 ns cnt=497 acc=485 wall=31s
+VO t=4255445 ps cnt=498 dec=0 acc=485
+498th input image : original value = 0, decision = 0 at 4255455 ps ==> Success
+STEP k=426 t=4260 ns cnt=498 acc=486 wall=31s
+VO t=4263925 ps cnt=499 dec=3 acc=486
+499th input image : original value = 3, decision = 3 at 4263935 ps ==> Success
+STEP k=427 t=4270 ns cnt=499 acc=487 wall=31s
+VO t=4272405 ps cnt=500 dec=1 acc=487
+500th input image : original value = 1, decision = 1 at 4272415 ps ==> Success
+STEP k=428 t=4280 ns cnt=500 acc=488 wall=31s
+VO t=4280885 ps cnt=501 dec=0 acc=488
+501st input image : original value = 0, decision = 0 at 4280895 ps ==> Success
+VO t=4289365 ps cnt=502 dec=2 acc=489
+502nd input image : original value = 2, decision = 2 at 4289375 ps ==> Success
+STEP k=429 t=4290 ns cnt=502 acc=490 wall=31s
+VO t=4297845 ps cnt=503 dec=9 acc=490
+503rd input image : original value = 9, decision = 9 at 4297855 ps ==> Success
+STEP k=430 t=4300 ns cnt=503 acc=491 wall=31s
+VO t=4306325 ps cnt=504 dec=9 acc=491
+504th input image : original value = 9, decision = 9 at 4306335 ps ==> Success
+STEP k=431 t=4310 ns cnt=504 acc=492 wall=31s
+VO t=4314805 ps cnt=505 dec=3 acc=492
+505th input image : original value = 3, decision = 3 at 4314815 ps ==> Success
+STEP k=432 t=4320 ns cnt=505 acc=493 wall=31s
+VO t=4324995 ps cnt=506 dec=2 acc=493
+506th input image : original value = 1, decision = 2 at 4325005 ps ==> Fail
+STEP k=433 t=4330 ns cnt=506 acc=493 wall=31s
+VO t=4333475 ps cnt=507 dec=1 acc=493
+507th input image : original value = 1, decision = 1 at 4333485 ps ==> Success
+STEP k=434 t=4340 ns cnt=507 acc=494 wall=32s
+VO t=4341955 ps cnt=508 dec=3 acc=494
+508th input image : original value = 3, decision = 3 at 4341965 ps ==> Success
+STEP k=435 t=4350 ns cnt=509 acc=495 wall=32s
+VO t=4350435 ps cnt=509 dec=4 acc=495
+509th input image : original value = 4, decision = 4 at 4350445 ps ==> Success
+VO t=4358915 ps cnt=510 dec=9 acc=496
+510th input image : original value = 9, decision = 9 at 4358925 ps ==> Success
+STEP k=436 t=4360 ns cnt=510 acc=497 wall=32s
+VO t=4367395 ps cnt=511 dec=2 acc=497
+511st input image : original value = 2, decision = 2 at 4367405 ps ==> Success
+STEP k=437 t=4370 ns cnt=511 acc=498 wall=32s
+VO t=4375875 ps cnt=512 dec=7 acc=498
+512nd input image : original value = 7, decision = 7 at 4375885 ps ==> Success
+STEP k=438 t=4380 ns cnt=512 acc=499 wall=32s
+VO t=4384355 ps cnt=513 dec=1 acc=499
+513rd input image : original value = 1, decision = 1 at 4384365 ps ==> Success
+STEP k=439 t=4390 ns cnt=513 acc=500 wall=32s
+VO t=4392835 ps cnt=514 dec=3 acc=500
+514th input image : original value = 3, decision = 3 at 4392845 ps ==> Success
+STEP k=440 t=4400 ns cnt=514 acc=501 wall=32s
+VO t=4401315 ps cnt=515 dec=9 acc=501
+515th input image : original value = 9, decision = 9 at 4401325 ps ==> Success
+VO t=4409795 ps cnt=516 dec=5 acc=502
+516th input image : original value = 5, decision = 5 at 4409805 ps ==> Success
+STEP k=441 t=4410 ns cnt=516 acc=503 wall=32s
+VO t=4418275 ps cnt=517 dec=1 acc=503
+517th input image : original value = 1, decision = 1 at 4418285 ps ==> Success
+STEP k=442 t=4420 ns cnt=517 acc=504 wall=32s
+VO t=4426755 ps cnt=518 dec=1 acc=504
+518th input image : original value = 1, decision = 1 at 4426765 ps ==> Success
+STEP k=443 t=4430 ns cnt=518 acc=505 wall=32s
+VO t=4436945 ps cnt=519 dec=1 acc=505
+519th input image : original value = 2, decision = 1 at 4436955 ps ==> Fail
+STEP k=444 t=4440 ns cnt=519 acc=505 wall=32s
+VO t=4445425 ps cnt=520 dec=3 acc=505
+520th input image : original value = 3, decision = 3 at 4445435 ps ==> Success
+STEP k=445 t=4450 ns cnt=520 acc=506 wall=32s
+VO t=4453905 ps cnt=521 dec=3 acc=506
+521st input image : original value = 3, decision = 3 at 4453915 ps ==> Success
+STEP k=446 t=4460 ns cnt=521 acc=507 wall=32s
+VO t=4462385 ps cnt=522 dec=0 acc=507
+522nd input image : original value = 0, decision = 0 at 4462395 ps ==> Success
+STEP k=447 t=4470 ns cnt=522 acc=508 wall=32s
+VO t=4470865 ps cnt=523 dec=8 acc=508
+523rd input image : original value = 8, decision = 8 at 4470875 ps ==> Success
+VO t=4479345 ps cnt=524 dec=4 acc=509
+524th input image : original value = 4, decision = 4 at 4479355 ps ==> Success
+STEP k=448 t=4480 ns cnt=524 acc=510 wall=33s
+VO t=4487825 ps cnt=525 dec=1 acc=510
+525th input image : original value = 1, decision = 1 at 4487835 ps ==> Success
+STEP k=449 t=4490 ns cnt=525 acc=511 wall=33s
+VO t=4496305 ps cnt=526 dec=9 acc=511
+526th input image : original value = 9, decision = 9 at 4496315 ps ==> Success
+STEP k=450 t=4500 ns cnt=526 acc=512 wall=33s
+VO t=4504785 ps cnt=527 dec=8 acc=512
+527th input image : original value = 8, decision = 8 at 4504795 ps ==> Success
+STEP k=451 t=4510 ns cnt=527 acc=513 wall=33s
+VO t=4513265 ps cnt=528 dec=4 acc=513
+528th input image : original value = 4, decision = 4 at 4513275 ps ==> Success
+STEP k=452 t=4520 ns cnt=528 acc=514 wall=33s
+VO t=4521745 ps cnt=529 dec=0 acc=514
+529th input image : original value = 0, decision = 0 at 4521755 ps ==> Success
+STEP k=453 t=4530 ns cnt=530 acc=515 wall=33s
+VO t=4530225 ps cnt=530 dec=6 acc=515
+530th input image : original value = 6, decision = 6 at 4530235 ps ==> Success
+VO t=4538705 ps cnt=531 dec=8 acc=516
+531st input image : original value = 8, decision = 8 at 4538715 ps ==> Success
+STEP k=454 t=4540 ns cnt=531 acc=517 wall=33s
+VO t=4547185 ps cnt=532 dec=1 acc=517
+532nd input image : original value = 1, decision = 1 at 4547195 ps ==> Success
+STEP k=455 t=4550 ns cnt=532 acc=518 wall=33s
+VO t=4557375 ps cnt=533 dec=7 acc=518
+533rd input image : original value = 7, decision = 7 at 4557385 ps ==> Success
+STEP k=456 t=4560 ns cnt=533 acc=519 wall=33s
+VO t=4565855 ps cnt=534 dec=6 acc=519
+534th input image : original value = 6, decision = 6 at 4565865 ps ==> Success
+STEP k=457 t=4570 ns cnt=534 acc=520 wall=33s
+VO t=4574335 ps cnt=535 dec=5 acc=520
+535th input image : original value = 5, decision = 5 at 4574345 ps ==> Success
+STEP k=458 t=4580 ns cnt=535 acc=521 wall=33s
+VO t=4582815 ps cnt=536 dec=6 acc=521
+536th input image : original value = 6, decision = 6 at 4582825 ps ==> Success
+STEP k=459 t=4590 ns cnt=536 acc=522 wall=33s
+VO t=4591295 ps cnt=537 dec=4 acc=522
+537th input image : original value = 4, decision = 4 at 4591305 ps ==> Success
+VO t=4599775 ps cnt=538 dec=4 acc=523
+538th input image : original value = 4, decision = 4 at 4599785 ps ==> Success
+STEP k=460 t=4600 ns cnt=538 acc=524 wall=34s
+VO t=4608255 ps cnt=539 dec=8 acc=524
+539th input image : original value = 8, decision = 8 at 4608265 ps ==> Success
+STEP k=461 t=4610 ns cnt=539 acc=525 wall=34s
+VO t=4616735 ps cnt=540 dec=0 acc=525
+540th input image : original value = 0, decision = 0 at 4616745 ps ==> Success
+STEP k=462 t=4620 ns cnt=540 acc=526 wall=34s
+VO t=4625215 ps cnt=541 dec=0 acc=526
+541st input image : original value = 0, decision = 0 at 4625225 ps ==> Success
+STEP k=463 t=4630 ns cnt=541 acc=527 wall=34s
+VO t=4633695 ps cnt=542 dec=3 acc=527
+542nd input image : original value = 3, decision = 3 at 4633705 ps ==> Success
+STEP k=464 t=4640 ns cnt=542 acc=528 wall=34s
+VO t=4642175 ps cnt=543 dec=6 acc=528
+543rd input image : original value = 6, decision = 6 at 4642185 ps ==> Success
+STEP k=465 t=4650 ns cnt=543 acc=529 wall=34s
+VO t=4650655 ps cnt=544 dec=3 acc=529
+544th input image : original value = 3, decision = 3 at 4650665 ps ==> Success
+VO t=4659135 ps cnt=545 dec=7 acc=530
+545th input image : original value = 7, decision = 7 at 4659145 ps ==> Success
+STEP k=466 t=4660 ns cnt=545 acc=531 wall=34s
+VO t=4667615 ps cnt=546 dec=4 acc=531
+546th input image : original value = 4, decision = 4 at 4667625 ps ==> Success
+STEP k=467 t=4670 ns cnt=546 acc=532 wall=34s
+VO t=4676095 ps cnt=547 dec=3 acc=532
+547th input image : original value = 3, decision = 3 at 4676105 ps ==> Success
+STEP k=468 t=4680 ns cnt=547 acc=533 wall=34s
+VO t=4684575 ps cnt=548 dec=9 acc=533
+548th input image : original value = 9, decision = 9 at 4684585 ps ==> Success
+STEP k=469 t=4690 ns cnt=548 acc=534 wall=34s
+VO t=4693055 ps cnt=549 dec=9 acc=534
+549th input image : original value = 9, decision = 9 at 4693065 ps ==> Success
+STEP k=470 t=4700 ns cnt=549 acc=535 wall=34s
+VO t=4701535 ps cnt=550 dec=0 acc=535
+550th input image : original value = 0, decision = 0 at 4701545 ps ==> Success
+STEP k=471 t=4710 ns cnt=551 acc=536 wall=34s
+VO t=4710015 ps cnt=551 dec=7 acc=536
+551st input image : original value = 2, decision = 7 at 4710025 ps ==> Fail
+VO t=4718495 ps cnt=552 dec=5 acc=536
+552nd input image : original value = 5, decision = 5 at 4718505 ps ==> Success
+STEP k=472 t=4720 ns cnt=552 acc=537 wall=34s
+VO t=4726975 ps cnt=553 dec=4 acc=537
+553rd input image : original value = 4, decision = 4 at 4726985 ps ==> Success
+STEP k=473 t=4730 ns cnt=553 acc=538 wall=35s
+VO t=4735455 ps cnt=554 dec=6 acc=538
+554th input image : original value = 6, decision = 6 at 4735465 ps ==> Success
+STEP k=474 t=4740 ns cnt=554 acc=539 wall=35s
+VO t=4743935 ps cnt=555 dec=4 acc=539
+555th input image : original value = 4, decision = 4 at 4743945 ps ==> Success
+STEP k=475 t=4750 ns cnt=555 acc=540 wall=35s
+VO t=4752415 ps cnt=556 dec=2 acc=540
+556th input image : original value = 2, decision = 2 at 4752425 ps ==> Success
+STEP k=476 t=4760 ns cnt=556 acc=541 wall=35s
+VO t=4760895 ps cnt=557 dec=6 acc=541
+557th input image : original value = 6, decision = 6 at 4760905 ps ==> Success
+VO t=4769375 ps cnt=558 dec=6 acc=542
+558th input image : original value = 6, decision = 6 at 4769385 ps ==> Success
+STEP k=477 t=4770 ns cnt=558 acc=543 wall=35s
+VO t=4777855 ps cnt=559 dec=8 acc=543
+559th input image : original value = 8, decision = 8 at 4777865 ps ==> Success
+STEP k=478 t=4780 ns cnt=559 acc=544 wall=35s
+VO t=4786335 ps cnt=560 dec=0 acc=544
+560th input image : original value = 0, decision = 0 at 4786345 ps ==> Success
+STEP k=479 t=4790 ns cnt=560 acc=545 wall=35s
+VO t=4794815 ps cnt=561 dec=3 acc=545
+561st input image : original value = 3, decision = 3 at 4794825 ps ==> Success
+STEP k=480 t=4800 ns cnt=561 acc=546 wall=35s
+VO t=4803295 ps cnt=562 dec=2 acc=546
+562nd input image : original value = 2, decision = 2 at 4803305 ps ==> Success
+STEP k=481 t=4810 ns cnt=562 acc=547 wall=35s
+VO t=4811775 ps cnt=563 dec=3 acc=547
+563rd input image : original value = 3, decision = 3 at 4811785 ps ==> Success
+STEP k=482 t=4820 ns cnt=564 acc=548 wall=35s
+VO t=4820255 ps cnt=564 dec=8 acc=548
+564th input image : original value = 8, decision = 8 at 4820265 ps ==> Success
+VO t=4828735 ps cnt=565 dec=9 acc=549
+565th input image : original value = 9, decision = 9 at 4828745 ps ==> Success
+STEP k=483 t=4830 ns cnt=565 acc=550 wall=35s
+VO t=4837215 ps cnt=566 dec=2 acc=550
+566th input image : original value = 2, decision = 2 at 4837225 ps ==> Success
+STEP k=484 t=4840 ns cnt=566 acc=551 wall=35s
+VO t=4845695 ps cnt=567 dec=8 acc=551
+567th input image : original value = 8, decision = 8 at 4845705 ps ==> Success
+STEP k=485 t=4850 ns cnt=567 acc=552 wall=35s
+VO t=4854175 ps cnt=568 dec=1 acc=552
+568th input image : original value = 1, decision = 1 at 4854185 ps ==> Success
+STEP k=486 t=4860 ns cnt=568 acc=553 wall=35s
+VO t=4862655 ps cnt=569 dec=4 acc=553
+569th input image : original value = 4, decision = 4 at 4862665 ps ==> Success
+STEP k=487 t=4870 ns cnt=569 acc=554 wall=36s
+VO t=4871135 ps cnt=570 dec=1 acc=554
+570th input image : original value = 1, decision = 1 at 4871145 ps ==> Success
+VO t=4879615 ps cnt=571 dec=9 acc=555
+571st input image : original value = 9, decision = 9 at 4879625 ps ==> Success
+STEP k=488 t=4880 ns cnt=571 acc=556 wall=36s
+VO t=4888095 ps cnt=572 dec=3 acc=556
+572nd input image : original value = 3, decision = 3 at 4888105 ps ==> Success
+STEP k=489 t=4890 ns cnt=572 acc=557 wall=36s
+VO t=4898285 ps cnt=573 dec=1 acc=557
+573rd input image : original value = 2, decision = 1 at 4898295 ps ==> Fail
+STEP k=490 t=4900 ns cnt=573 acc=557 wall=36s
+VO t=4906765 ps cnt=574 dec=8 acc=557
+574th input image : original value = 8, decision = 8 at 4906775 ps ==> Success
+STEP k=491 t=4910 ns cnt=574 acc=558 wall=36s
+VO t=4915245 ps cnt=575 dec=4 acc=558
+575th input image : original value = 4, decision = 4 at 4915255 ps ==> Success
+STEP k=492 t=4920 ns cnt=575 acc=559 wall=36s
+VO t=4923725 ps cnt=576 dec=7 acc=559
+576th input image : original value = 7, decision = 7 at 4923735 ps ==> Success
+STEP k=493 t=4930 ns cnt=576 acc=560 wall=36s
+VO t=4932205 ps cnt=577 dec=8 acc=560
+577th input image : original value = 8, decision = 8 at 4932215 ps ==> Success
+STEP k=494 t=4940 ns cnt=577 acc=561 wall=36s
+VO t=4940685 ps cnt=578 dec=4 acc=561
+578th input image : original value = 4, decision = 4 at 4940695 ps ==> Success
+VO t=4949165 ps cnt=579 dec=0 acc=562
+579th input image : original value = 0, decision = 0 at 4949175 ps ==> Success
+STEP k=495 t=4950 ns cnt=579 acc=563 wall=36s
+VO t=4957645 ps cnt=580 dec=0 acc=563
+580th input image : original value = 0, decision = 0 at 4957655 ps ==> Success
+STEP k=496 t=4960 ns cnt=580 acc=564 wall=36s
+VO t=4967835 ps cnt=581 dec=2 acc=564
+581st input image : original value = 1, decision = 2 at 4967845 ps ==> Fail
+STEP k=497 t=4970 ns cnt=581 acc=564 wall=36s
+VO t=4976315 ps cnt=582 dec=4 acc=564
+582nd input image : original value = 4, decision = 4 at 4976325 ps ==> Success
+STEP k=498 t=4980 ns cnt=582 acc=565 wall=36s
+VO t=4984795 ps cnt=583 dec=7 acc=565
+583rd input image : original value = 7, decision = 7 at 4984805 ps ==> Success
+STEP k=499 t=4990 ns cnt=583 acc=566 wall=36s
+VO t=4993275 ps cnt=584 dec=8 acc=566
+584th input image : original value = 8, decision = 8 at 4993285 ps ==> Success
+STEP k=500 t=5 us cnt=584 acc=567 wall=37s
+VO t=5001755 ps cnt=585 dec=8 acc=567
+585th input image : original value = 8, decision = 8 at 5001765 ps ==> Success
+STEP k=501 t=5010 ns cnt=586 acc=568 wall=37s
+VO t=5010235 ps cnt=586 dec=7 acc=568
+586th input image : original value = 7, decision = 7 at 5010245 ps ==> Success
+VO t=5018715 ps cnt=587 dec=9 acc=569
+587th input image : original value = 9, decision = 9 at 5018725 ps ==> Success
+STEP k=502 t=5020 ns cnt=587 acc=570 wall=37s
+VO t=5027195 ps cnt=588 dec=9 acc=570
+588th input image : original value = 9, decision = 9 at 5027205 ps ==> Success
+STEP k=503 t=5030 ns cnt=588 acc=571 wall=37s
+VO t=5035675 ps cnt=589 dec=1 acc=571
+589th input image : original value = 1, decision = 1 at 5035685 ps ==> Success
+STEP k=504 t=5040 ns cnt=589 acc=572 wall=37s
+VO t=5044155 ps cnt=590 dec=6 acc=572
+590th input image : original value = 6, decision = 6 at 5044165 ps ==> Success
+STEP k=505 t=5050 ns cnt=590 acc=573 wall=37s
+VO t=5052635 ps cnt=591 dec=9 acc=573
+591st input image : original value = 9, decision = 9 at 5052645 ps ==> Success
+STEP k=506 t=5060 ns cnt=591 acc=574 wall=37s
+VO t=5061115 ps cnt=592 dec=0 acc=574
+592nd input image : original value = 0, decision = 0 at 5061125 ps ==> Success
+VO t=5069595 ps cnt=593 dec=3 acc=575
+593rd input image : original value = 3, decision = 3 at 5069605 ps ==> Success
+STEP k=507 t=5070 ns cnt=593 acc=576 wall=37s
+VO t=5078075 ps cnt=594 dec=7 acc=576
+594th input image : original value = 7, decision = 7 at 5078085 ps ==> Success
+STEP k=508 t=5080 ns cnt=594 acc=577 wall=37s
+VO t=5086555 ps cnt=595 dec=9 acc=577
+595th input image : original value = 9, decision = 9 at 5086565 ps ==> Success
+STEP k=509 t=5090 ns cnt=595 acc=578 wall=37s
+VO t=5095035 ps cnt=596 dec=5 acc=578
+596th input image : original value = 5, decision = 5 at 5095045 ps ==> Success
+STEP k=510 t=5100 ns cnt=596 acc=579 wall=37s
+VO t=5103515 ps cnt=597 dec=4 acc=579
+597th input image : original value = 4, decision = 4 at 5103525 ps ==> Success
+STEP k=511 t=5110 ns cnt=597 acc=580 wall=37s
+VO t=5111995 ps cnt=598 dec=7 acc=580
+598th input image : original value = 7, decision = 7 at 5112005 ps ==> Success
+STEP k=512 t=5120 ns cnt=599 acc=581 wall=37s
+VO t=5120475 ps cnt=599 dec=5 acc=581
+599th input image : original value = 5, decision = 5 at 5120485 ps ==> Success
+STEP k=513 t=5130 ns cnt=600 acc=582 wall=37s
+VO t=5130665 ps cnt=600 dec=7 acc=582
+600th input image : original value = 7, decision = 7 at 5130675 ps ==> Success
+STEP k=514 t=5140 ns cnt=601 acc=583 wall=38s
+VO t=5140855 ps cnt=601 dec=5 acc=583
+601st input image : original value = 5, decision = 5 at 5140865 ps ==> Success
+VO t=5149335 ps cnt=602 dec=4 acc=584
+602nd input image : original value = 4, decision = 4 at 5149345 ps ==> Success
+STEP k=515 t=5150 ns cnt=602 acc=585 wall=38s
+VO t=5157815 ps cnt=603 dec=2 acc=585
+603rd input image : original value = 2, decision = 2 at 5157825 ps ==> Success
+STEP k=516 t=5160 ns cnt=603 acc=586 wall=38s
+VO t=5166295 ps cnt=604 dec=0 acc=586
+604th input image : original value = 0, decision = 0 at 5166305 ps ==> Success
+STEP k=517 t=5170 ns cnt=604 acc=587 wall=38s
+VO t=5174775 ps cnt=605 dec=2 acc=587
+605th input image : original value = 2, decision = 2 at 5174785 ps ==> Success
+STEP k=518 t=5180 ns cnt=605 acc=588 wall=38s
+VO t=5183255 ps cnt=606 dec=7 acc=588
+606th input image : original value = 7, decision = 7 at 5183265 ps ==> Success
+STEP k=519 t=5190 ns cnt=606 acc=589 wall=38s
+VO t=5191735 ps cnt=607 dec=6 acc=589
+607th input image : original value = 6, decision = 6 at 5191745 ps ==> Success
+STEP k=520 t=5200 ns cnt=608 acc=590 wall=38s
+VO t=5200215 ps cnt=608 dec=7 acc=590
+608th input image : original value = 7, decision = 7 at 5200225 ps ==> Success
+STEP k=521 t=5210 ns cnt=609 acc=591 wall=38s
+VO t=5210405 ps cnt=609 dec=1 acc=591
+609th input image : original value = 2, decision = 1 at 5210415 ps ==> Fail
+VO t=5218885 ps cnt=610 dec=9 acc=591
+610th input image : original value = 9, decision = 9 at 5218895 ps ==> Success
+STEP k=522 t=5220 ns cnt=610 acc=592 wall=38s
+VO t=5227365 ps cnt=611 dec=7 acc=592
+611st input image : original value = 7, decision = 7 at 5227375 ps ==> Success
+STEP k=523 t=5230 ns cnt=611 acc=593 wall=38s
+VO t=5235845 ps cnt=612 dec=3 acc=593
+612nd input image : original value = 3, decision = 3 at 5235855 ps ==> Success
+STEP k=524 t=5240 ns cnt=612 acc=594 wall=38s
+VO t=5244325 ps cnt=613 dec=6 acc=594
+613rd input image : original value = 6, decision = 6 at 5244335 ps ==> Success
+STEP k=525 t=5250 ns cnt=613 acc=595 wall=38s
+VO t=5252805 ps cnt=614 dec=3 acc=595
+614th input image : original value = 3, decision = 3 at 5252815 ps ==> Success
+STEP k=526 t=5260 ns cnt=614 acc=596 wall=38s
+VO t=5261285 ps cnt=615 dec=1 acc=596
+615th input image : original value = 1, decision = 1 at 5261295 ps ==> Success
+VO t=5269765 ps cnt=616 dec=8 acc=597
+616th input image : original value = 8, decision = 8 at 5269775 ps ==> Success
+STEP k=527 t=5270 ns cnt=616 acc=598 wall=38s
+VO t=5278245 ps cnt=617 dec=2 acc=598
+617th input image : original value = 2, decision = 2 at 5278255 ps ==> Success
+STEP k=528 t=5280 ns cnt=617 acc=599 wall=39s
+VO t=5286725 ps cnt=618 dec=8 acc=599
+618th input image : original value = 8, decision = 8 at 5286735 ps ==> Success
+STEP k=529 t=5290 ns cnt=618 acc=600 wall=39s
+VO t=5295205 ps cnt=619 dec=1 acc=600
+619th input image : original value = 1, decision = 1 at 5295215 ps ==> Success
+STEP k=530 t=5300 ns cnt=619 acc=601 wall=39s
+VO t=5303685 ps cnt=620 dec=9 acc=601
+620th input image : original value = 9, decision = 9 at 5303695 ps ==> Success
+STEP k=531 t=5310 ns cnt=620 acc=602 wall=39s
+VO t=5312165 ps cnt=621 dec=0 acc=602
+621st input image : original value = 0, decision = 0 at 5312175 ps ==> Success
+STEP k=532 t=5320 ns cnt=621 acc=603 wall=39s
+VO t=5320645 ps cnt=622 dec=2 acc=603
+622nd input image : original value = 2, decision = 2 at 5320655 ps ==> Success
+VO t=5329125 ps cnt=623 dec=7 acc=604
+623rd input image : original value = 7, decision = 7 at 5329135 ps ==> Success
+STEP k=533 t=5330 ns cnt=623 acc=605 wall=39s
+VO t=5337605 ps cnt=624 dec=3 acc=605
+624th input image : original value = 3, decision = 3 at 5337615 ps ==> Success
+STEP k=534 t=5340 ns cnt=624 acc=606 wall=39s
+VO t=5346085 ps cnt=625 dec=9 acc=606
+625th input image : original value = 9, decision = 9 at 5346095 ps ==> Success
+STEP k=535 t=5350 ns cnt=625 acc=607 wall=39s
+VO t=5354565 ps cnt=626 dec=9 acc=607
+626th input image : original value = 9, decision = 9 at 5354575 ps ==> Success
+STEP k=536 t=5360 ns cnt=626 acc=608 wall=39s
+VO t=5363045 ps cnt=627 dec=2 acc=608
+627th input image : original value = 2, decision = 2 at 5363055 ps ==> Success
+STEP k=537 t=5370 ns cnt=627 acc=609 wall=39s
+VO t=5371525 ps cnt=628 dec=0 acc=609
+628th input image : original value = 0, decision = 0 at 5371535 ps ==> Success
+STEP k=538 t=5380 ns cnt=629 acc=610 wall=39s
+VO t=5380005 ps cnt=629 dec=1 acc=610
+629th input image : original value = 1, decision = 1 at 5380015 ps ==> Success
+VO t=5388485 ps cnt=630 dec=9 acc=611
+630th input image : original value = 9, decision = 9 at 5388495 ps ==> Success
+STEP k=539 t=5390 ns cnt=630 acc=612 wall=39s
+VO t=5396965 ps cnt=631 dec=3 acc=612
+631st input image : original value = 3, decision = 3 at 5396975 ps ==> Success
+STEP k=540 t=5400 ns cnt=631 acc=613 wall=39s
+VO t=5405445 ps cnt=632 dec=0 acc=613
+632nd input image : original value = 0, decision = 0 at 5405455 ps ==> Success
+STEP k=541 t=5410 ns cnt=632 acc=614 wall=40s
+VO t=5413925 ps cnt=633 dec=7 acc=614
+633rd input image : original value = 7, decision = 7 at 5413935 ps ==> Success
+STEP k=542 t=5420 ns cnt=633 acc=615 wall=40s
+VO t=5422405 ps cnt=634 dec=5 acc=615
+634th input image : original value = 5, decision = 5 at 5422415 ps ==> Success
+STEP k=543 t=5430 ns cnt=634 acc=616 wall=40s
+VO t=5430885 ps cnt=635 dec=1 acc=616
+635th input image : original value = 1, decision = 1 at 5430895 ps ==> Success
+VO t=5439365 ps cnt=636 dec=9 acc=617
+636th input image : original value = 9, decision = 9 at 5439375 ps ==> Success
+STEP k=544 t=5440 ns cnt=636 acc=618 wall=40s
+VO t=5447845 ps cnt=637 dec=4 acc=618
+637th input image : original value = 4, decision = 4 at 5447855 ps ==> Success
+STEP k=545 t=5450 ns cnt=637 acc=619 wall=40s
+VO t=5456325 ps cnt=638 dec=4 acc=619
+638th input image : original value = 4, decision = 4 at 5456335 ps ==> Success
+STEP k=546 t=5460 ns cnt=638 acc=620 wall=40s
+VO t=5464805 ps cnt=639 dec=0 acc=620
+639th input image : original value = 0, decision = 0 at 5464815 ps ==> Success
+STEP k=547 t=5470 ns cnt=639 acc=621 wall=40s
+VO t=5473285 ps cnt=640 dec=2 acc=621
+640th input image : original value = 2, decision = 2 at 5473295 ps ==> Success
+STEP k=548 t=5480 ns cnt=640 acc=622 wall=40s
+VO t=5481765 ps cnt=641 dec=8 acc=622
+641st input image : original value = 8, decision = 8 at 5481775 ps ==> Success
+STEP k=549 t=5490 ns cnt=642 acc=623 wall=40s
+VO t=5490245 ps cnt=642 dec=0 acc=623
+642nd input image : original value = 0, decision = 0 at 5490255 ps ==> Success
+VO t=5498725 ps cnt=643 dec=1 acc=624
+643rd input image : original value = 1, decision = 1 at 5498735 ps ==> Success
+STEP k=550 t=5500 ns cnt=643 acc=625 wall=40s
+VO t=5507205 ps cnt=644 dec=2 acc=625
+644th input image : original value = 2, decision = 2 at 5507215 ps ==> Success
+STEP k=551 t=5510 ns cnt=644 acc=626 wall=40s
+VO t=5515685 ps cnt=645 dec=3 acc=626
+645th input image : original value = 3, decision = 3 at 5515695 ps ==> Success
+STEP k=552 t=5520 ns cnt=645 acc=627 wall=40s
+VO t=5524165 ps cnt=646 dec=1 acc=627
+646th input image : original value = 1, decision = 1 at 5524175 ps ==> Success
+STEP k=553 t=5530 ns cnt=646 acc=628 wall=40s
+VO t=5532645 ps cnt=647 dec=4 acc=628
+647th input image : original value = 4, decision = 4 at 5532655 ps ==> Success
+STEP k=554 t=5540 ns cnt=647 acc=629 wall=41s
+VO t=5541125 ps cnt=648 dec=2 acc=629
+648th input image : original value = 2, decision = 2 at 5541135 ps ==> Success
+VO t=5549605 ps cnt=649 dec=0 acc=630
+649th input image : original value = 0, decision = 0 at 5549615 ps ==> Success
+STEP k=555 t=5550 ns cnt=649 acc=631 wall=41s
+VO t=5558085 ps cnt=650 dec=5 acc=631
+650th input image : original value = 5, decision = 5 at 5558095 ps ==> Success
+STEP k=556 t=5560 ns cnt=650 acc=632 wall=41s
+VO t=5566565 ps cnt=651 dec=3 acc=632
+651st input image : original value = 3, decision = 3 at 5566575 ps ==> Success
+STEP k=557 t=5570 ns cnt=651 acc=633 wall=41s
+VO t=5575045 ps cnt=652 dec=4 acc=633
+652nd input image : original value = 4, decision = 4 at 5575055 ps ==> Success
+STEP k=558 t=5580 ns cnt=652 acc=634 wall=41s
+VO t=5585235 ps cnt=653 dec=5 acc=634
+653rd input image : original value = 5, decision = 5 at 5585245 ps ==> Success
+STEP k=559 t=5590 ns cnt=653 acc=635 wall=41s
+VO t=5593715 ps cnt=654 dec=9 acc=635
+654th input image : original value = 9, decision = 9 at 5593725 ps ==> Success
+STEP k=560 t=5600 ns cnt=654 acc=636 wall=41s
+VO t=5603905 ps cnt=655 dec=5 acc=636
+655th input image : original value = 5, decision = 5 at 5603915 ps ==> Success
+STEP k=561 t=5610 ns cnt=655 acc=637 wall=41s
+VO t=5612385 ps cnt=656 dec=5 acc=637
+656th input image : original value = 5, decision = 5 at 5612395 ps ==> Success
+STEP k=562 t=5620 ns cnt=656 acc=638 wall=41s
+VO t=5620865 ps cnt=657 dec=3 acc=638
+657th input image : original value = 3, decision = 3 at 5620875 ps ==> Success
+VO t=5629345 ps cnt=658 dec=9 acc=639
+658th input image : original value = 9, decision = 9 at 5629355 ps ==> Success
+STEP k=563 t=5630 ns cnt=658 acc=640 wall=41s
+VO t=5637825 ps cnt=659 dec=9 acc=640
+659th input image : original value = 9, decision = 9 at 5637835 ps ==> Success
+STEP k=564 t=5640 ns cnt=659 acc=641 wall=41s
+VO t=5646305 ps cnt=660 dec=9 acc=641
+660th input image : original value = 9, decision = 9 at 5646315 ps ==> Success
+STEP k=565 t=5650 ns cnt=660 acc=642 wall=41s
+VO t=5654785 ps cnt=661 dec=7 acc=642
+661st input image : original value = 7, decision = 7 at 5654795 ps ==> Success
+STEP k=566 t=5660 ns cnt=661 acc=643 wall=41s
+VO t=5663265 ps cnt=662 dec=3 acc=643
+662nd input image : original value = 3, decision = 3 at 5663275 ps ==> Success
+STEP k=567 t=5670 ns cnt=662 acc=644 wall=41s
+VO t=5671745 ps cnt=663 dec=4 acc=644
+663rd input image : original value = 4, decision = 4 at 5671755 ps ==> Success
+STEP k=568 t=5680 ns cnt=664 acc=645 wall=42s
+VO t=5680225 ps cnt=664 dec=1 acc=645
+664th input image : original value = 1, decision = 1 at 5680235 ps ==> Success
+VO t=5688705 ps cnt=665 dec=3 acc=646
+665th input image : original value = 3, decision = 3 at 5688715 ps ==> Success
+STEP k=569 t=5690 ns cnt=665 acc=647 wall=42s
+VO t=5697185 ps cnt=666 dec=4 acc=647
+666th input image : original value = 4, decision = 4 at 5697195 ps ==> Success
+STEP k=570 t=5700 ns cnt=666 acc=648 wall=42s
+VO t=5705665 ps cnt=667 dec=0 acc=648
+667th input image : original value = 0, decision = 0 at 5705675 ps ==> Success
+STEP k=571 t=5710 ns cnt=667 acc=649 wall=42s
+VO t=5714145 ps cnt=668 dec=0 acc=649
+668th input image : original value = 0, decision = 0 at 5714155 ps ==> Success
+STEP k=572 t=5720 ns cnt=668 acc=650 wall=42s
+VO t=5722625 ps cnt=669 dec=7 acc=650
+669th input image : original value = 7, decision = 7 at 5722635 ps ==> Success
+STEP k=573 t=5730 ns cnt=669 acc=651 wall=42s
+VO t=5731105 ps cnt=670 dec=4 acc=651
+670th input image : original value = 4, decision = 4 at 5731115 ps ==> Success
+STEP k=574 t=5740 ns cnt=671 acc=652 wall=42s
+VO t=5741295 ps cnt=671 dec=2 acc=652
+671st input image : original value = 1, decision = 2 at 5741305 ps ==> Fail
+VO t=5749775 ps cnt=672 dec=0 acc=652
+672nd input image : original value = 0, decision = 0 at 5749785 ps ==> Success
+STEP k=575 t=5750 ns cnt=672 acc=653 wall=42s
+VO t=5758255 ps cnt=673 dec=8 acc=653
+673rd input image : original value = 8, decision = 8 at 5758265 ps ==> Success
+STEP k=576 t=5760 ns cnt=673 acc=654 wall=42s
+VO t=5766735 ps cnt=674 dec=1 acc=654
+674th input image : original value = 1, decision = 1 at 5766745 ps ==> Success
+STEP k=577 t=5770 ns cnt=674 acc=655 wall=42s
+VO t=5775215 ps cnt=675 dec=1 acc=655
+675th input image : original value = 1, decision = 1 at 5775225 ps ==> Success
+STEP k=578 t=5780 ns cnt=675 acc=656 wall=42s
+VO t=5783695 ps cnt=676 dec=6 acc=656
+676th input image : original value = 6, decision = 6 at 5783705 ps ==> Success
+STEP k=579 t=5790 ns cnt=676 acc=657 wall=42s
+VO t=5792175 ps cnt=677 dec=7 acc=657
+677th input image : original value = 7, decision = 7 at 5792185 ps ==> Success
+STEP k=580 t=5800 ns cnt=677 acc=658 wall=42s
+VO t=5800655 ps cnt=678 dec=7 acc=658
+678th input image : original value = 2, decision = 7 at 5800665 ps ==> Fail
+VO t=5809135 ps cnt=679 dec=6 acc=658
+679th input image : original value = 6, decision = 6 at 5809145 ps ==> Success
+STEP k=581 t=5810 ns cnt=679 acc=659 wall=43s
+VO t=5817615 ps cnt=680 dec=5 acc=659
+680th input image : original value = 5, decision = 5 at 5817625 ps ==> Success
+STEP k=582 t=5820 ns cnt=680 acc=660 wall=43s
+VO t=5826095 ps cnt=681 dec=4 acc=660
+681st input image : original value = 4, decision = 4 at 5826105 ps ==> Success
+STEP k=583 t=5830 ns cnt=681 acc=661 wall=43s
+VO t=5834575 ps cnt=682 dec=7 acc=661
+682nd input image : original value = 7, decision = 7 at 5834585 ps ==> Success
+STEP k=584 t=5840 ns cnt=682 acc=662 wall=43s
+VO t=5843055 ps cnt=683 dec=0 acc=662
+683rd input image : original value = 0, decision = 0 at 5843065 ps ==> Success
+STEP k=585 t=5850 ns cnt=683 acc=663 wall=43s
+VO t=5851535 ps cnt=684 dec=2 acc=663
+684th input image : original value = 2, decision = 2 at 5851545 ps ==> Success
+STEP k=586 t=5860 ns cnt=685 acc=664 wall=43s
+VO t=5860015 ps cnt=685 dec=0 acc=664
+685th input image : original value = 0, decision = 0 at 5860025 ps ==> Success
+VO t=5868495 ps cnt=686 dec=8 acc=665
+686th input image : original value = 8, decision = 8 at 5868505 ps ==> Success
+STEP k=587 t=5870 ns cnt=686 acc=666 wall=43s
+VO t=5876975 ps cnt=687 dec=6 acc=666
+687th input image : original value = 6, decision = 6 at 5876985 ps ==> Success
+STEP k=588 t=5880 ns cnt=687 acc=667 wall=43s
+VO t=5885455 ps cnt=688 dec=5 acc=667
+688th input image : original value = 5, decision = 5 at 5885465 ps ==> Success
+STEP k=589 t=5890 ns cnt=688 acc=668 wall=43s
+VO t=5893935 ps cnt=689 dec=4 acc=668
+689th input image : original value = 4, decision = 4 at 5893945 ps ==> Success
+STEP k=590 t=5900 ns cnt=689 acc=669 wall=43s
+VO t=5902415 ps cnt=690 dec=8 acc=669
+690th input image : original value = 8, decision = 8 at 5902425 ps ==> Success
+STEP k=591 t=5910 ns cnt=690 acc=670 wall=43s
+VO t=5910895 ps cnt=691 dec=6 acc=670
+691st input image : original value = 6, decision = 6 at 5910905 ps ==> Success
+VO t=5919375 ps cnt=692 dec=4 acc=671
+692nd input image : original value = 4, decision = 4 at 5919385 ps ==> Success
+STEP k=592 t=5920 ns cnt=692 acc=672 wall=43s
+VO t=5927855 ps cnt=693 dec=5 acc=672
+693rd input image : original value = 5, decision = 5 at 5927865 ps ==> Success
+STEP k=593 t=5930 ns cnt=693 acc=673 wall=43s
+VO t=5936335 ps cnt=694 dec=2 acc=673
+694th input image : original value = 2, decision = 2 at 5936345 ps ==> Success
+STEP k=594 t=5940 ns cnt=694 acc=674 wall=43s
+VO t=5944815 ps cnt=695 dec=8 acc=674
+695th input image : original value = 8, decision = 8 at 5944825 ps ==> Success
+STEP k=595 t=5950 ns cnt=695 acc=675 wall=44s
+VO t=5953295 ps cnt=696 dec=9 acc=675
+696th input image : original value = 9, decision = 9 at 5953305 ps ==> Success
+STEP k=596 t=5960 ns cnt=696 acc=676 wall=44s
+VO t=5961775 ps cnt=697 dec=0 acc=676
+697th input image : original value = 0, decision = 0 at 5961785 ps ==> Success
+STEP k=597 t=5970 ns cnt=698 acc=677 wall=44s
+VO t=5970255 ps cnt=698 dec=3 acc=677
+698th input image : original value = 3, decision = 3 at 5970265 ps ==> Success
+VO t=5978735 ps cnt=699 dec=4 acc=678
+699th input image : original value = 4, decision = 4 at 5978745 ps ==> Success
+STEP k=598 t=5980 ns cnt=699 acc=679 wall=44s
+VO t=5987215 ps cnt=700 dec=5 acc=679
+700th input image : original value = 5, decision = 5 at 5987225 ps ==> Success
+STEP k=599 t=5990 ns cnt=700 acc=680 wall=44s
+VO t=5995695 ps cnt=701 dec=7 acc=680
+701st input image : original value = 7, decision = 7 at 5995705 ps ==> Success
+STEP k=600 t=6 us cnt=701 acc=681 wall=44s
+VO t=6004175 ps cnt=702 dec=1 acc=681
+702nd input image : original value = 1, decision = 1 at 6004185 ps ==> Success
+STEP k=601 t=6010 ns cnt=702 acc=682 wall=44s
+VO t=6012655 ps cnt=703 dec=5 acc=682
+703rd input image : original value = 5, decision = 5 at 6012665 ps ==> Success
+STEP k=602 t=6020 ns cnt=703 acc=683 wall=44s
+VO t=6021135 ps cnt=704 dec=6 acc=683
+704th input image : original value = 6, decision = 6 at 6021145 ps ==> Success
+VO t=6029615 ps cnt=705 dec=6 acc=684
+705th input image : original value = 6, decision = 6 at 6029625 ps ==> Success
+STEP k=603 t=6030 ns cnt=705 acc=685 wall=44s
+VO t=6038095 ps cnt=706 dec=8 acc=685
+706th input image : original value = 8, decision = 8 at 6038105 ps ==> Success
+STEP k=604 t=6040 ns cnt=706 acc=686 wall=44s
+VO t=6046575 ps cnt=707 dec=2 acc=686
+707th input image : original value = 2, decision = 2 at 6046585 ps ==> Success
+STEP k=605 t=6050 ns cnt=707 acc=687 wall=44s
+VO t=6055055 ps cnt=708 dec=7 acc=687
+708th input image : original value = 2, decision = 7 at 6055065 ps ==> Fail
+STEP k=606 t=6060 ns cnt=708 acc=687 wall=44s
+VO t=6063535 ps cnt=709 dec=0 acc=687
+709th input image : original value = 0, decision = 0 at 6063545 ps ==> Success
+STEP k=607 t=6070 ns cnt=709 acc=688 wall=44s
+VO t=6072015 ps cnt=710 dec=8 acc=688
+710th input image : original value = 8, decision = 8 at 6072025 ps ==> Success
+STEP k=608 t=6080 ns cnt=711 acc=689 wall=44s
+VO t=6080495 ps cnt=711 dec=9 acc=689
+711st input image : original value = 9, decision = 9 at 6080505 ps ==> Success
+VO t=6088975 ps cnt=712 dec=6 acc=690
+712nd input image : original value = 6, decision = 6 at 6088985 ps ==> Success
+STEP k=609 t=6090 ns cnt=712 acc=691 wall=45s
+VO t=6097455 ps cnt=713 dec=6 acc=691
+713rd input image : original value = 6, decision = 6 at 6097465 ps ==> Success
+STEP k=610 t=6100 ns cnt=713 acc=692 wall=45s
+VO t=6105935 ps cnt=714 dec=1 acc=692
+714th input image : original value = 1, decision = 1 at 6105945 ps ==> Success
+STEP k=611 t=6110 ns cnt=714 acc=693 wall=45s
+VO t=6114415 ps cnt=715 dec=8 acc=693
+715th input image : original value = 8, decision = 8 at 6114425 ps ==> Success
+STEP k=612 t=6120 ns cnt=715 acc=694 wall=45s
+VO t=6122895 ps cnt=716 dec=6 acc=694
+716th input image : original value = 6, decision = 6 at 6122905 ps ==> Success
+STEP k=613 t=6130 ns cnt=716 acc=695 wall=45s
+VO t=6131375 ps cnt=717 dec=8 acc=695
+717th input image : original value = 8, decision = 8 at 6131385 ps ==> Success
+VO t=6139855 ps cnt=718 dec=8 acc=696
+718th input image : original value = 8, decision = 8 at 6139865 ps ==> Success
+STEP k=614 t=6140 ns cnt=718 acc=697 wall=45s
+VO t=6148335 ps cnt=719 dec=7 acc=697
+719th input image : original value = 2, decision = 7 at 6148345 ps ==> Fail
+STEP k=615 t=6150 ns cnt=719 acc=697 wall=45s
+VO t=6156815 ps cnt=720 dec=4 acc=697
+720th input image : original value = 4, decision = 4 at 6156825 ps ==> Success
+STEP k=616 t=6160 ns cnt=720 acc=698 wall=45s
+VO t=6165295 ps cnt=721 dec=8 acc=698
+721st input image : original value = 8, decision = 8 at 6165305 ps ==> Success
+STEP k=617 t=6170 ns cnt=721 acc=699 wall=45s
+VO t=6173775 ps cnt=722 dec=0 acc=699
+722nd input image : original value = 0, decision = 0 at 6173785 ps ==> Success
+STEP k=618 t=6180 ns cnt=722 acc=700 wall=45s
+VO t=6183965 ps cnt=723 dec=2 acc=700
+723rd input image : original value = 1, decision = 2 at 6183975 ps ==> Fail
+STEP k=619 t=6190 ns cnt=723 acc=700 wall=45s
+VO t=6192445 ps cnt=724 dec=8 acc=700
+724th input image : original value = 8, decision = 8 at 6192455 ps ==> Success
+STEP k=620 t=6200 ns cnt=724 acc=701 wall=45s
+VO t=6200925 ps cnt=725 dec=7 acc=701
+725th input image : original value = 7, decision = 7 at 6200935 ps ==> Success
+VO t=6209405 ps cnt=726 dec=3 acc=702
+726th input image : original value = 3, decision = 3 at 6209415 ps ==> Success
+STEP k=621 t=6210 ns cnt=726 acc=703 wall=46s
+VO t=6219595 ps cnt=727 dec=1 acc=703
+727th input image : original value = 2, decision = 1 at 6219605 ps ==> Fail
+STEP k=622 t=6220 ns cnt=727 acc=703 wall=46s
+VO t=6228075 ps cnt=728 dec=7 acc=703
+728th input image : original value = 7, decision = 7 at 6228085 ps ==> Success
+STEP k=623 t=6230 ns cnt=728 acc=704 wall=46s
+VO t=6236555 ps cnt=729 dec=2 acc=704
+729th input image : original value = 2, decision = 2 at 6236565 ps ==> Success
+STEP k=624 t=6240 ns cnt=729 acc=705 wall=46s
+VO t=6245035 ps cnt=730 dec=2 acc=705
+730th input image : original value = 2, decision = 2 at 6245045 ps ==> Success
+STEP k=625 t=6250 ns cnt=730 acc=706 wall=46s
+VO t=6253515 ps cnt=731 dec=4 acc=706
+731st input image : original value = 4, decision = 4 at 6253525 ps ==> Success
+STEP k=626 t=6260 ns cnt=731 acc=707 wall=46s
+VO t=6261995 ps cnt=732 dec=0 acc=707
+732nd input image : original value = 0, decision = 0 at 6262005 ps ==> Success
+STEP k=627 t=6270 ns cnt=733 acc=708 wall=46s
+VO t=6270475 ps cnt=733 dec=4 acc=708
+733rd input image : original value = 4, decision = 4 at 6270485 ps ==> Success
+VO t=6278955 ps cnt=734 dec=5 acc=709
+734th input image : original value = 5, decision = 5 at 6278965 ps ==> Success
+STEP k=628 t=6280 ns cnt=734 acc=710 wall=46s
+VO t=6287435 ps cnt=735 dec=6 acc=710
+735th input image : original value = 6, decision = 6 at 6287445 ps ==> Success
+STEP k=629 t=6290 ns cnt=735 acc=711 wall=46s
+VO t=6295915 ps cnt=736 dec=8 acc=711
+736th input image : original value = 8, decision = 8 at 6295925 ps ==> Success
+STEP k=630 t=6300 ns cnt=736 acc=712 wall=46s
+VO t=6304395 ps cnt=737 dec=8 acc=712
+737th input image : original value = 8, decision = 8 at 6304405 ps ==> Success
+STEP k=631 t=6310 ns cnt=737 acc=713 wall=46s
+VO t=6312875 ps cnt=738 dec=1 acc=713
+738th input image : original value = 1, decision = 1 at 6312885 ps ==> Success
+STEP k=632 t=6320 ns cnt=738 acc=714 wall=46s
+VO t=6321355 ps cnt=739 dec=8 acc=714
+739th input image : original value = 8, decision = 8 at 6321365 ps ==> Success
+VO t=6329835 ps cnt=740 dec=3 acc=715
+740th input image : original value = 3, decision = 3 at 6329845 ps ==> Success
+STEP k=633 t=6330 ns cnt=740 acc=716 wall=46s
+VO t=6338315 ps cnt=741 dec=5 acc=716
+741st input image : original value = 5, decision = 5 at 6338325 ps ==> Success
+STEP k=634 t=6340 ns cnt=741 acc=717 wall=47s
+VO t=6346795 ps cnt=742 dec=5 acc=717
+742nd input image : original value = 5, decision = 5 at 6346805 ps ==> Success
+STEP k=635 t=6350 ns cnt=742 acc=718 wall=47s
+VO t=6355275 ps cnt=743 dec=0 acc=718
+743rd input image : original value = 0, decision = 0 at 6355285 ps ==> Success
+STEP k=636 t=6360 ns cnt=743 acc=719 wall=47s
+VO t=6363755 ps cnt=744 dec=3 acc=719
+744th input image : original value = 3, decision = 3 at 6363765 ps ==> Success
+STEP k=637 t=6370 ns cnt=744 acc=720 wall=47s
+VO t=6373945 ps cnt=745 dec=5 acc=720
+745th input image : original value = 5, decision = 5 at 6373955 ps ==> Success
+STEP k=638 t=6380 ns cnt=745 acc=721 wall=47s
+VO t=6382425 ps cnt=746 dec=8 acc=721
+746th input image : original value = 8, decision = 8 at 6382435 ps ==> Success
+STEP k=639 t=6390 ns cnt=746 acc=722 wall=47s
+VO t=6390905 ps cnt=747 dec=7 acc=722
+747th input image : original value = 7, decision = 7 at 6390915 ps ==> Success
+VO t=6399385 ps cnt=748 dec=0 acc=723
+748th input image : original value = 0, decision = 0 at 6399395 ps ==> Success
+STEP k=640 t=6400 ns cnt=748 acc=724 wall=47s
+VO t=6407865 ps cnt=749 dec=2 acc=724
+749th input image : original value = 2, decision = 2 at 6407875 ps ==> Success
+STEP k=641 t=6410 ns cnt=749 acc=725 wall=47s
+VO t=6416345 ps cnt=750 dec=7 acc=725
+750th input image : original value = 7, decision = 7 at 6416355 ps ==> Success
+STEP k=642 t=6420 ns cnt=750 acc=726 wall=47s
+VO t=6424825 ps cnt=751 dec=4 acc=726
+751st input image : original value = 4, decision = 4 at 6424835 ps ==> Success
+STEP k=643 t=6430 ns cnt=751 acc=727 wall=47s
+VO t=6433305 ps cnt=752 dec=7 acc=727
+752nd input image : original value = 7, decision = 7 at 6433315 ps ==> Success
+STEP k=644 t=6440 ns cnt=752 acc=728 wall=47s
+VO t=6441785 ps cnt=753 dec=6 acc=728
+753rd input image : original value = 6, decision = 6 at 6441795 ps ==> Success
+STEP k=645 t=6450 ns cnt=754 acc=729 wall=47s
+VO t=6450265 ps cnt=754 dec=1 acc=729
+754th input image : original value = 1, decision = 1 at 6450275 ps ==> Success
+VO t=6458745 ps cnt=755 dec=8 acc=730
+755th input image : original value = 8, decision = 8 at 6458755 ps ==> Success
+STEP k=646 t=6460 ns cnt=755 acc=731 wall=47s
+VO t=6467225 ps cnt=756 dec=8 acc=731
+756th input image : original value = 8, decision = 8 at 6467235 ps ==> Success
+STEP k=647 t=6470 ns cnt=756 acc=732 wall=48s
+VO t=6475705 ps cnt=757 dec=7 acc=732
+757th input image : original value = 7, decision = 7 at 6475715 ps ==> Success
+STEP k=648 t=6480 ns cnt=757 acc=733 wall=48s
+VO t=6485895 ps cnt=758 dec=1 acc=733
+758th input image : original value = 2, decision = 1 at 6485905 ps ==> Fail
+STEP k=649 t=6490 ns cnt=758 acc=733 wall=48s
+VO t=6494375 ps cnt=759 dec=7 acc=733
+759th input image : original value = 7, decision = 7 at 6494385 ps ==> Success
+STEP k=650 t=6500 ns cnt=759 acc=734 wall=48s
+VO t=6502855 ps cnt=760 dec=3 acc=734
+760th input image : original value = 3, decision = 3 at 6502865 ps ==> Success
+STEP k=651 t=6510 ns cnt=760 acc=735 wall=48s
+VO t=6511335 ps cnt=761 dec=2 acc=735
+761st input image : original value = 2, decision = 2 at 6511345 ps ==> Success
+VO t=6519815 ps cnt=762 dec=4 acc=736
+762nd input image : original value = 4, decision = 4 at 6519825 ps ==> Success
+STEP k=652 t=6520 ns cnt=762 acc=737 wall=48s
+VO t=6528295 ps cnt=763 dec=3 acc=737
+763rd input image : original value = 3, decision = 3 at 6528305 ps ==> Success
+STEP k=653 t=6530 ns cnt=763 acc=738 wall=48s
+VO t=6536775 ps cnt=764 dec=9 acc=738
+764th input image : original value = 9, decision = 9 at 6536785 ps ==> Success
+STEP k=654 t=6540 ns cnt=764 acc=739 wall=48s
+VO t=6545255 ps cnt=765 dec=5 acc=739
+765th input image : original value = 5, decision = 5 at 6545265 ps ==> Success
+STEP k=655 t=6550 ns cnt=765 acc=740 wall=48s
+VO t=6553735 ps cnt=766 dec=9 acc=740
+766th input image : original value = 9, decision = 9 at 6553745 ps ==> Success
+STEP k=656 t=6560 ns cnt=766 acc=741 wall=48s
+VO t=6562215 ps cnt=767 dec=3 acc=741
+767th input image : original value = 3, decision = 3 at 6562225 ps ==> Success
+STEP k=657 t=6570 ns cnt=767 acc=742 wall=48s
+VO t=6570695 ps cnt=768 dec=6 acc=742
+768th input image : original value = 6, decision = 6 at 6570705 ps ==> Success
+VO t=6579175 ps cnt=769 dec=2 acc=743
+769th input image : original value = 2, decision = 2 at 6579185 ps ==> Success
+STEP k=658 t=6580 ns cnt=769 acc=744 wall=48s
+VO t=6587655 ps cnt=770 dec=6 acc=744
+770th input image : original value = 6, decision = 6 at 6587665 ps ==> Success
+STEP k=659 t=6590 ns cnt=770 acc=745 wall=48s
+VO t=6596135 ps cnt=771 dec=5 acc=745
+771st input image : original value = 5, decision = 5 at 6596145 ps ==> Success
+STEP k=660 t=6600 ns cnt=771 acc=746 wall=49s
+VO t=6604615 ps cnt=772 dec=7 acc=746
+772nd input image : original value = 7, decision = 7 at 6604625 ps ==> Success
+STEP k=661 t=6610 ns cnt=772 acc=747 wall=49s
+VO t=6613095 ps cnt=773 dec=5 acc=747
+773rd input image : original value = 5, decision = 5 at 6613105 ps ==> Success
+STEP k=662 t=6620 ns cnt=773 acc=748 wall=49s
+VO t=6621575 ps cnt=774 dec=8 acc=748
+774th input image : original value = 8, decision = 8 at 6621585 ps ==> Success
+STEP k=663 t=6630 ns cnt=775 acc=749 wall=49s
+VO t=6630055 ps cnt=775 dec=4 acc=749
+775th input image : original value = 4, decision = 4 at 6630065 ps ==> Success
+VO t=6638535 ps cnt=776 dec=7 acc=750
+776th input image : original value = 7, decision = 7 at 6638545 ps ==> Success
+STEP k=664 t=6640 ns cnt=776 acc=751 wall=49s
+VO t=6647015 ps cnt=777 dec=4 acc=751
+777th input image : original value = 4, decision = 4 at 6647025 ps ==> Success
+STEP k=665 t=6650 ns cnt=777 acc=752 wall=49s
+VO t=6655495 ps cnt=778 dec=9 acc=752
+778th input image : original value = 9, decision = 9 at 6655505 ps ==> Success
+STEP k=666 t=6660 ns cnt=778 acc=753 wall=49s
+VO t=6663975 ps cnt=779 dec=4 acc=753
+779th input image : original value = 4, decision = 4 at 6663985 ps ==> Success
+STEP k=667 t=6670 ns cnt=779 acc=754 wall=49s
+VO t=6672455 ps cnt=780 dec=8 acc=754
+780th input image : original value = 8, decision = 8 at 6672465 ps ==> Success
+STEP k=668 t=6680 ns cnt=780 acc=755 wall=49s
+VO t=6680935 ps cnt=781 dec=9 acc=755
+781st input image : original value = 9, decision = 9 at 6680945 ps ==> Success
+STEP k=669 t=6690 ns cnt=782 acc=756 wall=49s
+VO t=6691125 ps cnt=782 dec=7 acc=756
+782nd input image : original value = 7, decision = 7 at 6691135 ps ==> Success
+VO t=6699605 ps cnt=783 dec=5 acc=757
+783rd input image : original value = 5, decision = 5 at 6699615 ps ==> Success
+STEP k=670 t=6700 ns cnt=783 acc=758 wall=49s
+VO t=6708085 ps cnt=784 dec=2 acc=758
+784th input image : original value = 2, decision = 2 at 6708095 ps ==> Success
+STEP k=671 t=6710 ns cnt=784 acc=759 wall=49s
+VO t=6716565 ps cnt=785 dec=6 acc=759
+785th input image : original value = 6, decision = 6 at 6716575 ps ==> Success
+STEP k=672 t=6720 ns cnt=785 acc=760 wall=49s
+VO t=6725045 ps cnt=786 dec=9 acc=760
+786th input image : original value = 9, decision = 9 at 6725055 ps ==> Success
+STEP k=673 t=6730 ns cnt=786 acc=761 wall=49s
+VO t=6733525 ps cnt=787 dec=2 acc=761
+787th input image : original value = 2, decision = 2 at 6733535 ps ==> Success
+STEP k=674 t=6740 ns cnt=787 acc=762 wall=50s
+VO t=6742005 ps cnt=788 dec=4 acc=762
+788th input image : original value = 4, decision = 4 at 6742015 ps ==> Success
+STEP k=675 t=6750 ns cnt=789 acc=763 wall=50s
+VO t=6750485 ps cnt=789 dec=6 acc=763
+789th input image : original value = 6, decision = 6 at 6750495 ps ==> Success
+VO t=6758965 ps cnt=790 dec=7 acc=764
+790th input image : original value = 7, decision = 7 at 6758975 ps ==> Success
+STEP k=676 t=6760 ns cnt=790 acc=765 wall=50s
+VO t=6767445 ps cnt=791 dec=8 acc=765
+791st input image : original value = 8, decision = 8 at 6767455 ps ==> Success
+STEP k=677 t=6770 ns cnt=791 acc=766 wall=50s
+VO t=6775925 ps cnt=792 dec=3 acc=766
+792nd input image : original value = 3, decision = 3 at 6775935 ps ==> Success
+STEP k=678 t=6780 ns cnt=792 acc=767 wall=50s
+VO t=6784405 ps cnt=793 dec=7 acc=767
+793rd input image : original value = 7, decision = 7 at 6784415 ps ==> Success
+STEP k=679 t=6790 ns cnt=793 acc=768 wall=50s
+VO t=6792885 ps cnt=794 dec=0 acc=768
+794th input image : original value = 0, decision = 0 at 6792895 ps ==> Success
+STEP k=680 t=6800 ns cnt=794 acc=769 wall=50s
+VO t=6801365 ps cnt=795 dec=8 acc=769
+795th input image : original value = 8, decision = 8 at 6801375 ps ==> Success
+VO t=6809845 ps cnt=796 dec=3 acc=770
+796th input image : original value = 3, decision = 3 at 6809855 ps ==> Success
+STEP k=681 t=6810 ns cnt=796 acc=771 wall=50s
+VO t=6818325 ps cnt=797 dec=6 acc=771
+797th input image : original value = 6, decision = 6 at 6818335 ps ==> Success
+STEP k=682 t=6820 ns cnt=797 acc=772 wall=50s
+VO t=6826805 ps cnt=798 dec=5 acc=772
+798th input image : original value = 5, decision = 5 at 6826815 ps ==> Success
+STEP k=683 t=6830 ns cnt=798 acc=773 wall=50s
+VO t=6835285 ps cnt=799 dec=6 acc=773
+799th input image : original value = 6, decision = 6 at 6835295 ps ==> Success
+STEP k=684 t=6840 ns cnt=799 acc=774 wall=50s
+VO t=6843765 ps cnt=800 dec=3 acc=774
+800th input image : original value = 3, decision = 3 at 6843775 ps ==> Success
+STEP k=685 t=6850 ns cnt=800 acc=775 wall=50s
+VO t=6852245 ps cnt=801 dec=5 acc=775
+801st input image : original value = 5, decision = 5 at 6852255 ps ==> Success
+STEP k=686 t=6860 ns cnt=801 acc=776 wall=50s
+VO t=6860725 ps cnt=802 dec=5 acc=776
+802nd input image : original value = 5, decision = 5 at 6860735 ps ==> Success
+STEP k=687 t=6870 ns cnt=803 acc=777 wall=50s
+VO t=6870915 ps cnt=803 dec=7 acc=777
+803rd input image : original value = 7, decision = 7 at 6870925 ps ==> Success
+VO t=6879395 ps cnt=804 dec=2 acc=778
+804th input image : original value = 2, decision = 2 at 6879405 ps ==> Success
+STEP k=688 t=6880 ns cnt=804 acc=779 wall=51s
+VO t=6887875 ps cnt=805 dec=0 acc=779
+805th input image : original value = 0, decision = 0 at 6887885 ps ==> Success
+STEP k=689 t=6890 ns cnt=805 acc=780 wall=51s
+VO t=6896355 ps cnt=806 dec=3 acc=780
+806th input image : original value = 3, decision = 3 at 6896365 ps ==> Success
+STEP k=690 t=6900 ns cnt=806 acc=781 wall=51s
+VO t=6904835 ps cnt=807 dec=5 acc=781
+807th input image : original value = 5, decision = 5 at 6904845 ps ==> Success
+STEP k=691 t=6910 ns cnt=807 acc=782 wall=51s
+VO t=6913315 ps cnt=808 dec=6 acc=782
+808th input image : original value = 6, decision = 6 at 6913325 ps ==> Success
+STEP k=692 t=6920 ns cnt=808 acc=783 wall=51s
+VO t=6921795 ps cnt=809 dec=8 acc=783
+809th input image : original value = 8, decision = 8 at 6921805 ps ==> Success
+STEP k=693 t=6930 ns cnt=810 acc=784 wall=51s
+VO t=6930275 ps cnt=810 dec=2 acc=784
+810th input image : original value = 2, decision = 2 at 6930285 ps ==> Success
+VO t=6938755 ps cnt=811 dec=7 acc=785
+811st input image : original value = 7, decision = 7 at 6938765 ps ==> Success
+STEP k=694 t=6940 ns cnt=811 acc=786 wall=51s
+VO t=6947235 ps cnt=812 dec=8 acc=786
+812nd input image : original value = 8, decision = 8 at 6947245 ps ==> Success
+STEP k=695 t=6950 ns cnt=812 acc=787 wall=51s
+VO t=6955715 ps cnt=813 dec=5 acc=787
+813rd input image : original value = 5, decision = 5 at 6955725 ps ==> Success
+STEP k=696 t=6960 ns cnt=813 acc=788 wall=51s
+VO t=6964195 ps cnt=814 dec=2 acc=788
+814th input image : original value = 2, decision = 2 at 6964205 ps ==> Success
+STEP k=697 t=6970 ns cnt=814 acc=789 wall=51s
+VO t=6972675 ps cnt=815 dec=4 acc=789
+815th input image : original value = 4, decision = 4 at 6972685 ps ==> Success
+STEP k=698 t=6980 ns cnt=815 acc=790 wall=51s
+VO t=6981155 ps cnt=816 dec=3 acc=790
+816th input image : original value = 3, decision = 3 at 6981165 ps ==> Success
+VO t=6989635 ps cnt=817 dec=4 acc=791
+817th input image : original value = 4, decision = 4 at 6989645 ps ==> Success
+STEP k=699 t=6990 ns cnt=817 acc=792 wall=51s
+VO t=6998115 ps cnt=818 dec=1 acc=792
+818th input image : original value = 1, decision = 1 at 6998125 ps ==> Success
+STEP k=700 t=7 us cnt=818 acc=793 wall=51s
+VO t=7006595 ps cnt=819 dec=1 acc=793
+819th input image : original value = 1, decision = 1 at 7006605 ps ==> Success
+STEP k=701 t=7010 ns cnt=819 acc=794 wall=51s
+VO t=7015075 ps cnt=820 dec=0 acc=794
+820th input image : original value = 0, decision = 0 at 7015085 ps ==> Success
+STEP k=702 t=7020 ns cnt=820 acc=795 wall=52s
+VO t=7023555 ps cnt=821 dec=3 acc=795
+821st input image : original value = 3, decision = 3 at 7023565 ps ==> Success
+STEP k=703 t=7030 ns cnt=821 acc=796 wall=52s
+VO t=7032035 ps cnt=822 dec=5 acc=796
+822nd input image : original value = 5, decision = 5 at 7032045 ps ==> Success
+STEP k=704 t=7040 ns cnt=823 acc=797 wall=52s
+VO t=7040515 ps cnt=823 dec=3 acc=797
+823rd input image : original value = 3, decision = 3 at 7040525 ps ==> Success
+VO t=7048995 ps cnt=824 dec=7 acc=798
+824th input image : original value = 7, decision = 7 at 7049005 ps ==> Success
+STEP k=705 t=7050 ns cnt=824 acc=799 wall=52s
+VO t=7057475 ps cnt=825 dec=6 acc=799
+825th input image : original value = 6, decision = 6 at 7057485 ps ==> Success
+STEP k=706 t=7060 ns cnt=825 acc=800 wall=52s
+VO t=7065955 ps cnt=826 dec=5 acc=800
+826th input image : original value = 5, decision = 5 at 7065965 ps ==> Success
+STEP k=707 t=7070 ns cnt=826 acc=801 wall=52s
+VO t=7074435 ps cnt=827 dec=7 acc=801
+827th input image : original value = 7, decision = 7 at 7074445 ps ==> Success
+STEP k=708 t=7080 ns cnt=827 acc=802 wall=52s
+VO t=7084625 ps cnt=828 dec=2 acc=802
+828th input image : original value = 1, decision = 2 at 7084635 ps ==> Fail
+STEP k=709 t=7090 ns cnt=828 acc=802 wall=52s
+VO t=7093105 ps cnt=829 dec=0 acc=802
+829th input image : original value = 0, decision = 0 at 7093115 ps ==> Success
+STEP k=710 t=7100 ns cnt=829 acc=803 wall=52s
+VO t=7101585 ps cnt=830 dec=1 acc=803
+830th input image : original value = 1, decision = 1 at 7101595 ps ==> Success
+STEP k=711 t=7110 ns cnt=831 acc=804 wall=52s
+VO t=7110065 ps cnt=831 dec=7 acc=804
+831st input image : original value = 7, decision = 7 at 7110075 ps ==> Success
+STEP k=712 t=7120 ns cnt=832 acc=805 wall=52s
+VO t=7120255 ps cnt=832 dec=7 acc=805
+832nd input image : original value = 7, decision = 7 at 7120265 ps ==> Success
+VO t=7128735 ps cnt=833 dec=5 acc=806
+833rd input image : original value = 5, decision = 5 at 7128745 ps ==> Success
+STEP k=713 t=7130 ns cnt=833 acc=807 wall=52s
+VO t=7137215 ps cnt=834 dec=6 acc=807
+834th input image : original value = 6, decision = 6 at 7137225 ps ==> Success
+STEP k=714 t=7140 ns cnt=834 acc=808 wall=52s
+VO t=7145695 ps cnt=835 dec=7 acc=808
+835th input image : original value = 7, decision = 7 at 7145705 ps ==> Success
+STEP k=715 t=7150 ns cnt=835 acc=809 wall=52s
+VO t=7154175 ps cnt=836 dec=5 acc=809
+836th input image : original value = 5, decision = 5 at 7154185 ps ==> Success
+STEP k=716 t=7160 ns cnt=836 acc=810 wall=53s
+VO t=7162655 ps cnt=837 dec=6 acc=810
+837th input image : original value = 6, decision = 6 at 7162665 ps ==> Success
+STEP k=717 t=7170 ns cnt=837 acc=811 wall=53s
+VO t=7172845 ps cnt=838 dec=5 acc=811
+838th input image : original value = 5, decision = 5 at 7172855 ps ==> Success
+STEP k=718 t=7180 ns cnt=838 acc=812 wall=53s
+VO t=7181325 ps cnt=839 dec=2 acc=812
+839th input image : original value = 2, decision = 2 at 7181335 ps ==> Success
+VO t=7189805 ps cnt=840 dec=1 acc=813
+840th input image : original value = 1, decision = 1 at 7189815 ps ==> Success
+STEP k=719 t=7190 ns cnt=840 acc=814 wall=53s
+VO t=7198285 ps cnt=841 dec=0 acc=814
+841st input image : original value = 0, decision = 0 at 7198295 ps ==> Success
+STEP k=720 t=7200 ns cnt=841 acc=815 wall=53s
+VO t=7206765 ps cnt=842 dec=9 acc=815
+842nd input image : original value = 9, decision = 9 at 7206775 ps ==> Success
+STEP k=721 t=7210 ns cnt=842 acc=816 wall=53s
+VO t=7215245 ps cnt=843 dec=6 acc=816
+843rd input image : original value = 6, decision = 6 at 7215255 ps ==> Success
+STEP k=722 t=7220 ns cnt=843 acc=817 wall=53s
+VO t=7223725 ps cnt=844 dec=6 acc=817
+844th input image : original value = 6, decision = 6 at 7223735 ps ==> Success
+STEP k=723 t=7230 ns cnt=844 acc=818 wall=53s
+VO t=7232205 ps cnt=845 dec=5 acc=818
+845th input image : original value = 5, decision = 5 at 7232215 ps ==> Success
+STEP k=724 t=7240 ns cnt=845 acc=819 wall=53s
+VO t=7240685 ps cnt=846 dec=9 acc=819
+846th input image : original value = 9, decision = 9 at 7240695 ps ==> Success
+VO t=7249165 ps cnt=847 dec=7 acc=820
+847th input image : original value = 7, decision = 7 at 7249175 ps ==> Success
+STEP k=725 t=7250 ns cnt=847 acc=821 wall=53s
+VO t=7257645 ps cnt=848 dec=4 acc=821
+848th input image : original value = 4, decision = 4 at 7257655 ps ==> Success
+STEP k=726 t=7260 ns cnt=848 acc=822 wall=53s
+VO t=7266125 ps cnt=849 dec=8 acc=822
+849th input image : original value = 8, decision = 8 at 7266135 ps ==> Success
+STEP k=727 t=7270 ns cnt=849 acc=823 wall=53s
+VO t=7274605 ps cnt=850 dec=4 acc=823
+850th input image : original value = 4, decision = 4 at 7274615 ps ==> Success
+STEP k=728 t=7280 ns cnt=850 acc=824 wall=53s
+VO t=7283085 ps cnt=851 dec=1 acc=824
+851st input image : original value = 1, decision = 1 at 7283095 ps ==> Success
+STEP k=729 t=7290 ns cnt=851 acc=825 wall=53s
+VO t=7291565 ps cnt=852 dec=2 acc=825
+852nd input image : original value = 2, decision = 2 at 7291575 ps ==> Success
+STEP k=730 t=7300 ns cnt=853 acc=826 wall=54s
+VO t=7300045 ps cnt=853 dec=3 acc=826
+853rd input image : original value = 3, decision = 3 at 7300055 ps ==> Success
+VO t=7308525 ps cnt=854 dec=8 acc=827
+854th input image : original value = 8, decision = 8 at 7308535 ps ==> Success
+STEP k=731 t=7310 ns cnt=854 acc=828 wall=54s
+VO t=7317005 ps cnt=855 dec=7 acc=828
+855th input image : original value = 7, decision = 7 at 7317015 ps ==> Success
+STEP k=732 t=7320 ns cnt=855 acc=829 wall=54s
+VO t=7325485 ps cnt=856 dec=0 acc=829
+856th input image : original value = 0, decision = 0 at 7325495 ps ==> Success
+STEP k=733 t=7330 ns cnt=856 acc=830 wall=54s
+VO t=7333965 ps cnt=857 dec=1 acc=830
+857th input image : original value = 1, decision = 1 at 7333975 ps ==> Success
+STEP k=734 t=7340 ns cnt=857 acc=831 wall=54s
+VO t=7342445 ps cnt=858 dec=8 acc=831
+858th input image : original value = 8, decision = 8 at 7342455 ps ==> Success
+STEP k=735 t=7350 ns cnt=858 acc=832 wall=54s
+VO t=7350925 ps cnt=859 dec=2 acc=832
+859th input image : original value = 2, decision = 2 at 7350935 ps ==> Success
+VO t=7359405 ps cnt=860 dec=4 acc=833
+860th input image : original value = 4, decision = 4 at 7359415 ps ==> Success
+STEP k=736 t=7360 ns cnt=860 acc=834 wall=54s
+VO t=7367885 ps cnt=861 dec=5 acc=834
+861st input image : original value = 5, decision = 5 at 7367895 ps ==> Success
+STEP k=737 t=7370 ns cnt=861 acc=835 wall=54s
+VO t=7376365 ps cnt=862 dec=9 acc=835
+862nd input image : original value = 9, decision = 9 at 7376375 ps ==> Success
+STEP k=738 t=7380 ns cnt=862 acc=836 wall=54s
+VO t=7386555 ps cnt=863 dec=5 acc=836
+863rd input image : original value = 5, decision = 5 at 7386565 ps ==> Success
+STEP k=739 t=7390 ns cnt=863 acc=837 wall=54s
+VO t=7395035 ps cnt=864 dec=7 acc=837
+864th input image : original value = 7, decision = 7 at 7395045 ps ==> Success
+STEP k=740 t=7400 ns cnt=864 acc=838 wall=54s
+VO t=7403515 ps cnt=865 dec=7 acc=838
+865th input image : original value = 7, decision = 7 at 7403525 ps ==> Success
+STEP k=741 t=7410 ns cnt=865 acc=839 wall=54s
+VO t=7411995 ps cnt=866 dec=7 acc=839
+866th input image : original value = 7, decision = 7 at 7412005 ps ==> Success
+STEP k=742 t=7420 ns cnt=867 acc=840 wall=54s
+VO t=7422185 ps cnt=867 dec=2 acc=840
+867th input image : original value = 1, decision = 2 at 7422195 ps ==> Fail
+STEP k=743 t=7430 ns cnt=867 acc=840 wall=55s
+VO t=7430665 ps cnt=868 dec=1 acc=840
+868th input image : original value = 1, decision = 1 at 7430675 ps ==> Success
+VO t=7439145 ps cnt=869 dec=6 acc=841
+869th input image : original value = 6, decision = 6 at 7439155 ps ==> Success
+STEP k=744 t=7440 ns cnt=869 acc=842 wall=55s
+VO t=7447625 ps cnt=870 dec=5 acc=842
+870th input image : original value = 5, decision = 5 at 7447635 ps ==> Success
+STEP k=745 t=7450 ns cnt=870 acc=843 wall=55s
+VO t=7456105 ps cnt=871 dec=8 acc=843
+871st input image : original value = 8, decision = 8 at 7456115 ps ==> Success
+STEP k=746 t=7460 ns cnt=871 acc=844 wall=55s
+VO t=7464585 ps cnt=872 dec=2 acc=844
+872nd input image : original value = 2, decision = 2 at 7464595 ps ==> Success
+STEP k=747 t=7470 ns cnt=872 acc=845 wall=55s
+VO t=7473065 ps cnt=873 dec=2 acc=845
+873rd input image : original value = 2, decision = 2 at 7473075 ps ==> Success
+STEP k=748 t=7480 ns cnt=873 acc=846 wall=55s
+VO t=7481545 ps cnt=874 dec=9 acc=846
+874th input image : original value = 9, decision = 9 at 7481555 ps ==> Success
+STEP k=749 t=7490 ns cnt=875 acc=847 wall=55s
+VO t=7490025 ps cnt=875 dec=3 acc=847
+875th input image : original value = 3, decision = 3 at 7490035 ps ==> Success
+VO t=7498505 ps cnt=876 dec=8 acc=848
+876th input image : original value = 8, decision = 8 at 7498515 ps ==> Success
+STEP k=750 t=7500 ns cnt=876 acc=849 wall=55s
+VO t=7506985 ps cnt=877 dec=4 acc=849
+877th input image : original value = 4, decision = 4 at 7506995 ps ==> Success
+STEP k=751 t=7510 ns cnt=877 acc=850 wall=55s
+VO t=7515465 ps cnt=878 dec=7 acc=850
+878th input image : original value = 2, decision = 7 at 7515475 ps ==> Fail
+STEP k=752 t=7520 ns cnt=878 acc=850 wall=55s
+VO t=7525655 ps cnt=879 dec=5 acc=850
+879th input image : original value = 0, decision = 5 at 7525665 ps ==> Fail
+STEP k=753 t=7530 ns cnt=879 acc=850 wall=55s
+VO t=7534135 ps cnt=880 dec=7 acc=850
+880th input image : original value = 7, decision = 7 at 7534145 ps ==> Success
+STEP k=754 t=7540 ns cnt=880 acc=851 wall=55s
+VO t=7542615 ps cnt=881 dec=2 acc=851
+881st input image : original value = 2, decision = 2 at 7542625 ps ==> Success
+STEP k=755 t=7550 ns cnt=881 acc=852 wall=55s
+VO t=7551095 ps cnt=882 dec=4 acc=852
+882nd input image : original value = 4, decision = 4 at 7551105 ps ==> Success
+VO t=7559575 ps cnt=883 dec=4 acc=853
+883rd input image : original value = 4, decision = 4 at 7559585 ps ==> Success
+STEP k=756 t=7560 ns cnt=883 acc=854 wall=56s
+VO t=7568055 ps cnt=884 dec=6 acc=854
+884th input image : original value = 6, decision = 6 at 7568065 ps ==> Success
+STEP k=757 t=7570 ns cnt=884 acc=855 wall=56s
+VO t=7576535 ps cnt=885 dec=6 acc=855
+885th input image : original value = 6, decision = 6 at 7576545 ps ==> Success
+STEP k=758 t=7580 ns cnt=885 acc=856 wall=56s
+VO t=7585015 ps cnt=886 dec=5 acc=856
+886th input image : original value = 5, decision = 5 at 7585025 ps ==> Success
+STEP k=759 t=7590 ns cnt=886 acc=857 wall=56s
+VO t=7593495 ps cnt=887 dec=3 acc=857
+887th input image : original value = 3, decision = 3 at 7593505 ps ==> Success
+STEP k=760 t=7600 ns cnt=887 acc=858 wall=56s
+VO t=7601975 ps cnt=888 dec=7 acc=858
+888th input image : original value = 7, decision = 7 at 7601985 ps ==> Success
+STEP k=761 t=7610 ns cnt=889 acc=859 wall=56s
+VO t=7610455 ps cnt=889 dec=9 acc=859
+889th input image : original value = 9, decision = 9 at 7610465 ps ==> Success
+VO t=7618935 ps cnt=890 dec=8 acc=860
+890th input image : original value = 8, decision = 8 at 7618945 ps ==> Success
+STEP k=762 t=7620 ns cnt=890 acc=861 wall=56s
+VO t=7627415 ps cnt=891 dec=3 acc=861
+891st input image : original value = 3, decision = 3 at 7627425 ps ==> Success
+STEP k=763 t=7630 ns cnt=891 acc=862 wall=56s
+VO t=7635895 ps cnt=892 dec=4 acc=862
+892nd input image : original value = 4, decision = 4 at 7635905 ps ==> Success
+STEP k=764 t=7640 ns cnt=892 acc=863 wall=56s
+VO t=7644375 ps cnt=893 dec=3 acc=863
+893rd input image : original value = 3, decision = 3 at 7644385 ps ==> Success
+STEP k=765 t=7650 ns cnt=893 acc=864 wall=56s
+VO t=7652855 ps cnt=894 dec=7 acc=864
+894th input image : original value = 7, decision = 7 at 7652865 ps ==> Success
+STEP k=766 t=7660 ns cnt=894 acc=865 wall=56s
+VO t=7661335 ps cnt=895 dec=1 acc=865
+895th input image : original value = 1, decision = 1 at 7661345 ps ==> Success
+VO t=7669815 ps cnt=896 dec=2 acc=866
+896th input image : original value = 2, decision = 2 at 7669825 ps ==> Success
+STEP k=767 t=7670 ns cnt=896 acc=867 wall=56s
+VO t=7678295 ps cnt=897 dec=4 acc=867
+897th input image : original value = 4, decision = 4 at 7678305 ps ==> Success
+STEP k=768 t=7680 ns cnt=897 acc=868 wall=56s
+VO t=7686775 ps cnt=898 dec=4 acc=868
+898th input image : original value = 4, decision = 4 at 7686785 ps ==> Success
+STEP k=769 t=7690 ns cnt=898 acc=869 wall=56s
+VO t=7695255 ps cnt=899 dec=7 acc=869
+899th input image : original value = 7, decision = 7 at 7695265 ps ==> Success
+STEP k=770 t=7700 ns cnt=899 acc=870 wall=56s
+VO t=7703735 ps cnt=900 dec=8 acc=870
+900th input image : original value = 8, decision = 8 at 7703745 ps ==> Success
+STEP k=771 t=7710 ns cnt=900 acc=871 wall=57s
+VO t=7712215 ps cnt=901 dec=0 acc=871
+901st input image : original value = 0, decision = 0 at 7712225 ps ==> Success
+STEP k=772 t=7720 ns cnt=901 acc=872 wall=57s
+VO t=7720695 ps cnt=902 dec=8 acc=872
+902nd input image : original value = 8, decision = 8 at 7720705 ps ==> Success
+VO t=7729175 ps cnt=903 dec=9 acc=873
+903rd input image : original value = 9, decision = 9 at 7729185 ps ==> Success
+STEP k=773 t=7730 ns cnt=903 acc=874 wall=57s
+VO t=7737655 ps cnt=904 dec=5 acc=874
+904th input image : original value = 5, decision = 5 at 7737665 ps ==> Success
+STEP k=774 t=7740 ns cnt=904 acc=875 wall=57s
+VO t=7746135 ps cnt=905 dec=2 acc=875
+905th input image : original value = 2, decision = 2 at 7746145 ps ==> Success
+STEP k=775 t=7750 ns cnt=905 acc=876 wall=57s
+VO t=7754615 ps cnt=906 dec=6 acc=876
+906th input image : original value = 6, decision = 6 at 7754625 ps ==> Success
+STEP k=776 t=7760 ns cnt=906 acc=877 wall=57s
+VO t=7764805 ps cnt=907 dec=1 acc=877
+907th input image : original value = 2, decision = 1 at 7764815 ps ==> Fail
+STEP k=777 t=7770 ns cnt=907 acc=877 wall=57s
+VO t=7773285 ps cnt=908 dec=3 acc=877
+908th input image : original value = 3, decision = 3 at 7773295 ps ==> Success
+STEP k=778 t=7780 ns cnt=908 acc=878 wall=57s
+VO t=7781765 ps cnt=909 dec=3 acc=878
+909th input image : original value = 3, decision = 3 at 7781775 ps ==> Success
+STEP k=779 t=7790 ns cnt=910 acc=879 wall=57s
+VO t=7790245 ps cnt=910 dec=2 acc=879
+910th input image : original value = 2, decision = 2 at 7790255 ps ==> Success
+STEP k=780 t=7800 ns cnt=911 acc=880 wall=57s
+VO t=7800435 ps cnt=911 dec=7 acc=880
+911st input image : original value = 7, decision = 7 at 7800445 ps ==> Success
+VO t=7808915 ps cnt=912 dec=5 acc=881
+912nd input image : original value = 5, decision = 5 at 7808925 ps ==> Success
+STEP k=781 t=7810 ns cnt=912 acc=882 wall=57s
+VO t=7817395 ps cnt=913 dec=7 acc=882
+913rd input image : original value = 7, decision = 7 at 7817405 ps ==> Success
+STEP k=782 t=7820 ns cnt=913 acc=883 wall=57s
+VO t=7825875 ps cnt=914 dec=0 acc=883
+914th input image : original value = 0, decision = 0 at 7825885 ps ==> Success
+STEP k=783 t=7830 ns cnt=914 acc=884 wall=57s
+VO t=7834355 ps cnt=915 dec=7 acc=884
+915th input image : original value = 7, decision = 7 at 7834365 ps ==> Success
+STEP k=784 t=7840 ns cnt=915 acc=885 wall=58s
+VO t=7842835 ps cnt=916 dec=0 acc=885
+916th input image : original value = 0, decision = 0 at 7842845 ps ==> Success
+STEP k=785 t=7850 ns cnt=916 acc=886 wall=58s
+VO t=7853025 ps cnt=917 dec=1 acc=886
+917th input image : original value = 2, decision = 1 at 7853035 ps ==> Fail
+STEP k=786 t=7860 ns cnt=917 acc=886 wall=58s
+VO t=7861505 ps cnt=918 dec=6 acc=886
+918th input image : original value = 6, decision = 6 at 7861515 ps ==> Success
+VO t=7869985 ps cnt=919 dec=6 acc=887
+919th input image : original value = 6, decision = 6 at 7869995 ps ==> Success
+STEP k=787 t=7870 ns cnt=919 acc=888 wall=58s
+VO t=7878465 ps cnt=920 dec=0 acc=888
+920th input image : original value = 0, decision = 0 at 7878475 ps ==> Success
+STEP k=788 t=7880 ns cnt=920 acc=889 wall=58s
+VO t=7886945 ps cnt=921 dec=6 acc=889
+921st input image : original value = 6, decision = 6 at 7886955 ps ==> Success
+STEP k=789 t=7890 ns cnt=921 acc=890 wall=58s
+VO t=7895425 ps cnt=922 dec=3 acc=890
+922nd input image : original value = 3, decision = 3 at 7895435 ps ==> Success
+STEP k=790 t=7900 ns cnt=922 acc=891 wall=58s
+VO t=7903905 ps cnt=923 dec=0 acc=891
+923rd input image : original value = 0, decision = 0 at 7903915 ps ==> Success
+STEP k=791 t=7910 ns cnt=923 acc=892 wall=58s
+VO t=7912385 ps cnt=924 dec=8 acc=892
+924th input image : original value = 8, decision = 8 at 7912395 ps ==> Success
+STEP k=792 t=7920 ns cnt=924 acc=893 wall=58s
+VO t=7920865 ps cnt=925 dec=8 acc=893
+925th input image : original value = 8, decision = 8 at 7920875 ps ==> Success
+VO t=7929345 ps cnt=926 dec=6 acc=894
+926th input image : original value = 6, decision = 6 at 7929355 ps ==> Success
+STEP k=793 t=7930 ns cnt=926 acc=895 wall=58s
+VO t=7937825 ps cnt=927 dec=8 acc=895
+927th input image : original value = 8, decision = 8 at 7937835 ps ==> Success
+STEP k=794 t=7940 ns cnt=927 acc=896 wall=58s
+VO t=7946305 ps cnt=928 dec=4 acc=896
+928th input image : original value = 4, decision = 4 at 7946315 ps ==> Success
+STEP k=795 t=7950 ns cnt=928 acc=897 wall=58s
+VO t=7954785 ps cnt=929 dec=0 acc=897
+929th input image : original value = 0, decision = 0 at 7954795 ps ==> Success
+STEP k=796 t=7960 ns cnt=929 acc=898 wall=58s
+VO t=7963265 ps cnt=930 dec=9 acc=898
+930th input image : original value = 9, decision = 9 at 7963275 ps ==> Success
+STEP k=797 t=7970 ns cnt=930 acc=899 wall=58s
+VO t=7971745 ps cnt=931 dec=3 acc=899
+931st input image : original value = 3, decision = 3 at 7971755 ps ==> Success
+STEP k=798 t=7980 ns cnt=932 acc=900 wall=59s
+VO t=7980225 ps cnt=932 dec=8 acc=900
+932nd input image : original value = 8, decision = 8 at 7980235 ps ==> Success
+VO t=7988705 ps cnt=933 dec=5 acc=901
+933rd input image : original value = 5, decision = 5 at 7988715 ps ==> Success
+STEP k=799 t=7990 ns cnt=933 acc=902 wall=59s
+VO t=7997185 ps cnt=934 dec=1 acc=902
+934th input image : original value = 1, decision = 1 at 7997195 ps ==> Success
+STEP k=800 t=8 us cnt=934 acc=903 wall=59s
+VO t=8005665 ps cnt=935 dec=4 acc=903
+935th input image : original value = 4, decision = 4 at 8005675 ps ==> Success
+STEP k=801 t=8010 ns cnt=935 acc=904 wall=59s
+VO t=8014145 ps cnt=936 dec=5 acc=904
+936th input image : original value = 5, decision = 5 at 8014155 ps ==> Success
+STEP k=802 t=8020 ns cnt=936 acc=905 wall=59s
+VO t=8022625 ps cnt=937 dec=0 acc=905
+937th input image : original value = 0, decision = 0 at 8022635 ps ==> Success
+STEP k=803 t=8030 ns cnt=937 acc=906 wall=59s
+VO t=8031105 ps cnt=938 dec=7 acc=906
+938th input image : original value = 7, decision = 7 at 8031115 ps ==> Success
+VO t=8039585 ps cnt=939 dec=4 acc=907
+939th input image : original value = 4, decision = 4 at 8039595 ps ==> Success
+STEP k=804 t=8040 ns cnt=939 acc=908 wall=59s
+VO t=8048065 ps cnt=940 dec=7 acc=908
+940th input image : original value = 7, decision = 7 at 8048075 ps ==> Success
+STEP k=805 t=8050 ns cnt=940 acc=909 wall=59s
+VO t=8056545 ps cnt=941 dec=8 acc=909
+941st input image : original value = 8, decision = 8 at 8056555 ps ==> Success
+STEP k=806 t=8060 ns cnt=941 acc=910 wall=59s
+VO t=8065025 ps cnt=942 dec=8 acc=910
+942nd input image : original value = 8, decision = 8 at 8065035 ps ==> Success
+STEP k=807 t=8070 ns cnt=942 acc=911 wall=59s
+VO t=8073505 ps cnt=943 dec=2 acc=911
+943rd input image : original value = 2, decision = 2 at 8073515 ps ==> Success
+STEP k=808 t=8080 ns cnt=943 acc=912 wall=59s
+VO t=8081985 ps cnt=944 dec=0 acc=912
+944th input image : original value = 0, decision = 0 at 8081995 ps ==> Success
+STEP k=809 t=8090 ns cnt=945 acc=913 wall=59s
+VO t=8090465 ps cnt=945 dec=4 acc=913
+945th input image : original value = 4, decision = 4 at 8090475 ps ==> Success
+VO t=8098945 ps cnt=946 dec=6 acc=914
+946th input image : original value = 6, decision = 6 at 8098955 ps ==> Success
+STEP k=810 t=8100 ns cnt=946 acc=915 wall=59s
+VO t=8107425 ps cnt=947 dec=7 acc=915
+947th input image : original value = 7, decision = 7 at 8107435 ps ==> Success
+STEP k=811 t=8110 ns cnt=947 acc=916 wall=59s
+VO t=8115905 ps cnt=948 dec=3 acc=916
+948th input image : original value = 3, decision = 3 at 8115915 ps ==> Success
+STEP k=812 t=8120 ns cnt=948 acc=917 wall=60s
+VO t=8124385 ps cnt=949 dec=3 acc=917
+949th input image : original value = 3, decision = 3 at 8124395 ps ==> Success
+STEP k=813 t=8130 ns cnt=949 acc=918 wall=60s
+VO t=8132865 ps cnt=950 dec=8 acc=918
+950th input image : original value = 8, decision = 8 at 8132875 ps ==> Success
+STEP k=814 t=8140 ns cnt=950 acc=919 wall=60s
+VO t=8141345 ps cnt=951 dec=2 acc=919
+951st input image : original value = 2, decision = 2 at 8141355 ps ==> Success
+VO t=8149825 ps cnt=952 dec=8 acc=920
+952nd input image : original value = 8, decision = 8 at 8149835 ps ==> Success
+STEP k=815 t=8150 ns cnt=952 acc=921 wall=60s
+VO t=8158305 ps cnt=953 dec=4 acc=921
+953rd input image : original value = 4, decision = 4 at 8158315 ps ==> Success
+STEP k=816 t=8160 ns cnt=953 acc=922 wall=60s
+VO t=8166785 ps cnt=954 dec=9 acc=922
+954th input image : original value = 9, decision = 9 at 8166795 ps ==> Success
+STEP k=817 t=8170 ns cnt=954 acc=923 wall=60s
+VO t=8175265 ps cnt=955 dec=2 acc=923
+955th input image : original value = 2, decision = 2 at 8175275 ps ==> Success
+STEP k=818 t=8180 ns cnt=955 acc=924 wall=60s
+VO t=8183745 ps cnt=956 dec=8 acc=924
+956th input image : original value = 8, decision = 8 at 8183755 ps ==> Success
+STEP k=819 t=8190 ns cnt=956 acc=925 wall=60s
+VO t=8192225 ps cnt=957 dec=8 acc=925
+957th input image : original value = 8, decision = 8 at 8192235 ps ==> Success
+STEP k=820 t=8200 ns cnt=957 acc=926 wall=60s
+VO t=8200705 ps cnt=958 dec=4 acc=926
+958th input image : original value = 4, decision = 4 at 8200715 ps ==> Success
+VO t=8209185 ps cnt=959 dec=7 acc=927
+959th input image : original value = 7, decision = 7 at 8209195 ps ==> Success
+STEP k=821 t=8210 ns cnt=959 acc=928 wall=60s
+VO t=8217665 ps cnt=960 dec=2 acc=928
+960th input image : original value = 2, decision = 2 at 8217675 ps ==> Success
+STEP k=822 t=8220 ns cnt=960 acc=929 wall=60s
+VO t=8226145 ps cnt=961 dec=4 acc=929
+961st input image : original value = 4, decision = 4 at 8226155 ps ==> Success
+STEP k=823 t=8230 ns cnt=961 acc=930 wall=60s
+VO t=8234625 ps cnt=962 dec=9 acc=930
+962nd input image : original value = 9, decision = 9 at 8234635 ps ==> Success
+STEP k=824 t=8240 ns cnt=962 acc=931 wall=60s
+VO t=8243105 ps cnt=963 dec=0 acc=931
+963rd input image : original value = 0, decision = 0 at 8243115 ps ==> Success
+STEP k=825 t=8250 ns cnt=963 acc=932 wall=61s
+VO t=8251585 ps cnt=964 dec=1 acc=932
+964th input image : original value = 1, decision = 1 at 8251595 ps ==> Success
+STEP k=826 t=8260 ns cnt=965 acc=933 wall=61s
+VO t=8260065 ps cnt=965 dec=2 acc=933
+965th input image : original value = 2, decision = 2 at 8260075 ps ==> Success
+VO t=8268545 ps cnt=966 dec=7 acc=934
+966th input image : original value = 7, decision = 7 at 8268555 ps ==> Success
+STEP k=827 t=8270 ns cnt=966 acc=935 wall=61s
+VO t=8277025 ps cnt=967 dec=4 acc=935
+967th input image : original value = 4, decision = 4 at 8277035 ps ==> Success
+STEP k=828 t=8280 ns cnt=967 acc=936 wall=61s
+VO t=8285505 ps cnt=968 dec=6 acc=936
+968th input image : original value = 6, decision = 6 at 8285515 ps ==> Success
+STEP k=829 t=8290 ns cnt=968 acc=937 wall=61s
+VO t=8293985 ps cnt=969 dec=5 acc=937
+969th input image : original value = 5, decision = 5 at 8293995 ps ==> Success
+STEP k=830 t=8300 ns cnt=969 acc=938 wall=61s
+VO t=8302465 ps cnt=970 dec=3 acc=938
+970th input image : original value = 3, decision = 3 at 8302475 ps ==> Success
+STEP k=831 t=8310 ns cnt=970 acc=939 wall=61s
+VO t=8310945 ps cnt=971 dec=7 acc=939
+971st input image : original value = 7, decision = 7 at 8310955 ps ==> Success
+VO t=8319425 ps cnt=972 dec=8 acc=940
+972nd input image : original value = 8, decision = 8 at 8319435 ps ==> Success
+STEP k=832 t=8320 ns cnt=972 acc=941 wall=61s
+VO t=8327905 ps cnt=973 dec=2 acc=941
+973rd input image : original value = 2, decision = 2 at 8327915 ps ==> Success
+STEP k=833 t=8330 ns cnt=973 acc=942 wall=61s
+VO t=8338095 ps cnt=974 dec=2 acc=942
+974th input image : original value = 1, decision = 2 at 8338105 ps ==> Fail
+STEP k=834 t=8340 ns cnt=974 acc=942 wall=61s
+VO t=8346575 ps cnt=975 dec=4 acc=942
+975th input image : original value = 4, decision = 4 at 8346585 ps ==> Success
+STEP k=835 t=8350 ns cnt=975 acc=943 wall=61s
+VO t=8355055 ps cnt=976 dec=6 acc=943
+976th input image : original value = 6, decision = 6 at 8355065 ps ==> Success
+STEP k=836 t=8360 ns cnt=976 acc=944 wall=61s
+VO t=8363535 ps cnt=977 dec=5 acc=944
+977th input image : original value = 5, decision = 5 at 8363545 ps ==> Success
+STEP k=837 t=8370 ns cnt=977 acc=945 wall=61s
+VO t=8372015 ps cnt=978 dec=2 acc=945
+978th input image : original value = 2, decision = 2 at 8372025 ps ==> Success
+STEP k=838 t=8380 ns cnt=979 acc=946 wall=61s
+VO t=8380495 ps cnt=979 dec=4 acc=946
+979th input image : original value = 4, decision = 4 at 8380505 ps ==> Success
+VO t=8388975 ps cnt=980 dec=6 acc=947
+980th input image : original value = 6, decision = 6 at 8388985 ps ==> Success
+STEP k=839 t=8390 ns cnt=980 acc=948 wall=62s
+VO t=8397455 ps cnt=981 dec=2 acc=948
+981st input image : original value = 2, decision = 2 at 8397465 ps ==> Success
+STEP k=840 t=8400 ns cnt=981 acc=949 wall=62s
+VO t=8405935 ps cnt=982 dec=8 acc=949
+982nd input image : original value = 8, decision = 8 at 8405945 ps ==> Success
+STEP k=841 t=8410 ns cnt=982 acc=950 wall=62s
+VO t=8414415 ps cnt=983 dec=7 acc=950
+983rd input image : original value = 2, decision = 7 at 8414425 ps ==> Fail
+STEP k=842 t=8420 ns cnt=983 acc=950 wall=62s
+VO t=8422895 ps cnt=984 dec=7 acc=950
+984th input image : original value = 7, decision = 7 at 8422905 ps ==> Success
+STEP k=843 t=8430 ns cnt=984 acc=951 wall=62s
+VO t=8431375 ps cnt=985 dec=0 acc=951
+985th input image : original value = 0, decision = 0 at 8431385 ps ==> Success
+VO t=8439855 ps cnt=986 dec=7 acc=952
+986th input image : original value = 7, decision = 7 at 8439865 ps ==> Success
+STEP k=844 t=8440 ns cnt=986 acc=953 wall=62s
+VO t=8448335 ps cnt=987 dec=3 acc=953
+987th input image : original value = 3, decision = 3 at 8448345 ps ==> Success
+STEP k=845 t=8450 ns cnt=987 acc=954 wall=62s
+VO t=8456815 ps cnt=988 dec=2 acc=954
+988th input image : original value = 2, decision = 2 at 8456825 ps ==> Success
+STEP k=846 t=8460 ns cnt=988 acc=955 wall=62s
+VO t=8465295 ps cnt=989 dec=5 acc=955
+989th input image : original value = 5, decision = 5 at 8465305 ps ==> Success
+STEP k=847 t=8470 ns cnt=989 acc=956 wall=62s
+VO t=8473775 ps cnt=990 dec=6 acc=956
+990th input image : original value = 6, decision = 6 at 8473785 ps ==> Success
+STEP k=848 t=8480 ns cnt=990 acc=957 wall=62s
+VO t=8482255 ps cnt=991 dec=1 acc=957
+991st input image : original value = 1, decision = 1 at 8482265 ps ==> Success
+STEP k=849 t=8490 ns cnt=991 acc=958 wall=62s
+VO t=8490735 ps cnt=992 dec=5 acc=958
+992nd input image : original value = 5, decision = 5 at 8490745 ps ==> Success
+VO t=8499215 ps cnt=993 dec=3 acc=959
+993rd input image : original value = 3, decision = 3 at 8499225 ps ==> Success
+STEP k=850 t=8500 ns cnt=993 acc=960 wall=62s
+VO t=8507695 ps cnt=994 dec=4 acc=960
+994th input image : original value = 4, decision = 4 at 8507705 ps ==> Success
+STEP k=851 t=8510 ns cnt=994 acc=961 wall=62s
+VO t=8516175 ps cnt=995 dec=7 acc=961
+995th input image : original value = 7, decision = 7 at 8516185 ps ==> Success
+STEP k=852 t=8520 ns cnt=995 acc=962 wall=62s
+VO t=8524655 ps cnt=996 dec=8 acc=962
+996th input image : original value = 8, decision = 8 at 8524665 ps ==> Success
+STEP k=853 t=8530 ns cnt=996 acc=963 wall=63s
+VO t=8533135 ps cnt=997 dec=9 acc=963
+997th input image : original value = 9, decision = 9 at 8533145 ps ==> Success
+STEP k=854 t=8540 ns cnt=997 acc=964 wall=63s
+VO t=8541615 ps cnt=998 dec=8 acc=964
+998th input image : original value = 8, decision = 8 at 8541625 ps ==> Success
+STEP k=855 t=8550 ns cnt=999 acc=965 wall=63s
+VO t=8550095 ps cnt=999 dec=3 acc=965
+999th input image : original value = 3, decision = 3 at 8550105 ps ==> Success
+VO t=8558575 ps cnt=1000 dec=7 acc=966
+1000th input image : original value = 2, decision = 7 at 8558585 ps ==> Fail
+STEP k=856 t=8560 ns cnt=1000 acc=966 wall=63s
+
+
+------ Final Accuracy for 1000 Input Image ------
+Accuracy :  96%
+$stop called at time : 8566445 ps : File "C:/Users/yhe44/AppData/Local/Temp/claude/C--Users-yhe44-OneDrive----IDEC-----------/6d138761-2b93-4e6f-9ffd-1767ee64f5a6/scratchpad/r1000/top_tb.v" Line 391
+STEP k=857 t=8566445 ps cnt=1000 acc=966 wall=63s
+VO t=8567055 ps cnt=1001 dec=2 acc=966
+1001st input image : original value = 2, decision = 2 at 8567065 ps ==> Success
+VO t=8575535 ps cnt=1002 dec=0 acc=967
+1002nd input image : original value = 0, decision = 0 at 8575545 ps ==> Success
+STEP k=858 t=8576445 ps cnt=1002 acc=968 wall=63s
+VO t=8584015 ps cnt=1003 dec=0 acc=968
+1003rd input image : original value = 0, decision = 0 at 8584025 ps ==> Success
+STEP k=859 t=8586445 ps cnt=1003 acc=969 wall=63s
+VO t=8592495 ps cnt=1004 dec=1 acc=969
+1004th input image : original value = 1, decision = 1 at 8592505 ps ==> Success
+STEP k=860 t=8596445 ps cnt=1004 acc=970 wall=63s
+## puts "TRACE_END"
+TRACE_END
+## quit
+INFO: xsimkernel Simulation Memory Usage: 17208 KB (Peak: 17208 KB), Simulation CPU Usage: 22796 ms
+INFO: [Common 17-206] Exiting xsim at Sat Oct 31 00:54:08 2026...
