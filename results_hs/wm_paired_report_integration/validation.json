@@ -1,0 +1,85 @@
+{
+  "pages": 44,
+  "tables": 33,
+  "figures": 32,
+  "references_unchanged": [
+    "[1] S. Teerapittayanon, B. McDanel, H. T. Kung, \"BranchyNet: Fast inference via early exiting from deep neural networks,\" ICPR, 2016.",
+    "[2] M.-J. Wu, J.-S. R. Jang, J.-L. Chen, \"Wafer map failure pattern recognition and similarity ranking for large-scale data sets,\" IEEE Trans. Semiconductor Manufacturing, 2015. (WM-811K)",
+    "[3] Y. LeCun et al., \"Gradient-based learning applied to document recognition,\" Proc. IEEE, 1998. (MNIST)",
+    "[4] L. T. Clark et al., \"ASAP7: A 7-nm finFET predictive process design kit,\" Microelectronics Journal, 2016.",
+    "[5] T. Ajayi et al., \"Toward an open-source digital flow: First learnings from the OpenROAD project,\" DAC, 2019.",
+    "[6] A. Kouris, S. I. Venieris, C.-S. Bouganis, \"CascadeCNN: Pushing the performance limits of quantisation in convolutional neural networks,\" FPL, 2018.",
+    "[7] Y. Kaya, S. Hong, T. Dumitras, \"Shallow-Deep Networks: Understanding and mitigating network overthinking,\" ICML, PMLR 97, pp. 3301–3310, 2019."
+  ],
+  "new_references": [],
+  "page_hits": {
+    "WM 동일 입력": [
+      5,
+      33,
+      41,
+      42
+    ],
+    "4.2 한계": [
+      2,
+      39
+    ],
+    "기존 8.8": [
+      33
+    ],
+    "관련 연구": [
+      2,
+      4,
+      43
+    ],
+    "참고문헌": [
+      2,
+      41
+    ],
+    "6.7": [
+      5,
+      6,
+      15,
+      16,
+      24,
+      33,
+      39,
+      41
+    ],
+    "0.15": [
+      29
+    ]
+  },
+  "source_CRLF": true,
+  "files": {
+    "결과보고서_PPA.docx": {
+      "bytes": 7620383,
+      "sha256": "bd63566f5cc57cf9a83d2864947a453bdfbd2ddc33c961b76ebfd3eb6c0f9ea9"
+    },
+    "결과보고서_PPA.pdf": {
+      "bytes": 3779886,
+      "sha256": "0d56e1b55c7bde4053b4406770bb730147c5f26f068f00d498dfffe29103925e"
+    }
+  },
+  "content_checks": "PASS",
+  "visual_review": "PASS: all 44 Word-exported PDF page PNGs inspected at full-page resolution; tables, figures, headings and footers checked.",
+  "zip_updated": false,
+  "source_results_commit": "0a4203866f8a91b14fc0981bbab94a27fa1fb410",
+  "status": "User review copy; ZIP intentionally not regenerated",
+  "reviewed_existing_sources": [
+    {
+      "reference": "[1] BranchyNet",
+      "url": "https://www.eecs.harvard.edu/~htk/publication/2016-icpr-teerapittayanon-mcdanel-kung.pdf",
+      "scope": "entropy exit criterion and CPU/GPU evaluation; Sec. III-C/IV"
+    },
+    {
+      "reference": "[6] CascadeCNN",
+      "url": "https://arxiv.org/pdf/1807.05053",
+      "scope": "gBvSB; FPGA CNN and ARM softmax/CEU; Sec. III-C/IV-A"
+    },
+    {
+      "reference": "[7] Shallow-Deep Networks",
+      "url": "https://proceedings.mlr.press/v97/kaya19a/kaya19a.pdf",
+      "scope": "confidence-based exits, overthinking, holdout threshold selection; Sec. 5.1"
+    }
+  ]
+}

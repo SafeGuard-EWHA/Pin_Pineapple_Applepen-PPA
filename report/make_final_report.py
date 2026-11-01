@@ -61,7 +61,7 @@ LBL = {
     "f_racc": FIGN["hs_fig_robustness_acc.png"], "f_wm_medium": FIGN["fig_vivado_wm_medium.png"], "f_pareto": FIGN["hs_fig_pareto.png"],
     "f_wmpaths": FIGN["fig_vivado_wm_paths.png"],
     "t_icg": _tn("전용 ICG 적용 전후"), "t_pl": _tn("배치 및 전역 배선 후 비교"), "t_area": _tn("면적 구성과 단계별 증가분"), "t_control": _tn("제어 조건의 동적 검사"), "t_netsim": _tn("합성 넷리스트의 Vivado 기능 검증"),
-    "t_wmppa": _tn("WM-811K 적용 전후 비교"),
+    "t_wmppa": _tn("WM-811K 적용 전후 비교"), "t_wmpaired": _tn("WM 동일 입력의 구간별 전력 및 에너지"),
     "t_map": _tn("비교 설계 대응표"), "t_train": _tn("학습 설정"), "t_acc": _tn("모델별 정확도"),
     "t_twofold": _tn("임계값 선정 및 평가 분리"), "t_stats": _tn("기존 동작점의 AdaPath vs Full"),
     "t_wmclass": _tn("WM-811K 클래스별"), "t_wmrtl": _tn("WM-811K RTL 검증 결과"), "t_verify": _tn("기능 검증 결과"),
@@ -85,7 +85,7 @@ EMPH = [
     "비교기와 감산기만으로 계산되는 Score Margin을 사용하며",
     "가중치를 입력 포트로 두어 상수 전파 효과를 배제하였다",
     "처리 cycle 증가 없이 판단 회로의 조합 경로를 단축하였다",
-    "데이터패스 변경 효과와 적응형 경로 선택 효과를 분리하였다",
+    "Reference 대비 전체 구현의 변화와 팀 내부의 적응형 경로 적용 전후를 구분하였다",
     # 2장
     "연산량(MAC) 감소가 아니라 게이트레벨 스위칭 기반의 추론당 에너지로 평가한다",
     # 3.1 ~ 3.4
@@ -135,7 +135,7 @@ EMPH = [
     "SRAM 매크로로 바꾸거나",
     "Reference 대비 평균 에너지 감소가 추정되었다",
     "명확한 패턴은 조기 종료하고 애매한 패턴만 정밀 경로로 보내는 계층적 검사",
-    "다른 모델 및 데이터셋에도 같은 절차로 적용할 수 있음을 보였다",
+    "MNIST 및 WM-811K 4-class 모델에 적용하였다",
 ]
 EMPH_HIT = set()
 
@@ -391,9 +391,18 @@ P_BE_CYC = (CYC["hard"] - CYC["base"]) / (CYC["hard"] - CYC["easy"])
 WM = R["wm"]
 E_WM_BASE = E["B_hard"]
 E_WM = avg({"easy": E["B_easy"], "med": E["B_med"], "hard": E["B_hard"]}, WM["mode"])
-# WM-811K 넷리스트 자체의 게이트레벨 VCD 에너지 (glsim/wm, 100 MHz, 모드별 4장, Vivado RTL 모드 비율 404/167/383 가중)
-WMP = json.load(open(os.path.join(HERE, "..", "glsim", "wm", "power_results", "energy_wm.json"), encoding="utf-8"))
-E_WM_D = WMP["summary"]["E_AdaPath_WM_nJ"]; E_WM_BASE_D = WMP["summary"]["E_Baseline_WM_nJ"]
+# WM 동일 입력 비교: 모드별 동일4장을 두 설계에 적용하고 양쪽에 동일 RTL 모드 비율을 가중.
+WMP = json.load(open(os.path.join(HERE, "..", "results_hs", "wm_paired_power", "summary.json"), encoding="utf-8"))
+assert WMP["validation"] == "PASS" and WMP["unique_selected_pixel_contents"] == 12
+E_WM_D = float(WMP["rtl_mode_weighted_estimate"]["adapath_energy_nJ"])
+E_WM_BASE_D = float(WMP["rtl_mode_weighted_estimate"]["baseline_energy_nJ"])
+WM_PAIRED_ROWS = []
+for _g, _name in (("easy", "Easy"), ("med", "Medium"), ("hard", "Hard")):
+    _a, _b = WMP["per_run"]["ada_" + _g], WMP["per_run"]["base_" + _g]
+    WM_PAIRED_ROWS.append([_name + " (4장)", "%.3f" % float(_b["power_mW"]),
+                          "%.3f" % float(_a["power_mW"]), "%.2f" % float(_b["energy_nJ_per_image"]),
+                          "%.2f" % float(_a["energy_nJ_per_image"]),
+                          "%.2f %%" % float(WMP["pairs"][_g]["energy_reduction_pct"])])
 rg = R["region2"]
 region2_ratio = rg["area_v2"] / A["adapath_A"] * 100
 
@@ -493,8 +502,7 @@ para(doc, "엔트로피 기반 Early-Exit 기법(BranchyNet 등)은 분기 판�
      "생략(Easy)하거나 일부 채널만 활성화(Medium)한다.", indent=True)
 para(doc, "관련 연구로, BranchyNet[1]은 엔트로피 기반 조기 종료와 여러 출구의 공동 학습을 제시하였고, Shallow-Deep "
      "Networks[7]는 최대 클래스 확률에 따른 조기 종료와 과도한 후단 계산의 영향을 분석하였다. CascadeCNN[6]은 확률 벡터의 "
-     "Best-vs-Second-Best 계열 지표로 저정밀도 추론과 고정밀도 재계산을 선택하였다(부록 B). 이들 연구가 주로 소프트웨어나 "
-     "FPGA 수준에서 조기 종료의 정확도와 연산량을 다룬 것과 달리, ^^본 설계는 정수 로짓 차이를 비교기와 감산기만으로 계산하는 "
+     "Best-vs-Second-Best 계열 지표로 저정밀도 추론과 고정밀도 재계산을 선택하였다(부록 B). 본 설계의 구현 범위는 다음과 같다. ^^본 설계는 정수 로짓 차이를 비교기와 감산기만으로 계산하는 "
      "판단 회로, 공유 전단부와 3단계 경로 선택, 주최 측 인터페이스 통합을 하나의 RTL로 구현^^하고, ASAP7 합성, 배치와 STA, "
      "게이트레벨 VCD 기반 전력 분석까지 연결하여 하드웨어 비용과 이득을 함께 정량화하였다. "
      "주최 측 평가 구조에 맞추어 과제를 다음과 같이 구성하였다.", indent=True)
@@ -522,13 +530,14 @@ para(doc, "본 과제의 기여는 다음 세 가지이다. 첫째, Score Margin
      "선택하는 스트리밍 데이터패스를 구현하였다. Easy 입력은 후단 추론을 생략하며, Medium과 Hard 입력은 저장한 특징을 "
      "재생하여 일부 또는 전체 Conv2 채널을 사용한다. 둘째, Top-2 탐색을 직렬 비교 체인에서 이진 토너먼트 트리로 바꾸어, "
      "처리 cycle 증가 없이 판단 회로의 조합 경로를 단축하였다. 셋째, 주최 측 Reference와 항상 Hard 경로를 실행하는 "
-     "Baseline_A를 함께 비교하여 데이터패스 변경 효과와 적응형 경로 선택 효과를 분리하였다. 모델 A는 선정 임계값에서 "
-     "Easy/Hard 두 경로를 사용하며, Medium 경로의 기여는 확장 모델에서 별도로 평가하였다.", indent=True)
+     "Baseline_A를 함께 비교하여 Reference 대비 전체 구현의 변화와 팀 내부의 적응형 경로 적용 전후를 구분하였다. 모델 A는 선정 임계값에서 "
+     "Easy/Hard 두 경로를 사용하며, Medium 경로의 기여는 확장 모델에서 별도로 평가하였다. Reference와는 가중치와 정수 규약도 "
+     "다르므로 전체 개선율을 경로 선택만의 효과로 해석하지 않는다.", indent=True)
 
 # =================================================================== 2
 para(doc, "**핵심 결과:** 지정주제에서 Reference와 같은 970 / 1,000 정답을 유지하면서 ^^평균 처리 cycle 36.1 %, 추론 지연 33.0 %, "
      "추론당 에너지 8.9 %를 줄였다^^(배치 전 추정, 면적 55.4 % 증가). 별도 ICG 적용 전후 비교에서는 구간별 에너지가 20.7~25.9 % 줄었고, "
-     "같은 기법을 자유주제 WM-811K에 적용하여 3경로 제어를 확인하고 WM 넷리스트의 추론당 에너지를 8.8 % 줄였다. 두 에너지 감소율은 비교 기준이 달라 합산하지 않는다.", indent=True)
+     "같은 기법을 자유주제 WM-811K에 적용하여 3경로 제어를 확인하고 WM 동일 입력 12개에 대한 모드 비율 가중 에너지가 6.7 % 감소하는 것으로 추정하였다. 두 에너지 감소율은 비교 기준이 달라 합산하지 않는다.", indent=True)
 h1(doc, "2. 설계 목표")
 para(doc, "지정주제의 전제 조건(정확도 유지)에서 PPA 개선을 목표로 하되, 다음 세 가지를 평가 원칙으로 정하였다. ① 연산량"
      "(MAC) 감소가 아니라 게이트레벨 스위칭 기반의 추론당 에너지로 평가한다. ② 판단 회로가 동작 주파수를 낮추지 않아야 "
@@ -1068,15 +1077,35 @@ table(doc, "WM-811K 적용 전후 비교 (Baseline_WM = 항상 Hard)", ["항목"
     ["평균 MAC / 이미지", f0(WM["mac_base"]), f0(WM["mac_ada"]), chg(WM["mac_ada"], WM["mac_base"])],
     ["Cell Area (µm²)", f0(A["baseline_wm"]), f0(A["adapath_wm"]), chg(A["adapath_wm"], A["baseline_wm"])],
     ["추정 Fmax (MHz)", f1(FMAX["baseline_wm"]), f1(FMAX["adapath_wm"]), "-"],
-    ["평균 cycle (10-class cycle 가정)", f0(CYC["base"]), f0(WM["cyc_ada"]), chg(WM["cyc_ada"], CYC["base"])],
-    ["**추론당 에너지 (nJ, WM 게이트레벨 VCD)**", f1(E_WM_BASE_D), "**%s**" % f1(E_WM_D), chg(E_WM_D, E_WM_BASE_D)],
-    ["(참고) 모델 B 에너지 기반 대리 추정 (nJ)", f1(E_WM_BASE), f1(E_WM), chg(E_WM, E_WM_BASE)],
-], [5.0, 3.4, 4.6, 3.0], hl_rows=(6,),
-    note="cycle 행은 10-class MNIST의 Baseline 985, Easy 845, 후단 1,016 cycle을 WM float 모드 비율로 가중한 기존 계산값이며, "
-         "4-class WM RTL의 실측 cycle이 아니다. WM 에너지는 Baseline_WM과 AdaPath_WM 합성 넷리스트를 ASAP7 셀 모델로 100 MHz 게이트레벨 시뮬레이션하여 얻은 VCD로 "
-         "OpenROAD report_power를 수행한 배치 전 추정이다. AdaPath_WM은 Easy, Medium, Hard 각 4장 구간의 이미지당 에너지를 Vivado RTL "
-         "모드 비율(404 / 167 / 383)로 가중하였고, Baseline_WM은 4장 구간의 평균이다(이미지마다 리셋 12 cycle 포함). 참고 행은 이전의 "
-         "모델 B 기반 대리 추정이다.")
+    ["**추론당 에너지 (nJ, 동일 입력 가중 추정)**", f1(E_WM_BASE_D), "**%s**" % f1(E_WM_D), chg(E_WM_D, E_WM_BASE_D)],
+], [5.0, 3.4, 4.6, 3.0], hl_rows=(5,),
+    note="WM 에너지는 동일 입력 12개에 대한 배치 전 VCD 기반 추정으로, 모드별 4장 구간 에너지에 "
+         "RTL 모드 비율 404 / 167 / 383을 두 설계 모두 동일하게 적용하였다(표 @t_wmpaired@). 954장 전체 전력 측정값이 아니다. 정확도 및 MAC 행의 float 평가와 에너지 행의 정수 RTL 평가는 구분한다.")
+table(doc, "WM 동일 입력의 구간별 전력 및 에너지 (100 MHz, 배치 전 추정)",
+      ["구간", "Baseline\n전력 (mW)", "AdaPath\n전력 (mW)", "Baseline\n에너지 (nJ/장)",
+       "AdaPath\n에너지 (nJ/장)", "에너지 감소율"],
+      WM_PAIRED_ROWS + [
+          ["12장 균등 평균", "-", "-", "%.2f" % float(WMP["balanced_12_sample"]["baseline_energy_nJ"]),
+           "%.2f" % float(WMP["balanced_12_sample"]["adapath_energy_nJ"]),
+           "%.2f %%" % float(WMP["balanced_12_sample"]["energy_reduction_pct"])],
+          ["RTL 모드 비율 가중", "-", "-", "%.2f" % E_WM_BASE_D, "%.2f" % E_WM_D,
+           "%.2f %%" % float(WMP["rtl_mode_weighted_estimate"]["energy_reduction_pct"])],
+      ], [3.0, 2.4, 2.4, 3.0, 3.0, 2.2], hl_rows=(4,),
+      note="각 모드에서 선택한 동일 4장을 양쪽 설계에 적용하였다. 에너지는 reset과 start를 포함한 4장 관측창의 평균 전력과 "
+           "시간으로부터 P×T/4로 계산하였다. 음의 감소율은 증가를 뜻한다. 구간 평균이며 이미지별 표준편차를 나타내지 않는다.")
+para(doc, "입력 구성에 따른 활동도 차이를 통제하기 위해 Easy [8, 10, 18, 22], Medium [2, 3, 5, 24], Hard [0, 1, 4, 9]의 "
+     "같은 입력을 두 설계에 적용하였다. 픽셀 내용 기준으로도 고유 12종임을 확인하였다. 각 모드에서 AdaPath가 정답을 출력한 앞쪽 "
+     "4장을 선택하였으므로 무작위 표본이 아니며 선택 편향이 남는다. Easy 에너지는 29.4 % 감소했으나 Medium은 0.6 %, Hard는 "
+     "14.3 % 증가하였다. Medium의 평균 전력은 1.9 % 감소했지만 관측 시간이 길어져 에너지 감소로 이어지지 않았다. "
+     "선택 12장의 균등 평균은 4.9 % 감소하였으며, ^^양쪽에 같은 RTL 모드 비율을 적용한 에너지 감소율은 6.7 %이다^^. "
+     "이는 모드별 4장에 기초한 추정으로 전체 954장에 대한 전력 측정이나 모집단 일반화를 의미하지 않는다.", indent=True)
+para(doc, "두 설계는 공통 10 ns 클럭과 이미지마다 12클럭 reset 조건을 사용하였다. 4장 관측창은 AdaPath Easy 34.076 µs, "
+     "Medium/Hard 40.676 µs, Baseline 39.676 µs였으며 reset과 start 오버헤드가 포함된다. 별도로 기록한 이미지당 처리 cycle은 "
+     "AdaPath Easy 839, Medium/Hard 1,004, Baseline 979였다. AdaPath 12회의 판정, 모드 및 margin과 "
+     "Baseline 12회의 Full 판정은 각각의 정수 Golden과 일치하였다. 기존 8.8 %는 다른 입력인 Baseline 0~3번의 구간 평균을 "
+     "공통 기준으로 사용한 결과였으며, 본문에서는 동일 입력 비교로 갱신하였다. 원시 근거는 results_hs/wm_paired_power/에 "
+     "보존하였다. 지연 0 기능 모델과 배치 전 분석이므로 배선 기생 성분과 CTS가 포함되지 않으며 setup/hold 및 Fmax 검증을 "
+     "대신하지 않는다.", indent=True)
 h3(doc, "3.9.1 RTL 검증 (Vivado)")
 para(doc, "자유주제 설계도 지정주제와 같은 chip 인터페이스 래퍼(클래스 수만 4로 설정)로 Vivado 프로젝트를 "
      "구성하고, 주최 측 TB와 같은 방식(이미지마다 리셋 후 1 px/cycle 스트리밍)으로 WM-811K 테스트 954장을 처리하였다(표 @t_wmrtl@). "
@@ -1192,6 +1221,12 @@ para(doc, "TH=63은 MNIST 테스트셋 10,000장에서 Full 대비 정확도 손
      "주최 입력에서는 더 낮은 임계값(TH=0~30)도 정답 980개와 평균 845.00 cycle을 보였다. 임계값 가변 기능은 실험용 RTL에서 "
      "확인하였으며(3.5.6절), 제출용 모델 A는 TL=TH=63으로 고정되어 런타임 변경 인터페이스를 제공하지 않는다.", indent=True)
 h2(doc, "4.2 한계 및 향후 개선")
+bullet(doc, "**평가 데이터와 비교 범위:** 임계값 교차 평가는 이미 관찰한 테스트셋의 사후 분할이며, 새로운 hidden 입력에서의 "
+       "정확도 유지나 반복 재학습의 안정성을 보장하지 않는다. Early 단독 모델의 정확도는 확인하였으나, 후단 회로를 제거한 "
+       "정적 Early 전용 설계와의 면적 및 에너지 비교는 수행하지 않았다. 따라서 모든 정적 설계보다 우월하다는 결론은 내리지 않는다.")
+bullet(doc, "**WM 에너지의 적용 범위:** 동일 입력 비교에서 Easy 구간은 이득을 보였으나 Medium과 Hard 구간은 에너지가 "
+       "증가하였다(표 @t_wmpaired@). 모드 비율 가중 6.7 % 감소는 모드별 4장의 선정 표본에 기초한다. 클래스별 오분류 비용과 "
+       "실제 운용 입력의 모드 비율을 함께 확인해야 하며, Medium의 MAC 감소를 직접적인 에너지 절감으로 대체 해석하지 않는다.")
 bullet(doc, "**배치 및 배선 후 전력:** 전력은 게이트레벨 VCD 기반의 배치 전 추정이다. 상세 배선 후의 기생 성분과 클럭망을 반영한 "
        "전력 평가로 클럭 게이팅 효과(표 @t_icg@)를 다시 확인할 계획이다.")
 bullet(doc, "**배치 후 임계 경로:** 배치와 전역 배선 후 임계 경로는 FSM에서 Conv2 MAC 레지스터로 퍼지는 enable 신호였다(표 @t_pl@). "
@@ -1211,7 +1246,7 @@ bullet(doc, "**반도체 공정 검사 적용:** 웨이퍼맵 검사에서 Edge-
        "경로로 보내는 계층적 검사에 활용할 수 있다. 다만 Scratch recall 감소(3.9절)처럼 결함 누락 비용이 큰 클래스는 별도 "
        "recall 제약과 함께 운용해야 한다.")
 bullet(doc, "**설계 방법론:** 임계값 탐색 → 정수 Golden → 파라미터화 RTL → ORFS 합성 → 게이트레벨 VCD 전력까지 하나의 흐름으로 "
-       "연결하여, 다른 모델 및 데이터셋에도 같은 절차로 적용할 수 있음을 보였다.")
+       "연결하고 MNIST 및 WM-811K 4-class 모델에 적용하였다. 다른 모델로의 확장 시에는 임계값 선정, 정수 정확도 및 동일 조건의 PPA를 다시 검증해야 한다.")
 
 h2(doc, "4.4 결론")
 para(doc, "본 과제는 고정 경로 가속기가 쉬운 입력에도 전체 연산을 수행하는 낭비를 줄이기 위해, Early Classifier 점수의 Top-1과 "
@@ -1227,7 +1262,7 @@ para(doc, "지정주제(MNIST, 모델 A)에서는 주최 측 Reference와 같은
          -pct(PL_LAT["A"], PL_LAT["ref"])), indent=True)
 para(doc, "같은 RTL을 파라미터만 바꾸어 확장 모델 B(MNIST, 주최 TB 정답 999 / 1,000)와 자유주제 웨이퍼맵 결함 분류(WM-811K, "
      "4개 클래스)에 적용하였다. WM-811K에서는 Medium 경로가 실제로 선택되어 3경로 제어가 동작함을 확인하였고, Vivado에서 정확도 "
-     "81.13 %(774 / 954)와 정수 Golden 대비 판정, 모드, Score Margin 954 / 954 일치를 얻었다. WM 넷리스트의 게이트레벨 전력 분석에서 추론당 에너지는 Baseline_WM 대비 8.8 % 줄었다. 기능 검증은 단위 회로, 1,000장 회귀, "
+     "81.13 %(774 / 954)와 정수 Golden 대비 판정, 모드, Score Margin 954 / 954 일치를 얻었다. WM 동일 입력 12개의 배치 전 전력 분석에서 RTL 모드 비율 가중 에너지는 Baseline_WM 대비 6.7 % 감소한 것으로 추정되었으나, Medium과 Hard 구간에서는 에너지가 증가하였다. 기능 검증은 단위 회로, 1,000장 회귀, "
      "주최 측 테스트벤치, 제출 패키지의 독립 PC 재현, 합성 넷리스트의 Vivado 시뮬레이션(5개 시드 부분 실행, 판정 1,007회 일치, cycle 1,006/1,006 일치)까지 "
      "단계별로 수행하였다.", indent=True)
 para(doc, "또한 본 과제는 ^^연산량(MAC) 감소가 곧 에너지 감소로 이어지지 않는다^^는 점을 블록 단위로 보이고, 적응형 경로가 에너지에서 "
@@ -1271,6 +1306,11 @@ para(doc, "위 도구 표의 합성 및 전력 환경은 기존 Reference 비교
      "ORFS 7bf5a814e47c54ec6c64692b464d398184d99891 및 Icarus Verilog 12.0 stable을 사용하였다. "
      "게이팅 전후 설계는 이 환경에서 동일 조건으로 비교하였으며, 기존 Reference 분석과 도구 버전이 같다는 의미는 아니다. "
      "버전 원문 및 파일 해시는 results_hs/clock_gating/environment.json에 보존하였다.", indent=True)
+para(doc, "3.9절의 WM 동일 입력 비교는 Icarus Verilog 12.0 stable, OpenROAD 26Q2-1164-g08f67ee5ec 및 "
+     "ORFS 7bf5a814e47c54ec6c64692b464d398184d99891의 ASAP7 RVT TT 환경에서 두 설계를 모두 재계산하였다. "
+     "Liberty 시간 단위는 1 ps이며 SDC period 10000은 10 ns이다. 원본 넷리스트 및 TB를 유지하였고, "
+     "입력과 라이브러리 해시 및 도구 버전을 results_hs/wm_paired_power/raw/에 기록하였다. 컴파일의 timing-check 미지원과 "
+     "Liberty/LEF 경고는 원문 로그에 보존하였으며, 물리 구현 사인오프나 활동도 100 % 커버리지를 주장하지 않는다.", indent=True)
 table(doc, "주요 실행 단계와 데이터", ["단계", "명령 / 스크립트", "데이터 및 조건"], [
     ["학습", "python train.py --arch A --n_class 10 --prefix mnist", "python/에서 실행; MNIST 학습 60,000장, 30 epoch, seed 미고정"],
     ["임계값 탐색", "python analyze_margin.py --arch A --prefix mnist", "python/에서 실행; MNIST 테스트 10,000장 (동일셋 선정)"],
@@ -1291,9 +1331,10 @@ table(doc, "조기 종료 및 동적 추론 선행 연구와 본 설계의 비�
     ["Shallow-Deep Networks [7]", "최대 클래스 확률", "7 (내부 6 + 최종 1)", "소프트웨어 (전용 RTL 없음)",
      "CIFAR-10/100, Tiny ImageNet 정확도–FLOPs"],
     ["**AdaPath-NPU (본 설계)**", "정수 로짓 Top-1 − Top-2", "A: 2, B: 3", "Verilog RTL, ASAP7 합성 및 STA",
-     "MNIST/WM-811K, 게이트레벨 VCD 에너지"],
+     "MNIST/WM-811K, 배치 전 VCD 에너지 추정"],
 ], [3.4, 3.6, 3.2, 3.6, 3.6], hl_rows=(3,),
-    note="플랫폼, 모델 규모, 평가셋이 달라 수치를 직접 순위화하지 않는다.")
+    note="플랫폼, 모델 규모, 정밀도 및 평가셋이 달라 수치를 직접 순위화하지 않는다. 본 설계의 차별점은 정수 판단 회로와 "
+         "공유 전단부의 경로 제어를 통합한 RTL 구현 및 비용 분석이며, 조기 종료나 점수 차이 지표 자체의 최초 제안을 주장하지 않는다.")
 
 h1(doc, "부록 C. 추가 그림")
 figure(doc, os.path.join(OUT, "sh2_fig_wm_confusion.png"),
