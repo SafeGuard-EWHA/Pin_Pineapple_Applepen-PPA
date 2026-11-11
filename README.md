@@ -9,13 +9,17 @@ Easy / Medium / Hard 경로를 선택하는 NPU 데이터패스. ASAP7 7nm(OpenR
 
 | 과제 | 모델 / 데이터 | 내용 |
 |---|---|---|
-| 지정주제 | 모델 A (레퍼런스와 동일 신경망: conv1 3ch, conv2 3ch, FC 48→10), MNIST | 동일 신경망에 AdaPath 적용 |
+| 지정주제 | 모델 A (주 경로: conv1 3ch, conv2 3ch, FC 48→10), MNIST | 레퍼런스와 같은 주 경로 구조에 Early Classifier 및 AdaPath 적용 |
 | 자유주제 | 모델 B (conv2 8ch), WM-811K 4-class | 적용 전·후 PPA |
 | 확장 | 모델 B, MNIST | Medium 경로 효과 분석 |
 
 ## 결과보고서
 
-📄 **[결과보고서 PDF](report/결과보고서_PPA.pdf)** · [Word](report/결과보고서_PPA.docx) · 생성 코드 [report/make_final_report.py](report/make_final_report.py)
+📄 **[최종 결과보고서 PDF · 44페이지](report/결과보고서_PPA.pdf)** — 2026-11-11 제공받은 최종본으로 갱신했습니다.
+
+기존 제출 ZIP에는 이전 보고서가 포함되어 있습니다. 최신 보고서는 위 PDF 링크에서 확인하세요.
+
+[기존 Word 작업본](report/결과보고서_PPA.docx)과 [기존 생성 코드](report/make_final_report.py)는 이전 작업 자료이며, 위 최종 PDF와 내용이 일치하지 않을 수 있습니다. 아래 요약은 최종 PDF를 기준으로 합니다.
 
 ## 주요 결과 (지정주제: 주최 측 Reference 대비 AdaPath_A)
 
@@ -25,11 +29,16 @@ Easy / Medium / Hard 경로를 선택하는 NPU 데이터패스. ASAP7 7nm(OpenR
 | 평균 처리 cycle / 추론 | 1,334 | **851.8** | 36.1 % 감소 |
 | 추정 Fmax (pre-layout, 클럭 주기 스윕) | 569.8 MHz | 543.1 MHz | 4.7 % 감소 |
 | 추론 지연 @Fmax | 2,341 ns | **1,569 ns** | 33.0 % 감소 |
-| 추론당 에너지 (게이트레벨 VCD 기반 추정) | 17.7 nJ | **16.2 nJ** | 8.9 % 감소 |
+| 추론당 에너지 (배치 전 게이트레벨 VCD 기반 추정) | 17.7 nJ | **16.2 nJ** | 8.9 % 감소 |
 | Cell Area (ASAP7) | 32,085 µm² | 49,858 µm² | 55.4 % 증가 |
+| 평균 실행 MAC / 추론 | 58,080 | **44,275** | 23.8 % 감소 |
+| 등가 TOPS/W (Reference MAC 기준) | 6.55 | **7.19** | 9.8 % 증가 |
 
-- 판단 회로(Top-2 토너먼트 트리)는 동작 주파수를 낮추지 않는다: AdaPath_A 543.1 MHz ≈ 판단 회로 없는 Baseline_A 543.3 MHz
-- 자유주제 WM-811K: RTL이 정수 Golden과 **954 / 954 비트 단위 일치**, Easy / Medium / Hard = 404 / 167 / 383 (3경로 모두 동작)
+주최 측 입력은 고유 이미지 100장을 10회 반복한 구성입니다. Reference와 AdaPath_A는 주 경로 구조가 같지만 가중치와 양자화 조건이 다르고 Early Classifier가 추가되어, 위 차이 전체를 경로 선택만의 효과로 해석하지 않습니다. 등가 TOPS/W는 같은 Reference MAC을 분자로 사용하며, 실제 실행 MAC 기준 실효 TOPS/W는 Reference 6.55, AdaPath_A 5.48입니다(보고서 3.7절).
+
+- 배치 전 STA 조건에서 AdaPath_A 543.1 MHz는 판단 회로 없는 Baseline_A 543.3 MHz와 유사합니다. 배치·전역 배선 후 Reference 대비 추론 지연은 2,321 → 1,672 ns로 28.0 % 감소했습니다(보고서 3.6절).
+- 자유주제 WM-811K: RTL의 판정·모드·Score Margin이 정수 Golden과 **954 / 954 일치**, Easy / Medium / Hard = 404 / 167 / 383입니다. 분류 정답 수는 AdaPath 774 / 954, 항상 Hard 777 / 954이며, Golden 일치율과 분류 정확도는 다른 지표입니다.
+- WM-811K 동일 입력 비교: 모드별 4장씩 총 12장의 배치 전 전력을 평가하고, 두 설계에 같은 RTL 모드 비율을 가중하면 **28.79 → 26.86 nJ/장, 6.70 % 감소**입니다. 기존 8.8 %는 서로 다른 입력을 기준으로 한 값으로, 최종 보고서에서는 동일 입력 비교로 갱신했습니다. 954장 전체의 전력 측정 결과는 아닙니다(보고서 3.9절, 표 25).
 - 제출용 Vivado 프로젝트: [vivado/submit/](vivado/submit/) (A: 지정주제, B: 확장, WM: 자유주제)
 
 ## 주요 그래프
@@ -47,11 +56,14 @@ Easy / Medium / Hard 경로를 선택하는 NPU 데이터패스. ASAP7 7nm(OpenR
 ![compare](out/fig_final_compare.png)
 
 ### 에너지는 어디서 쓰이는가 — 블록별 추론당 에너지
-Easy에서도 후단부 레지스터가 클럭만 받으며 3.65 nJ를 소모 → 클럭 게이팅 시 상한 추정 평균 12.7 nJ (Reference 대비 28.7 % 감소)
+Easy에서도 후단부 레지스터가 클럭만 받으며 3.65 nJ를 소모합니다. 아래 그림의 평균 12.7 nJ(Reference 대비 28.7 % 감소)는 게이팅 오버헤드를 제외한 이상적 상한 추정입니다.
+
+**전용 ICG 적용 평가**에서는 같은 팬아웃 제한 버퍼 클럭 트리를 적용한 AdaPath_A끼리 비교했습니다(ASAP7 RVT TT, 100 MHz, 배치 전 VCD 기반 추정). Easy 36장·9구간 평균은 **22.50 → 16.68 nJ/장, 25.9 % 감소**, Hard 4장·1구간은 **30.01 → 23.79 nJ/장, 20.7 % 감소**입니다. Reference 대비 8.9 %와는 비교 기준이 달라 감소율을 합산하지 않습니다(보고서 3.7절).
 
 ![block](out/fig_block_energy.png)
 
-### 에너지 손익분기점 — Easy 비율이 약 79 %를 넘어야 Reference보다 에너지가 줄어든다
+### 에너지 손익분기점 — 모드별 에너지 고정 모델
+보고서의 혼합 모델에서는 Easy 비율 약 79.1 %에서 Reference 대비, 약 46.5 %에서 Baseline_A 대비 에너지 손익분기점이 나타납니다. 이는 모드별 에너지를 고정한 계산 결과입니다.
 ![breakeven](out/fig_energy_breakeven.png)
 
 ### Vivado 2023.1 실행 (주최 측 top_tb_1000)
@@ -63,10 +75,11 @@ Hard 판정 이미지의 내부 처리 순서: 판정 → FSM BACK → 특징 �
 
 ![vivado_hard](out/fig_vivado_detail_hard.png)
 
-### 입력이 어려워지면 연산을 더 쓴다 (RTL 실측, 열화 입력)
+### 입력이 어려워지면 연산을 더 쓴다 (RTL 시뮬레이션, 열화 입력)
 ![robust](out/fig_robustness_modes.png)
 
-### 런타임 임계값 스윕 (RTL 실측)
+### 런타임 임계값 스윕 (실험용 RTL 시뮬레이션)
+제출 설계 A의 임계값은 **63 / 63으로 고정**되어 있습니다. 런타임 변경 기능은 실험용 RTL의 기능입니다. 관측 입력에서는 TH = 0, 10, 20, 30이 980회 정답으로 더 유리했지만, 사후 탐색 결과를 새로운 입력의 성능으로 일반화하지 않고 제출 동작점을 유지했습니다.
 ![sweep](out/fig_sweep_A.png)
 
 ### 왜 Score Margin인가 — 난이도 지표 비교 (모델 A)
@@ -77,7 +90,9 @@ Hard 판정 이미지의 내부 처리 순서: 판정 → FSM BACK → 특징 �
 |---|---|
 | ![iso](out/fig_iso_accuracy_wm811k.png) | ![wmclass](results_sh/v2/04_wm_classes/fig_wm_class_modes.png) |
 
-> 수치의 측정 조건(RTL 실측 / Python float 분석 / VCD 기반 추정 / pre-layout STA)과 한계는 결과보고서 3~4장에 정리되어 있다.
+> 수치의 평가 조건(RTL 시뮬레이션 / Python float 분석 / VCD 기반 전력 추정 / pre-layout STA)과 한계는 최종 결과보고서 3~4장에 정리되어 있습니다.
+
+합성 넷리스트 기능 검증은 **5개 시드의 부분 실행 합계에서 판정 1,007 / 1,007, 처리 cycle 1,006 / 1,006 일치**입니다. 원본 테스트벤치 한 번의 1,000회 실행 완료를 의미하지 않습니다(보고서 3.5.7절).
 
 ## 폴더 구조
 
@@ -93,7 +108,7 @@ Hard 판정 이미지의 내부 처리 순서: 판정 → FSM BACK → 특징 �
 | `glsim/` | 게이트레벨 시뮬레이션 TB(AdaPath A/B, 레퍼런스)와 실행 스크립트 |
 | `vivado/` | Vivado 2023.1 프로젝트 생성·시뮬레이션 Tcl (주최 측 top_tb.v 사용) |
 | `out/` | 그림, 결과 표, 학습 가중치(`.pt`), RTL용 INT8 데이터(`rtl_data_*`) |
-| `report/` | 결과보고서 생성 스크립트 |
+| `report/` | 최신 최종 PDF, 기존 Word 작업본 및 보고서 생성 스크립트 |
 | `docs/` | 중간보고서 |
 
 ## 실행 요약
@@ -115,7 +130,7 @@ bash run_sim.sh
 - 주최 측 레퍼런스 RTL·데이터(`verilog_ref/`) — 대회 배포물
 - 시뮬레이션 덤프(`.vcd`, `.vvp`)와 합성 넷리스트 — 용량이 크고 스크립트로 재생성 가능
 
-## 추가 실험 1: 런타임 임계값 스윕 (하드웨어 실측 동작 곡선)
+## 추가 실험 1: 런타임 임계값 스윕 (실험용 RTL 동작 곡선)
 
 `adapath_top`에 `USE_REG_TH` 파라미터와 `th_low_i` / `th_high_i` 포트가 추가되었다.
 기본값(`USE_REG_TH=0`)에서는 기존과 동일하게 `thresholds.vh`의 고정 임계값을 쓴다
@@ -165,9 +180,7 @@ cd ../python && python plot_robustness.py       # -> out/fig_robustness_modes.pn
 | contrast 0.3 | AdaPath | 930 | 909.98 | 620 / 0 / 380 |
 | contrast 0.3 | Baseline | 930 | 985.00 | 0 / 0 / 1000 |
 
-참고(Python 예측): 저조도·블러에서는 Hard 비율이 크게 늘면서 정확도가 Baseline과 같거나 높다.
-강한 가우시안 잡음(σ ≥ 60)에서는 Early Classifier가 확신을 갖고 틀리는 경우가 생겨 AdaPath 정확도가
-Baseline보다 낮아질 수 있다 — 결과를 그대로 보고하고 한계로 서술할 것.
+최종 보고서의 17조건 × 2설계 RTL 시뮬레이션에서는 대비 0.2의 정확도가 AdaPath 80.0 %, Baseline 76.0 %였습니다. 반면 강한 블러 4회에서는 87.0 % 대 90.0 %, 가우시안 잡음 σ = 100에서는 74.9 % 대 83.0 %로 AdaPath가 낮았습니다. 높은 Score Margin으로 오분류한 입력이 조기 종료되었을 가능성이 있으며, 원인을 확인하려면 오류 입력별 추가 분석이 필요합니다(보고서 3.10절).
 
 `tb_threshold_sweep.v` 옵션: `-DMODEL_A`(모델 A), `-DBASELINE`(항상 Hard), `+IMG=<파일>`(입력 교체), `+TL= +TH=`(임계값).
 주최측 input_1000.txt는 서로 다른 100장이 10번 반복된 구성이라, 결정적 열화(contrast, blur)의 결과는 10장 단위로 움직인다.
